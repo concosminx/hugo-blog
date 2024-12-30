@@ -13,3 +13,5 @@
 6. upload to git `add`, `commit`, `git branch -M main`, `git remote add origin ...`, `git push -u origin main`
 7. create `gh-pages` branch in github
 8. set the `rw` permissions for the workflow `Settings -> Actions`
+9. create the deploy workflow
+10. edit the base URL in `hugo.yaml`
