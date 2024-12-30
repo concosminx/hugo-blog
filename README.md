@@ -14,4 +14,4 @@
 7. create `gh-pages` branch in github
 8. set the `rw` permissions for the workflow `Settings -> Actions`
 9. create the deploy workflow
-10. edit the base URL in `hugo.yaml`
+10. edit the base URL in `hugo.yaml` to gh pages URL
