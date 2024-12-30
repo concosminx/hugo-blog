@@ -4,6 +4,11 @@
     <title>Docs on This is my blog</title>
     <link>https://concosminx.github.io/hugo-blog/docs/</link>
     <description>Recent content in Docs on This is my blog</description>
+    <image>
+      <title>This is my blog</title>
+      <url>https://concosminx.github.io/hugo-blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://concosminx.github.io/hugo-blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- 0.140.1</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 30 Dec 2024 09:58:16 +0200</lastBuildDate>

@@ -4,8 +4,35 @@
     <title>Tags on This is my blog</title>
     <link>https://concosminx.github.io/hugo-blog/tags/</link>
     <description>Recent content in Tags on This is my blog</description>
+    <image>
+      <title>This is my blog</title>
+      <url>https://concosminx.github.io/hugo-blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://concosminx.github.io/hugo-blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- 0.140.1</generator>
     <language>en-us</language>
+    <lastBuildDate>Mon, 30 Dec 2024 10:55:00 +0200</lastBuildDate>
     <atom:link href="https://concosminx.github.io/hugo-blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Css</title>
+      <link>https://concosminx.github.io/hugo-blog/tags/css/</link>
+      <pubDate>Mon, 30 Dec 2024 10:55:00 +0200</pubDate>
+      <guid>https://concosminx.github.io/hugo-blog/tags/css/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Html</title>
+      <link>https://concosminx.github.io/hugo-blog/tags/html/</link>
+      <pubDate>Mon, 30 Dec 2024 10:55:00 +0200</pubDate>
+      <guid>https://concosminx.github.io/hugo-blog/tags/html/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>First</title>
+      <link>https://concosminx.github.io/hugo-blog/tags/first/</link>
+      <pubDate>Tue, 15 Sep 2020 11:30:03 +0000</pubDate>
+      <guid>https://concosminx.github.io/hugo-blog/tags/first/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
