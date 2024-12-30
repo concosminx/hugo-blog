@@ -11,3 +11,5 @@
    - modify `hugo.yaml` and set the theme `theme: PaperMod`
 5. check the site with `hugo server`
 6. upload to git `add`, `commit`, `git branch -M main`, `git remote add origin ...`, `git push -u origin main`
+7. create `gh-pages` branch in github
+8. set the `rw` permissions for the workflow `Settings -> Actions`
