@@ -10,4 +10,4 @@
    - add the theme as a submodule `git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod`
    - modify `hugo.yaml` and set the theme `theme: PaperMod`
 5. check the site with `hugo server`
-6. upload to git `git branch -M main`, `git remote add origin ...`, `git push -u origin main`
+6. upload to git `add`, `commit`, `git branch -M main`, `git remote add origin ...`, `git push -u origin main`
