@@ -1,29 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tech on This is my blog</title>
+    <title>Tech on Lines of code and lessons</title>
     <link>https://concosminx.github.io/hugo-blog/categories/tech/</link>
-    <description>Recent content in Tech on This is my blog</description>
-    <image>
-      <title>This is my blog</title>
-      <url>https://concosminx.github.io/hugo-blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://concosminx.github.io/hugo-blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
-    </image>
+    <description>Recent content in Tech on Lines of code and lessons</description>
     <generator>Hugo -- 0.140.1</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 30 Dec 2024 10:55:00 +0200</lastBuildDate>
+    <language>en</language>
+    <copyright>concosminx</copyright>
+    <lastBuildDate>Fri, 03 Jan 2025 10:55:00 +0200</lastBuildDate>
     <atom:link href="https://concosminx.github.io/hugo-blog/categories/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>This is the first post on Hugo</title>
+      <title>WinSCP - sudo after login</title>
       <link>https://concosminx.github.io/hugo-blog/posts/first/</link>
-      <pubDate>Mon, 30 Dec 2024 10:55:00 +0200</pubDate>
+      <pubDate>Fri, 03 Jan 2025 10:55:00 +0200</pubDate>
       <guid>https://concosminx.github.io/hugo-blog/posts/first/</guid>
-      <description>&lt;h1 id=&#34;this-is-a-heading-one&#34;&gt;This is a heading one&lt;/h1&gt;
-&lt;h2 id=&#34;this-is-a-heading-two&#34;&gt;This is a heading two&lt;/h2&gt;
-&lt;p&gt;This is a paragraph.&lt;/p&gt;
-&lt;p&gt;🇷🇴&lt;/p&gt;
-&lt;p&gt;&amp;#x1f648;&lt;/p&gt;
-&lt;p&gt;:flag_romania:&lt;/p&gt;</description>
+      <description>&lt;p&gt;Recently, I had to upload some folders to a Linux server (Oracle Cloud), but the user permissions I had did not allow me to create the necessary folders. While searching for a solution, I came across this possibility.&lt;/p&gt;
+&lt;p&gt;In some cases (with Unix/Linux server) you may be able to use &lt;code&gt;sudo&lt;/code&gt; command straight after login to change a user, before file transfer session starts.&lt;/p&gt;
+&lt;p&gt;The &lt;em&gt;SFTP&lt;/em&gt; and &lt;em&gt;SCP&lt;/em&gt; protocols allow for this, but the actual method is platform dependent.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
