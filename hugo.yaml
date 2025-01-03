@@ -1,109 +1,179 @@
 baseURL: https://concosminx.github.io/hugo-blog/
 languageCode: en-us
-title: This is my blog
+title: Lines of code and lessons
+copyright: "© [concosminx](https://github.com/concosminx)"
+pagination.pagerSize: 5
 theme: PaperMod
 
+enableInlineShortcodes: true
 enableRobotsTXT: true
 buildDrafts: false
 buildFuture: false
 buildExpired: false
 enableEmoji: true
+pygmentsUseClasses: true
+
 
 minify:
   disableXML: true
-  minifyOutput: true
+  # minifyOutput: true
+
+
+languages:
+  en:
+    languageName: ":uk:"
+    weight: 1
+    taxonomies:
+      category: categories
+      tag: tags
+      series: series
+    menu:
+      main:
+        - name: Archive
+          url: archives
+          weight: 5
+        - name: Search
+          url: search/
+          weight: 10
+        - name: Tags
+          url: tags/
+          weight: 10
+        - name: Categories
+          url: categories/
+          weight: 20  
+        - name: Repo
+          url: https://github.com/concosminx/hugo-blog
+
+  ro:
+    languageName: "🇷🇴"
+    weight: 2
+    title: Linii de cod si lectii
+    taxonomies:
+      category: categorii
+      tag: taguri
+      series: serii
+    menu:
+      main:
+        - name: Arhive
+          url: archives/
+          weight: 5
+        - name: Taguri
+          url: taguri
+          weight: 10
+        - name: Categorii
+          url: categorii
+          weight: 20
+        #- name: Serii
+        #  url: serii
+        #  weight: 10
+        - name: Repo
+          url: https://github.com/concosminx/hugo-blog
+
+    params:
+      languageAltTitle: Romanian
+      homeInfoParams:
+        Title: "Linii de cod si lectii"
+        Content: >
+          👋 Bine ai venit pe blogul meu despre dezvoltare software!
+
+          - Salut! Sunt Cosmin, un pasionat de programare si tot ce tine de lumea dezvoltarii software. Pe acest blog vei gasi articole despre: 
+          tehnologii emergente, proiecte personale, lectii invatate si provocari intalnite.
+      editPost:
+        Text: "Sugereaza schimbari"
+        
+          
+
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON          
 
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: ExampleSite
-  description: "ExampleSite description"
-  keywords: [Blog, Portfolio, PaperMod]
+  title: Blog
+  description: "A blog"
   author: Me
-  # author: ["Me", "You"] # multiple authors
-  images: ["<link or path of image for opengraph, twitter-cards>"]
-  DateFormat: "January 2, 2006"
-  defaultTheme:  dark # auto, light
-  disableThemeToggle: false
-
-  ShowReadingTime: true
+  defaultTheme: auto
+  # disableThemeToggle: true
   ShowShareButtons: true
+  ShowReadingTime: true
+  # disableSpecial1stPost: true
+  displayFullLangName: true
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
-  ShowCodeCopyButtons: false
-  ShowWordCount: true
+  ShowCodeCopyButtons: true
   ShowRssButtonInSectionTermList: true
-  UseHugoToc: true
-  disableSpecial1stPost: false
-  disableScrollToTop: false
-  comments: false
-  hidemeta: false
-  hideSummary: false
-  showtoc: false
-  tocopen: false
+  ShowAllPagesInArchive: true
+  ShowPageNums: true
+  ShowToc: true
+  # comments: false
+  # images: ["img/cover.png"]
 
-  assets:
-    # disableHLJS: true # to disable highlight.js
-    # disableFingerprinting: true
-    favicon: "<link / abs url>"
-    favicon16x16: "<link / abs url>"
-    favicon32x32: "<link / abs url>"
-    apple_touch_icon: "<link / abs url>"
-    safari_pinned_tab: "<link / abs url>"
+  # profileMode:
+  #   enabled: false
+  #   title: PaperMod
+  #   imageUrl: "#"
+  #   imageTitle: my image
+  #   # imageWidth: 120
+  #   # imageHeight: 120
+  #   buttons:
+  #     - name: Archives
+  #       url: archives
+  #     - name: Tags
+  #       url: tags
 
-  label:
-    text: "Home"
-    icon: /apple-touch-icon.png
-    iconHeight: 35
-
-  # profile-mode
-  profileMode:
-    enabled: false # needs to be explicitly set
-    title: ExampleSite
-    subtitle: "This is subtitle"
-    imageUrl: "<img location>"
-    imageWidth: 120
-    imageHeight: 120
-    imageTitle: my image
-    buttons:
-      - name: Posts
-        url: posts
-      - name: Tags
-        url: tags
-
-  # home-info mode
   homeInfoParams:
-    Title: "Hi there \U0001F44B"
-    Content: Welcome to my blog
+    Title: "Lines of Code and Lessons"
+    Content: >
+      👋 Welcome to my blog!
+
+      - Hi! I'm Cosmin, a passionate coder, problem solver, and enthusiast of everything related to software development. On this blog, you'll find: insights on emerging technologies, 
+      personal projects, lessons learned, and challenges faced
 
   socialIcons:
-    - name: x
-      url: "https://x.com/"
-    - name: stackoverflow
-      url: "https://stackoverflow.com"
     - name: github
-      url: "https://github.com/"
+      title: View Source on Github
+      url: "https://github.com/concosminx/hugo-blog"
+    # - name: Discord
+    #   title: Join discord community
+    #   url: "https://discord.gg"
+    # - name: X
+    #   title: Share PaperMod on X/Twitter
+    #   url: "https://x.com"
+    
+  editPost:
+    URL: "https://github.com/concosminx/hugo-blog/tree/main/content"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
+
+  # label:
+  # iconSVG: '<svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 -960 960 960" fill="currentColor"><path d="M320-240h320v-80H320v80Zm0-160h320v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z"/></svg>'
+  # text: "Home"
+  # icon: icon.png
+  # iconHeight: 35
 
   # analytics:
-  #   google:
-  #     SiteVerificationTag: "XYZabc"
-  #   bing:
-  #     SiteVerificationTag: "XYZabc"
-  #   yandex:
-  #     SiteVerificationTag: "XYZabc"
+  #     google:
+  #         SiteVerificationTag: "XYZabc"
 
-  # cover:
-  #   hidden: true # hide everywhere but not in structured data
-  #   hiddenInList: true # hide on list pages and home
-  #   hiddenInSingle: true # hide on single page
+  assets:
+    disableHLJS: true
+    favicon: "icons/favicon.ico"
+    favicon16x16: "icons/favicon-16x16.png"
+    favicon32x32: "icons/favicon-32x32.png"
+    apple_touch_icon: "icons/apple-touch-icon.png"
+    #safari_pinned_tab: "icons/safari-pinned-tab.svg"
+    
 
-  # editPost:
-  #   URL: "https://github.com/<path_to_repo>/content"
-  #   Text: "Suggest Changes" # edit text
-  #   appendFilePath: true # to append file path to Edit link
+  cover:
+    linkFullImages: false
+  #  hidden: true # hide everywhere but not in structured data
+  #  hiddenInList: true # hide on list pages and home
+  #  hiddenInSingle: true # hide on single page
 
-  # for search
-  # https://fusejs.io/api/options.html
   fuseOpts:
     isCaseSensitive: false
     shouldSort: true
@@ -111,31 +181,12 @@ params:
     distance: 1000
     threshold: 0.4
     minMatchCharLength: 0
-    limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
     keys: ["title", "permalink", "summary", "content"]
-menu:
-  main:
-    - identifier: categories
-      name: categories
-      url: /categories/
-      weight: 10
-    - identifier: tags
-      name: tags
-      url: /tags/
-      weight: 20
-    - name: Archive
-      url: archives
-      weight: 5
-    - name: Search
-      url: search/
-      weight: 10  
-    - identifier: example
-      name: example.org
-      url: https://example.org
-      weight: 30
-# Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
-pygmentsUseClasses: true
+
 markup:
+  goldmark:
+    renderer:
+      unsafe: true
   highlight:
     noClasses: false
     # anchorLineNos: true
@@ -143,3 +194,30 @@ markup:
     # guessSyntax: true
     # lineNos: true
     # style: monokai
+
+# privacy:
+#   vimeo:
+#     disabled: false
+#     simple: true
+
+#   twitter:
+#     disabled: false
+#     enableDNT: true
+#     simple: true
+
+#   instagram:
+#     disabled: false
+#     simple: true
+
+#   youtube:
+#     disabled: false
+#     privacyEnhanced: true
+
+services:
+  instagram:
+    disableInlineCSS: true
+  twitter:
+    disableInlineCSS: true
+
+
+#see https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite

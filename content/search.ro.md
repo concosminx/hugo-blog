@@ -1,0 +1,4 @@
+---
+title: "Cautare"
+layout: "search"
+---
