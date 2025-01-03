@@ -7,8 +7,59 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>ro</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Fri, 03 Jan 2025 10:55:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jan 2025 15:24:43 +0200</lastBuildDate>
     <atom:link href="https://concosminx.github.io/hugo-blog/ro/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cum sa folosesti GPG pentru a cripta/decripta fisiere</title>
+      <link>https://concosminx.github.io/hugo-blog/ro/posts/gpg/</link>
+      <pubDate>Fri, 03 Jan 2025 15:24:43 +0200</pubDate>
+      <guid>https://concosminx.github.io/hugo-blog/ro/posts/gpg/</guid>
+      <description>&lt;p&gt;GnuPG foloseste criptografia cu chei publice astfel incat utilizatorii sa poata comunica in siguranta. Intr-un sistem cu chei publice, fiecare utilizator are o pereche de chei formata dintr-o cheie privata si o cheie publica. Cheia privata a unui utilizator este pastrata secreta si nu trebuie dezvaluita niciodata. Cheia publica poate fi oferita oricui doreste utilizatorul sa comunice.&lt;/p&gt;
+&lt;h3 id=&#34;instalare-si-generare-pereche-de-chei&#34;&gt;Instalare si generare pereche de chei&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;instalare pe Debian / Ubuntu&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install gnupg
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;generarea unei perechi de chei&lt;/li&gt;
+&lt;li&gt;vom folosi ca exemplu adrese de email de genul &lt;code&gt;johndoe@example.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --full-generate-key
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;schimbul-de-chei-export--import&#34;&gt;Schimbul de chei (export / import)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;exportul unei chei public in format binar&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --output johndoe.gpg --export johndoe@example.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;sau ACII&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --armor --output johndoe.gpg.pub --export johndoe@example.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;importul unei chei publice&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --import janedoe.gpg
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --list-keys
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;validarea unei chei publice importate (manual, daca este cazul)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;gpg --edit-key blake@cyb.org
+#afiseaza amprenta
+fpr 
+#semneaza cheia
+sign
+#verifica cheia
+check
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;criptarea-si-decriptarea-documentelor-pentru-un-anumit-destinatar&#34;&gt;Criptarea si decriptarea documentelor (pentru un anumit destinatar)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;criptare&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --output doc.gpg --encrypt --recipient janedoe@example.com doc.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;decriptare&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --output doc-dec.txt --decrypt doc.gpg
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
     <item>
       <title>WinSCP - sudo dupa autentificare</title>
       <link>https://concosminx.github.io/hugo-blog/ro/posts/first/</link>

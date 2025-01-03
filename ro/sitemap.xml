@@ -2,14 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://concosminx.github.io/hugo-blog/ro/categorii/</loc>
-    <lastmod>2025-01-03T10:55:00+02:00</lastmod>
-  </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/ro/taguri/ftp/</loc>
-    <lastmod>2025-01-03T10:55:00+02:00</lastmod>
+    <loc>https://concosminx.github.io/hugo-blog/ro/posts/gpg/</loc>
+    <lastmod>2025-01-03T15:24:43+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://concosminx.github.io/hugo-blog/posts/gpg/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://concosminx.github.io/hugo-blog/ro/posts/gpg/"
+                />
   </url><url>
     <loc>https://concosminx.github.io/hugo-blog/ro/</loc>
-    <lastmod>2025-01-03T10:55:00+02:00</lastmod>
+    <lastmod>2025-01-03T15:24:43+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -21,11 +28,8 @@
                 href="https://concosminx.github.io/hugo-blog/ro/"
                 />
   </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/ro/taguri/linux/</loc>
-    <lastmod>2025-01-03T10:55:00+02:00</lastmod>
-  </url><url>
     <loc>https://concosminx.github.io/hugo-blog/ro/posts/</loc>
-    <lastmod>2025-01-03T10:55:00+02:00</lastmod>
+    <lastmod>2025-01-03T15:24:43+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -36,6 +40,15 @@
                 hreflang="ro"
                 href="https://concosminx.github.io/hugo-blog/ro/posts/"
                 />
+  </url><url>
+    <loc>https://concosminx.github.io/hugo-blog/ro/categorii/</loc>
+    <lastmod>2025-01-03T10:55:00+02:00</lastmod>
+  </url><url>
+    <loc>https://concosminx.github.io/hugo-blog/ro/taguri/ftp/</loc>
+    <lastmod>2025-01-03T10:55:00+02:00</lastmod>
+  </url><url>
+    <loc>https://concosminx.github.io/hugo-blog/ro/taguri/linux/</loc>
+    <lastmod>2025-01-03T10:55:00+02:00</lastmod>
   </url><url>
     <loc>https://concosminx.github.io/hugo-blog/ro/taguri/sftp/</loc>
     <lastmod>2025-01-03T10:55:00+02:00</lastmod>

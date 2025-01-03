@@ -7,8 +7,59 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Fri, 03 Jan 2025 10:55:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jan 2025 15:24:43 +0200</lastBuildDate>
     <atom:link href="https://concosminx.github.io/hugo-blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to use GPG to encrypt/decrypt files</title>
+      <link>https://concosminx.github.io/hugo-blog/posts/gpg/</link>
+      <pubDate>Fri, 03 Jan 2025 15:24:43 +0200</pubDate>
+      <guid>https://concosminx.github.io/hugo-blog/posts/gpg/</guid>
+      <description>&lt;p&gt;GnuPG uses public-key cryptography so that users may communicate securely. In a public-key system, each user has a pair of keys consisting of a private key and a public key. A user&amp;rsquo;s private key is kept secret; it need never be revealed. The public key may be given to anyone with whom the user wants to communicate.&lt;/p&gt;
+&lt;h3 id=&#34;installation-and-key-pair-generation&#34;&gt;Installation and key pair generation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;install GnuPG on Debian / Ubuntu&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install gnupg
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;generate a new GPG key pair&lt;/li&gt;
+&lt;li&gt;let&amp;rsquo;s use as an example the email address &lt;code&gt;johndoe@example.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --full-generate-key
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;exchanging-keys&#34;&gt;Exchanging keys&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;exporting a public key in a binary format&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --output johndoe.gpg --export johndoe@example.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;or ASCII&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --armor --output johndoe.gpg.pub --export johndoe@example.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;importing a public key&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --import janedoe.gpg
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --list-keys
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;validate the imported key (manual, if needed)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;gpg --edit-key blake@cyb.org
+#display the fingerprint
+fpr 
+#sign the key 
+sign
+#check the key
+check
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;encrypting-and-decrypting-documents&#34;&gt;Encrypting and decrypting documents&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;encrypting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --output doc.gpg --encrypt --recipient janedoe@example.com doc.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;decrypting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gpg --output doc-dec.txt --decrypt doc.gpg
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
     <item>
       <title>WinSCP - sudo after login</title>
       <link>https://concosminx.github.io/hugo-blog/posts/first/</link>

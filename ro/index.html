@@ -187,6 +187,21 @@
 </article>
 
 <article class="post-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://concosminx.github.io/hugo-blog/img/pexels-pixabay-207580.jpg" alt="Criptografie">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Cum sa folosesti GPG pentru a cripta/decripta fisiere
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>GnuPG foloseste criptografia cu chei publice astfel incat utilizatorii sa poata comunica in siguranta. Intr-un sistem cu chei publice, fiecare utilizator are o pereche de chei formata dintr-o cheie privata si o cheie publica. Cheia privata a unui utilizator este pastrata secreta si nu trebuie dezvaluita niciodata. Cheia publica poate fi oferita oricui doreste utilizatorul sa comunice.
+Instalare si generare pereche de chei instalare pe Debian / Ubuntu sudo apt-get install gnupg generarea unei perechi de chei vom folosi ca exemplu adrese de email de genul johndoe@example.com gpg --full-generate-key Schimbul de chei (export / import) exportul unei chei public in format binar gpg --output johndoe.gpg --export johndoe@example.com sau ACII gpg --armor --output johndoe.gpg.pub --export johndoe@example.com importul unei chei publice gpg --import janedoe.gpg gpg --list-keys validarea unei chei publice importate (manual, daca este cazul) gpg --edit-key blake@cyb.org #afiseaza amprenta fpr #semneaza cheia sign #verifica cheia check Criptarea si decriptarea documentelor (pentru un anumit destinatar) criptare gpg --output doc.gpg --encrypt --recipient janedoe@example.com doc.txt decriptare gpg --output doc-dec.txt --decrypt doc.gpg </p>
+  </div>
+  <footer class="entry-footer"><span title='2025-01-03 15:24:43 +0200 +0200'>ianuarie 3, 2025</span>&nbsp;·&nbsp;1 minut&nbsp;·&nbsp;Me</footer>
+  <a class="entry-link" aria-label="post link to Cum sa folosesti GPG pentru a cripta/decripta fisiere" href="https://concosminx.github.io/hugo-blog/ro/posts/gpg/"></a>
+</article>
+
+<article class="post-entry"> 
 <figure class="entry-cover"><img loading="lazy" src="https://concosminx.github.io/hugo-blog/img/pexels-harold-vasquez-853421-2653362.jpg" alt="Cod pe tema IDE inchisa la culoare">
 </figure>
   <header class="entry-header">
