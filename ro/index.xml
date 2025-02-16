@@ -7,8 +7,47 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>ro</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Fri, 03 Jan 2025 15:24:43 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 16 Feb 2025 16:27:00 +0200</lastBuildDate>
     <atom:link href="https://concosminx.github.io/hugo-blog/ro/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OCI - Atașarea si montarea unui volum bloc</title>
+      <link>https://concosminx.github.io/hugo-blog/ro/posts/oci-mount-block-volume/</link>
+      <pubDate>Sun, 16 Feb 2025 16:27:00 +0200</pubDate>
+      <guid>https://concosminx.github.io/hugo-blog/ro/posts/oci-mount-block-volume/</guid>
+      <description>&lt;p&gt;Urmeaza &lt;a href=&#34;https://docs.oracle.com/en-us/iaas/Content/Block/Tasks/connectingtoavolume_topic-Connecting_to_iSCSIAttached_Volumes.htm&#34;&gt;ghidul&lt;/a&gt; Oracle pentru a atasa volumul nou creat, apoi executa pasii urmatori:&lt;/p&gt;
+&lt;h4 id=&#34;identifica-noul-disc-de-exemplu-devsdb&#34;&gt;Identifica noul disc (de exemplu, &lt;code&gt;/dev/sdb&lt;/code&gt;)&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo fdisk -l
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;creaza-o-partitie-daca-este-necesar&#34;&gt;Creaza o partitie (daca este necesar)&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo fdisk /dev/sdb
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Apasa &lt;code&gt;n&lt;/code&gt; pentru a crea o noua partitie.&lt;/li&gt;
+&lt;li&gt;Alege tipul partitiei (&lt;code&gt;p&lt;/code&gt; pentru primara)&lt;/li&gt;
+&lt;li&gt;Selecteaza valorile implicite sau specifica o dimensiune.&lt;/li&gt;
+&lt;li&gt;Apasa &lt;code&gt;w&lt;/code&gt; pentru a salva modificarile.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;formateaza-partitia&#34;&gt;Formateaza partitia&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo mkfs.ext4 /dev/sdb1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;creaza-un-punct-de-montare&#34;&gt;Creaza un punct de montare&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo mkdir -p /mnt/mydrive
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;monteaza-discul&#34;&gt;Monteaza discul&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo mount /dev/sdb1 /mnt/mydrive
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;montare-automata-la-pornire&#34;&gt;Montare automata la pornire&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Obtine UUID-ul partitiei&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo blkid /dev/sdb1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Editeaza fisierul &lt;code&gt;/etc/fstab&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo nano /etc/fstab
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Adauga linia de mai jos la sfarsit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;UUID&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&amp;lt;your-uuid&amp;gt;  /mnt/mydrive  ext4  defaults,noatime,_netdev  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Salveaza fisierul&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Cum sa folosesti GPG pentru a cripta/decripta fisiere</title>
       <link>https://concosminx.github.io/hugo-blog/ro/posts/gpg/</link>

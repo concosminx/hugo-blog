@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Ubuntu on Lines of code and lessons</title>
-    <link>https://concosminx.github.io/hugo-blog/tags/ubuntu/</link>
-    <description>Recent content in Ubuntu on Lines of code and lessons</description>
+    <title>Oci on Lines of code and lessons</title>
+    <link>https://concosminx.github.io/hugo-blog/tags/oci/</link>
+    <description>Recent content in Oci on Lines of code and lessons</description>
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
     <lastBuildDate>Sun, 16 Feb 2025 16:27:00 +0200</lastBuildDate>
-    <atom:link href="https://concosminx.github.io/hugo-blog/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://concosminx.github.io/hugo-blog/tags/oci/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OCI - Attach and mount a block volume</title>
       <link>https://concosminx.github.io/hugo-blog/posts/oci-mount-block-volume/</link>
@@ -47,15 +47,6 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Save and exit&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>WinSCP - sudo after login</title>
-      <link>https://concosminx.github.io/hugo-blog/posts/first/</link>
-      <pubDate>Fri, 03 Jan 2025 10:55:00 +0200</pubDate>
-      <guid>https://concosminx.github.io/hugo-blog/posts/first/</guid>
-      <description>&lt;p&gt;Recently, I had to upload some folders to a Linux server (Oracle Cloud), but the user permissions I had did not allow me to create the necessary folders. While searching for a solution, I came across this possibility.&lt;/p&gt;
-&lt;p&gt;In some cases (with Unix/Linux server) you may be able to use &lt;code&gt;sudo&lt;/code&gt; command straight after login to change a user, before file transfer session starts.&lt;/p&gt;
-&lt;p&gt;The &lt;em&gt;SFTP&lt;/em&gt; and &lt;em&gt;SCP&lt;/em&gt; protocols allow for this, but the actual method is platform dependent.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

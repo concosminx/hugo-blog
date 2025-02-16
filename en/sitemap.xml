@@ -3,7 +3,61 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://concosminx.github.io/hugo-blog/categories/</loc>
-    <lastmod>2025-01-03T15:24:43+02:00</lastmod>
+    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
+  </url><url>
+    <loc>https://concosminx.github.io/hugo-blog/</loc>
+    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://concosminx.github.io/hugo-blog/ro/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://concosminx.github.io/hugo-blog/"
+                />
+  </url><url>
+    <loc>https://concosminx.github.io/hugo-blog/tags/linux/</loc>
+    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
+  </url><url>
+    <loc>https://concosminx.github.io/hugo-blog/tags/oci/</loc>
+    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
+  </url><url>
+    <loc>https://concosminx.github.io/hugo-blog/posts/oci-mount-block-volume/</loc>
+    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://concosminx.github.io/hugo-blog/ro/posts/oci-mount-block-volume/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://concosminx.github.io/hugo-blog/posts/oci-mount-block-volume/"
+                />
+  </url><url>
+    <loc>https://concosminx.github.io/hugo-blog/posts/</loc>
+    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://concosminx.github.io/hugo-blog/ro/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://concosminx.github.io/hugo-blog/posts/"
+                />
+  </url><url>
+    <loc>https://concosminx.github.io/hugo-blog/tags/</loc>
+    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
+  </url><url>
+    <loc>https://concosminx.github.io/hugo-blog/categories/tech/</loc>
+    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
+  </url><url>
+    <loc>https://concosminx.github.io/hugo-blog/tags/ubuntu/</loc>
+    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
   </url><url>
     <loc>https://concosminx.github.io/hugo-blog/tags/cryptography/</loc>
     <lastmod>2025-01-03T15:24:43+02:00</lastmod>
@@ -24,41 +78,6 @@
                 href="https://concosminx.github.io/hugo-blog/posts/gpg/"
                 />
   </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/</loc>
-    <lastmod>2025-01-03T15:24:43+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ro"
-                href="https://concosminx.github.io/hugo-blog/ro/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://concosminx.github.io/hugo-blog/"
-                />
-  </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/tags/linux/</loc>
-    <lastmod>2025-01-03T15:24:43+02:00</lastmod>
-  </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/posts/</loc>
-    <lastmod>2025-01-03T15:24:43+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ro"
-                href="https://concosminx.github.io/hugo-blog/ro/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://concosminx.github.io/hugo-blog/posts/"
-                />
-  </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/tags/</loc>
-    <lastmod>2025-01-03T15:24:43+02:00</lastmod>
-  </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/categories/tech/</loc>
-    <lastmod>2025-01-03T15:24:43+02:00</lastmod>
-  </url><url>
     <loc>https://concosminx.github.io/hugo-blog/tags/ftp/</loc>
     <lastmod>2025-01-03T10:55:00+02:00</lastmod>
   </url><url>
@@ -66,9 +85,6 @@
     <lastmod>2025-01-03T10:55:00+02:00</lastmod>
   </url><url>
     <loc>https://concosminx.github.io/hugo-blog/tags/ssh/</loc>
-    <lastmod>2025-01-03T10:55:00+02:00</lastmod>
-  </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/tags/ubuntu/</loc>
     <lastmod>2025-01-03T10:55:00+02:00</lastmod>
   </url><url>
     <loc>https://concosminx.github.io/hugo-blog/posts/first/</loc>

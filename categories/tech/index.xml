@@ -7,8 +7,47 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Fri, 03 Jan 2025 15:24:43 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 16 Feb 2025 16:27:00 +0200</lastBuildDate>
     <atom:link href="https://concosminx.github.io/hugo-blog/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OCI - Attach and mount a block volume</title>
+      <link>https://concosminx.github.io/hugo-blog/posts/oci-mount-block-volume/</link>
+      <pubDate>Sun, 16 Feb 2025 16:27:00 +0200</pubDate>
+      <guid>https://concosminx.github.io/hugo-blog/posts/oci-mount-block-volume/</guid>
+      <description>&lt;p&gt;Follow the Oracle &lt;a href=&#34;https://docs.oracle.com/en-us/iaas/Content/Block/Tasks/connectingtoavolume_topic-Connecting_to_iSCSIAttached_Volumes.htm&#34;&gt;guide&lt;/a&gt; to attach the newly created volume and these steps:&lt;/p&gt;
+&lt;h4 id=&#34;identify-the-new-drive-eg-devsdb&#34;&gt;Identify the New Drive (e.g., &lt;code&gt;/dev/sdb&lt;/code&gt;)&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo fdisk -l
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;create-a-partition-if-needed&#34;&gt;Create a Partition (If Needed)&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo fdisk /dev/sdb
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Press &lt;code&gt;n&lt;/code&gt; to create a new partition.&lt;/li&gt;
+&lt;li&gt;Choose partition type (&lt;code&gt;p&lt;/code&gt; for primary)&lt;/li&gt;
+&lt;li&gt;Select the default values or specify size.&lt;/li&gt;
+&lt;li&gt;Press &lt;code&gt;w&lt;/code&gt; to write changes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;format-the-partition&#34;&gt;Format the Partition&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo mkfs.ext4 /dev/sdb1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;create-a-mount-point&#34;&gt;Create a Mount Point&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo mkdir -p /mnt/mydrive
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;mount-the-drive&#34;&gt;Mount the Drive&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo mount /dev/sdb1 /mnt/mydrive
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;auto-mount-on-boot&#34;&gt;Auto-Mount on Boot&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Get the UUID of the partition&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo blkid /dev/sdb1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Edit the &lt;code&gt;/etc/fstab&lt;/code&gt; file&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo nano /etc/fstab
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Add this line at the end&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;UUID&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&amp;lt;your-uuid&amp;gt;  /mnt/mydrive  ext4  defaults,noatime,_netdev  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Save and exit&lt;/p&gt;</description>
+    </item>
     <item>
       <title>How to use GPG to encrypt/decrypt files</title>
       <link>https://concosminx.github.io/hugo-blog/posts/gpg/</link>

@@ -187,6 +187,22 @@
 </article>
 
 <article class="post-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://concosminx.github.io/hugo-blog/img/oci-mount-block-volume.png" alt="Volum">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OCI - Atașarea si montarea unui volum bloc
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Urmeaza ghidul Oracle pentru a atasa volumul nou creat, apoi executa pasii urmatori:
+Identifica noul disc (de exemplu, /dev/sdb) sudo fdisk -l Creaza o partitie (daca este necesar) sudo fdisk /dev/sdb Apasa n pentru a crea o noua partitie. Alege tipul partitiei (p pentru primara) Selecteaza valorile implicite sau specifica o dimensiune. Apasa w pentru a salva modificarile. Formateaza partitia sudo mkfs.ext4 /dev/sdb1 Creaza un punct de montare sudo mkdir -p /mnt/mydrive Monteaza discul sudo mount /dev/sdb1 /mnt/mydrive Montare automata la pornire Obtine UUID-ul partitiei sudo blkid /dev/sdb1 Editeaza fisierul /etc/fstab sudo nano /etc/fstab Adauga linia de mai jos la sfarsit UUID=&lt;your-uuid&gt; /mnt/mydrive ext4 defaults,noatime,_netdev 0 2 Salveaza fisierul
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-16 16:27:00 +0200 +0200'>februarie 16, 2025</span>&nbsp;·&nbsp;1 minut&nbsp;·&nbsp;Me</footer>
+  <a class="entry-link" aria-label="post link to OCI - Atașarea si montarea unui volum bloc" href="https://concosminx.github.io/hugo-blog/ro/posts/oci-mount-block-volume/"></a>
+</article>
+
+<article class="post-entry"> 
 <figure class="entry-cover"><img loading="lazy" src="https://concosminx.github.io/hugo-blog/img/pexels-pixabay-207580.jpg" alt="Criptografie">
 </figure>
   <header class="entry-header">

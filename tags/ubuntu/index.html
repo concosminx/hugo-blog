@@ -164,6 +164,22 @@
 </header>
 
 <article class="post-entry tag-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://concosminx.github.io/hugo-blog/img/oci-mount-block-volume.png" alt="Block Volume">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OCI - Attach and mount a block volume
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Follow the Oracle guide to attach the newly created volume and these steps:
+Identify the New Drive (e.g., /dev/sdb) sudo fdisk -l Create a Partition (If Needed) sudo fdisk /dev/sdb Press n to create a new partition. Choose partition type (p for primary) Select the default values or specify size. Press w to write changes. Format the Partition sudo mkfs.ext4 /dev/sdb1 Create a Mount Point sudo mkdir -p /mnt/mydrive Mount the Drive sudo mount /dev/sdb1 /mnt/mydrive Auto-Mount on Boot Get the UUID of the partition sudo blkid /dev/sdb1 Edit the /etc/fstab file sudo nano /etc/fstab Add this line at the end UUID=&lt;your-uuid&gt; /mnt/mydrive ext4 defaults,noatime,_netdev 0 2 Save and exit
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-16 16:27:00 +0200 +0200'>February 16, 2025</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Me</footer>
+  <a class="entry-link" aria-label="post link to OCI - Attach and mount a block volume" href="https://concosminx.github.io/hugo-blog/posts/oci-mount-block-volume/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
 <figure class="entry-cover"><img loading="lazy" src="https://concosminx.github.io/hugo-blog/img/pexels-harold-vasquez-853421-2653362.jpg" alt="Code on black IDE theme">
 </figure>
   <header class="entry-header">
