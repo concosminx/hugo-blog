@@ -10,7 +10,7 @@
    - add the theme as a submodule `git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod`
    - use this when reclone `git submodule update --init --recursive`
    - modify `hugo.yaml` and set the theme `theme: PaperMod`
-5. check the site with `hugo server`
+5. check the site with `hugo server` 
 6. upload to git `add`, `commit`, `git branch -M main`, `git remote add origin ...`, `git push -u origin main`
 7. create `gh-pages` branch in github
 8. set the `rw` permissions for the workflow `Settings -> Actions`
