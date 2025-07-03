@@ -34,7 +34,8 @@ cover:
 
 Urmeaza [ghidul](https://docs.oracle.com/en-us/iaas/Content/Block/Tasks/connectingtoavolume_topic-Connecting_to_iSCSIAttached_Volumes.htm) Oracle pentru a atasa volumul nou creat, apoi executa pasii urmatori:
 
-#### Identifica noul disc (de exemplu, `/dev/sdb`)
+#### Identifica noul disc (de exemplu, `/dev/sdb` )
+
 ```bash
 sudo fdisk -l
 ```
