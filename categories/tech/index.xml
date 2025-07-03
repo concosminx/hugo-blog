@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tech on Lines of code and lessons</title>
-    <link>https://concosminx.github.io/hugo-blog/categories/tech/</link>
+    <link>https://blog.pakithecat.eu/categories/tech/</link>
     <description>Recent content in Tech on Lines of code and lessons</description>
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
     <lastBuildDate>Sun, 16 Feb 2025 16:27:00 +0200</lastBuildDate>
-    <atom:link href="https://concosminx.github.io/hugo-blog/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.pakithecat.eu/categories/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OCI - Attach and mount a block volume</title>
-      <link>https://concosminx.github.io/hugo-blog/posts/oci-mount-block-volume/</link>
+      <link>https://blog.pakithecat.eu/posts/oci-mount-block-volume/</link>
       <pubDate>Sun, 16 Feb 2025 16:27:00 +0200</pubDate>
-      <guid>https://concosminx.github.io/hugo-blog/posts/oci-mount-block-volume/</guid>
+      <guid>https://blog.pakithecat.eu/posts/oci-mount-block-volume/</guid>
       <description>&lt;p&gt;Follow the Oracle &lt;a href=&#34;https://docs.oracle.com/en-us/iaas/Content/Block/Tasks/connectingtoavolume_topic-Connecting_to_iSCSIAttached_Volumes.htm&#34;&gt;guide&lt;/a&gt; to attach the newly created volume and these steps:&lt;/p&gt;
 &lt;h4 id=&#34;identify-the-new-drive-eg-devsdb&#34;&gt;Identify the New Drive (e.g., &lt;code&gt;/dev/sdb&lt;/code&gt;)&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo fdisk -l
@@ -50,9 +50,9 @@
     </item>
     <item>
       <title>How to use GPG to encrypt/decrypt files</title>
-      <link>https://concosminx.github.io/hugo-blog/posts/gpg/</link>
+      <link>https://blog.pakithecat.eu/posts/gpg/</link>
       <pubDate>Fri, 03 Jan 2025 15:24:43 +0200</pubDate>
-      <guid>https://concosminx.github.io/hugo-blog/posts/gpg/</guid>
+      <guid>https://blog.pakithecat.eu/posts/gpg/</guid>
       <description>&lt;p&gt;GnuPG uses public-key cryptography so that users may communicate securely. In a public-key system, each user has a pair of keys consisting of a private key and a public key. A user&amp;rsquo;s private key is kept secret; it need never be revealed. The public key may be given to anyone with whom the user wants to communicate.&lt;/p&gt;
 &lt;h3 id=&#34;installation-and-key-pair-generation&#34;&gt;Installation and key pair generation&lt;/h3&gt;
 &lt;ul&gt;
@@ -101,9 +101,9 @@ check
     </item>
     <item>
       <title>WinSCP - sudo after login</title>
-      <link>https://concosminx.github.io/hugo-blog/posts/first/</link>
+      <link>https://blog.pakithecat.eu/posts/first/</link>
       <pubDate>Fri, 03 Jan 2025 10:55:00 +0200</pubDate>
-      <guid>https://concosminx.github.io/hugo-blog/posts/first/</guid>
+      <guid>https://blog.pakithecat.eu/posts/first/</guid>
       <description>&lt;p&gt;Recently, I had to upload some folders to a Linux server (Oracle Cloud), but the user permissions I had did not allow me to create the necessary folders. While searching for a solution, I came across this possibility.&lt;/p&gt;
 &lt;p&gt;In some cases (with Unix/Linux server) you may be able to use &lt;code&gt;sudo&lt;/code&gt; command straight after login to change a user, before file transfer session starts.&lt;/p&gt;
 &lt;p&gt;The &lt;em&gt;SFTP&lt;/em&gt; and &lt;em&gt;SCP&lt;/em&gt; protocols allow for this, but the actual method is platform dependent.&lt;/p&gt;</description>

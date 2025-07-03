@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Serii on Linii de cod si lectii</title>
-    <link>https://concosminx.github.io/hugo-blog/ro/serii/</link>
+    <link>https://blog.pakithecat.eu/ro/serii/</link>
     <description>Recent content in Serii on Linii de cod si lectii</description>
     <generator>Hugo -- 0.140.1</generator>
     <language>ro</language>
     <copyright>concosminx</copyright>
-    <atom:link href="https://concosminx.github.io/hugo-blog/ro/serii/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.pakithecat.eu/ro/serii/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

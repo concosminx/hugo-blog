@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on Linii de cod si lectii</title>
-    <link>https://concosminx.github.io/hugo-blog/ro/posts/</link>
+    <link>https://blog.pakithecat.eu/ro/posts/</link>
     <description>Recent content in Posts on Linii de cod si lectii</description>
     <generator>Hugo -- 0.140.1</generator>
     <language>ro</language>
     <copyright>concosminx</copyright>
     <lastBuildDate>Sun, 16 Feb 2025 16:27:00 +0200</lastBuildDate>
-    <atom:link href="https://concosminx.github.io/hugo-blog/ro/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.pakithecat.eu/ro/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OCI - Atașarea si montarea unui volum bloc</title>
-      <link>https://concosminx.github.io/hugo-blog/ro/posts/oci-mount-block-volume/</link>
+      <link>https://blog.pakithecat.eu/ro/posts/oci-mount-block-volume/</link>
       <pubDate>Sun, 16 Feb 2025 16:27:00 +0200</pubDate>
-      <guid>https://concosminx.github.io/hugo-blog/ro/posts/oci-mount-block-volume/</guid>
+      <guid>https://blog.pakithecat.eu/ro/posts/oci-mount-block-volume/</guid>
       <description>&lt;p&gt;Urmeaza &lt;a href=&#34;https://docs.oracle.com/en-us/iaas/Content/Block/Tasks/connectingtoavolume_topic-Connecting_to_iSCSIAttached_Volumes.htm&#34;&gt;ghidul&lt;/a&gt; Oracle pentru a atasa volumul nou creat, apoi executa pasii urmatori:&lt;/p&gt;
 &lt;h4 id=&#34;identifica-noul-disc-de-exemplu-devsdb-&#34;&gt;Identifica noul disc (de exemplu, &lt;code&gt;/dev/sdb&lt;/code&gt; )&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo fdisk -l
@@ -50,9 +50,9 @@
     </item>
     <item>
       <title>Cum sa folosesti GPG pentru a cripta/decripta fisiere</title>
-      <link>https://concosminx.github.io/hugo-blog/ro/posts/gpg/</link>
+      <link>https://blog.pakithecat.eu/ro/posts/gpg/</link>
       <pubDate>Fri, 03 Jan 2025 15:24:43 +0200</pubDate>
-      <guid>https://concosminx.github.io/hugo-blog/ro/posts/gpg/</guid>
+      <guid>https://blog.pakithecat.eu/ro/posts/gpg/</guid>
       <description>&lt;p&gt;GnuPG foloseste criptografia cu chei publice astfel incat utilizatorii sa poata comunica in siguranta. Intr-un sistem cu chei publice, fiecare utilizator are o pereche de chei formata dintr-o cheie privata si o cheie publica. Cheia privata a unui utilizator este pastrata secreta si nu trebuie dezvaluita niciodata. Cheia publica poate fi oferita oricui doreste utilizatorul sa comunice.&lt;/p&gt;
 &lt;h3 id=&#34;instalare-si-generare-pereche-de-chei&#34;&gt;Instalare si generare pereche de chei&lt;/h3&gt;
 &lt;ul&gt;
@@ -101,9 +101,9 @@ check
     </item>
     <item>
       <title>WinSCP - sudo dupa autentificare</title>
-      <link>https://concosminx.github.io/hugo-blog/ro/posts/first/</link>
+      <link>https://blog.pakithecat.eu/ro/posts/first/</link>
       <pubDate>Fri, 03 Jan 2025 10:55:00 +0200</pubDate>
-      <guid>https://concosminx.github.io/hugo-blog/ro/posts/first/</guid>
+      <guid>https://blog.pakithecat.eu/ro/posts/first/</guid>
       <description>&lt;p&gt;Recent, a trebuit sa incarc cateva foldere pe un server Linux (Oracle Cloud), dar permisiunile utilizatorului pe care le aveam nu imi permiteau sa creez folderele necesare. In cautarea unei solutii, am dat peste aceasta posibilitate.&lt;/p&gt;
 &lt;p&gt;In unele cazuri (cu servere Unix/Linux), poti folosi comanda &lt;code&gt;sudo&lt;/code&gt; imediat dupa autentificare pentru a schimba utilizatorul, inainte ca sesiunea de transfer de fisiere sa inceapa.&lt;/p&gt;
 &lt;p&gt;Protocoalele &lt;em&gt;SFTP&lt;/em&gt; si &lt;em&gt;SCP&lt;/em&gt; permit acest lucru, dar metoda efectiva depinde de platforma.&lt;/p&gt;</description>

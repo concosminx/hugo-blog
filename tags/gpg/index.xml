@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Gpg on Lines of code and lessons</title>
-    <link>https://concosminx.github.io/hugo-blog/tags/gpg/</link>
+    <link>https://blog.pakithecat.eu/tags/gpg/</link>
     <description>Recent content in Gpg on Lines of code and lessons</description>
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
     <lastBuildDate>Fri, 03 Jan 2025 15:24:43 +0200</lastBuildDate>
-    <atom:link href="https://concosminx.github.io/hugo-blog/tags/gpg/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.pakithecat.eu/tags/gpg/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to use GPG to encrypt/decrypt files</title>
-      <link>https://concosminx.github.io/hugo-blog/posts/gpg/</link>
+      <link>https://blog.pakithecat.eu/posts/gpg/</link>
       <pubDate>Fri, 03 Jan 2025 15:24:43 +0200</pubDate>
-      <guid>https://concosminx.github.io/hugo-blog/posts/gpg/</guid>
+      <guid>https://blog.pakithecat.eu/posts/gpg/</guid>
       <description>&lt;p&gt;GnuPG uses public-key cryptography so that users may communicate securely. In a public-key system, each user has a pair of keys consisting of a private key and a public key. A user&amp;rsquo;s private key is kept secret; it need never be revealed. The public key may be given to anyone with whom the user wants to communicate.&lt;/p&gt;
 &lt;h3 id=&#34;installation-and-key-pair-generation&#34;&gt;Installation and key pair generation&lt;/h3&gt;
 &lt;ul&gt;

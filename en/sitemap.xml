@@ -2,128 +2,128 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://concosminx.github.io/hugo-blog/categories/</loc>
+    <loc>https://blog.pakithecat.eu/categories/</loc>
     <lastmod>2025-02-16T16:27:00+02:00</lastmod>
   </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/</loc>
-    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ro"
-                href="https://concosminx.github.io/hugo-blog/ro/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://concosminx.github.io/hugo-blog/"
-                />
-  </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/tags/linux/</loc>
-    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
-  </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/tags/oci/</loc>
-    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
-  </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/posts/oci-mount-block-volume/</loc>
+    <loc>https://blog.pakithecat.eu/</loc>
     <lastmod>2025-02-16T16:27:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
-                href="https://concosminx.github.io/hugo-blog/ro/posts/oci-mount-block-volume/"
+                href="https://blog.pakithecat.eu/ro/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://concosminx.github.io/hugo-blog/posts/oci-mount-block-volume/"
+                href="https://blog.pakithecat.eu/"
                 />
   </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/posts/</loc>
+    <loc>https://blog.pakithecat.eu/tags/linux/</loc>
+    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/oci/</loc>
+    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/posts/oci-mount-block-volume/</loc>
     <lastmod>2025-02-16T16:27:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
-                href="https://concosminx.github.io/hugo-blog/ro/posts/"
+                href="https://blog.pakithecat.eu/ro/posts/oci-mount-block-volume/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://concosminx.github.io/hugo-blog/posts/"
+                href="https://blog.pakithecat.eu/posts/oci-mount-block-volume/"
                 />
   </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/tags/</loc>
+    <loc>https://blog.pakithecat.eu/posts/</loc>
+    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/"
+                />
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/</loc>
     <lastmod>2025-02-16T16:27:00+02:00</lastmod>
   </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/categories/tech/</loc>
+    <loc>https://blog.pakithecat.eu/categories/tech/</loc>
     <lastmod>2025-02-16T16:27:00+02:00</lastmod>
   </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/tags/ubuntu/</loc>
+    <loc>https://blog.pakithecat.eu/tags/ubuntu/</loc>
     <lastmod>2025-02-16T16:27:00+02:00</lastmod>
   </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/tags/cryptography/</loc>
+    <loc>https://blog.pakithecat.eu/tags/cryptography/</loc>
     <lastmod>2025-01-03T15:24:43+02:00</lastmod>
   </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/tags/gpg/</loc>
+    <loc>https://blog.pakithecat.eu/tags/gpg/</loc>
     <lastmod>2025-01-03T15:24:43+02:00</lastmod>
   </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/posts/gpg/</loc>
+    <loc>https://blog.pakithecat.eu/posts/gpg/</loc>
     <lastmod>2025-01-03T15:24:43+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
-                href="https://concosminx.github.io/hugo-blog/ro/posts/gpg/"
+                href="https://blog.pakithecat.eu/ro/posts/gpg/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://concosminx.github.io/hugo-blog/posts/gpg/"
+                href="https://blog.pakithecat.eu/posts/gpg/"
                 />
   </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/tags/ftp/</loc>
+    <loc>https://blog.pakithecat.eu/tags/ftp/</loc>
     <lastmod>2025-01-03T10:55:00+02:00</lastmod>
   </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/tags/sftp/</loc>
+    <loc>https://blog.pakithecat.eu/tags/sftp/</loc>
     <lastmod>2025-01-03T10:55:00+02:00</lastmod>
   </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/tags/ssh/</loc>
+    <loc>https://blog.pakithecat.eu/tags/ssh/</loc>
     <lastmod>2025-01-03T10:55:00+02:00</lastmod>
   </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/posts/first/</loc>
+    <loc>https://blog.pakithecat.eu/posts/first/</loc>
     <lastmod>2025-01-03T10:55:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
-                href="https://concosminx.github.io/hugo-blog/ro/posts/first/"
+                href="https://blog.pakithecat.eu/ro/posts/first/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://concosminx.github.io/hugo-blog/posts/first/"
+                href="https://blog.pakithecat.eu/posts/first/"
                 />
   </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/archives/</loc>
+    <loc>https://blog.pakithecat.eu/archives/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
-                href="https://concosminx.github.io/hugo-blog/ro/archives/"
+                href="https://blog.pakithecat.eu/ro/archives/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://concosminx.github.io/hugo-blog/archives/"
+                href="https://blog.pakithecat.eu/archives/"
                 />
   </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/search/</loc>
+    <loc>https://blog.pakithecat.eu/search/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
-                href="https://concosminx.github.io/hugo-blog/ro/search/"
+                href="https://blog.pakithecat.eu/ro/search/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://concosminx.github.io/hugo-blog/search/"
+                href="https://blog.pakithecat.eu/search/"
                 />
   </url><url>
-    <loc>https://concosminx.github.io/hugo-blog/series/</loc>
+    <loc>https://blog.pakithecat.eu/series/</loc>
   </url>
 </urlset>

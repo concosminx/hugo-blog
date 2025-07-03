@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Oci on Lines of code and lessons</title>
-    <link>https://concosminx.github.io/hugo-blog/tags/oci/</link>
+    <link>https://blog.pakithecat.eu/tags/oci/</link>
     <description>Recent content in Oci on Lines of code and lessons</description>
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
     <lastBuildDate>Sun, 16 Feb 2025 16:27:00 +0200</lastBuildDate>
-    <atom:link href="https://concosminx.github.io/hugo-blog/tags/oci/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.pakithecat.eu/tags/oci/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OCI - Attach and mount a block volume</title>
-      <link>https://concosminx.github.io/hugo-blog/posts/oci-mount-block-volume/</link>
+      <link>https://blog.pakithecat.eu/posts/oci-mount-block-volume/</link>
       <pubDate>Sun, 16 Feb 2025 16:27:00 +0200</pubDate>
-      <guid>https://concosminx.github.io/hugo-blog/posts/oci-mount-block-volume/</guid>
+      <guid>https://blog.pakithecat.eu/posts/oci-mount-block-volume/</guid>
       <description>&lt;p&gt;Follow the Oracle &lt;a href=&#34;https://docs.oracle.com/en-us/iaas/Content/Block/Tasks/connectingtoavolume_topic-Connecting_to_iSCSIAttached_Volumes.htm&#34;&gt;guide&lt;/a&gt; to attach the newly created volume and these steps:&lt;/p&gt;
 &lt;h4 id=&#34;identify-the-new-drive-eg-devsdb&#34;&gt;Identify the New Drive (e.g., &lt;code&gt;/dev/sdb&lt;/code&gt;)&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo fdisk -l

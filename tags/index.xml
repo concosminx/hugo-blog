@@ -2,67 +2,67 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Lines of code and lessons</title>
-    <link>https://concosminx.github.io/hugo-blog/tags/</link>
+    <link>https://blog.pakithecat.eu/tags/</link>
     <description>Recent content in Tags on Lines of code and lessons</description>
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
     <lastBuildDate>Sun, 16 Feb 2025 16:27:00 +0200</lastBuildDate>
-    <atom:link href="https://concosminx.github.io/hugo-blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.pakithecat.eu/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Linux</title>
-      <link>https://concosminx.github.io/hugo-blog/tags/linux/</link>
+      <link>https://blog.pakithecat.eu/tags/linux/</link>
       <pubDate>Sun, 16 Feb 2025 16:27:00 +0200</pubDate>
-      <guid>https://concosminx.github.io/hugo-blog/tags/linux/</guid>
+      <guid>https://blog.pakithecat.eu/tags/linux/</guid>
       <description></description>
     </item>
     <item>
       <title>Oci</title>
-      <link>https://concosminx.github.io/hugo-blog/tags/oci/</link>
+      <link>https://blog.pakithecat.eu/tags/oci/</link>
       <pubDate>Sun, 16 Feb 2025 16:27:00 +0200</pubDate>
-      <guid>https://concosminx.github.io/hugo-blog/tags/oci/</guid>
+      <guid>https://blog.pakithecat.eu/tags/oci/</guid>
       <description></description>
     </item>
     <item>
       <title>Ubuntu</title>
-      <link>https://concosminx.github.io/hugo-blog/tags/ubuntu/</link>
+      <link>https://blog.pakithecat.eu/tags/ubuntu/</link>
       <pubDate>Sun, 16 Feb 2025 16:27:00 +0200</pubDate>
-      <guid>https://concosminx.github.io/hugo-blog/tags/ubuntu/</guid>
+      <guid>https://blog.pakithecat.eu/tags/ubuntu/</guid>
       <description></description>
     </item>
     <item>
       <title>Cryptography</title>
-      <link>https://concosminx.github.io/hugo-blog/tags/cryptography/</link>
+      <link>https://blog.pakithecat.eu/tags/cryptography/</link>
       <pubDate>Fri, 03 Jan 2025 15:24:43 +0200</pubDate>
-      <guid>https://concosminx.github.io/hugo-blog/tags/cryptography/</guid>
+      <guid>https://blog.pakithecat.eu/tags/cryptography/</guid>
       <description></description>
     </item>
     <item>
       <title>Gpg</title>
-      <link>https://concosminx.github.io/hugo-blog/tags/gpg/</link>
+      <link>https://blog.pakithecat.eu/tags/gpg/</link>
       <pubDate>Fri, 03 Jan 2025 15:24:43 +0200</pubDate>
-      <guid>https://concosminx.github.io/hugo-blog/tags/gpg/</guid>
+      <guid>https://blog.pakithecat.eu/tags/gpg/</guid>
       <description></description>
     </item>
     <item>
       <title>Ftp</title>
-      <link>https://concosminx.github.io/hugo-blog/tags/ftp/</link>
+      <link>https://blog.pakithecat.eu/tags/ftp/</link>
       <pubDate>Fri, 03 Jan 2025 10:55:00 +0200</pubDate>
-      <guid>https://concosminx.github.io/hugo-blog/tags/ftp/</guid>
+      <guid>https://blog.pakithecat.eu/tags/ftp/</guid>
       <description></description>
     </item>
     <item>
       <title>Sftp</title>
-      <link>https://concosminx.github.io/hugo-blog/tags/sftp/</link>
+      <link>https://blog.pakithecat.eu/tags/sftp/</link>
       <pubDate>Fri, 03 Jan 2025 10:55:00 +0200</pubDate>
-      <guid>https://concosminx.github.io/hugo-blog/tags/sftp/</guid>
+      <guid>https://blog.pakithecat.eu/tags/sftp/</guid>
       <description></description>
     </item>
     <item>
       <title>Ssh</title>
-      <link>https://concosminx.github.io/hugo-blog/tags/ssh/</link>
+      <link>https://blog.pakithecat.eu/tags/ssh/</link>
       <pubDate>Fri, 03 Jan 2025 10:55:00 +0200</pubDate>
-      <guid>https://concosminx.github.io/hugo-blog/tags/ssh/</guid>
+      <guid>https://blog.pakithecat.eu/tags/ssh/</guid>
       <description></description>
     </item>
   </channel>

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tech on Linii de cod si lectii</title>
-    <link>https://concosminx.github.io/hugo-blog/ro/categorii/tech/</link>
+    <link>https://blog.pakithecat.eu/ro/categorii/tech/</link>
     <description>Recent content in Tech on Linii de cod si lectii</description>
     <generator>Hugo -- 0.140.1</generator>
     <language>ro</language>
     <copyright>concosminx</copyright>
     <lastBuildDate>Fri, 03 Jan 2025 10:55:00 +0200</lastBuildDate>
-    <atom:link href="https://concosminx.github.io/hugo-blog/ro/categorii/tech/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.pakithecat.eu/ro/categorii/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WinSCP - sudo dupa autentificare</title>
-      <link>https://concosminx.github.io/hugo-blog/ro/posts/first/</link>
+      <link>https://blog.pakithecat.eu/ro/posts/first/</link>
       <pubDate>Fri, 03 Jan 2025 10:55:00 +0200</pubDate>
-      <guid>https://concosminx.github.io/hugo-blog/ro/posts/first/</guid>
+      <guid>https://blog.pakithecat.eu/ro/posts/first/</guid>
       <description>&lt;p&gt;Recent, a trebuit sa incarc cateva foldere pe un server Linux (Oracle Cloud), dar permisiunile utilizatorului pe care le aveam nu imi permiteau sa creez folderele necesare. In cautarea unei solutii, am dat peste aceasta posibilitate.&lt;/p&gt;
 &lt;p&gt;In unele cazuri (cu servere Unix/Linux), poti folosi comanda &lt;code&gt;sudo&lt;/code&gt; imediat dupa autentificare pentru a schimba utilizatorul, inainte ca sesiunea de transfer de fisiere sa inceapa.&lt;/p&gt;
 &lt;p&gt;Protocoalele &lt;em&gt;SFTP&lt;/em&gt; si &lt;em&gt;SCP&lt;/em&gt; permit acest lucru, dar metoda efectiva depinde de platforma.&lt;/p&gt;</description>
