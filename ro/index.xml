@@ -7,8 +7,20 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>ro</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Sun, 16 Feb 2025 16:27:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 03 Jul 2025 12:18:07 +0300</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/ro/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Github Pages, Hugo si Cloudflare</title>
+      <link>https://blog.pakithecat.eu/ro/posts/githubpages-cloudflare/</link>
+      <pubDate>Thu, 03 Jul 2025 12:18:07 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/posts/githubpages-cloudflare/</guid>
+      <description>&lt;h3 id=&#34;cum-sa-rutezi-site-ul-tau-github-pages-prin-cloudflare-pe-un-subdomeniu&#34;&gt;Cum sa rutezi site-ul tau GitHub Pages prin Cloudflare pe un subdomeniu&lt;/h3&gt;
+&lt;p&gt;Ai un site gazduit pe &lt;strong&gt;GitHub Pages&lt;/strong&gt;, de genul &lt;code&gt;https://usergithub.github.io/my-blog/&lt;/code&gt;, si vrei sa-l accesezi printr-un &lt;strong&gt;subdomeniu personalizat&lt;/strong&gt; (ex: &lt;code&gt;blog.domeniultau.ro&lt;/code&gt;) folosind &lt;strong&gt;Cloudflare&lt;/strong&gt;?
+Este o modalitate excelenta de a-ti imbunatati performanta, securitatea si de a avea un URL mai curat. Iata cum poti face asta, pas cu pas!&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;pasul-1-pregateste-domeniul-tau-in-cloudflare&#34;&gt;Pasul 1: Pregateste domeniul tau in Cloudflare&lt;/h3&gt;
+&lt;p&gt;Daca nu ai facut deja acest pas esential, va trebui sa iti &lt;strong&gt;adaugi domeniul principal&lt;/strong&gt; (cum ar fi &lt;code&gt;domeniultau.ro&lt;/code&gt;) in Cloudflare. Procesul implica schimbarea serverelor de nume ale domeniului la cele oferite de Cloudflare &lt;a href=&#34;https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/&#34;&gt;(see docs)&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OCI - Atașarea si montarea unui volum bloc</title>
       <link>https://blog.pakithecat.eu/ro/posts/oci-mount-block-volume/</link>

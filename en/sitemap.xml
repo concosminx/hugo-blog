@@ -2,11 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.pakithecat.eu/tags/blog/</loc>
+    <lastmod>2025-07-03T12:18:07+03:00</lastmod>
+  </url><url>
     <loc>https://blog.pakithecat.eu/categories/</loc>
-    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
+    <lastmod>2025-07-03T12:18:07+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/cloud/</loc>
+    <lastmod>2025-07-03T12:18:07+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/posts/githubpages-cloudflare/</loc>
+    <lastmod>2025-07-03T12:18:07+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/githubpages-cloudflare/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/githubpages-cloudflare/"
+                />
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/hosting/</loc>
+    <lastmod>2025-07-03T12:18:07+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/hugo/</loc>
+    <lastmod>2025-07-03T12:18:07+03:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/</loc>
-    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
+    <lastmod>2025-07-03T12:18:07+03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
@@ -19,7 +44,26 @@
                 />
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/linux/</loc>
-    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
+    <lastmod>2025-07-03T12:18:07+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/posts/</loc>
+    <lastmod>2025-07-03T12:18:07+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/"
+                />
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/</loc>
+    <lastmod>2025-07-03T12:18:07+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/categories/tech/</loc>
+    <lastmod>2025-07-03T12:18:07+03:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/oci/</loc>
     <lastmod>2025-02-16T16:27:00+02:00</lastmod>
@@ -36,25 +80,6 @@
                 hreflang="en"
                 href="https://blog.pakithecat.eu/posts/oci-mount-block-volume/"
                 />
-  </url><url>
-    <loc>https://blog.pakithecat.eu/posts/</loc>
-    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ro"
-                href="https://blog.pakithecat.eu/ro/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://blog.pakithecat.eu/posts/"
-                />
-  </url><url>
-    <loc>https://blog.pakithecat.eu/tags/</loc>
-    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/categories/tech/</loc>
-    <lastmod>2025-02-16T16:27:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/ubuntu/</loc>
     <lastmod>2025-02-16T16:27:00+02:00</lastmod>

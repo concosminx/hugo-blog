@@ -5,43 +5,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>OCI - Attach and mount a block volume | Lines of code and lessons</title>
-<meta name="keywords" content="linux, ubuntu, oci">
-<meta name="description" content="Follow the Oracle guide to attach the newly created volume and these steps:
-Identify the New Drive (e.g., /dev/sdb)
-sudo fdisk -l
-Create a Partition (If Needed)
-sudo fdisk /dev/sdb
+<title>Github Pages, Hugo and Cloudflare | Lines of code and lessons</title>
+<meta name="keywords" content="linux, hugo, hosting, cloud, blog">
+<meta name="description" content="How to route your GitHub Pages site through Cloudflare on a Subdomain
+Do you have a site hosted on GitHub Pages, like https://usergithub.github.io/my-blog/, and want to access it via a custom subdomain (e.g., blog.yourdomain.com) using Cloudflare? It&rsquo;s a great way to improve your performance, security, and have a cleaner URL. Here&rsquo;s how you can do it, step-by-step!
 
-Press n to create a new partition.
-Choose partition type (p for primary)
-Select the default values or specify size.
-Press w to write changes.
-
-Format the Partition
-sudo mkfs.ext4 /dev/sdb1
-Create a Mount Point
-sudo mkdir -p /mnt/mydrive
-Mount the Drive
-sudo mount /dev/sdb1 /mnt/mydrive
-Auto-Mount on Boot
-
-Get the UUID of the partition
-
-sudo blkid /dev/sdb1
-
-Edit the /etc/fstab file
-
-sudo nano /etc/fstab
-
-Add this line at the end
-
-UUID=&lt;your-uuid&gt;  /mnt/mydrive  ext4  defaults,noatime,_netdev  0  2
-
-
-Save and exit">
+Step 1: Prepare Your Domain in Cloudflare
+If you haven&rsquo;t done this essential step already, you&rsquo;ll need to add your main domain (such as yourdomain.com) to Cloudflare. This process involves changing your domain&rsquo;s nameservers to those provided by Cloudflare (see docs).">
 <meta name="author" content="Me">
-<link rel="canonical" href="https://blog.pakithecat.eu/posts/oci-mount-block-volume/">
+<link rel="canonical" href="https://blog.pakithecat.eu/posts/githubpages-cloudflare/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.d6fcd20a4fb86efa4dfac8ec95da60244cc8871042183da1ef28e3a762ad79c8.css" integrity="sha256-1vzSCk&#43;4bvpN&#43;sjsldpgJEzIhxBCGD2h7yjjp2Ktecg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blog.pakithecat.eu/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blog.pakithecat.eu/icons/favicon-16x16.png">
@@ -50,8 +22,8 @@ Save and exit">
 <link rel="mask-icon" href="https://blog.pakithecat.eu/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://blog.pakithecat.eu/posts/oci-mount-block-volume/">
-<link rel="alternate" hreflang="ro" href="https://blog.pakithecat.eu/ro/posts/oci-mount-block-volume/">
+<link rel="alternate" hreflang="en" href="https://blog.pakithecat.eu/posts/githubpages-cloudflare/">
+<link rel="alternate" hreflang="ro" href="https://blog.pakithecat.eu/ro/posts/githubpages-cloudflare/">
 <noscript>
     <style>
         #theme-toggle,
@@ -88,56 +60,30 @@ Save and exit">
         }
 
     </style>
-</noscript><meta property="og:url" content="https://blog.pakithecat.eu/posts/oci-mount-block-volume/">
+</noscript><meta property="og:url" content="https://blog.pakithecat.eu/posts/githubpages-cloudflare/">
   <meta property="og:site_name" content="Lines of code and lessons">
-  <meta property="og:title" content="OCI - Attach and mount a block volume">
-  <meta property="og:description" content="Follow the Oracle guide to attach the newly created volume and these steps:
-Identify the New Drive (e.g., /dev/sdb) sudo fdisk -l Create a Partition (If Needed) sudo fdisk /dev/sdb Press n to create a new partition. Choose partition type (p for primary) Select the default values or specify size. Press w to write changes. Format the Partition sudo mkfs.ext4 /dev/sdb1 Create a Mount Point sudo mkdir -p /mnt/mydrive Mount the Drive sudo mount /dev/sdb1 /mnt/mydrive Auto-Mount on Boot Get the UUID of the partition sudo blkid /dev/sdb1 Edit the /etc/fstab file sudo nano /etc/fstab Add this line at the end UUID=&lt;your-uuid&gt; /mnt/mydrive ext4 defaults,noatime,_netdev 0 2 Save and exit">
+  <meta property="og:title" content="Github Pages, Hugo and Cloudflare">
+  <meta property="og:description" content="How to route your GitHub Pages site through Cloudflare on a Subdomain Do you have a site hosted on GitHub Pages, like https://usergithub.github.io/my-blog/, and want to access it via a custom subdomain (e.g., blog.yourdomain.com) using Cloudflare? It’s a great way to improve your performance, security, and have a cleaner URL. Here’s how you can do it, step-by-step!
+Step 1: Prepare Your Domain in Cloudflare If you haven’t done this essential step already, you’ll need to add your main domain (such as yourdomain.com) to Cloudflare. This process involves changing your domain’s nameservers to those provided by Cloudflare (see docs).">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-02-16T16:27:00+02:00">
-    <meta property="article:modified_time" content="2025-02-16T16:27:00+02:00">
+    <meta property="article:published_time" content="2025-07-03T12:18:07+03:00">
+    <meta property="article:modified_time" content="2025-07-03T12:18:07+03:00">
     <meta property="article:tag" content="Linux">
-    <meta property="article:tag" content="Ubuntu">
-    <meta property="article:tag" content="Oci">
-    <meta property="og:image" content="https://blog.pakithecat.eu/img/oci-mount-block-volume.png">
+    <meta property="article:tag" content="Hugo">
+    <meta property="article:tag" content="Hosting">
+    <meta property="article:tag" content="Cloud">
+    <meta property="article:tag" content="Blog">
+    <meta property="og:image" content="https://blog.pakithecat.eu/img/pexels-viktortalashuk-2377295.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.pakithecat.eu/img/oci-mount-block-volume.png">
-<meta name="twitter:title" content="OCI - Attach and mount a block volume">
-<meta name="twitter:description" content="Follow the Oracle guide to attach the newly created volume and these steps:
-Identify the New Drive (e.g., /dev/sdb)
-sudo fdisk -l
-Create a Partition (If Needed)
-sudo fdisk /dev/sdb
+<meta name="twitter:image" content="https://blog.pakithecat.eu/img/pexels-viktortalashuk-2377295.jpg">
+<meta name="twitter:title" content="Github Pages, Hugo and Cloudflare">
+<meta name="twitter:description" content="How to route your GitHub Pages site through Cloudflare on a Subdomain
+Do you have a site hosted on GitHub Pages, like https://usergithub.github.io/my-blog/, and want to access it via a custom subdomain (e.g., blog.yourdomain.com) using Cloudflare? It&rsquo;s a great way to improve your performance, security, and have a cleaner URL. Here&rsquo;s how you can do it, step-by-step!
 
-Press n to create a new partition.
-Choose partition type (p for primary)
-Select the default values or specify size.
-Press w to write changes.
-
-Format the Partition
-sudo mkfs.ext4 /dev/sdb1
-Create a Mount Point
-sudo mkdir -p /mnt/mydrive
-Mount the Drive
-sudo mount /dev/sdb1 /mnt/mydrive
-Auto-Mount on Boot
-
-Get the UUID of the partition
-
-sudo blkid /dev/sdb1
-
-Edit the /etc/fstab file
-
-sudo nano /etc/fstab
-
-Add this line at the end
-
-UUID=&lt;your-uuid&gt;  /mnt/mydrive  ext4  defaults,noatime,_netdev  0  2
-
-
-Save and exit">
+Step 1: Prepare Your Domain in Cloudflare
+If you haven&rsquo;t done this essential step already, you&rsquo;ll need to add your main domain (such as yourdomain.com) to Cloudflare. This process involves changing your domain&rsquo;s nameservers to those provided by Cloudflare (see docs).">
 
 
 <script type="application/ld+json">
@@ -154,8 +100,8 @@ Save and exit">
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "OCI - Attach and mount a block volume",
-      "item": "https://blog.pakithecat.eu/posts/oci-mount-block-volume/"
+      "name": "Github Pages, Hugo and Cloudflare",
+      "item": "https://blog.pakithecat.eu/posts/githubpages-cloudflare/"
     }
   ]
 }
@@ -164,24 +110,24 @@ Save and exit">
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "OCI - Attach and mount a block volume",
-  "name": "OCI - Attach and mount a block volume",
-  "description": "Follow the Oracle guide to attach the newly created volume and these steps:\nIdentify the New Drive (e.g., /dev/sdb) sudo fdisk -l Create a Partition (If Needed) sudo fdisk /dev/sdb Press n to create a new partition. Choose partition type (p for primary) Select the default values or specify size. Press w to write changes. Format the Partition sudo mkfs.ext4 /dev/sdb1 Create a Mount Point sudo mkdir -p /mnt/mydrive Mount the Drive sudo mount /dev/sdb1 /mnt/mydrive Auto-Mount on Boot Get the UUID of the partition sudo blkid /dev/sdb1 Edit the /etc/fstab file sudo nano /etc/fstab Add this line at the end UUID=\u0026lt;your-uuid\u0026gt; /mnt/mydrive ext4 defaults,noatime,_netdev 0 2 Save and exit\n",
+  "headline": "Github Pages, Hugo and Cloudflare",
+  "name": "Github Pages, Hugo and Cloudflare",
+  "description": "How to route your GitHub Pages site through Cloudflare on a Subdomain Do you have a site hosted on GitHub Pages, like https://usergithub.github.io/my-blog/, and want to access it via a custom subdomain (e.g., blog.yourdomain.com) using Cloudflare? It\u0026rsquo;s a great way to improve your performance, security, and have a cleaner URL. Here\u0026rsquo;s how you can do it, step-by-step!\nStep 1: Prepare Your Domain in Cloudflare If you haven\u0026rsquo;t done this essential step already, you\u0026rsquo;ll need to add your main domain (such as yourdomain.com) to Cloudflare. This process involves changing your domain\u0026rsquo;s nameservers to those provided by Cloudflare (see docs).\n",
   "keywords": [
-    "linux", "ubuntu", "oci"
+    "linux", "hugo", "hosting", "cloud", "blog"
   ],
-  "articleBody": "Follow the Oracle guide to attach the newly created volume and these steps:\nIdentify the New Drive (e.g., /dev/sdb) sudo fdisk -l Create a Partition (If Needed) sudo fdisk /dev/sdb Press n to create a new partition. Choose partition type (p for primary) Select the default values or specify size. Press w to write changes. Format the Partition sudo mkfs.ext4 /dev/sdb1 Create a Mount Point sudo mkdir -p /mnt/mydrive Mount the Drive sudo mount /dev/sdb1 /mnt/mydrive Auto-Mount on Boot Get the UUID of the partition sudo blkid /dev/sdb1 Edit the /etc/fstab file sudo nano /etc/fstab Add this line at the end UUID= /mnt/mydrive ext4 defaults,noatime,_netdev 0 2 Save and exit\nTest with\nsudo mount -a ",
-  "wordCount" : "115",
+  "articleBody": "How to route your GitHub Pages site through Cloudflare on a Subdomain Do you have a site hosted on GitHub Pages, like https://usergithub.github.io/my-blog/, and want to access it via a custom subdomain (e.g., blog.yourdomain.com) using Cloudflare? It’s a great way to improve your performance, security, and have a cleaner URL. Here’s how you can do it, step-by-step!\nStep 1: Prepare Your Domain in Cloudflare If you haven’t done this essential step already, you’ll need to add your main domain (such as yourdomain.com) to Cloudflare. This process involves changing your domain’s nameservers to those provided by Cloudflare (see docs).\nAfter you’ve changed the nameservers, it’s important to be patient. DNS propagation can take from a few minutes to several hours. You can check the propagation status using online tools like dnschecker.org.\nStep 2: Configure the DNS Record in Cloudflare for Your Subdomain This is where you connect your subdomain to GitHub Pages.\nAccess your Cloudflare account and select your main domain.\nGo to the DNS section.\nYou will add a CNAME type DNS record for your subdomain. This will direct traffic from your subdomain to the base domain of GitHub Pages (which is usergithub.github.io).\nType: CNAME Name: Here you’ll enter the name of the subdomain you want (e.g., blog). Your full subdomain will be blog.yourdomain.com. Target: usergithub.github.io Proxy Status: Make sure it’s Proxied (the orange cloud should be active). This is crucial to benefit from all Cloudflare’s advantages: CDN, security, performance optimizations, and a free SSL certificate. Step 3: Configure GitHub Pages for the Custom Domain Now you need to tell GitHub that your site will be accessible via a custom domain.\nNavigate to your repository (my-blog) on GitHub: https://github.com/usergithub/my-blog.\nClick on Settings in the repository menu.\nIn the left sidebar, click on Pages.\nIn the “Custom domain” section, enter the full subdomain you want to use (e.g., blog.yourdomain.com).\nClick on Save.\nGitHub will verify the DNS records, and if everything is correct, it will configure your site to respond to the subdomain address. This process may take a few minutes.\nStep 4: Final Verification and Testing Wait a few minutes (or even up to an hour in rare cases) for all changes to propagate and be recognized globally. Try accessing your subdomain in your browser (e.g., https://blog.yourdomain.com). You should see your site’s content. Check if the SSL certificate is active and if the site loads via HTTPS. The padlock icon should be present in your browser’s address bar. A crucial point to remember: For GitHub Pages sites hosted at the repository level, you set the Cloudflare CNAME to point to usergithub.github.io. It is not necessary to include the full repository path in the CNAME record. GitHub will automatically handle mapping the subdomain to the correct repository path once you’ve specified “Custom domain” in your repository’s GitHub Pages settings.\nOptional - if you are using Hugo\nUpdate baseURL in Hugo Configuration\nThis step is essential for your Hugo site to function correctly under the new subdomain. If you don’t do this, you might experience issues with links, images, and other resources.\nOpen your Hugo project’s configuration file. This is usually named config.toml, config.yaml, or config.json and is located at the root of your Hugo project.\nFind the baseURL parameter and update it with the complete address of your new subdomain, including https://.\nExample in config.toml:\nbaseURL = \"[https://blog.yourdomain.com/](https://blog.yourdomain.com/)\" Example in config.yaml:\nbaseURL: \"[https://blog.yourdomain.com/](https://blog.yourdomain.com/)\" Save the changes in your GitHub repository. GitHub Pages will rebuild the site with the new configuration.\n",
+  "wordCount" : "579",
   "inLanguage": "en",
-  "image":"https://blog.pakithecat.eu/img/oci-mount-block-volume.png","datePublished": "2025-02-16T16:27:00+02:00",
-  "dateModified": "2025-02-16T16:27:00+02:00",
+  "image":"https://blog.pakithecat.eu/img/pexels-viktortalashuk-2377295.jpg","datePublished": "2025-07-03T12:18:07+03:00",
+  "dateModified": "2025-07-03T12:18:07+03:00",
   "author":{
     "@type": "Person",
     "name": "Me"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://blog.pakithecat.eu/posts/oci-mount-block-volume/"
+    "@id": "https://blog.pakithecat.eu/posts/githubpages-cloudflare/"
   },
   "publisher": {
     "@type": "Organization",
@@ -281,87 +227,120 @@ Save and exit">
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://blog.pakithecat.eu/">Home</a>&nbsp;»&nbsp;<a href="https://blog.pakithecat.eu/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
-      OCI - Attach and mount a block volume
+      Github Pages, Hugo and Cloudflare
     </h1>
-    <div class="post-meta"><span title='2025-02-16 16:27:00 +0200 +0200'>February 16, 2025</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Me&nbsp;|&nbsp;Translations:
+    <div class="post-meta"><span title='2025-07-03 12:18:07 +0300 +0300'>July 3, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Me&nbsp;|&nbsp;Translations:
 <ul class="i18n_list">
     <li>
-        <a href="https://blog.pakithecat.eu/ro/posts/oci-mount-block-volume/">🇷🇴</a>
+        <a href="https://blog.pakithecat.eu/ro/posts/githubpages-cloudflare/">🇷🇴</a>
     </li>
-</ul>&nbsp;|&nbsp;<a href="https://github.com/concosminx/hugo-blog/tree/main/content/posts/oci-mount-block-volume.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+</ul>&nbsp;|&nbsp;<a href="https://github.com/concosminx/hugo-blog/tree/main/content/posts/githubpages-cloudflare.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
   </header> 
-<figure class="entry-cover"><img loading="eager" src="https://blog.pakithecat.eu/img/oci-mount-block-volume.png" alt="Block Volume">
+<figure class="entry-cover"><img loading="eager" src="https://blog.pakithecat.eu/img/pexels-viktortalashuk-2377295.jpg" alt="Books">
         
 </figure>
-  <div class="post-content"><p>Follow the Oracle <a href="https://docs.oracle.com/en-us/iaas/Content/Block/Tasks/connectingtoavolume_topic-Connecting_to_iSCSIAttached_Volumes.htm">guide</a> to attach the newly created volume and these steps:</p>
-<h4 id="identify-the-new-drive-eg-devsdb">Identify the New Drive (e.g., <code>/dev/sdb</code>)<a hidden class="anchor" aria-hidden="true" href="#identify-the-new-drive-eg-devsdb">#</a></h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo fdisk -l
-</span></span></code></pre></div><h4 id="create-a-partition-if-needed">Create a Partition (If Needed)<a hidden class="anchor" aria-hidden="true" href="#create-a-partition-if-needed">#</a></h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo fdisk /dev/sdb
-</span></span></code></pre></div><ul>
-<li>Press <code>n</code> to create a new partition.</li>
-<li>Choose partition type (<code>p</code> for primary)</li>
-<li>Select the default values or specify size.</li>
-<li>Press <code>w</code> to write changes.</li>
-</ul>
-<h4 id="format-the-partition">Format the Partition<a hidden class="anchor" aria-hidden="true" href="#format-the-partition">#</a></h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mkfs.ext4 /dev/sdb1
-</span></span></code></pre></div><h4 id="create-a-mount-point">Create a Mount Point<a hidden class="anchor" aria-hidden="true" href="#create-a-mount-point">#</a></h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mkdir -p /mnt/mydrive
-</span></span></code></pre></div><h4 id="mount-the-drive">Mount the Drive<a hidden class="anchor" aria-hidden="true" href="#mount-the-drive">#</a></h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mount /dev/sdb1 /mnt/mydrive
-</span></span></code></pre></div><h4 id="auto-mount-on-boot">Auto-Mount on Boot<a hidden class="anchor" aria-hidden="true" href="#auto-mount-on-boot">#</a></h4>
+  <div class="post-content"><h3 id="how-to-route-your-github-pages-site-through-cloudflare-on-a-subdomain">How to route your GitHub Pages site through Cloudflare on a Subdomain<a hidden class="anchor" aria-hidden="true" href="#how-to-route-your-github-pages-site-through-cloudflare-on-a-subdomain">#</a></h3>
+<p>Do you have a site hosted on <strong>GitHub Pages</strong>, like <code>https://usergithub.github.io/my-blog/</code>, and want to access it via a <strong>custom subdomain</strong> (e.g., <code>blog.yourdomain.com</code>) using <strong>Cloudflare</strong>? It&rsquo;s a great way to improve your performance, security, and have a cleaner URL. Here&rsquo;s how you can do it, step-by-step!</p>
+<hr>
+<h3 id="step-1-prepare-your-domain-in-cloudflare">Step 1: Prepare Your Domain in Cloudflare<a hidden class="anchor" aria-hidden="true" href="#step-1-prepare-your-domain-in-cloudflare">#</a></h3>
+<p>If you haven&rsquo;t done this essential step already, you&rsquo;ll need to <strong>add your main domain</strong> (such as <code>yourdomain.com</code>) to Cloudflare. This process involves changing your domain&rsquo;s nameservers to those provided by Cloudflare <a href="https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/">(see docs)</a>.</p>
+<p>After you&rsquo;ve changed the nameservers, it&rsquo;s important to be patient. DNS propagation can take from a few minutes to several hours. You can check the propagation status using online tools like <code>dnschecker.org</code>.</p>
+<hr>
+<h3 id="step-2-configure-the-dns-record-in-cloudflare-for-your-subdomain">Step 2: Configure the DNS Record in Cloudflare for Your Subdomain<a hidden class="anchor" aria-hidden="true" href="#step-2-configure-the-dns-record-in-cloudflare-for-your-subdomain">#</a></h3>
+<p>This is where you connect your subdomain to GitHub Pages.</p>
+<ol>
+<li>
+<p>Access your <strong>Cloudflare</strong> account and select your main domain.</p>
+</li>
+<li>
+<p>Go to the <strong>DNS</strong> section.</p>
+</li>
+<li>
+<p>You will add a <code>CNAME</code> type DNS record for your subdomain. This will direct traffic from your subdomain to the <strong>base domain of GitHub Pages</strong> (which is <code>usergithub.github.io</code>).</p>
 <ul>
-<li>Get the UUID of the partition</li>
+<li><strong>Type:</strong> <code>CNAME</code></li>
+<li><strong>Name:</strong> Here you&rsquo;ll enter the <strong>name of the subdomain</strong> you want (e.g., <code>blog</code>). Your full subdomain will be <code>blog.yourdomain.com</code>.</li>
+<li><strong>Target:</strong> <code>usergithub.github.io</code></li>
+<li><strong>Proxy Status:</strong> Make sure it&rsquo;s <code>Proxied</code> (the orange cloud should be active). This is crucial to benefit from all Cloudflare&rsquo;s advantages: CDN, security, performance optimizations, and a free SSL certificate.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo blkid /dev/sdb1
-</span></span></code></pre></div><ul>
-<li>Edit the <code>/etc/fstab</code> file</li>
-</ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nano /etc/fstab
-</span></span></code></pre></div><ul>
-<li>Add this line at the end</li>
-</ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">UUID</span><span class="o">=</span>&lt;your-uuid&gt;  /mnt/mydrive  ext4  defaults,noatime,_netdev  <span class="m">0</span>  <span class="m">2</span>
-</span></span></code></pre></div><ul>
+</li>
+</ol>
+<hr>
+<h3 id="step-3-configure-github-pages-for-the-custom-domain">Step 3: Configure GitHub Pages for the Custom Domain<a hidden class="anchor" aria-hidden="true" href="#step-3-configure-github-pages-for-the-custom-domain">#</a></h3>
+<p>Now you need to tell GitHub that your site will be accessible via a custom domain.</p>
+<ol>
 <li>
-<p>Save and exit</p>
+<p>Navigate to your <strong>repository</strong> (<code>my-blog</code>) on GitHub: <code>https://github.com/usergithub/my-blog</code>.</p>
 </li>
 <li>
-<p>Test with</p>
+<p>Click on <strong>Settings</strong> in the repository menu.</p>
 </li>
+<li>
+<p>In the left sidebar, click on <strong>Pages</strong>.</p>
+</li>
+<li>
+<p>In the &ldquo;<strong>Custom domain</strong>&rdquo; section, enter the <strong>full subdomain</strong> you want to use (e.g., <code>blog.yourdomain.com</code>).</p>
+</li>
+<li>
+<p>Click on <strong>Save</strong>.</p>
+<p>GitHub will verify the DNS records, and if everything is correct, it will configure your site to respond to the subdomain address. This process may take a few minutes.</p>
+</li>
+</ol>
+<hr>
+<h3 id="step-4-final-verification-and-testing">Step 4: Final Verification and Testing<a hidden class="anchor" aria-hidden="true" href="#step-4-final-verification-and-testing">#</a></h3>
+<ul>
+<li>Wait a few minutes (or even up to an hour in rare cases) for all changes to propagate and be recognized globally.</li>
+<li>Try accessing your <strong>subdomain</strong> in your browser (e.g., <code>https://blog.yourdomain.com</code>). You should see your site&rsquo;s content.</li>
+<li>Check if the <strong>SSL certificate</strong> is active and if the site loads via HTTPS. The padlock icon should be present in your browser&rsquo;s address bar.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mount -a
-</span></span></code></pre></div>
+<hr>
+<p><strong>A crucial point to remember:</strong> For GitHub Pages sites hosted at the repository level, <strong>you set the Cloudflare CNAME to point to <code>usergithub.github.io</code></strong>. It is not necessary to include the full repository path in the CNAME record. GitHub will automatically handle mapping the subdomain to the correct repository path once you&rsquo;ve specified <strong>&ldquo;Custom domain&rdquo;</strong> in your repository&rsquo;s GitHub Pages settings.</p>
+<hr>
+<p><strong>Optional - if you are using Hugo</strong></p>
+<p>Update <code>baseURL</code> in Hugo Configuration</p>
+<p>This step is <strong>essential</strong> for your Hugo site to function correctly under the new subdomain. If you don&rsquo;t do this, you might experience issues with links, images, and other resources.</p>
+<ol>
+<li>
+<p>Open your Hugo project&rsquo;s configuration file. This is usually named <code>config.toml</code>, <code>config.yaml</code>, or <code>config.json</code> and is located at the root of your Hugo project.</p>
+</li>
+<li>
+<p>Find the <code>baseURL</code> parameter and update it with the <strong>complete address of your new subdomain</strong>, including <code>https://</code>.</p>
+<p><strong>Example in <code>config.toml</code>:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">baseURL</span> <span class="p">=</span> <span class="s2">&#34;[https://blog.yourdomain.com/](https://blog.yourdomain.com/)&#34;</span>
+</span></span></code></pre></div><p><strong>Example in <code>config.yaml</code>:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">baseURL</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;[https://blog.yourdomain.com/](https://blog.yourdomain.com/)&#34;</span><span class="w">
+</span></span></span></code></pre></div></li>
+<li>
+<p><strong>Save the changes</strong> in your GitHub repository. GitHub Pages will rebuild the site with the new configuration.</p>
+</li>
+</ol>
+
 
   </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
       <li><a href="https://blog.pakithecat.eu/tags/linux/">Linux</a></li>
-      <li><a href="https://blog.pakithecat.eu/tags/ubuntu/">Ubuntu</a></li>
-      <li><a href="https://blog.pakithecat.eu/tags/oci/">Oci</a></li>
+      <li><a href="https://blog.pakithecat.eu/tags/hugo/">Hugo</a></li>
+      <li><a href="https://blog.pakithecat.eu/tags/hosting/">Hosting</a></li>
+      <li><a href="https://blog.pakithecat.eu/tags/cloud/">Cloud</a></li>
+      <li><a href="https://blog.pakithecat.eu/tags/blog/">Blog</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://blog.pakithecat.eu/posts/githubpages-cloudflare/">
-    <span class="title">« Prev</span>
-    <br>
-    <span>Github Pages, Hugo and Cloudflare</span>
-  </a>
-  <a class="next" href="https://blog.pakithecat.eu/posts/gpg/">
+  <a class="next" href="https://blog.pakithecat.eu/posts/oci-mount-block-volume/">
     <span class="title">Next »</span>
     <br>
-    <span>How to use GPG to encrypt/decrypt files</span>
+    <span>OCI - Attach and mount a block volume</span>
   </a>
 </nav>
 
 
 <ul class="share-buttons">
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share OCI - Attach and mount a block volume on x"
-            href="https://x.com/intent/tweet/?text=OCI%20-%20Attach%20and%20mount%20a%20block%20volume&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2foci-mount-block-volume%2f&amp;hashtags=linux%2cubuntu%2coci">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Github Pages, Hugo and Cloudflare on x"
+            href="https://x.com/intent/tweet/?text=Github%20Pages%2c%20Hugo%20and%20Cloudflare&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2fgithubpages-cloudflare%2f&amp;hashtags=linux%2chugo%2chosting%2ccloud%2cblog">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -369,8 +348,8 @@ Save and exit">
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share OCI - Attach and mount a block volume on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2foci-mount-block-volume%2f&amp;title=OCI%20-%20Attach%20and%20mount%20a%20block%20volume&amp;summary=OCI%20-%20Attach%20and%20mount%20a%20block%20volume&amp;source=https%3a%2f%2fblog.pakithecat.eu%2fposts%2foci-mount-block-volume%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Github Pages, Hugo and Cloudflare on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2fgithubpages-cloudflare%2f&amp;title=Github%20Pages%2c%20Hugo%20and%20Cloudflare&amp;summary=Github%20Pages%2c%20Hugo%20and%20Cloudflare&amp;source=https%3a%2f%2fblog.pakithecat.eu%2fposts%2fgithubpages-cloudflare%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -378,8 +357,8 @@ Save and exit">
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share OCI - Attach and mount a block volume on reddit"
-            href="https://reddit.com/submit?url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2foci-mount-block-volume%2f&title=OCI%20-%20Attach%20and%20mount%20a%20block%20volume">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Github Pages, Hugo and Cloudflare on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2fgithubpages-cloudflare%2f&title=Github%20Pages%2c%20Hugo%20and%20Cloudflare">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -387,8 +366,8 @@ Save and exit">
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share OCI - Attach and mount a block volume on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.pakithecat.eu%2fposts%2foci-mount-block-volume%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Github Pages, Hugo and Cloudflare on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.pakithecat.eu%2fposts%2fgithubpages-cloudflare%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -396,8 +375,8 @@ Save and exit">
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share OCI - Attach and mount a block volume on whatsapp"
-            href="https://api.whatsapp.com/send?text=OCI%20-%20Attach%20and%20mount%20a%20block%20volume%20-%20https%3a%2f%2fblog.pakithecat.eu%2fposts%2foci-mount-block-volume%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Github Pages, Hugo and Cloudflare on whatsapp"
+            href="https://api.whatsapp.com/send?text=Github%20Pages%2c%20Hugo%20and%20Cloudflare%20-%20https%3a%2f%2fblog.pakithecat.eu%2fposts%2fgithubpages-cloudflare%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -405,8 +384,8 @@ Save and exit">
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share OCI - Attach and mount a block volume on telegram"
-            href="https://telegram.me/share/url?text=OCI%20-%20Attach%20and%20mount%20a%20block%20volume&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2foci-mount-block-volume%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Github Pages, Hugo and Cloudflare on telegram"
+            href="https://telegram.me/share/url?text=Github%20Pages%2c%20Hugo%20and%20Cloudflare&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2fgithubpages-cloudflare%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -414,8 +393,8 @@ Save and exit">
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share OCI - Attach and mount a block volume on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=OCI%20-%20Attach%20and%20mount%20a%20block%20volume&u=https%3a%2f%2fblog.pakithecat.eu%2fposts%2foci-mount-block-volume%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Github Pages, Hugo and Cloudflare on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Github%20Pages%2c%20Hugo%20and%20Cloudflare&u=https%3a%2f%2fblog.pakithecat.eu%2fposts%2fgithubpages-cloudflare%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path

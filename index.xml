@@ -7,8 +7,19 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Sun, 16 Feb 2025 16:27:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 03 Jul 2025 12:18:07 +0300</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Github Pages, Hugo and Cloudflare</title>
+      <link>https://blog.pakithecat.eu/posts/githubpages-cloudflare/</link>
+      <pubDate>Thu, 03 Jul 2025 12:18:07 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/posts/githubpages-cloudflare/</guid>
+      <description>&lt;h3 id=&#34;how-to-route-your-github-pages-site-through-cloudflare-on-a-subdomain&#34;&gt;How to route your GitHub Pages site through Cloudflare on a Subdomain&lt;/h3&gt;
+&lt;p&gt;Do you have a site hosted on &lt;strong&gt;GitHub Pages&lt;/strong&gt;, like &lt;code&gt;https://usergithub.github.io/my-blog/&lt;/code&gt;, and want to access it via a &lt;strong&gt;custom subdomain&lt;/strong&gt; (e.g., &lt;code&gt;blog.yourdomain.com&lt;/code&gt;) using &lt;strong&gt;Cloudflare&lt;/strong&gt;? It&amp;rsquo;s a great way to improve your performance, security, and have a cleaner URL. Here&amp;rsquo;s how you can do it, step-by-step!&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;step-1-prepare-your-domain-in-cloudflare&#34;&gt;Step 1: Prepare Your Domain in Cloudflare&lt;/h3&gt;
+&lt;p&gt;If you haven&amp;rsquo;t done this essential step already, you&amp;rsquo;ll need to &lt;strong&gt;add your main domain&lt;/strong&gt; (such as &lt;code&gt;yourdomain.com&lt;/code&gt;) to Cloudflare. This process involves changing your domain&amp;rsquo;s nameservers to those provided by Cloudflare &lt;a href=&#34;https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/&#34;&gt;(see docs)&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OCI - Attach and mount a block volume</title>
       <link>https://blog.pakithecat.eu/posts/oci-mount-block-volume/</link>
