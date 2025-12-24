@@ -74,10 +74,10 @@ languages:
       homeInfoParams:
         Title: "Linii de cod si lectii"
         Content: >
-          👋 Bine ai venit pe blogul meu despre dezvoltare software!
+          👋 Salutare!
 
-          - Salut! Sunt Cosmin, un pasionat de programare si tot ce tine de lumea dezvoltarii software. Pe acest blog vei gasi articole despre: 
-          tehnologii emergente, proiecte personale, lectii invatate si provocari intalnite.
+          - Gasesti aici: articole tehnice, proiecte personale si solutii la probleme interesante.
+    
       editPost:
         Text: "Sugereaza schimbari"
         
@@ -128,10 +128,9 @@ params:
   homeInfoParams:
     Title: "Lines of Code and Lessons"
     Content: >
-      👋 Welcome to my blog!
+      👋 Hello!
 
-      - Hi! I'm Cosmin, a passionate coder, problem solver, and enthusiast of everything related to software development. On this blog, you'll find: insights on emerging technologies, 
-      personal projects, lessons learned, and challenges faced
+      - You'll find here: technical articles, personal projects, and solutions to interesting problems.
 
   socialIcons:
     - name: github
