@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Python on Linii de cod si lectii</title>
+    <link>https://blog.pakithecat.eu/ro/taguri/python/</link>
+    <description>Recent content in Python on Linii de cod si lectii</description>
+    <generator>Hugo -- 0.140.1</generator>
+    <language>ro</language>
+    <copyright>concosminx</copyright>
+    <lastBuildDate>Tue, 23 Dec 2025 14:00:00 +0200</lastBuildDate>
+    <atom:link href="https://blog.pakithecat.eu/ro/taguri/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>yt-dlp: Tutorial pentru Descarcare Clipuri de pe YouTube</title>
+      <link>https://blog.pakithecat.eu/ro/posts/yt-dlp-tutorial/</link>
+      <pubDate>Tue, 23 Dec 2025 14:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/posts/yt-dlp-tutorial/</guid>
+      <description>Invata sa instalezi si sa folosesti yt-dlp, instrument in linia de comanda pentru descarcarea videoclipurilor si audio de pe YouTube</description>
+    </item>
+  </channel>
+</rss>

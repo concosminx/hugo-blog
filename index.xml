@@ -7,8 +7,15 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Thu, 03 Jul 2025 12:18:07 +0300</lastBuildDate>
+    <lastBuildDate>Tue, 23 Dec 2025 14:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>yt-dlp: The YouTube Downloader Tutorial</title>
+      <link>https://blog.pakithecat.eu/posts/yt-dlp-tutorial/</link>
+      <pubDate>Tue, 23 Dec 2025 14:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/posts/yt-dlp-tutorial/</guid>
+      <description>Learn how to install and use yt-dlp, the powerful command-line tool for downloading videos and audio from YouTube</description>
+    </item>
     <item>
       <title>Github Pages, Hugo and Cloudflare</title>
       <link>https://blog.pakithecat.eu/posts/githubpages-cloudflare/</link>

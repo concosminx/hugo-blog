@@ -2,10 +2,73 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.pakithecat.eu/tags/blog/</loc>
-    <lastmod>2025-07-03T12:18:07+03:00</lastmod>
+    <loc>https://blog.pakithecat.eu/tags/audio/</loc>
+    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/categories/</loc>
+    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/cli/</loc>
+    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/download/</loc>
+    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/</loc>
+    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/"
+                />
+  </url><url>
+    <loc>https://blog.pakithecat.eu/posts/</loc>
+    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/"
+                />
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/python/</loc>
+    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/</loc>
+    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/categories/tech/</loc>
+    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/video/</loc>
+    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/youtube/</loc>
+    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/posts/yt-dlp-tutorial/</loc>
+    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/yt-dlp-tutorial/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/yt-dlp-tutorial/"
+                />
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/blog/</loc>
     <lastmod>2025-07-03T12:18:07+03:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/cloud/</loc>
@@ -30,39 +93,7 @@
     <loc>https://blog.pakithecat.eu/tags/hugo/</loc>
     <lastmod>2025-07-03T12:18:07+03:00</lastmod>
   </url><url>
-    <loc>https://blog.pakithecat.eu/</loc>
-    <lastmod>2025-07-03T12:18:07+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ro"
-                href="https://blog.pakithecat.eu/ro/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://blog.pakithecat.eu/"
-                />
-  </url><url>
     <loc>https://blog.pakithecat.eu/tags/linux/</loc>
-    <lastmod>2025-07-03T12:18:07+03:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/posts/</loc>
-    <lastmod>2025-07-03T12:18:07+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ro"
-                href="https://blog.pakithecat.eu/ro/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://blog.pakithecat.eu/posts/"
-                />
-  </url><url>
-    <loc>https://blog.pakithecat.eu/tags/</loc>
-    <lastmod>2025-07-03T12:18:07+03:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/categories/tech/</loc>
     <lastmod>2025-07-03T12:18:07+03:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/oci/</loc>

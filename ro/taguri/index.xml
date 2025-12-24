@@ -7,8 +7,50 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>ro</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Fri, 03 Jan 2025 10:55:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 23 Dec 2025 14:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/ro/taguri/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Audio</title>
+      <link>https://blog.pakithecat.eu/ro/taguri/audio/</link>
+      <pubDate>Tue, 23 Dec 2025 14:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/taguri/audio/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cli</title>
+      <link>https://blog.pakithecat.eu/ro/taguri/cli/</link>
+      <pubDate>Tue, 23 Dec 2025 14:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/taguri/cli/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Download</title>
+      <link>https://blog.pakithecat.eu/ro/taguri/download/</link>
+      <pubDate>Tue, 23 Dec 2025 14:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/taguri/download/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://blog.pakithecat.eu/ro/taguri/python/</link>
+      <pubDate>Tue, 23 Dec 2025 14:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/taguri/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Video</title>
+      <link>https://blog.pakithecat.eu/ro/taguri/video/</link>
+      <pubDate>Tue, 23 Dec 2025 14:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/taguri/video/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Youtube</title>
+      <link>https://blog.pakithecat.eu/ro/taguri/youtube/</link>
+      <pubDate>Tue, 23 Dec 2025 14:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/taguri/youtube/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Ftp</title>
       <link>https://blog.pakithecat.eu/ro/taguri/ftp/</link>
