@@ -2,20 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.pakithecat.eu/tags/audio/</loc>
-    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
-  </url><url>
     <loc>https://blog.pakithecat.eu/categories/</loc>
-    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+    <lastmod>2025-12-27T10:00:00+02:00</lastmod>
   </url><url>
-    <loc>https://blog.pakithecat.eu/tags/cli/</loc>
-    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+    <loc>https://blog.pakithecat.eu/tags/java/</loc>
+    <lastmod>2025-12-27T10:00:00+02:00</lastmod>
   </url><url>
-    <loc>https://blog.pakithecat.eu/tags/download/</loc>
-    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+    <loc>https://blog.pakithecat.eu/tags/kafka/</loc>
+    <lastmod>2025-12-27T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/</loc>
-    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+    <lastmod>2025-12-27T10:00:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
@@ -27,8 +24,11 @@
                 href="https://blog.pakithecat.eu/"
                 />
   </url><url>
+    <loc>https://blog.pakithecat.eu/tags/messaging/</loc>
+    <lastmod>2025-12-27T10:00:00+02:00</lastmod>
+  </url><url>
     <loc>https://blog.pakithecat.eu/posts/</loc>
-    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+    <lastmod>2025-12-27T10:00:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
@@ -40,13 +40,41 @@
                 href="https://blog.pakithecat.eu/posts/"
                 />
   </url><url>
-    <loc>https://blog.pakithecat.eu/tags/python/</loc>
-    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+    <loc>https://blog.pakithecat.eu/posts/kafka-windows-install/</loc>
+    <lastmod>2025-12-27T10:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/kafka-windows-install/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/kafka-windows-install/"
+                />
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/streaming/</loc>
+    <lastmod>2025-12-27T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/</loc>
-    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+    <lastmod>2025-12-27T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/categories/tech/</loc>
+    <lastmod>2025-12-27T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/windows/</loc>
+    <lastmod>2025-12-27T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/audio/</loc>
+    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/cli/</loc>
+    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/download/</loc>
+    <lastmod>2025-12-23T14:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/python/</loc>
     <lastmod>2025-12-23T14:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/video/</loc>

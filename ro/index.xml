@@ -7,8 +7,15 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>ro</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Tue, 23 Dec 2025 14:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 27 Dec 2025 10:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/ro/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configurare Rapida Kafka pe Windows cu UI</title>
+      <link>https://blog.pakithecat.eu/ro/posts/kafka-windows-install/</link>
+      <pubDate>Sat, 27 Dec 2025 10:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/posts/kafka-windows-install/</guid>
+      <description>Ghid rapid pentru instalarea Apache Kafka pe Windows si configurarea Kafka UI pentru management usor</description>
+    </item>
     <item>
       <title>yt-dlp: Tutorial pentru Descarcare Clipuri de pe YouTube</title>
       <link>https://blog.pakithecat.eu/ro/posts/yt-dlp-tutorial/</link>

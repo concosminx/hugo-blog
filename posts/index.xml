@@ -7,8 +7,15 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Tue, 23 Dec 2025 14:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 27 Dec 2025 10:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quick Kafka Setup on Windows with UI</title>
+      <link>https://blog.pakithecat.eu/posts/kafka-windows-install/</link>
+      <pubDate>Sat, 27 Dec 2025 10:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/posts/kafka-windows-install/</guid>
+      <description>Quick guide to install Apache Kafka on Windows and set up Kafka UI for easy management</description>
+    </item>
     <item>
       <title>yt-dlp: The YouTube Downloader Tutorial</title>
       <link>https://blog.pakithecat.eu/posts/yt-dlp-tutorial/</link>

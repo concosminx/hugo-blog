@@ -7,8 +7,43 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Tue, 23 Dec 2025 14:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 27 Dec 2025 10:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java</title>
+      <link>https://blog.pakithecat.eu/tags/java/</link>
+      <pubDate>Sat, 27 Dec 2025 10:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/java/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kafka</title>
+      <link>https://blog.pakithecat.eu/tags/kafka/</link>
+      <pubDate>Sat, 27 Dec 2025 10:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/kafka/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Messaging</title>
+      <link>https://blog.pakithecat.eu/tags/messaging/</link>
+      <pubDate>Sat, 27 Dec 2025 10:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/messaging/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Streaming</title>
+      <link>https://blog.pakithecat.eu/tags/streaming/</link>
+      <pubDate>Sat, 27 Dec 2025 10:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/streaming/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Windows</title>
+      <link>https://blog.pakithecat.eu/tags/windows/</link>
+      <pubDate>Sat, 27 Dec 2025 10:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/windows/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Audio</title>
       <link>https://blog.pakithecat.eu/tags/audio/</link>
