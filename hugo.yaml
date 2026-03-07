@@ -1,6 +1,6 @@
 baseURL: https://blog.pakithecat.eu/
 languageCode: en-us
-title: Lines of code and lessons
+title: What I Did All Week
 copyright: "© [concosminx](https://github.com/concosminx)"
 pagination.pagerSize: 5
 theme: PaperMod
@@ -47,7 +47,7 @@ languages:
   ro:
     languageName: "🇷🇴"
     weight: 2
-    title: Linii de cod si lectii
+    title: Ce am făcut toată săptămâna
     taxonomies:
       category: categorii
       tag: taguri
@@ -72,7 +72,7 @@ languages:
     params:
       languageAltTitle: Romanian
       homeInfoParams:
-        Title: "Linii de cod si lectii"
+        Title: "... in mare parte depanare"
         Content: >
           👋 Salutare!
 
@@ -126,7 +126,7 @@ params:
   #       url: tags
 
   homeInfoParams:
-    Title: "Lines of Code and Lessons"
+    Title: "... Mostly Debugging"
     Content: >
       👋 Hello!
 
