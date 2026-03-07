@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>OCI - Attach and mount a block volume | Lines of code and lessons</title>
+<title>OCI - Attach and mount a block volume | What I Did All Week</title>
 <meta name="keywords" content="linux, ubuntu, oci">
 <meta name="description" content="Follow the Oracle guide to attach the newly created volume and these steps:
 Identify the New Drive (e.g., /dev/sdb)
@@ -89,7 +89,7 @@ Save and exit">
 
     </style>
 </noscript><meta property="og:url" content="https://blog.pakithecat.eu/posts/oci-mount-block-volume/">
-  <meta property="og:site_name" content="Lines of code and lessons">
+  <meta property="og:site_name" content="What I Did All Week">
   <meta property="og:title" content="OCI - Attach and mount a block volume">
   <meta property="og:description" content="Follow the Oracle guide to attach the newly created volume and these steps:
 Identify the New Drive (e.g., /dev/sdb) sudo fdisk -l Create a Partition (If Needed) sudo fdisk /dev/sdb Press n to create a new partition. Choose partition type (p for primary) Select the default values or specify size. Press w to write changes. Format the Partition sudo mkfs.ext4 /dev/sdb1 Create a Mount Point sudo mkdir -p /mnt/mydrive Mount the Drive sudo mount /dev/sdb1 /mnt/mydrive Auto-Mount on Boot Get the UUID of the partition sudo blkid /dev/sdb1 Edit the /etc/fstab file sudo nano /etc/fstab Add this line at the end UUID=&lt;your-uuid&gt; /mnt/mydrive ext4 defaults,noatime,_netdev 0 2 Save and exit">
@@ -185,7 +185,7 @@ Save and exit">
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Lines of code and lessons",
+    "name": "What I Did All Week",
     "logo": {
       "@type": "ImageObject",
       "url": "https://blog.pakithecat.eu/icons/favicon.ico"
@@ -210,7 +210,7 @@ Save and exit">
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://blog.pakithecat.eu/" accesskey="h" title="Lines of code and lessons (Alt + H)">Lines of code and lessons</a>
+            <a href="https://blog.pakithecat.eu/" accesskey="h" title="What I Did All Week (Alt + H)">What I Did All Week</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"

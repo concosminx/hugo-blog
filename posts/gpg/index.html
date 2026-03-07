@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>How to use GPG to encrypt/decrypt files | Lines of code and lessons</title>
+<title>How to use GPG to encrypt/decrypt files | What I Did All Week</title>
 <meta name="keywords" content="gpg, linux, cryptography">
 <meta name="description" content="GnuPG uses public-key cryptography so that users may communicate securely. In a public-key system, each user has a pair of keys consisting of a private key and a public key. A user&rsquo;s private key is kept secret; it need never be revealed. The public key may be given to anyone with whom the user wants to communicate.
 Installation and key pair generation
@@ -101,7 +101,7 @@ gpg --output doc-dec.txt --decrypt doc.gpg
 
     </style>
 </noscript><meta property="og:url" content="https://blog.pakithecat.eu/posts/gpg/">
-  <meta property="og:site_name" content="Lines of code and lessons">
+  <meta property="og:site_name" content="What I Did All Week">
   <meta property="og:title" content="How to use GPG to encrypt/decrypt files">
   <meta property="og:description" content="GnuPG uses public-key cryptography so that users may communicate securely. In a public-key system, each user has a pair of keys consisting of a private key and a public key. A user’s private key is kept secret; it need never be revealed. The public key may be given to anyone with whom the user wants to communicate.
 Installation and key pair generation install GnuPG on Debian / Ubuntu sudo apt-get install gnupg generate a new GPG key pair let’s use as an example the email address johndoe@example.com gpg --full-generate-key Exchanging keys exporting a public key in a binary format gpg --output johndoe.gpg --export johndoe@example.com or ASCII gpg --armor --output johndoe.gpg.pub --export johndoe@example.com importing a public key gpg --import janedoe.gpg gpg --list-keys validate the imported key (manual, if needed) gpg --edit-key blake@cyb.org #display the fingerprint fpr #sign the key sign #check the key check Encrypting and decrypting documents encrypting gpg --output doc.gpg --encrypt --recipient janedoe@example.com doc.txt decrypting gpg --output doc-dec.txt --decrypt doc.gpg ">
@@ -209,7 +209,7 @@ gpg --output doc-dec.txt --decrypt doc.gpg
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Lines of code and lessons",
+    "name": "What I Did All Week",
     "logo": {
       "@type": "ImageObject",
       "url": "https://blog.pakithecat.eu/icons/favicon.ico"
@@ -234,7 +234,7 @@ gpg --output doc-dec.txt --decrypt doc.gpg
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://blog.pakithecat.eu/" accesskey="h" title="Lines of code and lessons (Alt + H)">Lines of code and lessons</a>
+            <a href="https://blog.pakithecat.eu/" accesskey="h" title="What I Did All Week (Alt + H)">What I Did All Week</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"

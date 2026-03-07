@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Cum sa folosesti GPG pentru a cripta/decripta fisiere | Linii de cod si lectii</title>
+<title>Cum sa folosesti GPG pentru a cripta/decripta fisiere | Ce am făcut toată săptămâna</title>
 <meta name="keywords" content="gpg, linux, cryptography">
 <meta name="description" content="GnuPG foloseste criptografia cu chei publice astfel incat utilizatorii sa poata comunica in siguranta. Intr-un sistem cu chei publice, fiecare utilizator are o pereche de chei formata dintr-o cheie privata si o cheie publica. Cheia privata a unui utilizator este pastrata secreta si nu trebuie dezvaluita niciodata. Cheia publica poate fi oferita oricui doreste utilizatorul sa comunice.
 Instalare si generare pereche de chei
@@ -101,7 +101,7 @@ gpg --output doc-dec.txt --decrypt doc.gpg
 
     </style>
 </noscript><meta property="og:url" content="https://blog.pakithecat.eu/ro/posts/gpg/">
-  <meta property="og:site_name" content="Linii de cod si lectii">
+  <meta property="og:site_name" content="Ce am făcut toată săptămâna">
   <meta property="og:title" content="Cum sa folosesti GPG pentru a cripta/decripta fisiere">
   <meta property="og:description" content="GnuPG foloseste criptografia cu chei publice astfel incat utilizatorii sa poata comunica in siguranta. Intr-un sistem cu chei publice, fiecare utilizator are o pereche de chei formata dintr-o cheie privata si o cheie publica. Cheia privata a unui utilizator este pastrata secreta si nu trebuie dezvaluita niciodata. Cheia publica poate fi oferita oricui doreste utilizatorul sa comunice.
 Instalare si generare pereche de chei instalare pe Debian / Ubuntu sudo apt-get install gnupg generarea unei perechi de chei vom folosi ca exemplu adrese de email de genul johndoe@example.com gpg --full-generate-key Schimbul de chei (export / import) exportul unei chei public in format binar gpg --output johndoe.gpg --export johndoe@example.com sau ACII gpg --armor --output johndoe.gpg.pub --export johndoe@example.com importul unei chei publice gpg --import janedoe.gpg gpg --list-keys validarea unei chei publice importate (manual, daca este cazul) gpg --edit-key blake@cyb.org #afiseaza amprenta fpr #semneaza cheia sign #verifica cheia check Criptarea si decriptarea documentelor (pentru un anumit destinatar) criptare gpg --output doc.gpg --encrypt --recipient janedoe@example.com doc.txt decriptare gpg --output doc-dec.txt --decrypt doc.gpg ">
@@ -206,7 +206,7 @@ gpg --output doc-dec.txt --decrypt doc.gpg
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Linii de cod si lectii",
+    "name": "Ce am făcut toată săptămâna",
     "logo": {
       "@type": "ImageObject",
       "url": "https://blog.pakithecat.eu/icons/favicon.ico"
@@ -231,7 +231,7 @@ gpg --output doc-dec.txt --decrypt doc.gpg
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://blog.pakithecat.eu/ro/" accesskey="h" title="Linii de cod si lectii (Alt + H)">Linii de cod si lectii</a>
+            <a href="https://blog.pakithecat.eu/ro/" accesskey="h" title="Ce am făcut toată săptămâna (Alt + H)">Ce am făcut toată săptămâna</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"

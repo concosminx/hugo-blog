@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Linii de cod si lectii</title>
+    <title>Ce am făcut toată săptămâna</title>
     <link>https://blog.pakithecat.eu/ro/</link>
-    <description>Recent content on Linii de cod si lectii</description>
+    <description>Recent content on Ce am făcut toată săptămâna</description>
     <generator>Hugo -- 0.140.1</generator>
     <language>ro</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Sat, 27 Dec 2025 10:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 07 Mar 2026 12:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/ro/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu</title>
+      <link>https://blog.pakithecat.eu/ro/posts/create-sudo-user-ubuntu/</link>
+      <pubDate>Sat, 07 Mar 2026 12:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/posts/create-sudo-user-ubuntu/</guid>
+      <description>Ghid pas cu pas pentru crearea unui utilizator cu privilegii sudo pe Ubuntu.</description>
+    </item>
     <item>
       <title>Configurare Rapida Kafka pe Windows cu UI</title>
       <link>https://blog.pakithecat.eu/ro/posts/kafka-windows-install/</link>

@@ -2,6 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.pakithecat.eu/ro/</loc>
+    <lastmod>2026-03-07T12:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/"
+                />
+  </url><url>
+    <loc>https://blog.pakithecat.eu/ro/posts/create-sudo-user-ubuntu/</loc>
+    <lastmod>2026-03-07T12:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/create-sudo-user-ubuntu/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/create-sudo-user-ubuntu/"
+                />
+  </url><url>
+    <loc>https://blog.pakithecat.eu/ro/posts/</loc>
+    <lastmod>2026-03-07T12:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/"
+                />
+  </url><url>
     <loc>https://blog.pakithecat.eu/ro/categorii/</loc>
     <lastmod>2025-12-27T10:00:00+02:00</lastmod>
   </url><url>
@@ -24,34 +63,8 @@
     <loc>https://blog.pakithecat.eu/ro/taguri/kafka/</loc>
     <lastmod>2025-12-27T10:00:00+02:00</lastmod>
   </url><url>
-    <loc>https://blog.pakithecat.eu/ro/</loc>
-    <lastmod>2025-12-27T10:00:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://blog.pakithecat.eu/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ro"
-                href="https://blog.pakithecat.eu/ro/"
-                />
-  </url><url>
     <loc>https://blog.pakithecat.eu/ro/taguri/messaging/</loc>
     <lastmod>2025-12-27T10:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/ro/posts/</loc>
-    <lastmod>2025-12-27T10:00:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://blog.pakithecat.eu/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ro"
-                href="https://blog.pakithecat.eu/ro/posts/"
-                />
   </url><url>
     <loc>https://blog.pakithecat.eu/ro/taguri/streaming/</loc>
     <lastmod>2025-12-27T10:00:00+02:00</lastmod>

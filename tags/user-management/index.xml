@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>User-Management on What I Did All Week</title>
+    <link>https://blog.pakithecat.eu/tags/user-management/</link>
+    <description>Recent content in User-Management on What I Did All Week</description>
+    <generator>Hugo -- 0.140.1</generator>
+    <language>en</language>
+    <copyright>concosminx</copyright>
+    <lastBuildDate>Sat, 07 Mar 2026 12:00:00 +0200</lastBuildDate>
+    <atom:link href="https://blog.pakithecat.eu/tags/user-management/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How To Create a New Sudo-Enabled User on Ubuntu</title>
+      <link>https://blog.pakithecat.eu/posts/create-sudo-user-ubuntu/</link>
+      <pubDate>Sat, 07 Mar 2026 12:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/posts/create-sudo-user-ubuntu/</guid>
+      <description>Step-by-step guide to creating a new user with sudo privileges on Ubuntu.</description>
+    </item>
+  </channel>
+</rss>

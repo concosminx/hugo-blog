@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tags on Lines of code and lessons</title>
+    <title>Tags on What I Did All Week</title>
     <link>https://blog.pakithecat.eu/tags/</link>
-    <description>Recent content in Tags on Lines of code and lessons</description>
+    <description>Recent content in Tags on What I Did All Week</description>
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Sat, 27 Dec 2025 10:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 07 Mar 2026 12:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux</title>
+      <link>https://blog.pakithecat.eu/tags/linux/</link>
+      <pubDate>Sat, 07 Mar 2026 12:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sudo</title>
+      <link>https://blog.pakithecat.eu/tags/sudo/</link>
+      <pubDate>Sat, 07 Mar 2026 12:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/sudo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ubuntu</title>
+      <link>https://blog.pakithecat.eu/tags/ubuntu/</link>
+      <pubDate>Sat, 07 Mar 2026 12:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>User-Management</title>
+      <link>https://blog.pakithecat.eu/tags/user-management/</link>
+      <pubDate>Sat, 07 Mar 2026 12:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/user-management/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Java</title>
       <link>https://blog.pakithecat.eu/tags/java/</link>
@@ -115,24 +143,10 @@
       <description></description>
     </item>
     <item>
-      <title>Linux</title>
-      <link>https://blog.pakithecat.eu/tags/linux/</link>
-      <pubDate>Thu, 03 Jul 2025 12:18:07 +0300</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/linux/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Oci</title>
       <link>https://blog.pakithecat.eu/tags/oci/</link>
       <pubDate>Sun, 16 Feb 2025 16:27:00 +0200</pubDate>
       <guid>https://blog.pakithecat.eu/tags/oci/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ubuntu</title>
-      <link>https://blog.pakithecat.eu/tags/ubuntu/</link>
-      <pubDate>Sun, 16 Feb 2025 16:27:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/ubuntu/</guid>
       <description></description>
     </item>
     <item>
