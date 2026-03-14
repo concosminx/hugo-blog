@@ -7,13 +7,55 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Sat, 07 Mar 2026 12:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 14 Mar 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cloud</title>
+      <link>https://blog.pakithecat.eu/tags/cloud/</link>
+      <pubDate>Sat, 14 Mar 2026 09:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/cloud/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>https://blog.pakithecat.eu/tags/docker/</link>
+      <pubDate>Sat, 14 Mar 2026 09:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/docker/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gcp</title>
+      <link>https://blog.pakithecat.eu/tags/gcp/</link>
+      <pubDate>Sat, 14 Mar 2026 09:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/gcp/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Linux</title>
       <link>https://blog.pakithecat.eu/tags/linux/</link>
-      <pubDate>Sat, 07 Mar 2026 12:00:00 +0200</pubDate>
+      <pubDate>Sat, 14 Mar 2026 09:00:00 +0200</pubDate>
       <guid>https://blog.pakithecat.eu/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rustfs</title>
+      <link>https://blog.pakithecat.eu/tags/rustfs/</link>
+      <pubDate>Sat, 14 Mar 2026 09:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/rustfs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>S3</title>
+      <link>https://blog.pakithecat.eu/tags/s3/</link>
+      <pubDate>Sat, 14 Mar 2026 09:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/s3/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Storage</title>
+      <link>https://blog.pakithecat.eu/tags/storage/</link>
+      <pubDate>Sat, 14 Mar 2026 09:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/storage/</guid>
       <description></description>
     </item>
     <item>
@@ -119,13 +161,6 @@
       <link>https://blog.pakithecat.eu/tags/blog/</link>
       <pubDate>Thu, 03 Jul 2025 12:18:07 +0300</pubDate>
       <guid>https://blog.pakithecat.eu/tags/blog/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Cloud</title>
-      <link>https://blog.pakithecat.eu/tags/cloud/</link>
-      <pubDate>Thu, 03 Jul 2025 12:18:07 +0300</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/cloud/</guid>
       <description></description>
     </item>
     <item>

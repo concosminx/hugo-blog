@@ -5,11 +5,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu | Ce am făcut toată săptămâna</title>
-<meta name="keywords" content="linux, ubuntu, sudo, user-management">
-<meta name="description" content="Ghid pas cu pas pentru crearea unui utilizator cu privilegii sudo pe Ubuntu.">
+<title>Instalează RustFS cu Docker (Ghid rapid) | Ce am făcut toată săptămâna</title>
+<meta name="keywords" content="rustfs, docker, storage, s3, cloud, linux, gcp">
+<meta name="description" content="RustFS este un sistem de stocare de obiecte rapid și compatibil S3. Acest ghid scurt arată instalarea cu Docker, păstrând doar exemplul complet de configurare a parametrilor și link-urile oficiale către fișierele Docker Compose. Am adăugat și un scurt ghid pentru a permite accesul la un VM în Google Cloud.
+Cerințe preliminare
+
+Docker 20.10&#43; instalat și capabil să tragă imagini
+Un director local pentru datele RustFS (exemplu: /mnt/rustfs/data)
+Porturile 9000 (API) și 9001 (consolă) deschise pe host
+
+
+Notă despre permisiuni: containerul rulează cu user ID 10001. Dacă montezi un director local cu -v, asigură-te că acel director este deținut de 10001, altfel vei primi erori de permisiune.">
 <meta name="author" content="Me">
-<link rel="canonical" href="https://blog.pakithecat.eu/ro/posts/create-sudo-user-ubuntu/">
+<link rel="canonical" href="https://blog.pakithecat.eu/ro/posts/rustfs-docker-install/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.d6fcd20a4fb86efa4dfac8ec95da60244cc8871042183da1ef28e3a762ad79c8.css" integrity="sha256-1vzSCk&#43;4bvpN&#43;sjsldpgJEzIhxBCGD2h7yjjp2Ktecg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blog.pakithecat.eu/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blog.pakithecat.eu/icons/favicon-16x16.png">
@@ -18,8 +26,8 @@
 <link rel="mask-icon" href="https://blog.pakithecat.eu/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://blog.pakithecat.eu/posts/create-sudo-user-ubuntu/">
-<link rel="alternate" hreflang="ro" href="https://blog.pakithecat.eu/ro/posts/create-sudo-user-ubuntu/">
+<link rel="alternate" hreflang="en" href="https://blog.pakithecat.eu/posts/rustfs-docker-install/">
+<link rel="alternate" hreflang="ro" href="https://blog.pakithecat.eu/ro/posts/rustfs-docker-install/">
 <noscript>
     <style>
         #theme-toggle,
@@ -56,20 +64,29 @@
         }
 
     </style>
-</noscript><meta property="og:url" content="https://blog.pakithecat.eu/ro/posts/create-sudo-user-ubuntu/">
+</noscript><meta property="og:url" content="https://blog.pakithecat.eu/ro/posts/rustfs-docker-install/">
   <meta property="og:site_name" content="Ce am făcut toată săptămâna">
-  <meta property="og:title" content="Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu">
-  <meta property="og:description" content="Ghid pas cu pas pentru crearea unui utilizator cu privilegii sudo pe Ubuntu.">
+  <meta property="og:title" content="Instalează RustFS cu Docker (Ghid rapid)">
+  <meta property="og:description" content="RustFS este un sistem de stocare de obiecte rapid și compatibil S3. Acest ghid scurt arată instalarea cu Docker, păstrând doar exemplul complet de configurare a parametrilor și link-urile oficiale către fișierele Docker Compose. Am adăugat și un scurt ghid pentru a permite accesul la un VM în Google Cloud.
+Cerințe preliminare Docker 20.10&#43; instalat și capabil să tragă imagini Un director local pentru datele RustFS (exemplu: /mnt/rustfs/data) Porturile 9000 (API) și 9001 (consolă) deschise pe host Notă despre permisiuni: containerul rulează cu user ID 10001. Dacă montezi un director local cu -v, asigură-te că acel director este deținut de 10001, altfel vei primi erori de permisiune.">
   <meta property="og:locale" content="ro">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2026-03-07T12:00:00+02:00">
-    <meta property="article:modified_time" content="2026-03-07T12:00:00+02:00">
-    <meta property="og:image" content="https://blog.pakithecat.eu/img/ubuntu-sudo-user.png">
+    <meta property="article:published_time" content="2026-03-14T09:00:00+02:00">
+    <meta property="article:modified_time" content="2026-03-14T09:00:00+02:00">
+    <meta property="og:image" content="https://blog.pakithecat.eu/img/rustfs-with-docker.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.pakithecat.eu/img/ubuntu-sudo-user.png">
-<meta name="twitter:title" content="Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu">
-<meta name="twitter:description" content="Ghid pas cu pas pentru crearea unui utilizator cu privilegii sudo pe Ubuntu.">
+<meta name="twitter:image" content="https://blog.pakithecat.eu/img/rustfs-with-docker.png">
+<meta name="twitter:title" content="Instalează RustFS cu Docker (Ghid rapid)">
+<meta name="twitter:description" content="RustFS este un sistem de stocare de obiecte rapid și compatibil S3. Acest ghid scurt arată instalarea cu Docker, păstrând doar exemplul complet de configurare a parametrilor și link-urile oficiale către fișierele Docker Compose. Am adăugat și un scurt ghid pentru a permite accesul la un VM în Google Cloud.
+Cerințe preliminare
+
+Docker 20.10&#43; instalat și capabil să tragă imagini
+Un director local pentru datele RustFS (exemplu: /mnt/rustfs/data)
+Porturile 9000 (API) și 9001 (consolă) deschise pe host
+
+
+Notă despre permisiuni: containerul rulează cu user ID 10001. Dacă montezi un director local cu -v, asigură-te că acel director este deținut de 10001, altfel vei primi erori de permisiune.">
 
 
 <script type="application/ld+json">
@@ -86,8 +103,8 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu",
-      "item": "https://blog.pakithecat.eu/ro/posts/create-sudo-user-ubuntu/"
+      "name": "Instalează RustFS cu Docker (Ghid rapid)",
+      "item": "https://blog.pakithecat.eu/ro/posts/rustfs-docker-install/"
     }
   ]
 }
@@ -96,24 +113,24 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu",
-  "name": "Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu",
-  "description": "Ghid pas cu pas pentru crearea unui utilizator cu privilegii sudo pe Ubuntu.",
+  "headline": "Instalează RustFS cu Docker (Ghid rapid)",
+  "name": "Instalează RustFS cu Docker (Ghid rapid)",
+  "description": "RustFS este un sistem de stocare de obiecte rapid și compatibil S3. Acest ghid scurt arată instalarea cu Docker, păstrând doar exemplul complet de configurare a parametrilor și link-urile oficiale către fișierele Docker Compose. Am adăugat și un scurt ghid pentru a permite accesul la un VM în Google Cloud.\nCerințe preliminare Docker 20.10+ instalat și capabil să tragă imagini Un director local pentru datele RustFS (exemplu: /mnt/rustfs/data) Porturile 9000 (API) și 9001 (consolă) deschise pe host Notă despre permisiuni: containerul rulează cu user ID 10001. Dacă montezi un director local cu -v, asigură-te că acel director este deținut de 10001, altfel vei primi erori de permisiune.\n",
   "keywords": [
-    "linux", "ubuntu", "sudo", "user-management"
+    "rustfs", "docker", "storage", "s3", "cloud", "linux", "gcp"
   ],
-  "articleBody": "Introducere Acordarea drepturilor sudo unui utilizator îi permite să efectueze sarcini administrative fără a se conecta ca root. Acest ghid explică cum să creezi un utilizator nou cu acces sudo pe Ubuntu, urmând bune practici de securitate și administrare.\nPasul 1 — Conectează-te la server Conectează-te la serverul Ubuntu ca utilizator root (sau un utilizator cu drepturi sudo):\nssh root@adresa_ip_server Pasul 2 — Creează un utilizator nou Creează un cont nou de utilizator (înlocuiește utilizatornou cu numele dorit):\nadduser utilizatornou Vei fi rugat să setezi o parolă și să completezi informații opționale despre utilizator. Poți apăsa ENTER pentru a accepta valorile implicite.\nPasul 3 — Acordă drepturi sudo Adaugă noul utilizator în grupul sudo:\nusermod -aG sudo utilizatornou Pe Ubuntu, utilizatorii din grupul sudo pot rula comenzi ca root folosind sudo.\nPasul 4 — Testează accesul sudo Comută pe noul utilizator:\nsu - utilizatornou Testează sudo rulând o comandă privilegiată (de exemplu, listarea directorului /root):\nsudo ls -la /root La prima utilizare a comenzii sudo, vei fi rugat să introduci parola noului utilizator. Dacă totul este corect, comanda se va executa cu privilegii de root.\nDiferența dintre sudo și su sudo permite unui utilizator autorizat să ruleze o comandă ca alt utilizator (implicit root), autentificându-se cu propria parolă. Fiecare comandă este logată pentru audit. su comută pe un alt cont de utilizator și necesită parola acelui utilizator. Deschide o nouă sesiune shell ca acel utilizator. Bune practici Principiul celor mai puține privilegii: Acordă drepturi sudo doar utilizatorilor care au nevoie. Limitează comenzile sudo: Pentru securitate sporită, restricționează comenzile ce pot fi rulate cu sudo editând fișierul /etc/sudoers cu visudo. Dezactivează login-ul root: După crearea unui utilizator cu sudo, poți dezactiva login-ul direct ca root pentru o securitate mai bună: sudo passwd -l root Referințe DigitalOcean: Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu Cum editezi fișierul Sudoers Cum adaugi și ștergi utilizatori pe Ubuntu Acest articol este bazat pe tutorialul DigitalOcean menționat mai sus. Respectă întotdeauna politicile de securitate ale organizației tale când gestionezi utilizatori și accesul sudo.\n",
-  "wordCount" : "340",
+  "articleBody": "RustFS este un sistem de stocare de obiecte rapid și compatibil S3. Acest ghid scurt arată instalarea cu Docker, păstrând doar exemplul complet de configurare a parametrilor și link-urile oficiale către fișierele Docker Compose. Am adăugat și un scurt ghid pentru a permite accesul la un VM în Google Cloud.\nCerințe preliminare Docker 20.10+ instalat și capabil să tragă imagini Un director local pentru datele RustFS (exemplu: /mnt/rustfs/data) Porturile 9000 (API) și 9001 (consolă) deschise pe host Notă despre permisiuni: containerul rulează cu user ID 10001. Dacă montezi un director local cu -v, asigură-te că acel director este deținut de 10001, altfel vei primi erori de permisiune.\nDescarcă imaginea RustFS docker pull rustfs/rustfs:latest Rulează RustFS (exemplu complet de parametri) docker run -d \\ --name rustfs_container \\ -p 9000:9000 \\ -p 9001:9001 \\ -v /mnt/rustfs/data:/data \\ -e RUSTFS_ACCESS_KEY=rustfsadmin \\ -e RUSTFS_SECRET_KEY=rustfsadmin \\ -e RUSTFS_CONSOLE_ENABLE=true \\ -e RUSTFS_SERVER_DOMAINS=example.com \\ rustfs/rustfs:latest \\ --address :9000 \\ --console-enable \\ --server-domains example.com \\ --access-key rustfsadmin \\ --secret-key rustfsadmin \\ /data După ce containerul pornește, deschide http://:9000 și autentifică-te cu access/secret key-ul configurat (în exemplu: rustfsadmin/rustfsadmin).\nFișiere Docker Compose (oficiale) RustFS oferă definiții Compose gata de folosit în repo-ul principal:\ndocker-compose.yml: https://github.com/rustfs/rustfs/blob/main/docker-compose.yml docker-compose-observability.yml: https://github.com/rustfs/rustfs/blob/main/docker-compose-observability.yml Permite accesul dintr-un VM Google Cloud Dacă RustFS rulează pe un VM în Google Cloud, trebuie să permiți trafic inbound pe porturile 9000 și 9001 în rețeaua VPC a VM-ului.\nPași în consolă Mergi la VPC network → Firewall → Create firewall rule. La Targets, alege Specified target tags și adaugă un tag precum rustfs. La Source IPv4 ranges, setează IP-ul tău (recomandat) sau un CIDR. La Protocols and ports, selectează Specified protocols and ports și introdu tcp:9000,tcp:9001. Salvează regula și aplică același network tag (rustfs) pe VM. Opțional: comandă gcloud gcloud compute firewall-rules create allow-rustfs \\ --network=default \\ --direction=INGRESS \\ --action=ALLOW \\ --rules=tcp:9000,tcp:9001 \\ --source-ranges= \\ --target-tags=rustfs După aceea, poți accesa RustFS la http://:9000.\nSursă: RustFS Docker installation docs\n",
+  "wordCount" : "317",
   "inLanguage": "ro",
-  "image":"https://blog.pakithecat.eu/img/ubuntu-sudo-user.png","datePublished": "2026-03-07T12:00:00+02:00",
-  "dateModified": "2026-03-07T12:00:00+02:00",
+  "image":"https://blog.pakithecat.eu/img/rustfs-with-docker.png","datePublished": "2026-03-14T09:00:00+02:00",
+  "dateModified": "2026-03-14T09:00:00+02:00",
   "author":{
     "@type": "Person",
     "name": "Me"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://blog.pakithecat.eu/ro/posts/create-sudo-user-ubuntu/"
+    "@id": "https://blog.pakithecat.eu/ro/posts/rustfs-docker-install/"
   },
   "publisher": {
     "@type": "Organization",
@@ -208,21 +225,18 @@
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://blog.pakithecat.eu/ro/">Acasă</a>&nbsp;»&nbsp;<a href="https://blog.pakithecat.eu/ro/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
-      Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu
+      Instalează RustFS cu Docker (Ghid rapid)
     </h1>
-    <div class="post-description">
-      Ghid pas cu pas pentru crearea unui utilizator cu privilegii sudo pe Ubuntu.
-    </div>
-    <div class="post-meta"><span title='2026-03-07 12:00:00 +0200 +0200'>martie 7, 2026</span>&nbsp;·&nbsp;2 minute&nbsp;·&nbsp;Me&nbsp;|&nbsp;Traduceri:
+    <div class="post-meta"><span title='2026-03-14 09:00:00 +0200 +0200'>martie 14, 2026</span>&nbsp;·&nbsp;2 minute&nbsp;·&nbsp;317 cuvinte&nbsp;·&nbsp;Me&nbsp;|&nbsp;Traduceri:
 <ul class="i18n_list">
     <li>
-        <a href="https://blog.pakithecat.eu/posts/create-sudo-user-ubuntu/">🇬🇧</a>
+        <a href="https://blog.pakithecat.eu/posts/rustfs-docker-install/">🇬🇧</a>
     </li>
-</ul>&nbsp;|&nbsp;<a href="https://github.com/concosminx/hugo-blog/tree/main/content/posts/create-sudo-user-ubuntu.ro.md" rel="noopener noreferrer" target="_blank">Sugereaza schimbari</a>
+</ul>&nbsp;|&nbsp;<a href="https://github.com/concosminx/hugo-blog/tree/main/content/posts/rustfs-docker-install.ro.md" rel="noopener noreferrer" target="_blank">Sugereaza schimbari</a>
 
 </div>
   </header> 
-<figure class="entry-cover"><img loading="eager" src="https://blog.pakithecat.eu/img/ubuntu-sudo-user.png" alt="Utilizator sudo pe Ubuntu">
+<figure class="entry-cover"><img loading="eager" src="https://blog.pakithecat.eu/img/rustfs-with-docker.png" alt="Containerized storage service">
         
 </figure><div class="toc">
     <details >
@@ -232,66 +246,85 @@
 
         <div class="inner"><ul>
                 <li>
-                    <a href="#introducere" aria-label="Introducere">Introducere</a></li>
+                    <a href="#cerin%c8%9be-preliminare" aria-label="Cerințe preliminare">Cerințe preliminare</a></li>
                 <li>
-                    <a href="#pasul-1--conecteaz%c4%83-te-la-server" aria-label="Pasul 1 — Conectează-te la server">Pasul 1 — Conectează-te la server</a></li>
+                    <a href="#descarc%c4%83-imaginea-rustfs" aria-label="Descarcă imaginea RustFS">Descarcă imaginea RustFS</a></li>
                 <li>
-                    <a href="#pasul-2--creeaz%c4%83-un-utilizator-nou" aria-label="Pasul 2 — Creează un utilizator nou">Pasul 2 — Creează un utilizator nou</a></li>
+                    <a href="#ruleaz%c4%83-rustfs-exemplu-complet-de-parametri" aria-label="Rulează RustFS (exemplu complet de parametri)">Rulează RustFS (exemplu complet de parametri)</a></li>
                 <li>
-                    <a href="#pasul-3--acord%c4%83-drepturi-sudo" aria-label="Pasul 3 — Acordă drepturi sudo">Pasul 3 — Acordă drepturi sudo</a></li>
+                    <a href="#fi%c8%99iere-docker-compose-oficiale" aria-label="Fișiere Docker Compose (oficiale)">Fișiere Docker Compose (oficiale)</a></li>
                 <li>
-                    <a href="#pasul-4--testeaz%c4%83-accesul-sudo" aria-label="Pasul 4 — Testează accesul sudo">Pasul 4 — Testează accesul sudo</a></li>
+                    <a href="#permite-accesul-dintr-un-vm-google-cloud" aria-label="Permite accesul dintr-un VM Google Cloud">Permite accesul dintr-un VM Google Cloud</a><ul>
+                        
                 <li>
-                    <a href="#diferen%c8%9ba-dintre-sudo-%c8%99i-su" aria-label="Diferența dintre sudo și su">Diferența dintre sudo și su</a></li>
+                    <a href="#pa%c8%99i-%c3%aen-consol%c4%83" aria-label="Pași în consolă">Pași în consolă</a></li>
                 <li>
-                    <a href="#bune-practici" aria-label="Bune practici">Bune practici</a></li>
-                <li>
-                    <a href="#referin%c8%9be" aria-label="Referințe">Referințe</a>
+                    <a href="#op%c8%9bional-comand%c4%83-gcloud" aria-label="Opțional: comandă gcloud">Opțional: comandă gcloud</a>
                 </li>
+            </ul>
+            </li>
             </ul>
         </div>
     </details>
 </div>
 
-  <div class="post-content"><h2 id="introducere">Introducere<a hidden class="anchor" aria-hidden="true" href="#introducere">#</a></h2>
-<p>Acordarea drepturilor sudo unui utilizator îi permite să efectueze sarcini administrative fără a se conecta ca root. Acest ghid explică cum să creezi un utilizator nou cu acces sudo pe Ubuntu, urmând bune practici de securitate și administrare.</p>
-<h2 id="pasul-1--conectează-te-la-server">Pasul 1 — Conectează-te la server<a hidden class="anchor" aria-hidden="true" href="#pasul-1--conectează-te-la-server">#</a></h2>
-<p>Conectează-te la serverul Ubuntu ca utilizator root (sau un utilizator cu drepturi sudo):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh root@adresa_ip_server
-</span></span></code></pre></div><h2 id="pasul-2--creează-un-utilizator-nou">Pasul 2 — Creează un utilizator nou<a hidden class="anchor" aria-hidden="true" href="#pasul-2--creează-un-utilizator-nou">#</a></h2>
-<p>Creează un cont nou de utilizator (înlocuiește <code>utilizatornou</code> cu numele dorit):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">adduser utilizatornou
-</span></span></code></pre></div><p>Vei fi rugat să setezi o parolă și să completezi informații opționale despre utilizator. Poți apăsa ENTER pentru a accepta valorile implicite.</p>
-<h2 id="pasul-3--acordă-drepturi-sudo">Pasul 3 — Acordă drepturi sudo<a hidden class="anchor" aria-hidden="true" href="#pasul-3--acordă-drepturi-sudo">#</a></h2>
-<p>Adaugă noul utilizator în grupul <code>sudo</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">usermod -aG sudo utilizatornou
-</span></span></code></pre></div><p>Pe Ubuntu, utilizatorii din grupul <code>sudo</code> pot rula comenzi ca root folosind <code>sudo</code>.</p>
-<h2 id="pasul-4--testează-accesul-sudo">Pasul 4 — Testează accesul sudo<a hidden class="anchor" aria-hidden="true" href="#pasul-4--testează-accesul-sudo">#</a></h2>
-<p>Comută pe noul utilizator:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">su - utilizatornou
-</span></span></code></pre></div><p>Testează sudo rulând o comandă privilegiată (de exemplu, listarea directorului <code>/root</code>):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ls -la /root
-</span></span></code></pre></div><p>La prima utilizare a comenzii <code>sudo</code>, vei fi rugat să introduci parola noului utilizator. Dacă totul este corect, comanda se va executa cu privilegii de root.</p>
-<h2 id="diferența-dintre-sudo-și-su">Diferența dintre <code>sudo</code> și <code>su</code><a hidden class="anchor" aria-hidden="true" href="#diferența-dintre-sudo-și-su">#</a></h2>
+  <div class="post-content"><p>RustFS este un sistem de stocare de obiecte rapid și compatibil S3. Acest ghid scurt arată instalarea cu <strong>Docker</strong>, păstrând doar exemplul complet de configurare a parametrilor și link-urile oficiale către fișierele Docker Compose. Am adăugat și un scurt ghid pentru a permite accesul la un VM în Google Cloud.</p>
+<h2 id="cerințe-preliminare">Cerințe preliminare<a hidden class="anchor" aria-hidden="true" href="#cerințe-preliminare">#</a></h2>
 <ul>
-<li><code>sudo</code> permite unui utilizator autorizat să ruleze o comandă ca alt utilizator (implicit root), autentificându-se cu propria parolă. Fiecare comandă este logată pentru audit.</li>
-<li><code>su</code> comută pe un alt cont de utilizator și necesită parola acelui utilizator. Deschide o nouă sesiune shell ca acel utilizator.</li>
+<li>Docker 20.10+ instalat și capabil să tragă imagini</li>
+<li>Un director local pentru datele RustFS (exemplu: <code>/mnt/rustfs/data</code>)</li>
+<li>Porturile <strong>9000</strong> (API) și <strong>9001</strong> (consolă) deschise pe host</li>
 </ul>
-<h2 id="bune-practici">Bune practici<a hidden class="anchor" aria-hidden="true" href="#bune-practici">#</a></h2>
+<blockquote>
+<p><strong>Notă despre permisiuni</strong>: containerul rulează cu user ID <code>10001</code>. Dacă montezi un director local cu <code>-v</code>, asigură-te că acel director este deținut de <code>10001</code>, altfel vei primi erori de permisiune.</p>
+</blockquote>
+<h2 id="descarcă-imaginea-rustfs">Descarcă imaginea RustFS<a hidden class="anchor" aria-hidden="true" href="#descarcă-imaginea-rustfs">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker pull rustfs/rustfs:latest
+</span></span></code></pre></div><h2 id="rulează-rustfs-exemplu-complet-de-parametri">Rulează RustFS (exemplu complet de parametri)<a hidden class="anchor" aria-hidden="true" href="#rulează-rustfs-exemplu-complet-de-parametri">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -d <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --name rustfs_container <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p 9000:9000 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p 9001:9001 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v /mnt/rustfs/data:/data <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -e <span class="nv">RUSTFS_ACCESS_KEY</span><span class="o">=</span>rustfsadmin <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -e <span class="nv">RUSTFS_SECRET_KEY</span><span class="o">=</span>rustfsadmin <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -e <span class="nv">RUSTFS_CONSOLE_ENABLE</span><span class="o">=</span><span class="nb">true</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -e <span class="nv">RUSTFS_SERVER_DOMAINS</span><span class="o">=</span>example.com <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  rustfs/rustfs:latest <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --address :9000 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --console-enable <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --server-domains example.com <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --access-key rustfsadmin <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --secret-key rustfsadmin <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  /data
+</span></span></code></pre></div><p>După ce containerul pornește, deschide <code>http://&lt;host-ip&gt;:9000</code> și autentifică-te cu access/secret key-ul configurat (în exemplu: <code>rustfsadmin</code>/<code>rustfsadmin</code>).</p>
+<h2 id="fișiere-docker-compose-oficiale">Fișiere Docker Compose (oficiale)<a hidden class="anchor" aria-hidden="true" href="#fișiere-docker-compose-oficiale">#</a></h2>
+<p>RustFS oferă definiții Compose gata de folosit în repo-ul principal:</p>
 <ul>
-<li><strong>Principiul celor mai puține privilegii:</strong> Acordă drepturi sudo doar utilizatorilor care au nevoie.</li>
-<li><strong>Limitează comenzile sudo:</strong> Pentru securitate sporită, restricționează comenzile ce pot fi rulate cu sudo editând fișierul <code>/etc/sudoers</code> cu <code>visudo</code>.</li>
-<li><strong>Dezactivează login-ul root:</strong> După crearea unui utilizator cu sudo, poți dezactiva login-ul direct ca root pentru o securitate mai bună:</li>
+<li><code>docker-compose.yml</code>: <a href="https://github.com/rustfs/rustfs/blob/main/docker-compose.yml">https://github.com/rustfs/rustfs/blob/main/docker-compose.yml</a></li>
+<li><code>docker-compose-observability.yml</code>: <a href="https://github.com/rustfs/rustfs/blob/main/docker-compose-observability.yml">https://github.com/rustfs/rustfs/blob/main/docker-compose-observability.yml</a></li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo passwd -l root
-</span></span></code></pre></div><h2 id="referințe">Referințe<a hidden class="anchor" aria-hidden="true" href="#referințe">#</a></h2>
-<ul>
-<li><a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-new-sudo-enabled-user-on-ubuntu">DigitalOcean: Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu</a></li>
-<li><a href="https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file">Cum editezi fișierul Sudoers</a></li>
-<li><a href="https://www.digitalocean.com/community/tutorials/how-to-add-and-delete-users-on-ubuntu-20-04">Cum adaugi și ștergi utilizatori pe Ubuntu</a></li>
-</ul>
+<h2 id="permite-accesul-dintr-un-vm-google-cloud">Permite accesul dintr-un VM Google Cloud<a hidden class="anchor" aria-hidden="true" href="#permite-accesul-dintr-un-vm-google-cloud">#</a></h2>
+<p>Dacă RustFS rulează pe un VM în Google Cloud, trebuie să permiți trafic inbound pe porturile <strong>9000</strong> și <strong>9001</strong> în rețeaua VPC a VM-ului.</p>
+<h3 id="pași-în-consolă">Pași în consolă<a hidden class="anchor" aria-hidden="true" href="#pași-în-consolă">#</a></h3>
+<ol>
+<li>Mergi la <strong>VPC network</strong> → <strong>Firewall</strong> → <strong>Create firewall rule</strong>.</li>
+<li>La <strong>Targets</strong>, alege <strong>Specified target tags</strong> și adaugă un tag precum <code>rustfs</code>.</li>
+<li>La <strong>Source IPv4 ranges</strong>, setează IP-ul tău (recomandat) sau un CIDR.</li>
+<li>La <strong>Protocols and ports</strong>, selectează <strong>Specified protocols and ports</strong> și introdu <code>tcp:9000,tcp:9001</code>.</li>
+<li>Salvează regula și aplică <strong>același network tag</strong> (<code>rustfs</code>) pe VM.</li>
+</ol>
+<h3 id="opțional-comandă-gcloud">Opțional: comandă gcloud<a hidden class="anchor" aria-hidden="true" href="#opțional-comandă-gcloud">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gcloud compute firewall-rules create allow-rustfs <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --network<span class="o">=</span>default <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --direction<span class="o">=</span>INGRESS <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --action<span class="o">=</span>ALLOW <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --rules<span class="o">=</span>tcp:9000,tcp:9001 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --source-ranges<span class="o">=</span>&lt;IP_CIDR_TAU&gt; <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --target-tags<span class="o">=</span>rustfs
+</span></span></code></pre></div><p>După aceea, poți accesa RustFS la <code>http://&lt;vm-external-ip&gt;:9000</code>.</p>
 <hr>
-<p><em>Acest articol este bazat pe tutorialul DigitalOcean menționat mai sus. Respectă întotdeauna politicile de securitate ale organizației tale când gestionezi utilizatori și accesul sudo.</em></p>
+<p>Sursă: <a href="https://docs.rustfs.com/installation/docker/">RustFS Docker installation docs</a></p>
 
 
   </div>
@@ -300,23 +333,18 @@
     <ul class="post-tags">
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://blog.pakithecat.eu/ro/posts/rustfs-docker-install/">
-    <span class="title">« Înapoi</span>
-    <br>
-    <span>Instalează RustFS cu Docker (Ghid rapid)</span>
-  </a>
-  <a class="next" href="https://blog.pakithecat.eu/ro/posts/kafka-windows-install/">
+  <a class="next" href="https://blog.pakithecat.eu/ro/posts/create-sudo-user-ubuntu/">
     <span class="title">Înainte »</span>
     <br>
-    <span>Configurare Rapida Kafka pe Windows cu UI</span>
+    <span>Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu</span>
   </a>
 </nav>
 
 
 <ul class="share-buttons">
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu on x"
-            href="https://x.com/intent/tweet/?text=Cum%20creezi%20un%20utilizator%20nou%20cu%20drepturi%20sudo%20pe%20Ubuntu&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2fcreate-sudo-user-ubuntu%2f&amp;hashtags=linux%2cubuntu%2csudo%2cuser-management">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Instalează RustFS cu Docker (Ghid rapid) on x"
+            href="https://x.com/intent/tweet/?text=Instaleaz%c4%83%20RustFS%20cu%20Docker%20%28Ghid%20rapid%29&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2frustfs-docker-install%2f&amp;hashtags=rustfs%2cdocker%2cstorage%2cs3%2ccloud%2clinux%2cgcp">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -324,8 +352,8 @@
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2fcreate-sudo-user-ubuntu%2f&amp;title=Cum%20creezi%20un%20utilizator%20nou%20cu%20drepturi%20sudo%20pe%20Ubuntu&amp;summary=Cum%20creezi%20un%20utilizator%20nou%20cu%20drepturi%20sudo%20pe%20Ubuntu&amp;source=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2fcreate-sudo-user-ubuntu%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Instalează RustFS cu Docker (Ghid rapid) on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2frustfs-docker-install%2f&amp;title=Instaleaz%c4%83%20RustFS%20cu%20Docker%20%28Ghid%20rapid%29&amp;summary=Instaleaz%c4%83%20RustFS%20cu%20Docker%20%28Ghid%20rapid%29&amp;source=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2frustfs-docker-install%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -333,8 +361,8 @@
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu on reddit"
-            href="https://reddit.com/submit?url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2fcreate-sudo-user-ubuntu%2f&title=Cum%20creezi%20un%20utilizator%20nou%20cu%20drepturi%20sudo%20pe%20Ubuntu">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Instalează RustFS cu Docker (Ghid rapid) on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2frustfs-docker-install%2f&title=Instaleaz%c4%83%20RustFS%20cu%20Docker%20%28Ghid%20rapid%29">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -342,8 +370,8 @@
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2fcreate-sudo-user-ubuntu%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Instalează RustFS cu Docker (Ghid rapid) on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2frustfs-docker-install%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -351,8 +379,8 @@
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu on whatsapp"
-            href="https://api.whatsapp.com/send?text=Cum%20creezi%20un%20utilizator%20nou%20cu%20drepturi%20sudo%20pe%20Ubuntu%20-%20https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2fcreate-sudo-user-ubuntu%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Instalează RustFS cu Docker (Ghid rapid) on whatsapp"
+            href="https://api.whatsapp.com/send?text=Instaleaz%c4%83%20RustFS%20cu%20Docker%20%28Ghid%20rapid%29%20-%20https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2frustfs-docker-install%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -360,8 +388,8 @@
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu on telegram"
-            href="https://telegram.me/share/url?text=Cum%20creezi%20un%20utilizator%20nou%20cu%20drepturi%20sudo%20pe%20Ubuntu&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2fcreate-sudo-user-ubuntu%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Instalează RustFS cu Docker (Ghid rapid) on telegram"
+            href="https://telegram.me/share/url?text=Instaleaz%c4%83%20RustFS%20cu%20Docker%20%28Ghid%20rapid%29&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2frustfs-docker-install%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -369,8 +397,8 @@
         </a>
     </li>
     <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=Cum%20creezi%20un%20utilizator%20nou%20cu%20drepturi%20sudo%20pe%20Ubuntu&u=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2fcreate-sudo-user-ubuntu%2f">
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Instalează RustFS cu Docker (Ghid rapid) on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Instaleaz%c4%83%20RustFS%20cu%20Docker%20%28Ghid%20rapid%29&u=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2frustfs-docker-install%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path

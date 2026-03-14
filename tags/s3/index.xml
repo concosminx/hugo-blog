@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>S3 on What I Did All Week</title>
+    <link>https://blog.pakithecat.eu/tags/s3/</link>
+    <description>Recent content in S3 on What I Did All Week</description>
+    <generator>Hugo -- 0.140.1</generator>
+    <language>en</language>
+    <copyright>concosminx</copyright>
+    <lastBuildDate>Sat, 14 Mar 2026 09:00:00 +0200</lastBuildDate>
+    <atom:link href="https://blog.pakithecat.eu/tags/s3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Install RustFS with Docker (Quick Guide)</title>
+      <link>https://blog.pakithecat.eu/posts/rustfs-docker-install/</link>
+      <pubDate>Sat, 14 Mar 2026 09:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/posts/rustfs-docker-install/</guid>
+      <description>&lt;p&gt;RustFS is a fast, S3-compatible object storage system. This quick guide shows the &lt;strong&gt;Docker&lt;/strong&gt; install path, keeping only the full parameter configuration example and the official Docker Compose links. I also added a short section for opening access from a VM running in Google Cloud.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Docker 20.10+ installed and able to pull images&lt;/li&gt;
+&lt;li&gt;A host directory for RustFS data (example: &lt;code&gt;/mnt/rustfs/data&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Open ports &lt;strong&gt;9000&lt;/strong&gt; (API) and &lt;strong&gt;9001&lt;/strong&gt; (console) on the host&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note on permissions&lt;/strong&gt;: the container runs as user ID &lt;code&gt;10001&lt;/code&gt;. If you mount a host directory with &lt;code&gt;-v&lt;/code&gt;, make sure that directory is owned by &lt;code&gt;10001&lt;/code&gt; to avoid permission errors.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

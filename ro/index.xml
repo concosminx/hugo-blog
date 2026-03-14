@@ -7,8 +7,23 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>ro</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Sat, 07 Mar 2026 12:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 14 Mar 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/ro/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Instalează RustFS cu Docker (Ghid rapid)</title>
+      <link>https://blog.pakithecat.eu/ro/posts/rustfs-docker-install/</link>
+      <pubDate>Sat, 14 Mar 2026 09:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/posts/rustfs-docker-install/</guid>
+      <description>&lt;p&gt;RustFS este un sistem de stocare de obiecte rapid și compatibil S3. Acest ghid scurt arată instalarea cu &lt;strong&gt;Docker&lt;/strong&gt;, păstrând doar exemplul complet de configurare a parametrilor și link-urile oficiale către fișierele Docker Compose. Am adăugat și un scurt ghid pentru a permite accesul la un VM în Google Cloud.&lt;/p&gt;
+&lt;h2 id=&#34;cerințe-preliminare&#34;&gt;Cerințe preliminare&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Docker 20.10+ instalat și capabil să tragă imagini&lt;/li&gt;
+&lt;li&gt;Un director local pentru datele RustFS (exemplu: &lt;code&gt;/mnt/rustfs/data&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Porturile &lt;strong&gt;9000&lt;/strong&gt; (API) și &lt;strong&gt;9001&lt;/strong&gt; (consolă) deschise pe host&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Notă despre permisiuni&lt;/strong&gt;: containerul rulează cu user ID &lt;code&gt;10001&lt;/code&gt;. Dacă montezi un director local cu &lt;code&gt;-v&lt;/code&gt;, asigură-te că acel director este deținut de &lt;code&gt;10001&lt;/code&gt;, altfel vei primi erori de permisiune.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu</title>
       <link>https://blog.pakithecat.eu/ro/posts/create-sudo-user-ubuntu/</link>
