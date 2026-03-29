@@ -8,7 +8,7 @@ showToc: true
 TocOpen: false
 author: "Me"
 cover:
-    image: img/kafka-cover.png
+    image: kafka-cover.png
     alt: 'Apache Kafka pe Windows'
     #caption: 'Apache Kafka streaming platform'
 # editPost:

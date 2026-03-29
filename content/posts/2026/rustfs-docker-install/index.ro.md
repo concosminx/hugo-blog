@@ -8,8 +8,8 @@ showToc: true
 TocOpen: false
 author: "Me"
 cover:
-    image: img/rustfs-with-docker.png
-    alt: 'Containerized storage service'
+  image: rustfs-with-docker.png
+  alt: 'Containerized storage service'
 # editPost:
 #     URL: "https://github.com/<path_to_repo>/content"
 #     Text: "Suggest Changes" # edit text

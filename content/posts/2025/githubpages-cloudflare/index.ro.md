@@ -8,7 +8,7 @@ showToc: false
 TocOpen: false
 author: "Me"
 cover:
-    image: img/pexels-viktortalashuk-2377295.jpg
+    image: pexels-viktortalashuk-2377295.jpg
     alt: 'Books'
 ---
 

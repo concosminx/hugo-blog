@@ -9,7 +9,7 @@ TocOpen: false
 author: "Me"
 description: "Ghid pas cu pas pentru crearea unui utilizator cu privilegii sudo pe Ubuntu."
 cover:
-    image: img/ubuntu-sudo-user.png
+    image: ubuntu-sudo-user.png
     alt: 'Utilizator sudo pe Ubuntu'
 ---
 

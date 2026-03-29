@@ -8,7 +8,7 @@ showToc: false
 TocOpen: false
 author: "Me"
 cover:
-    image: img/pexels-harold-vasquez-853421-2653362.jpg
+    image: pexels-harold-vasquez-853421-2653362.jpg
     alt: 'Cod pe tema IDE inchisa la culoare'
     #caption: 'Code on black IDE theme'
 # editPost:

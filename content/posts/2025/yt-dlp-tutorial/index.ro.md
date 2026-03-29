@@ -8,7 +8,7 @@ showToc: true
 TocOpen: false
 author: "Me"
 cover:
-    image: img/yt-dlp-cover.jpg
+    image: yt-dlp-cover.jpg
     alt: 'Interfata in linia de comanda yt-dlp'
     #caption: 'Interfata in linia de comanda yt-dlp'
 # editPost:

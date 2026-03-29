@@ -9,7 +9,7 @@ TocOpen: false
 author: "Me"
 description: "Step-by-step guide to creating a new user with sudo privileges on Ubuntu."
 cover:
-    image: img/ubuntu-sudo-user.png
+    image: ubuntu-sudo-user.png
     alt: 'Ubuntu sudo user'
 ---
 

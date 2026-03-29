@@ -8,7 +8,7 @@ showToc: false
 TocOpen: false
 author: "Me"
 cover:
-    image: img/oci-mount-block-volume.png
+    image: oci-mount-block-volume.png
     alt: 'Block Volume'
     #caption: 'Code on black IDE theme'
 # editPost:

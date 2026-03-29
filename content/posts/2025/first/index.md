@@ -8,7 +8,7 @@ showToc: false
 TocOpen: false
 author: "Me"
 cover:
-    image: img/pexels-harold-vasquez-853421-2653362.jpg
+    image: pexels-harold-vasquez-853421-2653362.jpg
     alt: 'Code on black IDE theme'
     #caption: 'Code on black IDE theme'
 # editPost:

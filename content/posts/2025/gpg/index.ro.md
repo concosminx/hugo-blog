@@ -8,7 +8,7 @@ showToc: false
 TocOpen: false
 author: "Me"
 cover:
-    image: img/pexels-pixabay-207580.jpg
+    image: pexels-pixabay-207580.jpg
     alt: 'Criptografie'
 ---
 

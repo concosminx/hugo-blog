@@ -8,7 +8,7 @@ showToc: true
 TocOpen: false
 author: "Me"
 cover:
-    image: img/yt-dlp-cover.jpg
+    image: yt-dlp-cover.jpg
     alt: 'yt-dlp command line interface'
     #caption: 'yt-dlp command line interface'
 # editPost:
