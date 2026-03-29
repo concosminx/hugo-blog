@@ -164,7 +164,30 @@
 </header>
 
 <article class="post-entry tag-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://blog.pakithecat.eu/img/rustfs-with-docker.png" alt="Containerized storage service">
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover_hu9546850153936330343.png 360w ,https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover_hu16952575349772223283.png 480w ,https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover_hu14711061776300051580.png 720w ,https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover_hu18125647546828239409.png 1080w ,https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover.png 1408w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover.png" alt="Gotify notification dashboard" 
+            width="1408" height="768">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Gotify with Docker Compose (Quick Setup)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Gotify is a self-hosted, open-source notification service. It exposes an API that lets your apps send notifications to your phone (Android or iOS). This guide sets it up with Docker Compose, shows how to secure the default user, and how to test notifications.
+Docker Compose setup Create a folder (for example ~/gotify) and add the following docker-compose.yml:
+version: &#34;3&#34; services: gotify: image: gotify/server restart: unless-stopped container_name: gotify ports: - 8989:80 environment: - GOTIFY_DEFAULTUSER_PASS=${GOTIFY_DEFAULTUSER_PASS} volumes: - &#34;./gotify_data:/app/data&#34; networks: default: name: my-main-net external: true Add an environment file named .env (or keep this as .env.example in git and copy it to .env on the server):
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-29 12:00:00 +0200 +0200'>March 29, 2026</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;294 words&nbsp;·&nbsp;Me</footer>
+  <a class="entry-link" aria-label="post link to Gotify with Docker Compose (Quick Setup)" href="https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu17708760385441595367.png 360w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu14862204108476436840.png 480w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu17443722227645238349.png 720w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu17586770206327076378.png 1080w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu13892757768486522560.png 1500w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker.png 1536w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker.png" alt="Containerized storage service" 
+            width="1536" height="1024">
 </figure>
   <header class="entry-header">
     <h2 class="entry-hint-parent">Install RustFS with Docker (Quick Guide)
@@ -176,7 +199,7 @@ Prerequisites Docker 20.10&#43; installed and able to pull images A host directo
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2026-03-14 09:00:00 +0200 +0200'>March 14, 2026</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;323 words&nbsp;·&nbsp;Me</footer>
-  <a class="entry-link" aria-label="post link to Install RustFS with Docker (Quick Guide)" href="https://blog.pakithecat.eu/posts/rustfs-docker-install/"></a>
+  <a class="entry-link" aria-label="post link to Install RustFS with Docker (Quick Guide)" href="https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/"></a>
 </article>
     </main>
     

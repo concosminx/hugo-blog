@@ -11,23 +11,23 @@
     <atom:link href="https://blog.pakithecat.eu/ro/categorii/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configurare Rapida Kafka pe Windows cu UI</title>
-      <link>https://blog.pakithecat.eu/ro/posts/kafka-windows-install/</link>
+      <link>https://blog.pakithecat.eu/ro/posts/2025/kafka-windows-install/</link>
       <pubDate>Sat, 27 Dec 2025 10:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/ro/posts/kafka-windows-install/</guid>
+      <guid>https://blog.pakithecat.eu/ro/posts/2025/kafka-windows-install/</guid>
       <description>Ghid rapid pentru instalarea Apache Kafka pe Windows si configurarea Kafka UI pentru management usor</description>
     </item>
     <item>
       <title>yt-dlp: Tutorial pentru Descarcare Clipuri de pe YouTube</title>
-      <link>https://blog.pakithecat.eu/ro/posts/yt-dlp-tutorial/</link>
+      <link>https://blog.pakithecat.eu/ro/posts/2025/yt-dlp-tutorial/</link>
       <pubDate>Tue, 23 Dec 2025 14:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/ro/posts/yt-dlp-tutorial/</guid>
+      <guid>https://blog.pakithecat.eu/ro/posts/2025/yt-dlp-tutorial/</guid>
       <description>Invata sa instalezi si sa folosesti yt-dlp, instrument in linia de comanda pentru descarcarea videoclipurilor si audio de pe YouTube</description>
     </item>
     <item>
       <title>WinSCP - sudo dupa autentificare</title>
-      <link>https://blog.pakithecat.eu/ro/posts/first/</link>
+      <link>https://blog.pakithecat.eu/ro/posts/2025/first/</link>
       <pubDate>Fri, 03 Jan 2025 10:55:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/ro/posts/first/</guid>
+      <guid>https://blog.pakithecat.eu/ro/posts/2025/first/</guid>
       <description>&lt;p&gt;Recent, a trebuit sa incarc cateva foldere pe un server Linux (Oracle Cloud), dar permisiunile utilizatorului pe care le aveam nu imi permiteau sa creez folderele necesare. In cautarea unei solutii, am dat peste aceasta posibilitate.&lt;/p&gt;
 &lt;p&gt;In unele cazuri (cu servere Unix/Linux), poti folosi comanda &lt;code&gt;sudo&lt;/code&gt; imediat dupa autentificare pentru a schimba utilizatorul, inainte ca sesiunea de transfer de fisiere sa inceapa.&lt;/p&gt;
 &lt;p&gt;Protocoalele &lt;em&gt;SFTP&lt;/em&gt; si &lt;em&gt;SCP&lt;/em&gt; permit acest lucru, dar metoda efectiva depinde de platforma.&lt;/p&gt;</description>

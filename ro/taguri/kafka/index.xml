@@ -11,9 +11,9 @@
     <atom:link href="https://blog.pakithecat.eu/ro/taguri/kafka/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configurare Rapida Kafka pe Windows cu UI</title>
-      <link>https://blog.pakithecat.eu/ro/posts/kafka-windows-install/</link>
+      <link>https://blog.pakithecat.eu/ro/posts/2025/kafka-windows-install/</link>
       <pubDate>Sat, 27 Dec 2025 10:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/ro/posts/kafka-windows-install/</guid>
+      <guid>https://blog.pakithecat.eu/ro/posts/2025/kafka-windows-install/</guid>
       <description>Ghid rapid pentru instalarea Apache Kafka pe Windows si configurarea Kafka UI pentru management usor</description>
     </item>
   </channel>

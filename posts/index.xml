@@ -7,13 +7,40 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Sat, 14 Mar 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2026 12:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Gotify with Docker Compose (Quick Setup)</title>
+      <link>https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/</link>
+      <pubDate>Sun, 29 Mar 2026 12:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/</guid>
+      <description>&lt;p&gt;Gotify is a self-hosted, open-source notification service. It exposes an API that lets your apps send notifications to your phone (Android or iOS). This guide sets it up with Docker Compose, shows how to secure the default user, and how to test notifications.&lt;/p&gt;
+&lt;h2 id=&#34;docker-compose-setup&#34;&gt;Docker Compose setup&lt;/h2&gt;
+&lt;p&gt;Create a folder (for example &lt;code&gt;~/gotify&lt;/code&gt;) and add the following &lt;code&gt;docker-compose.yml&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;3&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;services&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;gotify&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;gotify/server&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;restart&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;unless-stopped&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;container_name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;gotify&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ports&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;m&#34;&gt;8989&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;80&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;environment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;GOTIFY_DEFAULTUSER_PASS=${GOTIFY_DEFAULTUSER_PASS}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;volumes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;s2&#34;&gt;&amp;#34;./gotify_data:/app/data&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;networks&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;my-main-net&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;external&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Add an environment file named &lt;code&gt;.env&lt;/code&gt; (or keep this as &lt;code&gt;.env.example&lt;/code&gt; in git and copy it to &lt;code&gt;.env&lt;/code&gt; on the server):&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Install RustFS with Docker (Quick Guide)</title>
-      <link>https://blog.pakithecat.eu/posts/rustfs-docker-install/</link>
+      <link>https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/</link>
       <pubDate>Sat, 14 Mar 2026 09:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/posts/rustfs-docker-install/</guid>
+      <guid>https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/</guid>
       <description>&lt;p&gt;RustFS is a fast, S3-compatible object storage system. This quick guide shows the &lt;strong&gt;Docker&lt;/strong&gt; install path, keeping only the full parameter configuration example and the official Docker Compose links. I also added a short section for opening access from a VM running in Google Cloud.&lt;/p&gt;
 &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
 &lt;ul&gt;
@@ -26,30 +53,30 @@
     </item>
     <item>
       <title>How To Create a New Sudo-Enabled User on Ubuntu</title>
-      <link>https://blog.pakithecat.eu/posts/create-sudo-user-ubuntu/</link>
+      <link>https://blog.pakithecat.eu/posts/2026/create-sudo-user-ubuntu/</link>
       <pubDate>Sat, 07 Mar 2026 12:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/posts/create-sudo-user-ubuntu/</guid>
+      <guid>https://blog.pakithecat.eu/posts/2026/create-sudo-user-ubuntu/</guid>
       <description>Step-by-step guide to creating a new user with sudo privileges on Ubuntu.</description>
     </item>
     <item>
       <title>Quick Kafka Setup on Windows with UI</title>
-      <link>https://blog.pakithecat.eu/posts/kafka-windows-install/</link>
+      <link>https://blog.pakithecat.eu/posts/2025/kafka-windows-install/</link>
       <pubDate>Sat, 27 Dec 2025 10:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/posts/kafka-windows-install/</guid>
+      <guid>https://blog.pakithecat.eu/posts/2025/kafka-windows-install/</guid>
       <description>Quick guide to install Apache Kafka on Windows and set up Kafka UI for easy management</description>
     </item>
     <item>
       <title>yt-dlp: The YouTube Downloader Tutorial</title>
-      <link>https://blog.pakithecat.eu/posts/yt-dlp-tutorial/</link>
+      <link>https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/</link>
       <pubDate>Tue, 23 Dec 2025 14:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/posts/yt-dlp-tutorial/</guid>
+      <guid>https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/</guid>
       <description>Learn how to install and use yt-dlp, the powerful command-line tool for downloading videos and audio from YouTube</description>
     </item>
     <item>
       <title>Github Pages, Hugo and Cloudflare</title>
-      <link>https://blog.pakithecat.eu/posts/githubpages-cloudflare/</link>
+      <link>https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/</link>
       <pubDate>Thu, 03 Jul 2025 12:18:07 +0300</pubDate>
-      <guid>https://blog.pakithecat.eu/posts/githubpages-cloudflare/</guid>
+      <guid>https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/</guid>
       <description>&lt;h3 id=&#34;how-to-route-your-github-pages-site-through-cloudflare-on-a-subdomain&#34;&gt;How to route your GitHub Pages site through Cloudflare on a Subdomain&lt;/h3&gt;
 &lt;p&gt;Do you have a site hosted on &lt;strong&gt;GitHub Pages&lt;/strong&gt;, like &lt;code&gt;https://usergithub.github.io/my-blog/&lt;/code&gt;, and want to access it via a &lt;strong&gt;custom subdomain&lt;/strong&gt; (e.g., &lt;code&gt;blog.yourdomain.com&lt;/code&gt;) using &lt;strong&gt;Cloudflare&lt;/strong&gt;? It&amp;rsquo;s a great way to improve your performance, security, and have a cleaner URL. Here&amp;rsquo;s how you can do it, step-by-step!&lt;/p&gt;
 &lt;hr&gt;
@@ -58,9 +85,9 @@
     </item>
     <item>
       <title>OCI - Attach and mount a block volume</title>
-      <link>https://blog.pakithecat.eu/posts/oci-mount-block-volume/</link>
+      <link>https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/</link>
       <pubDate>Sun, 16 Feb 2025 16:27:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/posts/oci-mount-block-volume/</guid>
+      <guid>https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/</guid>
       <description>&lt;p&gt;Follow the Oracle &lt;a href=&#34;https://docs.oracle.com/en-us/iaas/Content/Block/Tasks/connectingtoavolume_topic-Connecting_to_iSCSIAttached_Volumes.htm&#34;&gt;guide&lt;/a&gt; to attach the newly created volume and these steps:&lt;/p&gt;
 &lt;h4 id=&#34;identify-the-new-drive-eg-devsdb&#34;&gt;Identify the New Drive (e.g., &lt;code&gt;/dev/sdb&lt;/code&gt;)&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo fdisk -l
@@ -97,9 +124,9 @@
     </item>
     <item>
       <title>How to use GPG to encrypt/decrypt files</title>
-      <link>https://blog.pakithecat.eu/posts/gpg/</link>
+      <link>https://blog.pakithecat.eu/posts/2025/gpg/</link>
       <pubDate>Fri, 03 Jan 2025 15:24:43 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/posts/gpg/</guid>
+      <guid>https://blog.pakithecat.eu/posts/2025/gpg/</guid>
       <description>&lt;p&gt;GnuPG uses public-key cryptography so that users may communicate securely. In a public-key system, each user has a pair of keys consisting of a private key and a public key. A user&amp;rsquo;s private key is kept secret; it need never be revealed. The public key may be given to anyone with whom the user wants to communicate.&lt;/p&gt;
 &lt;h3 id=&#34;installation-and-key-pair-generation&#34;&gt;Installation and key pair generation&lt;/h3&gt;
 &lt;ul&gt;
@@ -148,9 +175,9 @@ check
     </item>
     <item>
       <title>WinSCP - sudo after login</title>
-      <link>https://blog.pakithecat.eu/posts/first/</link>
+      <link>https://blog.pakithecat.eu/posts/2025/first/</link>
       <pubDate>Fri, 03 Jan 2025 10:55:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/posts/first/</guid>
+      <guid>https://blog.pakithecat.eu/posts/2025/first/</guid>
       <description>&lt;p&gt;Recently, I had to upload some folders to a Linux server (Oracle Cloud), but the user permissions I had did not allow me to create the necessary folders. While searching for a solution, I came across this possibility.&lt;/p&gt;
 &lt;p&gt;In some cases (with Unix/Linux server) you may be able to use &lt;code&gt;sudo&lt;/code&gt; command straight after login to change a user, before file transfer session starts.&lt;/p&gt;
 &lt;p&gt;The &lt;em&gt;SFTP&lt;/em&gt; and &lt;em&gt;SCP&lt;/em&gt; protocols allow for this, but the actual method is platform dependent.&lt;/p&gt;</description>

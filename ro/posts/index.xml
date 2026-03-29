@@ -7,13 +7,40 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>ro</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Sat, 14 Mar 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2026 12:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/ro/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Gotify cu Docker Compose (Ghid rapid)</title>
+      <link>https://blog.pakithecat.eu/ro/posts/2026/gotify-docker-compose/</link>
+      <pubDate>Sun, 29 Mar 2026 12:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/posts/2026/gotify-docker-compose/</guid>
+      <description>&lt;p&gt;Gotify este un serviciu de notificări self-hosted, open-source. Expune un API prin care aplicațiile tale pot trimite notificări către telefon (Android sau iOS). În acest ghid îl configurăm cu Docker Compose, securizăm utilizatorul implicit și testăm notificările.&lt;/p&gt;
+&lt;h2 id=&#34;configurare-docker-compose&#34;&gt;Configurare Docker Compose&lt;/h2&gt;
+&lt;p&gt;Creează un folder (de exemplu &lt;code&gt;~/gotify&lt;/code&gt;) și adaugă următorul &lt;code&gt;docker-compose.yml&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;3&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;services&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;gotify&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;gotify/server&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;restart&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;unless-stopped&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;container_name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;gotify&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ports&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;m&#34;&gt;8989&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;80&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;environment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;GOTIFY_DEFAULTUSER_PASS=${GOTIFY_DEFAULTUSER_PASS}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;volumes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;s2&#34;&gt;&amp;#34;./gotify_data:/app/data&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;networks&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;my-main-net&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;external&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Adaugă un fișier de mediu numit &lt;code&gt;.env&lt;/code&gt; (sau păstrează-l ca &lt;code&gt;.env.example&lt;/code&gt; în git și copiază-l ca &lt;code&gt;.env&lt;/code&gt; pe server):&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Instalează RustFS cu Docker (Ghid rapid)</title>
-      <link>https://blog.pakithecat.eu/ro/posts/rustfs-docker-install/</link>
+      <link>https://blog.pakithecat.eu/ro/posts/2026/rustfs-docker-install/</link>
       <pubDate>Sat, 14 Mar 2026 09:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/ro/posts/rustfs-docker-install/</guid>
+      <guid>https://blog.pakithecat.eu/ro/posts/2026/rustfs-docker-install/</guid>
       <description>&lt;p&gt;RustFS este un sistem de stocare de obiecte rapid și compatibil S3. Acest ghid scurt arată instalarea cu &lt;strong&gt;Docker&lt;/strong&gt;, păstrând doar exemplul complet de configurare a parametrilor și link-urile oficiale către fișierele Docker Compose. Am adăugat și un scurt ghid pentru a permite accesul la un VM în Google Cloud.&lt;/p&gt;
 &lt;h2 id=&#34;cerințe-preliminare&#34;&gt;Cerințe preliminare&lt;/h2&gt;
 &lt;ul&gt;
@@ -26,30 +53,30 @@
     </item>
     <item>
       <title>Cum creezi un utilizator nou cu drepturi sudo pe Ubuntu</title>
-      <link>https://blog.pakithecat.eu/ro/posts/create-sudo-user-ubuntu/</link>
+      <link>https://blog.pakithecat.eu/ro/posts/2026/create-sudo-user-ubuntu/</link>
       <pubDate>Sat, 07 Mar 2026 12:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/ro/posts/create-sudo-user-ubuntu/</guid>
+      <guid>https://blog.pakithecat.eu/ro/posts/2026/create-sudo-user-ubuntu/</guid>
       <description>Ghid pas cu pas pentru crearea unui utilizator cu privilegii sudo pe Ubuntu.</description>
     </item>
     <item>
       <title>Configurare Rapida Kafka pe Windows cu UI</title>
-      <link>https://blog.pakithecat.eu/ro/posts/kafka-windows-install/</link>
+      <link>https://blog.pakithecat.eu/ro/posts/2025/kafka-windows-install/</link>
       <pubDate>Sat, 27 Dec 2025 10:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/ro/posts/kafka-windows-install/</guid>
+      <guid>https://blog.pakithecat.eu/ro/posts/2025/kafka-windows-install/</guid>
       <description>Ghid rapid pentru instalarea Apache Kafka pe Windows si configurarea Kafka UI pentru management usor</description>
     </item>
     <item>
       <title>yt-dlp: Tutorial pentru Descarcare Clipuri de pe YouTube</title>
-      <link>https://blog.pakithecat.eu/ro/posts/yt-dlp-tutorial/</link>
+      <link>https://blog.pakithecat.eu/ro/posts/2025/yt-dlp-tutorial/</link>
       <pubDate>Tue, 23 Dec 2025 14:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/ro/posts/yt-dlp-tutorial/</guid>
+      <guid>https://blog.pakithecat.eu/ro/posts/2025/yt-dlp-tutorial/</guid>
       <description>Invata sa instalezi si sa folosesti yt-dlp, instrument in linia de comanda pentru descarcarea videoclipurilor si audio de pe YouTube</description>
     </item>
     <item>
       <title>Github Pages, Hugo si Cloudflare</title>
-      <link>https://blog.pakithecat.eu/ro/posts/githubpages-cloudflare/</link>
+      <link>https://blog.pakithecat.eu/ro/posts/2025/githubpages-cloudflare/</link>
       <pubDate>Thu, 03 Jul 2025 12:18:07 +0300</pubDate>
-      <guid>https://blog.pakithecat.eu/ro/posts/githubpages-cloudflare/</guid>
+      <guid>https://blog.pakithecat.eu/ro/posts/2025/githubpages-cloudflare/</guid>
       <description>&lt;h3 id=&#34;cum-sa-rutezi-site-ul-tau-github-pages-prin-cloudflare-pe-un-subdomeniu&#34;&gt;Cum sa rutezi site-ul tau GitHub Pages prin Cloudflare pe un subdomeniu&lt;/h3&gt;
 &lt;p&gt;Ai un site gazduit pe &lt;strong&gt;GitHub Pages&lt;/strong&gt;, de genul &lt;code&gt;https://usergithub.github.io/my-blog/&lt;/code&gt;, si vrei sa-l accesezi printr-un &lt;strong&gt;subdomeniu personalizat&lt;/strong&gt; (ex: &lt;code&gt;blog.domeniultau.ro&lt;/code&gt;) folosind &lt;strong&gt;Cloudflare&lt;/strong&gt;?
 Este o modalitate excelenta de a-ti imbunatati performanta, securitatea si de a avea un URL mai curat. Iata cum poti face asta, pas cu pas!&lt;/p&gt;
@@ -59,9 +86,9 @@ Este o modalitate excelenta de a-ti imbunatati performanta, securitatea si de a 
     </item>
     <item>
       <title>OCI - Atașarea si montarea unui volum bloc</title>
-      <link>https://blog.pakithecat.eu/ro/posts/oci-mount-block-volume/</link>
+      <link>https://blog.pakithecat.eu/ro/posts/2025/oci-mount-block-volume/</link>
       <pubDate>Sun, 16 Feb 2025 16:27:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/ro/posts/oci-mount-block-volume/</guid>
+      <guid>https://blog.pakithecat.eu/ro/posts/2025/oci-mount-block-volume/</guid>
       <description>&lt;p&gt;Urmeaza &lt;a href=&#34;https://docs.oracle.com/en-us/iaas/Content/Block/Tasks/connectingtoavolume_topic-Connecting_to_iSCSIAttached_Volumes.htm&#34;&gt;ghidul&lt;/a&gt; Oracle pentru a atasa volumul nou creat, apoi executa pasii urmatori:&lt;/p&gt;
 &lt;h4 id=&#34;identifica-noul-disc-de-exemplu-devsdb-&#34;&gt;Identifica noul disc (de exemplu, &lt;code&gt;/dev/sdb&lt;/code&gt; )&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo fdisk -l
@@ -98,9 +125,9 @@ Este o modalitate excelenta de a-ti imbunatati performanta, securitatea si de a 
     </item>
     <item>
       <title>Cum sa folosesti GPG pentru a cripta/decripta fisiere</title>
-      <link>https://blog.pakithecat.eu/ro/posts/gpg/</link>
+      <link>https://blog.pakithecat.eu/ro/posts/2025/gpg/</link>
       <pubDate>Fri, 03 Jan 2025 15:24:43 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/ro/posts/gpg/</guid>
+      <guid>https://blog.pakithecat.eu/ro/posts/2025/gpg/</guid>
       <description>&lt;p&gt;GnuPG foloseste criptografia cu chei publice astfel incat utilizatorii sa poata comunica in siguranta. Intr-un sistem cu chei publice, fiecare utilizator are o pereche de chei formata dintr-o cheie privata si o cheie publica. Cheia privata a unui utilizator este pastrata secreta si nu trebuie dezvaluita niciodata. Cheia publica poate fi oferita oricui doreste utilizatorul sa comunice.&lt;/p&gt;
 &lt;h3 id=&#34;instalare-si-generare-pereche-de-chei&#34;&gt;Instalare si generare pereche de chei&lt;/h3&gt;
 &lt;ul&gt;
@@ -149,9 +176,9 @@ check
     </item>
     <item>
       <title>WinSCP - sudo dupa autentificare</title>
-      <link>https://blog.pakithecat.eu/ro/posts/first/</link>
+      <link>https://blog.pakithecat.eu/ro/posts/2025/first/</link>
       <pubDate>Fri, 03 Jan 2025 10:55:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/ro/posts/first/</guid>
+      <guid>https://blog.pakithecat.eu/ro/posts/2025/first/</guid>
       <description>&lt;p&gt;Recent, a trebuit sa incarc cateva foldere pe un server Linux (Oracle Cloud), dar permisiunile utilizatorului pe care le aveam nu imi permiteau sa creez folderele necesare. In cautarea unei solutii, am dat peste aceasta posibilitate.&lt;/p&gt;
 &lt;p&gt;In unele cazuri (cu servere Unix/Linux), poti folosi comanda &lt;code&gt;sudo&lt;/code&gt; imediat dupa autentificare pentru a schimba utilizatorul, inainte ca sesiunea de transfer de fisiere sa inceapa.&lt;/p&gt;
 &lt;p&gt;Protocoalele &lt;em&gt;SFTP&lt;/em&gt; si &lt;em&gt;SCP&lt;/em&gt; permit acest lucru, dar metoda efectiva depinde de platforma.&lt;/p&gt;</description>

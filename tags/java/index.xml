@@ -11,9 +11,9 @@
     <atom:link href="https://blog.pakithecat.eu/tags/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Quick Kafka Setup on Windows with UI</title>
-      <link>https://blog.pakithecat.eu/posts/kafka-windows-install/</link>
+      <link>https://blog.pakithecat.eu/posts/2025/kafka-windows-install/</link>
       <pubDate>Sat, 27 Dec 2025 10:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/posts/kafka-windows-install/</guid>
+      <guid>https://blog.pakithecat.eu/posts/2025/kafka-windows-install/</guid>
       <description>Quick guide to install Apache Kafka on Windows and set up Kafka UI for easy management</description>
     </item>
   </channel>

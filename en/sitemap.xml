@@ -3,35 +3,38 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.pakithecat.eu/categories/</loc>
-    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
+    <lastmod>2026-03-29T12:00:00+02:00</lastmod>
   </url><url>
-    <loc>https://blog.pakithecat.eu/tags/cloud/</loc>
-    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
+    <loc>https://blog.pakithecat.eu/tags/compose/</loc>
+    <lastmod>2026-03-29T12:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/docker/</loc>
-    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
+    <lastmod>2026-03-29T12:00:00+02:00</lastmod>
   </url><url>
-    <loc>https://blog.pakithecat.eu/tags/gcp/</loc>
-    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
+    <loc>https://blog.pakithecat.eu/tags/gotify/</loc>
+    <lastmod>2026-03-29T12:00:00+02:00</lastmod>
   </url><url>
-    <loc>https://blog.pakithecat.eu/posts/rustfs-docker-install/</loc>
-    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
+    <loc>https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/</loc>
+    <lastmod>2026-03-29T12:00:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
-                href="https://blog.pakithecat.eu/ro/posts/rustfs-docker-install/"
+                href="https://blog.pakithecat.eu/ro/posts/2026/gotify-docker-compose/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://blog.pakithecat.eu/posts/rustfs-docker-install/"
+                href="https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/"
                 />
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/linux/</loc>
-    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
+    <lastmod>2026-03-29T12:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/notifications/</loc>
+    <lastmod>2026-03-29T12:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/posts/</loc>
-    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
+    <lastmod>2026-03-29T12:00:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
@@ -43,23 +46,17 @@
                 href="https://blog.pakithecat.eu/posts/"
                 />
   </url><url>
-    <loc>https://blog.pakithecat.eu/tags/rustfs/</loc>
-    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/tags/s3/</loc>
-    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/tags/storage/</loc>
-    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
+    <loc>https://blog.pakithecat.eu/tags/self-hosted/</loc>
+    <lastmod>2026-03-29T12:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/</loc>
-    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
+    <lastmod>2026-03-29T12:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/categories/tech/</loc>
-    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
+    <lastmod>2026-03-29T12:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/</loc>
-    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
+    <lastmod>2026-03-29T12:00:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
@@ -71,17 +68,45 @@
                 href="https://blog.pakithecat.eu/"
                 />
   </url><url>
-    <loc>https://blog.pakithecat.eu/posts/create-sudo-user-ubuntu/</loc>
-    <lastmod>2026-03-07T12:00:00+02:00</lastmod>
+    <loc>https://blog.pakithecat.eu/tags/cloud/</loc>
+    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/gcp/</loc>
+    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/</loc>
+    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
-                href="https://blog.pakithecat.eu/ro/posts/create-sudo-user-ubuntu/"
+                href="https://blog.pakithecat.eu/ro/posts/2026/rustfs-docker-install/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://blog.pakithecat.eu/posts/create-sudo-user-ubuntu/"
+                href="https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/"
+                />
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/rustfs/</loc>
+    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/s3/</loc>
+    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/storage/</loc>
+    <lastmod>2026-03-14T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/posts/2026/create-sudo-user-ubuntu/</loc>
+    <lastmod>2026-03-07T12:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/2026/create-sudo-user-ubuntu/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/2026/create-sudo-user-ubuntu/"
                 />
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/sudo/</loc>
@@ -102,17 +127,17 @@
     <loc>https://blog.pakithecat.eu/tags/messaging/</loc>
     <lastmod>2025-12-27T10:00:00+02:00</lastmod>
   </url><url>
-    <loc>https://blog.pakithecat.eu/posts/kafka-windows-install/</loc>
+    <loc>https://blog.pakithecat.eu/posts/2025/kafka-windows-install/</loc>
     <lastmod>2025-12-27T10:00:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
-                href="https://blog.pakithecat.eu/ro/posts/kafka-windows-install/"
+                href="https://blog.pakithecat.eu/ro/posts/2025/kafka-windows-install/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://blog.pakithecat.eu/posts/kafka-windows-install/"
+                href="https://blog.pakithecat.eu/posts/2025/kafka-windows-install/"
                 />
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/streaming/</loc>
@@ -139,33 +164,33 @@
     <loc>https://blog.pakithecat.eu/tags/youtube/</loc>
     <lastmod>2025-12-23T14:00:00+02:00</lastmod>
   </url><url>
-    <loc>https://blog.pakithecat.eu/posts/yt-dlp-tutorial/</loc>
+    <loc>https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/</loc>
     <lastmod>2025-12-23T14:00:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
-                href="https://blog.pakithecat.eu/ro/posts/yt-dlp-tutorial/"
+                href="https://blog.pakithecat.eu/ro/posts/2025/yt-dlp-tutorial/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://blog.pakithecat.eu/posts/yt-dlp-tutorial/"
+                href="https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/"
                 />
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/blog/</loc>
     <lastmod>2025-07-03T12:18:07+03:00</lastmod>
   </url><url>
-    <loc>https://blog.pakithecat.eu/posts/githubpages-cloudflare/</loc>
+    <loc>https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/</loc>
     <lastmod>2025-07-03T12:18:07+03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
-                href="https://blog.pakithecat.eu/ro/posts/githubpages-cloudflare/"
+                href="https://blog.pakithecat.eu/ro/posts/2025/githubpages-cloudflare/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://blog.pakithecat.eu/posts/githubpages-cloudflare/"
+                href="https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/"
                 />
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/hosting/</loc>
@@ -177,17 +202,17 @@
     <loc>https://blog.pakithecat.eu/tags/oci/</loc>
     <lastmod>2025-02-16T16:27:00+02:00</lastmod>
   </url><url>
-    <loc>https://blog.pakithecat.eu/posts/oci-mount-block-volume/</loc>
+    <loc>https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/</loc>
     <lastmod>2025-02-16T16:27:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
-                href="https://blog.pakithecat.eu/ro/posts/oci-mount-block-volume/"
+                href="https://blog.pakithecat.eu/ro/posts/2025/oci-mount-block-volume/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://blog.pakithecat.eu/posts/oci-mount-block-volume/"
+                href="https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/"
                 />
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/cryptography/</loc>
@@ -196,17 +221,17 @@
     <loc>https://blog.pakithecat.eu/tags/gpg/</loc>
     <lastmod>2025-01-03T15:24:43+02:00</lastmod>
   </url><url>
-    <loc>https://blog.pakithecat.eu/posts/gpg/</loc>
+    <loc>https://blog.pakithecat.eu/posts/2025/gpg/</loc>
     <lastmod>2025-01-03T15:24:43+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
-                href="https://blog.pakithecat.eu/ro/posts/gpg/"
+                href="https://blog.pakithecat.eu/ro/posts/2025/gpg/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://blog.pakithecat.eu/posts/gpg/"
+                href="https://blog.pakithecat.eu/posts/2025/gpg/"
                 />
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/ftp/</loc>
@@ -218,17 +243,17 @@
     <loc>https://blog.pakithecat.eu/tags/ssh/</loc>
     <lastmod>2025-01-03T10:55:00+02:00</lastmod>
   </url><url>
-    <loc>https://blog.pakithecat.eu/posts/first/</loc>
+    <loc>https://blog.pakithecat.eu/posts/2025/first/</loc>
     <lastmod>2025-01-03T10:55:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
-                href="https://blog.pakithecat.eu/ro/posts/first/"
+                href="https://blog.pakithecat.eu/ro/posts/2025/first/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://blog.pakithecat.eu/posts/first/"
+                href="https://blog.pakithecat.eu/posts/2025/first/"
                 />
   </url><url>
     <loc>https://blog.pakithecat.eu/archives/</loc>

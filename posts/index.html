@@ -180,7 +180,30 @@
 </header>
 
 <article class="post-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://blog.pakithecat.eu/img/rustfs-with-docker.png" alt="Containerized storage service">
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover_hu9546850153936330343.png 360w ,https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover_hu16952575349772223283.png 480w ,https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover_hu14711061776300051580.png 720w ,https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover_hu18125647546828239409.png 1080w ,https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover.png 1408w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover.png" alt="Gotify notification dashboard" 
+            width="1408" height="768">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Gotify with Docker Compose (Quick Setup)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Gotify is a self-hosted, open-source notification service. It exposes an API that lets your apps send notifications to your phone (Android or iOS). This guide sets it up with Docker Compose, shows how to secure the default user, and how to test notifications.
+Docker Compose setup Create a folder (for example ~/gotify) and add the following docker-compose.yml:
+version: &#34;3&#34; services: gotify: image: gotify/server restart: unless-stopped container_name: gotify ports: - 8989:80 environment: - GOTIFY_DEFAULTUSER_PASS=${GOTIFY_DEFAULTUSER_PASS} volumes: - &#34;./gotify_data:/app/data&#34; networks: default: name: my-main-net external: true Add an environment file named .env (or keep this as .env.example in git and copy it to .env on the server):
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-29 12:00:00 +0200 +0200'>March 29, 2026</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;294 words&nbsp;·&nbsp;Me</footer>
+  <a class="entry-link" aria-label="post link to Gotify with Docker Compose (Quick Setup)" href="https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu17708760385441595367.png 360w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu14862204108476436840.png 480w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu17443722227645238349.png 720w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu17586770206327076378.png 1080w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu13892757768486522560.png 1500w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker.png 1536w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker.png" alt="Containerized storage service" 
+            width="1536" height="1024">
 </figure>
   <header class="entry-header">
     <h2 class="entry-hint-parent">Install RustFS with Docker (Quick Guide)
@@ -192,11 +215,14 @@ Prerequisites Docker 20.10&#43; installed and able to pull images A host directo
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2026-03-14 09:00:00 +0200 +0200'>March 14, 2026</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;323 words&nbsp;·&nbsp;Me</footer>
-  <a class="entry-link" aria-label="post link to Install RustFS with Docker (Quick Guide)" href="https://blog.pakithecat.eu/posts/rustfs-docker-install/"></a>
+  <a class="entry-link" aria-label="post link to Install RustFS with Docker (Quick Guide)" href="https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/"></a>
 </article>
 
 <article class="post-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://blog.pakithecat.eu/img/ubuntu-sudo-user.png" alt="Ubuntu sudo user">
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://blog.pakithecat.eu/posts/2026/create-sudo-user-ubuntu/ubuntu-sudo-user_hu13383410245953256842.png 360w ,https://blog.pakithecat.eu/posts/2026/create-sudo-user-ubuntu/ubuntu-sudo-user_hu9327820145453210125.png 480w ,https://blog.pakithecat.eu/posts/2026/create-sudo-user-ubuntu/ubuntu-sudo-user_hu15779612633832597423.png 720w ,https://blog.pakithecat.eu/posts/2026/create-sudo-user-ubuntu/ubuntu-sudo-user_hu807628229689413945.png 1080w ,https://blog.pakithecat.eu/posts/2026/create-sudo-user-ubuntu/ubuntu-sudo-user.png 1408w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2026/create-sudo-user-ubuntu/ubuntu-sudo-user.png" alt="Ubuntu sudo user" 
+            width="1408" height="768">
 </figure>
   <header class="entry-header">
     <h2 class="entry-hint-parent">How To Create a New Sudo-Enabled User on Ubuntu
@@ -209,11 +235,14 @@ ssh root@your_server_ip_address Step 2 — Add a New User Create a new user acco
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2026-03-07 12:00:00 +0200 +0200'>March 7, 2026</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Me</footer>
-  <a class="entry-link" aria-label="post link to How To Create a New Sudo-Enabled User on Ubuntu" href="https://blog.pakithecat.eu/posts/create-sudo-user-ubuntu/"></a>
+  <a class="entry-link" aria-label="post link to How To Create a New Sudo-Enabled User on Ubuntu" href="https://blog.pakithecat.eu/posts/2026/create-sudo-user-ubuntu/"></a>
 </article>
 
 <article class="post-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://blog.pakithecat.eu/img/kafka-cover.png" alt="Apache Kafka on Windows">
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://blog.pakithecat.eu/posts/2025/kafka-windows-install/kafka-cover_hu4103249745646305238.png 360w ,https://blog.pakithecat.eu/posts/2025/kafka-windows-install/kafka-cover_hu2328909546063887800.png 480w ,https://blog.pakithecat.eu/posts/2025/kafka-windows-install/kafka-cover_hu13620004166398415013.png 720w ,https://blog.pakithecat.eu/posts/2025/kafka-windows-install/kafka-cover_hu14995577942934235988.png 1080w ,https://blog.pakithecat.eu/posts/2025/kafka-windows-install/kafka-cover_hu6429091172040234897.png 1500w ,https://blog.pakithecat.eu/posts/2025/kafka-windows-install/kafka-cover.png 1536w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2025/kafka-windows-install/kafka-cover.png" alt="Apache Kafka on Windows" 
+            width="1536" height="1024">
 </figure>
   <header class="entry-header">
     <h2 class="entry-hint-parent">Quick Kafka Setup on Windows with UI
@@ -226,11 +255,14 @@ java -version Quick Setup 1. Download Kafka Visit Apache Kafka downloads Downloa
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2025-12-27 10:00:00 +0200 +0200'>December 27, 2025</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;299 words&nbsp;·&nbsp;Me</footer>
-  <a class="entry-link" aria-label="post link to Quick Kafka Setup on Windows with UI" href="https://blog.pakithecat.eu/posts/kafka-windows-install/"></a>
+  <a class="entry-link" aria-label="post link to Quick Kafka Setup on Windows with UI" href="https://blog.pakithecat.eu/posts/2025/kafka-windows-install/"></a>
 </article>
 
 <article class="post-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://blog.pakithecat.eu/img/yt-dlp-cover.jpg" alt="yt-dlp command line interface">
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover_hu16109589205771371826.jpg 360w ,https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover_hu12228473855297320880.jpg 480w ,https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover_hu9844481181291059400.jpg 720w ,https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover.jpg 1024w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover.jpg" alt="yt-dlp command line interface" 
+            width="1024" height="1536">
 </figure>
   <header class="entry-header">
     <h2 class="entry-hint-parent">yt-dlp: The YouTube Downloader Tutorial
@@ -241,11 +273,14 @@ java -version Quick Setup 1. Download Kafka Visit Apache Kafka downloads Downloa
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2025-12-23 14:00:00 +0200 +0200'>December 23, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;543 words&nbsp;·&nbsp;Me</footer>
-  <a class="entry-link" aria-label="post link to yt-dlp: The YouTube Downloader Tutorial" href="https://blog.pakithecat.eu/posts/yt-dlp-tutorial/"></a>
+  <a class="entry-link" aria-label="post link to yt-dlp: The YouTube Downloader Tutorial" href="https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/"></a>
 </article>
 
 <article class="post-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://blog.pakithecat.eu/img/pexels-viktortalashuk-2377295.jpg" alt="Books">
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/pexels-viktortalashuk-2377295_hu16815186209690720924.jpg 360w ,https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/pexels-viktortalashuk-2377295_hu7452144795524114320.jpg 480w ,https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/pexels-viktortalashuk-2377295_hu14456332101194481843.jpg 720w ,https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/pexels-viktortalashuk-2377295_hu15865076251452843759.jpg 1080w ,https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/pexels-viktortalashuk-2377295_hu7281340312509189280.jpg 1500w ,https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/pexels-viktortalashuk-2377295.jpg 4928w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/pexels-viktortalashuk-2377295.jpg" alt="Books" 
+            width="4928" height="3264">
 </figure>
   <header class="entry-header">
     <h2 class="entry-hint-parent">Github Pages, Hugo and Cloudflare
@@ -257,11 +292,14 @@ Step 1: Prepare Your Domain in Cloudflare If you haven’t done this essential s
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2025-07-03 12:18:07 +0300 +0300'>July 3, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Me</footer>
-  <a class="entry-link" aria-label="post link to Github Pages, Hugo and Cloudflare" href="https://blog.pakithecat.eu/posts/githubpages-cloudflare/"></a>
+  <a class="entry-link" aria-label="post link to Github Pages, Hugo and Cloudflare" href="https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/"></a>
 </article>
 
 <article class="post-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://blog.pakithecat.eu/img/oci-mount-block-volume.png" alt="Block Volume">
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/oci-mount-block-volume_hu17395270588731734101.png 360w ,https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/oci-mount-block-volume_hu6501495397708709787.png 480w ,https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/oci-mount-block-volume_hu397720736477613840.png 720w ,https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/oci-mount-block-volume.png 1024w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/oci-mount-block-volume.png" alt="Block Volume" 
+            width="1024" height="1024">
 </figure>
   <header class="entry-header">
     <h2 class="entry-hint-parent">OCI - Attach and mount a block volume
@@ -273,11 +311,14 @@ Identify the New Drive (e.g., /dev/sdb) sudo fdisk -l Create a Partition (If Nee
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2025-02-16 16:27:00 +0200 +0200'>February 16, 2025</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Me</footer>
-  <a class="entry-link" aria-label="post link to OCI - Attach and mount a block volume" href="https://blog.pakithecat.eu/posts/oci-mount-block-volume/"></a>
+  <a class="entry-link" aria-label="post link to OCI - Attach and mount a block volume" href="https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/"></a>
 </article>
 
 <article class="post-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://blog.pakithecat.eu/img/pexels-pixabay-207580.jpg" alt="Cryptography">
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://blog.pakithecat.eu/posts/2025/gpg/pexels-pixabay-207580_hu10057314079951493065.jpg 360w ,https://blog.pakithecat.eu/posts/2025/gpg/pexels-pixabay-207580_hu17141626525281155035.jpg 480w ,https://blog.pakithecat.eu/posts/2025/gpg/pexels-pixabay-207580_hu6521450952486201973.jpg 720w ,https://blog.pakithecat.eu/posts/2025/gpg/pexels-pixabay-207580_hu1988946404735137219.jpg 1080w ,https://blog.pakithecat.eu/posts/2025/gpg/pexels-pixabay-207580_hu6037176385638403054.jpg 1500w ,https://blog.pakithecat.eu/posts/2025/gpg/pexels-pixabay-207580.jpg 3827w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2025/gpg/pexels-pixabay-207580.jpg" alt="Cryptography" 
+            width="3827" height="2870">
 </figure>
   <header class="entry-header">
     <h2 class="entry-hint-parent">How to use GPG to encrypt/decrypt files
@@ -288,11 +329,14 @@ Identify the New Drive (e.g., /dev/sdb) sudo fdisk -l Create a Partition (If Nee
 Installation and key pair generation install GnuPG on Debian / Ubuntu sudo apt-get install gnupg generate a new GPG key pair let’s use as an example the email address johndoe@example.com gpg --full-generate-key Exchanging keys exporting a public key in a binary format gpg --output johndoe.gpg --export johndoe@example.com or ASCII gpg --armor --output johndoe.gpg.pub --export johndoe@example.com importing a public key gpg --import janedoe.gpg gpg --list-keys validate the imported key (manual, if needed) gpg --edit-key blake@cyb.org #display the fingerprint fpr #sign the key sign #check the key check Encrypting and decrypting documents encrypting gpg --output doc.gpg --encrypt --recipient janedoe@example.com doc.txt decrypting gpg --output doc-dec.txt --decrypt doc.gpg </p>
   </div>
   <footer class="entry-footer"><span title='2025-01-03 15:24:43 +0200 +0200'>January 3, 2025</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Me</footer>
-  <a class="entry-link" aria-label="post link to How to use GPG to encrypt/decrypt files" href="https://blog.pakithecat.eu/posts/gpg/"></a>
+  <a class="entry-link" aria-label="post link to How to use GPG to encrypt/decrypt files" href="https://blog.pakithecat.eu/posts/2025/gpg/"></a>
 </article>
 
 <article class="post-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://blog.pakithecat.eu/img/pexels-harold-vasquez-853421-2653362.jpg" alt="Code on black IDE theme">
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://blog.pakithecat.eu/posts/2025/first/pexels-harold-vasquez-853421-2653362_hu3323241096868483081.jpg 360w ,https://blog.pakithecat.eu/posts/2025/first/pexels-harold-vasquez-853421-2653362_hu6665648815702019627.jpg 480w ,https://blog.pakithecat.eu/posts/2025/first/pexels-harold-vasquez-853421-2653362_hu3712493709115832350.jpg 720w ,https://blog.pakithecat.eu/posts/2025/first/pexels-harold-vasquez-853421-2653362_hu6637177070346170031.jpg 1080w ,https://blog.pakithecat.eu/posts/2025/first/pexels-harold-vasquez-853421-2653362_hu14797368370826957935.jpg 1500w ,https://blog.pakithecat.eu/posts/2025/first/pexels-harold-vasquez-853421-2653362.jpg 6000w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2025/first/pexels-harold-vasquez-853421-2653362.jpg" alt="Code on black IDE theme" 
+            width="6000" height="4000">
 </figure>
   <header class="entry-header">
     <h2 class="entry-hint-parent">WinSCP - sudo after login
@@ -305,7 +349,7 @@ The SFTP and SCP protocols allow for this, but the actual method is platform dep
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2025-01-03 10:55:00 +0200 +0200'>January 3, 2025</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Me</footer>
-  <a class="entry-link" aria-label="post link to WinSCP - sudo after login" href="https://blog.pakithecat.eu/posts/first/"></a>
+  <a class="entry-link" aria-label="post link to WinSCP - sudo after login" href="https://blog.pakithecat.eu/posts/2025/first/"></a>
 </article>
     </main>
     

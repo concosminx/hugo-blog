@@ -11,9 +11,9 @@
     <atom:link href="https://blog.pakithecat.eu/tags/storage/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Install RustFS with Docker (Quick Guide)</title>
-      <link>https://blog.pakithecat.eu/posts/rustfs-docker-install/</link>
+      <link>https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/</link>
       <pubDate>Sat, 14 Mar 2026 09:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/posts/rustfs-docker-install/</guid>
+      <guid>https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/</guid>
       <description>&lt;p&gt;RustFS is a fast, S3-compatible object storage system. This quick guide shows the &lt;strong&gt;Docker&lt;/strong&gt; install path, keeping only the full parameter configuration example and the official Docker Compose links. I also added a short section for opening access from a VM running in Google Cloud.&lt;/p&gt;
 &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
 &lt;ul&gt;

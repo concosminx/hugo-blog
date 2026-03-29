@@ -164,7 +164,10 @@
 </header>
 
 <article class="post-entry tag-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://blog.pakithecat.eu/img/pexels-pixabay-207580.jpg" alt="Cryptography">
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://blog.pakithecat.eu/posts/2025/gpg/pexels-pixabay-207580_hu10057314079951493065.jpg 360w ,https://blog.pakithecat.eu/posts/2025/gpg/pexels-pixabay-207580_hu17141626525281155035.jpg 480w ,https://blog.pakithecat.eu/posts/2025/gpg/pexels-pixabay-207580_hu6521450952486201973.jpg 720w ,https://blog.pakithecat.eu/posts/2025/gpg/pexels-pixabay-207580_hu1988946404735137219.jpg 1080w ,https://blog.pakithecat.eu/posts/2025/gpg/pexels-pixabay-207580_hu6037176385638403054.jpg 1500w ,https://blog.pakithecat.eu/posts/2025/gpg/pexels-pixabay-207580.jpg 3827w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2025/gpg/pexels-pixabay-207580.jpg" alt="Cryptography" 
+            width="3827" height="2870">
 </figure>
   <header class="entry-header">
     <h2 class="entry-hint-parent">How to use GPG to encrypt/decrypt files
@@ -175,7 +178,7 @@
 Installation and key pair generation install GnuPG on Debian / Ubuntu sudo apt-get install gnupg generate a new GPG key pair let’s use as an example the email address johndoe@example.com gpg --full-generate-key Exchanging keys exporting a public key in a binary format gpg --output johndoe.gpg --export johndoe@example.com or ASCII gpg --armor --output johndoe.gpg.pub --export johndoe@example.com importing a public key gpg --import janedoe.gpg gpg --list-keys validate the imported key (manual, if needed) gpg --edit-key blake@cyb.org #display the fingerprint fpr #sign the key sign #check the key check Encrypting and decrypting documents encrypting gpg --output doc.gpg --encrypt --recipient janedoe@example.com doc.txt decrypting gpg --output doc-dec.txt --decrypt doc.gpg </p>
   </div>
   <footer class="entry-footer"><span title='2025-01-03 15:24:43 +0200 +0200'>January 3, 2025</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Me</footer>
-  <a class="entry-link" aria-label="post link to How to use GPG to encrypt/decrypt files" href="https://blog.pakithecat.eu/posts/gpg/"></a>
+  <a class="entry-link" aria-label="post link to How to use GPG to encrypt/decrypt files" href="https://blog.pakithecat.eu/posts/2025/gpg/"></a>
 </article>
     </main>
     

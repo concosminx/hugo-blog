@@ -11,9 +11,9 @@
     <atom:link href="https://blog.pakithecat.eu/ro/taguri/ftp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WinSCP - sudo dupa autentificare</title>
-      <link>https://blog.pakithecat.eu/ro/posts/first/</link>
+      <link>https://blog.pakithecat.eu/ro/posts/2025/first/</link>
       <pubDate>Fri, 03 Jan 2025 10:55:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/ro/posts/first/</guid>
+      <guid>https://blog.pakithecat.eu/ro/posts/2025/first/</guid>
       <description>&lt;p&gt;Recent, a trebuit sa incarc cateva foldere pe un server Linux (Oracle Cloud), dar permisiunile utilizatorului pe care le aveam nu imi permiteau sa creez folderele necesare. In cautarea unei solutii, am dat peste aceasta posibilitate.&lt;/p&gt;
 &lt;p&gt;In unele cazuri (cu servere Unix/Linux), poti folosi comanda &lt;code&gt;sudo&lt;/code&gt; imediat dupa autentificare pentru a schimba utilizatorul, inainte ca sesiunea de transfer de fisiere sa inceapa.&lt;/p&gt;
 &lt;p&gt;Protocoalele &lt;em&gt;SFTP&lt;/em&gt; si &lt;em&gt;SCP&lt;/em&gt; permit acest lucru, dar metoda efectiva depinde de platforma.&lt;/p&gt;</description>

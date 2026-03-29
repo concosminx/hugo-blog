@@ -7,8 +7,50 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Sat, 14 Mar 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2026 12:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Compose</title>
+      <link>https://blog.pakithecat.eu/tags/compose/</link>
+      <pubDate>Sun, 29 Mar 2026 12:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/compose/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>https://blog.pakithecat.eu/tags/docker/</link>
+      <pubDate>Sun, 29 Mar 2026 12:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/docker/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gotify</title>
+      <link>https://blog.pakithecat.eu/tags/gotify/</link>
+      <pubDate>Sun, 29 Mar 2026 12:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/gotify/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://blog.pakithecat.eu/tags/linux/</link>
+      <pubDate>Sun, 29 Mar 2026 12:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Notifications</title>
+      <link>https://blog.pakithecat.eu/tags/notifications/</link>
+      <pubDate>Sun, 29 Mar 2026 12:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/notifications/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Self-Hosted</title>
+      <link>https://blog.pakithecat.eu/tags/self-hosted/</link>
+      <pubDate>Sun, 29 Mar 2026 12:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/self-hosted/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Cloud</title>
       <link>https://blog.pakithecat.eu/tags/cloud/</link>
@@ -17,24 +59,10 @@
       <description></description>
     </item>
     <item>
-      <title>Docker</title>
-      <link>https://blog.pakithecat.eu/tags/docker/</link>
-      <pubDate>Sat, 14 Mar 2026 09:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/docker/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Gcp</title>
       <link>https://blog.pakithecat.eu/tags/gcp/</link>
       <pubDate>Sat, 14 Mar 2026 09:00:00 +0200</pubDate>
       <guid>https://blog.pakithecat.eu/tags/gcp/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Linux</title>
-      <link>https://blog.pakithecat.eu/tags/linux/</link>
-      <pubDate>Sat, 14 Mar 2026 09:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/linux/</guid>
       <description></description>
     </item>
     <item>
