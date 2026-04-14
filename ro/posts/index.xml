@@ -7,8 +7,15 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>ro</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Sun, 29 Mar 2026 12:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2026 18:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/ro/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Referință Comenzi Diagnostice JVM</title>
+      <link>https://blog.pakithecat.eu/ro/posts/2026/jvm-diagnostic-commands/</link>
+      <pubDate>Tue, 14 Apr 2026 18:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/posts/2026/jvm-diagnostic-commands/</guid>
+      <description>Comenzi esențiale de diagnosticare JVM pentru depanarea și monitorizarea aplicațiilor Java</description>
+    </item>
     <item>
       <title>Gotify cu Docker Compose (Ghid rapid)</title>
       <link>https://blog.pakithecat.eu/ro/posts/2026/gotify-docker-compose/</link>

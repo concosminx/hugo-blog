@@ -2,6 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.pakithecat.eu/categories/</loc>
+    <lastmod>2026-04-14T18:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/debugging/</loc>
+    <lastmod>2026-04-14T18:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/java/</loc>
+    <lastmod>2026-04-14T18:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/jvm/</loc>
+    <lastmod>2026-04-14T18:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/posts/2026/jvm-diagnostic-commands/</loc>
+    <lastmod>2026-04-14T18:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/2026/jvm-diagnostic-commands/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/2026/jvm-diagnostic-commands/"
+                />
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/monitoring/</loc>
+    <lastmod>2026-04-14T18:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/performance/</loc>
+    <lastmod>2026-04-14T18:00:00+02:00</lastmod>
+  </url><url>
     <loc>https://blog.pakithecat.eu/posts/</loc>
     <lastmod>2026-04-14T18:00:00+02:00</lastmod>
     <xhtml:link
@@ -15,6 +46,12 @@
                 href="https://blog.pakithecat.eu/posts/"
                 />
   </url><url>
+    <loc>https://blog.pakithecat.eu/tags/</loc>
+    <lastmod>2026-04-14T18:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/categories/tech/</loc>
+    <lastmod>2026-04-14T18:00:00+02:00</lastmod>
+  </url><url>
     <loc>https://blog.pakithecat.eu/</loc>
     <lastmod>2026-04-14T18:00:00+02:00</lastmod>
     <xhtml:link
@@ -27,9 +64,6 @@
                 hreflang="en"
                 href="https://blog.pakithecat.eu/"
                 />
-  </url><url>
-    <loc>https://blog.pakithecat.eu/categories/</loc>
-    <lastmod>2026-03-29T12:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/compose/</loc>
     <lastmod>2026-03-29T12:00:00+02:00</lastmod>
@@ -60,12 +94,6 @@
     <lastmod>2026-03-29T12:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/self-hosted/</loc>
-    <lastmod>2026-03-29T12:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/tags/</loc>
-    <lastmod>2026-03-29T12:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/categories/tech/</loc>
     <lastmod>2026-03-29T12:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/cloud/</loc>
@@ -117,9 +145,6 @@
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/user-management/</loc>
     <lastmod>2026-03-07T12:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/tags/java/</loc>
-    <lastmod>2025-12-27T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/kafka/</loc>
     <lastmod>2025-12-27T10:00:00+02:00</lastmod>

@@ -7,8 +7,15 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Sun, 29 Mar 2026 12:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2026 18:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JVM Diagnostic Commands Reference</title>
+      <link>https://blog.pakithecat.eu/posts/2026/jvm-diagnostic-commands/</link>
+      <pubDate>Tue, 14 Apr 2026 18:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/posts/2026/jvm-diagnostic-commands/</guid>
+      <description>Essential JVM diagnostic commands for troubleshooting and monitoring Java applications</description>
+    </item>
     <item>
       <title>Gotify with Docker Compose (Quick Setup)</title>
       <link>https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/</link>

@@ -7,8 +7,43 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Sun, 29 Mar 2026 12:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2026 18:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debugging</title>
+      <link>https://blog.pakithecat.eu/tags/debugging/</link>
+      <pubDate>Tue, 14 Apr 2026 18:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/debugging/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Java</title>
+      <link>https://blog.pakithecat.eu/tags/java/</link>
+      <pubDate>Tue, 14 Apr 2026 18:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/java/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Jvm</title>
+      <link>https://blog.pakithecat.eu/tags/jvm/</link>
+      <pubDate>Tue, 14 Apr 2026 18:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/jvm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Monitoring</title>
+      <link>https://blog.pakithecat.eu/tags/monitoring/</link>
+      <pubDate>Tue, 14 Apr 2026 18:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/monitoring/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Performance</title>
+      <link>https://blog.pakithecat.eu/tags/performance/</link>
+      <pubDate>Tue, 14 Apr 2026 18:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/performance/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Compose</title>
       <link>https://blog.pakithecat.eu/tags/compose/</link>
@@ -105,13 +140,6 @@
       <link>https://blog.pakithecat.eu/tags/user-management/</link>
       <pubDate>Sat, 07 Mar 2026 12:00:00 +0200</pubDate>
       <guid>https://blog.pakithecat.eu/tags/user-management/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Java</title>
-      <link>https://blog.pakithecat.eu/tags/java/</link>
-      <pubDate>Sat, 27 Dec 2025 10:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/java/</guid>
       <description></description>
     </item>
     <item>
