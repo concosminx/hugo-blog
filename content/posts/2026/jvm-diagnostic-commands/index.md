@@ -1,6 +1,6 @@
 ---
 date: '2026-04-14T18:00:00+02:00'
-draft: true
+draft: false
 title: 'JVM Diagnostic Commands Reference'
 tags: ["java", "jvm", "debugging", "performance", "monitoring"]
 categories: ["tech"]
