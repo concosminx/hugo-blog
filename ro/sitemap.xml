@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.pakithecat.eu/ro/</loc>
-    <lastmod>2026-04-14T18:00:00+02:00</lastmod>
+    <lastmod>2026-04-25T10:00:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -15,8 +15,21 @@
                 href="https://blog.pakithecat.eu/ro/"
                 />
   </url><url>
+    <loc>https://blog.pakithecat.eu/ro/posts/2026/wsl-basic-commands/</loc>
+    <lastmod>2026-04-25T10:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/2026/wsl-basic-commands/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/2026/wsl-basic-commands/"
+                />
+  </url><url>
     <loc>https://blog.pakithecat.eu/ro/posts/</loc>
-    <lastmod>2026-04-14T18:00:00+02:00</lastmod>
+    <lastmod>2026-04-25T10:00:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"

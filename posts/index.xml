@@ -7,8 +7,15 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Tue, 14 Apr 2026 18:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 25 Apr 2026 10:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WSL Basic Commands Cheatsheet</title>
+      <link>https://blog.pakithecat.eu/posts/2026/wsl-basic-commands/</link>
+      <pubDate>Sat, 25 Apr 2026 10:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/posts/2026/wsl-basic-commands/</guid>
+      <description>A practical reference guide for the most useful WSL (Windows Subsystem for Linux) commands — from installation to managing distributions and mounting disks.</description>
+    </item>
     <item>
       <title>JVM Diagnostic Commands Reference</title>
       <link>https://blog.pakithecat.eu/posts/2026/jvm-diagnostic-commands/</link>

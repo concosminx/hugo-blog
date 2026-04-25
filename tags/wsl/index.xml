@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Windows on What I Did All Week</title>
-    <link>https://blog.pakithecat.eu/tags/windows/</link>
-    <description>Recent content in Windows on What I Did All Week</description>
+    <title>Wsl on What I Did All Week</title>
+    <link>https://blog.pakithecat.eu/tags/wsl/</link>
+    <description>Recent content in Wsl on What I Did All Week</description>
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
     <lastBuildDate>Sat, 25 Apr 2026 10:00:00 +0200</lastBuildDate>
-    <atom:link href="https://blog.pakithecat.eu/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.pakithecat.eu/tags/wsl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WSL Basic Commands Cheatsheet</title>
       <link>https://blog.pakithecat.eu/posts/2026/wsl-basic-commands/</link>
       <pubDate>Sat, 25 Apr 2026 10:00:00 +0200</pubDate>
       <guid>https://blog.pakithecat.eu/posts/2026/wsl-basic-commands/</guid>
       <description>A practical reference guide for the most useful WSL (Windows Subsystem for Linux) commands — from installation to managing distributions and mounting disks.</description>
-    </item>
-    <item>
-      <title>Quick Kafka Setup on Windows with UI</title>
-      <link>https://blog.pakithecat.eu/posts/2025/kafka-windows-install/</link>
-      <pubDate>Sat, 27 Dec 2025 10:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/posts/2025/kafka-windows-install/</guid>
-      <description>Quick guide to install Apache Kafka on Windows and set up Kafka UI for easy management</description>
     </item>
   </channel>
 </rss>

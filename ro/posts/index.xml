@@ -7,8 +7,15 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>ro</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Tue, 14 Apr 2026 18:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 25 Apr 2026 10:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/ro/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Comenzi de bază WSL — Cheatsheet</title>
+      <link>https://blog.pakithecat.eu/ro/posts/2026/wsl-basic-commands/</link>
+      <pubDate>Sat, 25 Apr 2026 10:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/posts/2026/wsl-basic-commands/</guid>
+      <description>Un ghid practic cu cele mai utile comenzi WSL (Windows Subsystem for Linux) — de la instalare până la gestionarea distribuțiilor și montarea discurilor.</description>
+    </item>
     <item>
       <title>Referință Comenzi Diagnostice JVM</title>
       <link>https://blog.pakithecat.eu/ro/posts/2026/jvm-diagnostic-commands/</link>

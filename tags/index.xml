@@ -7,8 +7,43 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Tue, 14 Apr 2026 18:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 25 Apr 2026 10:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cli</title>
+      <link>https://blog.pakithecat.eu/tags/cli/</link>
+      <pubDate>Sat, 25 Apr 2026 10:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/cli/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://blog.pakithecat.eu/tags/linux/</link>
+      <pubDate>Sat, 25 Apr 2026 10:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ubuntu</title>
+      <link>https://blog.pakithecat.eu/tags/ubuntu/</link>
+      <pubDate>Sat, 25 Apr 2026 10:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Windows</title>
+      <link>https://blog.pakithecat.eu/tags/windows/</link>
+      <pubDate>Sat, 25 Apr 2026 10:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/windows/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Wsl</title>
+      <link>https://blog.pakithecat.eu/tags/wsl/</link>
+      <pubDate>Sat, 25 Apr 2026 10:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/wsl/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Debugging</title>
       <link>https://blog.pakithecat.eu/tags/debugging/</link>
@@ -63,13 +98,6 @@
       <link>https://blog.pakithecat.eu/tags/gotify/</link>
       <pubDate>Sun, 29 Mar 2026 12:00:00 +0200</pubDate>
       <guid>https://blog.pakithecat.eu/tags/gotify/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Linux</title>
-      <link>https://blog.pakithecat.eu/tags/linux/</link>
-      <pubDate>Sun, 29 Mar 2026 12:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/linux/</guid>
       <description></description>
     </item>
     <item>
@@ -129,13 +157,6 @@
       <description></description>
     </item>
     <item>
-      <title>Ubuntu</title>
-      <link>https://blog.pakithecat.eu/tags/ubuntu/</link>
-      <pubDate>Sat, 07 Mar 2026 12:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/ubuntu/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>User-Management</title>
       <link>https://blog.pakithecat.eu/tags/user-management/</link>
       <pubDate>Sat, 07 Mar 2026 12:00:00 +0200</pubDate>
@@ -164,24 +185,10 @@
       <description></description>
     </item>
     <item>
-      <title>Windows</title>
-      <link>https://blog.pakithecat.eu/tags/windows/</link>
-      <pubDate>Sat, 27 Dec 2025 10:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/windows/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Audio</title>
       <link>https://blog.pakithecat.eu/tags/audio/</link>
       <pubDate>Tue, 23 Dec 2025 14:00:00 +0200</pubDate>
       <guid>https://blog.pakithecat.eu/tags/audio/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Cli</title>
-      <link>https://blog.pakithecat.eu/tags/cli/</link>
-      <pubDate>Tue, 23 Dec 2025 14:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/cli/</guid>
       <description></description>
     </item>
     <item>
