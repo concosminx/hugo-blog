@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Linux DevOps Cheatsheet: Commands Every Engineer Should Know | What I Did All Week</title>
+<meta name="keywords" content="linux, devops, bash, sysadmin, ssh, docker, systemctl, security, monitoring">
+<meta name="description" content="A curated set of Linux commands I keep coming back to for service management, debugging, server hardening, and automation. No fluff — just the commands that actually matter on a production server.
+Service Management
+When a service refuses to start, the first move is always the same: check its status.
+systemctl status nginx
+This gives you the current state, recent log lines, and the PID — everything you need to start digging. It&rsquo;s the first command asked about in every DevOps interview. Know it cold.">
+<meta name="author" content="Me">
+<link rel="canonical" href="https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d6fcd20a4fb86efa4dfac8ec95da60244cc8871042183da1ef28e3a762ad79c8.css" integrity="sha256-1vzSCk&#43;4bvpN&#43;sjsldpgJEzIhxBCGD2h7yjjp2Ktecg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.pakithecat.eu/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.pakithecat.eu/icons/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.pakithecat.eu/icons/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.pakithecat.eu/icons/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.pakithecat.eu/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/">
+  <meta property="og:site_name" content="What I Did All Week">
+  <meta property="og:title" content="Linux DevOps Cheatsheet: Commands Every Engineer Should Know">
+  <meta property="og:description" content="A curated set of Linux commands I keep coming back to for service management, debugging, server hardening, and automation. No fluff — just the commands that actually matter on a production server.
+Service Management When a service refuses to start, the first move is always the same: check its status.
+systemctl status nginx This gives you the current state, recent log lines, and the PID — everything you need to start digging. It’s the first command asked about in every DevOps interview. Know it cold.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-07-26T12:00:00+03:00">
+    <meta property="article:modified_time" content="2026-07-26T12:00:00+03:00">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Devops">
+    <meta property="article:tag" content="Bash">
+    <meta property="article:tag" content="Sysadmin">
+    <meta property="article:tag" content="Ssh">
+    <meta property="article:tag" content="Docker">
+    <meta property="og:image" content="https://blog.pakithecat.eu/linux-devops-cheatsheet-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.pakithecat.eu/linux-devops-cheatsheet-cover.jpg">
+<meta name="twitter:title" content="Linux DevOps Cheatsheet: Commands Every Engineer Should Know">
+<meta name="twitter:description" content="A curated set of Linux commands I keep coming back to for service management, debugging, server hardening, and automation. No fluff — just the commands that actually matter on a production server.
+Service Management
+When a service refuses to start, the first move is always the same: check its status.
+systemctl status nginx
+This gives you the current state, recent log lines, and the PID — everything you need to start digging. It&rsquo;s the first command asked about in every DevOps interview. Know it cold.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.pakithecat.eu/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Linux DevOps Cheatsheet: Commands Every Engineer Should Know",
+      "item": "https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Linux DevOps Cheatsheet: Commands Every Engineer Should Know",
+  "name": "Linux DevOps Cheatsheet: Commands Every Engineer Should Know",
+  "description": "A curated set of Linux commands I keep coming back to for service management, debugging, server hardening, and automation. No fluff — just the commands that actually matter on a production server.\nService Management When a service refuses to start, the first move is always the same: check its status.\nsystemctl status nginx This gives you the current state, recent log lines, and the PID — everything you need to start digging. It\u0026rsquo;s the first command asked about in every DevOps interview. Know it cold.\n",
+  "keywords": [
+    "linux", "devops", "bash", "sysadmin", "ssh", "docker", "systemctl", "security", "monitoring"
+  ],
+  "articleBody": "A curated set of Linux commands I keep coming back to for service management, debugging, server hardening, and automation. No fluff — just the commands that actually matter on a production server.\nService Management When a service refuses to start, the first move is always the same: check its status.\nsystemctl status nginx This gives you the current state, recent log lines, and the PID — everything you need to start digging. It’s the first command asked about in every DevOps interview. Know it cold.\nIf the status output is not enough, pull the last 50 log lines directly from the journal:\njournalctl -u nginx -n 50 --no-pager -n 50 limits the output so you aren’t scrolling forever, and --no-pager keeps everything in the terminal without launching less.\nTo get a bird’s-eye view of everything that is currently broken on the system:\nsystemctl list-units --state=failed One command, all the broken units. Useful when you log into a server and don’t know where to start.\nContainer Debugging Containers die for all sorts of reasons. The fastest path to an answer is the logs:\ndocker logs --tail 100 -f container_name -f follows new output in real time; --tail 100 limits history so the terminal doesn’t flood. Works with Podman too.\nWhen logs aren’t enough and you need to poke around inside a running container:\ndocker exec -it container_name /bin/bash This is the most-asked container command in DevOps interviews. If /bin/bash is not available in the image, try /bin/sh.\nFor a quick snapshot of how much CPU and memory every container is consuming right now:\ndocker stats --no-stream Without --no-stream, this refreshes continuously. With it, you get a single snapshot — good for scripts and quick checks.\nSSH Hardening Keys Only. No Passwords. Password-based SSH is a liability. Disable it by editing /etc/ssh/sshd_config:\nPasswordAuthentication no PubkeyAuthentication yes Then restart the daemon:\nsystemctl restart sshd Important: make sure your SSH key is already in ~/.ssh/authorized_keys on the server before you do this, or you will lock yourself out.\nChange the Default SSH Port Moving SSH off port 22 eliminates most automated scanning noise. If the server runs SELinux, you must tell it about the new port first — otherwise sshd won’t start:\nsemanage port -a -t ssh_port_t -p tcp 2222 firewall-cmd --permanent --add-port=2222/tcp firewall-cmd --permanent --remove-service=ssh firewall-cmd --reload Then update Port 2222 in /etc/ssh/sshd_config and restart.\nRestrict SSH to Trusted IPs Even better than changing the port is allowing SSH only from your own IP:\nfirewall-cmd --permanent --add-rich-rule=\\ 'rule family=\"ipv4\" source address=\"YOUR.IP\" service name=\"ssh\" accept' firewall-cmd --permanent --remove-service=ssh firewall-cmd --reload Bots can’t touch what they can’t reach.\nDisable Unused Services Every running service is an attack surface. List what is currently active:\nsystemctl list-units --state=running Then stop and disable anything you don’t recognise or don’t need:\nsystemctl disable --now servicename --now both stops the service immediately and prevents it from starting on next boot.\nKernel Hardening A few sysctl parameters go a long way. Add them to /etc/sysctl.conf:\nnet.ipv4.tcp_syncookies = 1 net.ipv4.conf.all.rp_filter = 1 net.ipv4.icmp_echo_ignore_broadcasts = 1 Apply them without a reboot:\nsysctl -p tcp_syncookies protects against SYN flood attacks. rp_filter drops packets that arrive on an interface they shouldn’t be coming from. icmp_echo_ignore_broadcasts prevents the server from being used in Smurf amplification attacks. Disk \u0026 Performance When the server is slow and you suspect a full disk, get the full picture in one line:\ndf -hT \u0026\u0026 du -sh /* 2\u003e/dev/null | sort -rh | head -5 df shows overall disk usage per filesystem; du finds the top five directories consuming the most space. Chain them and you go from suspicion to culprit in seconds.\nCheck memory usage:\nfree -h Cached memory is not wasted — Linux reclaims it when needed. Don’t panic if “used” looks high; focus on the “available” column.\nFor disk I/O statistics, iostat from the sysstat package shows reads and writes per device:\niostat -x 1 3 -x enables extended stats; 1 3 refreshes every second, three times. Useful for spotting a disk that is saturating under load.\nNetworking \u0026 Ports When an application is not reachable, the first question is: is anything actually listening on that port?\nss -tulnp | grep :8080 Replace 8080 with your port. ss is faster and more detailed than netstat.\nCheck from the outside with lsof to confirm which process owns the socket:\nlsof -i :8080 Test the endpoint directly and see every header:\ncurl -v http://localhost:8080/health /health is the standard DevOps health-check path. The -v flag shows request and response headers — essential when debugging proxies or TLS issues.\nCheck all active firewall rules at once:\nfirewall-cmd --list-all This shows zones, services, ports, and rich rules together — one command for a full firewall picture.\nAutomation \u0026 Scripting Scheduled tasks Edit the crontab for a specific service account (deployments often run as dedicated users):\ncrontab -e -u deploy File sync to remote servers rsync -avz --delete /app/ user@server:/app/ --delete removes files on the destination that no longer exist in the source, keeping both sides in sync. A DevOps deployment staple.\nLive service monitoring watch -n 5 'systemctl is-active nginx' Refreshes every 5 seconds — simple live monitoring during deployments without installing extra tools.\nSudo Access Never edit /etc/sudoers directly. A syntax error there can lock you out of the entire system. Always use:\nvisudo visudo validates the file before saving and refuses to write a broken configuration.\nLog Inspection Find what broke in the last 10 minutes journalctl -xe --since '10 minutes ago' --since narrows the window fast. During an incident, every second counts — don’t scroll through hours of logs.\nLive error filtering tail -f /var/log/nginx/error.log | grep -i error Pipe tail -f into grep to filter the signal from the noise in real time.\nQuick system health check uptime \u0026\u0026 w Two commands in one line: uptime shows load averages for the last 1, 5, and 15 minutes; w shows who is logged in and what they are running. A 5-second gut-check before diving deeper.\nFile Utilities Find large files Quickly locate files over a certain size — essential for freeing disk space on servers:\nfind . -type f -size +100M Adjust +100M to your threshold. Add -exec ls -lh {} \\; to see sizes inline.\nSearch within files Recursively search for a string across all files in the current directory:\ngrep -r \"searchText\" . A true lifesaver when you need to find which config file contains a specific value.\nBulk rename files Use a for loop to change extensions or prefixes on multiple files at once:\nfor f in *.bak; do mv -- \"$f\" \"${f%.bak}.old\" done Monitor a log file in real time Watch a log file as new lines are added — perfect for tracking application behaviour during a deployment:\ntail -f /var/log/syslog These commands cover most of the situations I run into repeatedly: a service that won’t start, a container that died quietly, a disk that filled up overnight, or an SSH session that suddenly stopped working. Keep them somewhere close and they will save you time when it matters.\n",
+  "wordCount" : "1173",
+  "inLanguage": "en",
+  "image":"https://blog.pakithecat.eu/linux-devops-cheatsheet-cover.jpg","datePublished": "2026-07-26T12:00:00+03:00",
+  "dateModified": "2026-07-26T12:00:00+03:00",
+  "author":{
+    "@type": "Person",
+    "name": "Me"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "What I Did All Week",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.pakithecat.eu/icons/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.pakithecat.eu/" accesskey="h" title="What I Did All Week (Alt + H)">What I Did All Week</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://blog.pakithecat.eu/ro/" title="Romanian"
+                            aria-label="🇷🇴">🇷🇴</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.pakithecat.eu/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/concosminx/hugo-blog" title="Repo">
+                    <span>Repo</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://blog.pakithecat.eu/">Home</a>&nbsp;»&nbsp;<a href="https://blog.pakithecat.eu/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Linux DevOps Cheatsheet: Commands Every Engineer Should Know
+    </h1>
+    <div class="post-meta"><span title='2026-07-26 12:00:00 +0300 +0300'>July 26, 2026</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;1173 words&nbsp;·&nbsp;Me&nbsp;|&nbsp;<a href="https://github.com/concosminx/hugo-blog/tree/main/content/posts/2026/linux-devops-cheatsheet/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <img loading="eager" srcset="https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/linux-devops-cheatsheet-cover_hu15212357142461597883.jpg 360w ,https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/linux-devops-cheatsheet-cover_hu1012010704820329318.jpg 480w ,https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/linux-devops-cheatsheet-cover_hu18289675426327155311.jpg 720w ,https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/linux-devops-cheatsheet-cover_hu152242603093354172.jpg 1080w ,https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/linux-devops-cheatsheet-cover.jpg 1376w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/linux-devops-cheatsheet-cover.jpg" alt="Linux DevOps terminal commands cheatsheet" 
+            width="1376" height="768">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#service-management" aria-label="Service Management">Service Management</a></li>
+                <li>
+                    <a href="#container-debugging" aria-label="Container Debugging">Container Debugging</a></li>
+                <li>
+                    <a href="#ssh-hardening" aria-label="SSH Hardening">SSH Hardening</a><ul>
+                        
+                <li>
+                    <a href="#keys-only-no-passwords" aria-label="Keys Only. No Passwords.">Keys Only. No Passwords.</a></li>
+                <li>
+                    <a href="#change-the-default-ssh-port" aria-label="Change the Default SSH Port">Change the Default SSH Port</a></li>
+                <li>
+                    <a href="#restrict-ssh-to-trusted-ips" aria-label="Restrict SSH to Trusted IPs">Restrict SSH to Trusted IPs</a></li></ul>
+                </li>
+                <li>
+                    <a href="#disable-unused-services" aria-label="Disable Unused Services">Disable Unused Services</a></li>
+                <li>
+                    <a href="#kernel-hardening" aria-label="Kernel Hardening">Kernel Hardening</a></li>
+                <li>
+                    <a href="#disk--performance" aria-label="Disk &amp; Performance">Disk &amp; Performance</a></li>
+                <li>
+                    <a href="#networking--ports" aria-label="Networking &amp; Ports">Networking &amp; Ports</a></li>
+                <li>
+                    <a href="#automation--scripting" aria-label="Automation &amp; Scripting">Automation &amp; Scripting</a><ul>
+                        
+                <li>
+                    <a href="#scheduled-tasks" aria-label="Scheduled tasks">Scheduled tasks</a></li>
+                <li>
+                    <a href="#file-sync-to-remote-servers" aria-label="File sync to remote servers">File sync to remote servers</a></li>
+                <li>
+                    <a href="#live-service-monitoring" aria-label="Live service monitoring">Live service monitoring</a></li></ul>
+                </li>
+                <li>
+                    <a href="#sudo-access" aria-label="Sudo Access">Sudo Access</a></li>
+                <li>
+                    <a href="#log-inspection" aria-label="Log Inspection">Log Inspection</a><ul>
+                        
+                <li>
+                    <a href="#find-what-broke-in-the-last-10-minutes" aria-label="Find what broke in the last 10 minutes">Find what broke in the last 10 minutes</a></li>
+                <li>
+                    <a href="#live-error-filtering" aria-label="Live error filtering">Live error filtering</a></li>
+                <li>
+                    <a href="#quick-system-health-check" aria-label="Quick system health check">Quick system health check</a></li></ul>
+                </li>
+                <li>
+                    <a href="#file-utilities" aria-label="File Utilities">File Utilities</a><ul>
+                        
+                <li>
+                    <a href="#find-large-files" aria-label="Find large files">Find large files</a></li>
+                <li>
+                    <a href="#search-within-files" aria-label="Search within files">Search within files</a></li>
+                <li>
+                    <a href="#bulk-rename-files" aria-label="Bulk rename files">Bulk rename files</a></li>
+                <li>
+                    <a href="#monitor-a-log-file-in-real-time" aria-label="Monitor a log file in real time">Monitor a log file in real time</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>A curated set of Linux commands I keep coming back to for service management, debugging, server hardening, and automation. No fluff — just the commands that actually matter on a production server.</p>
+<h2 id="service-management">Service Management<a hidden class="anchor" aria-hidden="true" href="#service-management">#</a></h2>
+<p>When a service refuses to start, the first move is always the same: check its status.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl status nginx
+</span></span></code></pre></div><p>This gives you the current state, recent log lines, and the PID — everything you need to start digging. It&rsquo;s the first command asked about in every DevOps interview. Know it cold.</p>
+<p>If the status output is not enough, pull the last 50 log lines directly from the journal:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">journalctl -u nginx -n <span class="m">50</span> --no-pager
+</span></span></code></pre></div><p><code>-n 50</code> limits the output so you aren&rsquo;t scrolling forever, and <code>--no-pager</code> keeps everything in the terminal without launching <code>less</code>.</p>
+<p>To get a bird&rsquo;s-eye view of everything that is currently broken on the system:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl list-units --state<span class="o">=</span>failed
+</span></span></code></pre></div><p>One command, all the broken units. Useful when you log into a server and don&rsquo;t know where to start.</p>
+<h2 id="container-debugging">Container Debugging<a hidden class="anchor" aria-hidden="true" href="#container-debugging">#</a></h2>
+<p>Containers die for all sorts of reasons. The fastest path to an answer is the logs:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker logs --tail <span class="m">100</span> -f container_name
+</span></span></code></pre></div><p><code>-f</code> follows new output in real time; <code>--tail 100</code> limits history so the terminal doesn&rsquo;t flood. Works with Podman too.</p>
+<p>When logs aren&rsquo;t enough and you need to poke around inside a running container:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it container_name /bin/bash
+</span></span></code></pre></div><p>This is the most-asked container command in DevOps interviews. If <code>/bin/bash</code> is not available in the image, try <code>/bin/sh</code>.</p>
+<p>For a quick snapshot of how much CPU and memory every container is consuming right now:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker stats --no-stream
+</span></span></code></pre></div><p>Without <code>--no-stream</code>, this refreshes continuously. With it, you get a single snapshot — good for scripts and quick checks.</p>
+<h2 id="ssh-hardening">SSH Hardening<a hidden class="anchor" aria-hidden="true" href="#ssh-hardening">#</a></h2>
+<h3 id="keys-only-no-passwords">Keys Only. No Passwords.<a hidden class="anchor" aria-hidden="true" href="#keys-only-no-passwords">#</a></h3>
+<p>Password-based SSH is a liability. Disable it by editing <code>/etc/ssh/sshd_config</code>:</p>
+<pre tabindex="0"><code>PasswordAuthentication no
+PubkeyAuthentication yes
+</code></pre><p>Then restart the daemon:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl restart sshd
+</span></span></code></pre></div><blockquote>
+<p><strong>Important:</strong> make sure your SSH key is already in <code>~/.ssh/authorized_keys</code> on the server before you do this, or you will lock yourself out.</p>
+</blockquote>
+<h3 id="change-the-default-ssh-port">Change the Default SSH Port<a hidden class="anchor" aria-hidden="true" href="#change-the-default-ssh-port">#</a></h3>
+<p>Moving SSH off port 22 eliminates most automated scanning noise. If the server runs SELinux, you must tell it about the new port first — otherwise <code>sshd</code> won&rsquo;t start:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">semanage port -a -t ssh_port_t -p tcp <span class="m">2222</span>
+</span></span><span class="line"><span class="cl">firewall-cmd --permanent --add-port<span class="o">=</span>2222/tcp
+</span></span><span class="line"><span class="cl">firewall-cmd --permanent --remove-service<span class="o">=</span>ssh
+</span></span><span class="line"><span class="cl">firewall-cmd --reload
+</span></span></code></pre></div><p>Then update <code>Port 2222</code> in <code>/etc/ssh/sshd_config</code> and restart.</p>
+<h3 id="restrict-ssh-to-trusted-ips">Restrict SSH to Trusted IPs<a hidden class="anchor" aria-hidden="true" href="#restrict-ssh-to-trusted-ips">#</a></h3>
+<p>Even better than changing the port is allowing SSH only from your own IP:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">firewall-cmd --permanent --add-rich-rule<span class="o">=</span><span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="s1">&#39;rule family=&#34;ipv4&#34; source address=&#34;YOUR.IP&#34; service name=&#34;ssh&#34; accept&#39;</span>
+</span></span><span class="line"><span class="cl">firewall-cmd --permanent --remove-service<span class="o">=</span>ssh
+</span></span><span class="line"><span class="cl">firewall-cmd --reload
+</span></span></code></pre></div><p>Bots can&rsquo;t touch what they can&rsquo;t reach.</p>
+<h2 id="disable-unused-services">Disable Unused Services<a hidden class="anchor" aria-hidden="true" href="#disable-unused-services">#</a></h2>
+<p>Every running service is an attack surface. List what is currently active:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl list-units --state<span class="o">=</span>running
+</span></span></code></pre></div><p>Then stop and disable anything you don&rsquo;t recognise or don&rsquo;t need:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl disable --now servicename
+</span></span></code></pre></div><p><code>--now</code> both stops the service immediately and prevents it from starting on next boot.</p>
+<h2 id="kernel-hardening">Kernel Hardening<a hidden class="anchor" aria-hidden="true" href="#kernel-hardening">#</a></h2>
+<p>A few <code>sysctl</code> parameters go a long way. Add them to <code>/etc/sysctl.conf</code>:</p>
+<pre tabindex="0"><code>net.ipv4.tcp_syncookies = 1
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+</code></pre><p>Apply them without a reboot:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sysctl -p
+</span></span></code></pre></div><ul>
+<li><code>tcp_syncookies</code> protects against SYN flood attacks.</li>
+<li><code>rp_filter</code> drops packets that arrive on an interface they shouldn&rsquo;t be coming from.</li>
+<li><code>icmp_echo_ignore_broadcasts</code> prevents the server from being used in Smurf amplification attacks.</li>
+</ul>
+<h2 id="disk--performance">Disk &amp; Performance<a hidden class="anchor" aria-hidden="true" href="#disk--performance">#</a></h2>
+<p>When the server is slow and you suspect a full disk, get the full picture in one line:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">df -hT <span class="o">&amp;&amp;</span> du -sh /* 2&gt;/dev/null <span class="p">|</span> sort -rh <span class="p">|</span> head -5
+</span></span></code></pre></div><p><code>df</code> shows overall disk usage per filesystem; <code>du</code> finds the top five directories consuming the most space. Chain them and you go from suspicion to culprit in seconds.</p>
+<p>Check memory usage:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">free -h
+</span></span></code></pre></div><p>Cached memory is not wasted — Linux reclaims it when needed. Don&rsquo;t panic if &ldquo;used&rdquo; looks high; focus on the &ldquo;available&rdquo; column.</p>
+<p>For disk I/O statistics, <code>iostat</code> from the <code>sysstat</code> package shows reads and writes per device:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">iostat -x <span class="m">1</span> <span class="m">3</span>
+</span></span></code></pre></div><p><code>-x</code> enables extended stats; <code>1 3</code> refreshes every second, three times. Useful for spotting a disk that is saturating under load.</p>
+<h2 id="networking--ports">Networking &amp; Ports<a hidden class="anchor" aria-hidden="true" href="#networking--ports">#</a></h2>
+<p>When an application is not reachable, the first question is: is anything actually listening on that port?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ss -tulnp <span class="p">|</span> grep :8080
+</span></span></code></pre></div><p>Replace <code>8080</code> with your port. <code>ss</code> is faster and more detailed than <code>netstat</code>.</p>
+<p>Check from the outside with <code>lsof</code> to confirm which process owns the socket:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">lsof -i :8080
+</span></span></code></pre></div><p>Test the endpoint directly and see every header:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -v http://localhost:8080/health
+</span></span></code></pre></div><p><code>/health</code> is the standard DevOps health-check path. The <code>-v</code> flag shows request and response headers — essential when debugging proxies or TLS issues.</p>
+<p>Check all active firewall rules at once:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">firewall-cmd --list-all
+</span></span></code></pre></div><p>This shows zones, services, ports, and rich rules together — one command for a full firewall picture.</p>
+<h2 id="automation--scripting">Automation &amp; Scripting<a hidden class="anchor" aria-hidden="true" href="#automation--scripting">#</a></h2>
+<h3 id="scheduled-tasks">Scheduled tasks<a hidden class="anchor" aria-hidden="true" href="#scheduled-tasks">#</a></h3>
+<p>Edit the crontab for a specific service account (deployments often run as dedicated users):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">crontab -e -u deploy
+</span></span></code></pre></div><h3 id="file-sync-to-remote-servers">File sync to remote servers<a hidden class="anchor" aria-hidden="true" href="#file-sync-to-remote-servers">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rsync -avz --delete /app/ user@server:/app/
+</span></span></code></pre></div><p><code>--delete</code> removes files on the destination that no longer exist in the source, keeping both sides in sync. A DevOps deployment staple.</p>
+<h3 id="live-service-monitoring">Live service monitoring<a hidden class="anchor" aria-hidden="true" href="#live-service-monitoring">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">watch -n <span class="m">5</span> <span class="s1">&#39;systemctl is-active nginx&#39;</span>
+</span></span></code></pre></div><p>Refreshes every 5 seconds — simple live monitoring during deployments without installing extra tools.</p>
+<h2 id="sudo-access">Sudo Access<a hidden class="anchor" aria-hidden="true" href="#sudo-access">#</a></h2>
+<p>Never edit <code>/etc/sudoers</code> directly. A syntax error there can lock you out of the entire system. Always use:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">visudo
+</span></span></code></pre></div><p><code>visudo</code> validates the file before saving and refuses to write a broken configuration.</p>
+<h2 id="log-inspection">Log Inspection<a hidden class="anchor" aria-hidden="true" href="#log-inspection">#</a></h2>
+<h3 id="find-what-broke-in-the-last-10-minutes">Find what broke in the last 10 minutes<a hidden class="anchor" aria-hidden="true" href="#find-what-broke-in-the-last-10-minutes">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">journalctl -xe --since <span class="s1">&#39;10 minutes ago&#39;</span>
+</span></span></code></pre></div><p><code>--since</code> narrows the window fast. During an incident, every second counts — don&rsquo;t scroll through hours of logs.</p>
+<h3 id="live-error-filtering">Live error filtering<a hidden class="anchor" aria-hidden="true" href="#live-error-filtering">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tail -f /var/log/nginx/error.log <span class="p">|</span> grep -i error
+</span></span></code></pre></div><p>Pipe <code>tail -f</code> into <code>grep</code> to filter the signal from the noise in real time.</p>
+<h3 id="quick-system-health-check">Quick system health check<a hidden class="anchor" aria-hidden="true" href="#quick-system-health-check">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">uptime <span class="o">&amp;&amp;</span> w
+</span></span></code></pre></div><p>Two commands in one line: <code>uptime</code> shows load averages for the last 1, 5, and 15 minutes; <code>w</code> shows who is logged in and what they are running. A 5-second gut-check before diving deeper.</p>
+<h2 id="file-utilities">File Utilities<a hidden class="anchor" aria-hidden="true" href="#file-utilities">#</a></h2>
+<h3 id="find-large-files">Find large files<a hidden class="anchor" aria-hidden="true" href="#find-large-files">#</a></h3>
+<p>Quickly locate files over a certain size — essential for freeing disk space on servers:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find . -type f -size +100M
+</span></span></code></pre></div><p>Adjust <code>+100M</code> to your threshold. Add <code>-exec ls -lh {} \;</code> to see sizes inline.</p>
+<h3 id="search-within-files">Search within files<a hidden class="anchor" aria-hidden="true" href="#search-within-files">#</a></h3>
+<p>Recursively search for a string across all files in the current directory:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep -r <span class="s2">&#34;searchText&#34;</span> .
+</span></span></code></pre></div><p>A true lifesaver when you need to find which config file contains a specific value.</p>
+<h3 id="bulk-rename-files">Bulk rename files<a hidden class="anchor" aria-hidden="true" href="#bulk-rename-files">#</a></h3>
+<p>Use a <code>for</code> loop to change extensions or prefixes on multiple files at once:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="k">for</span> f in *.bak<span class="p">;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  mv -- <span class="s2">&#34;</span><span class="nv">$f</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">f</span><span class="p">%.bak</span><span class="si">}</span><span class="s2">.old&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span></code></pre></div><h3 id="monitor-a-log-file-in-real-time">Monitor a log file in real time<a hidden class="anchor" aria-hidden="true" href="#monitor-a-log-file-in-real-time">#</a></h3>
+<p>Watch a log file as new lines are added — perfect for tracking application behaviour during a deployment:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tail -f /var/log/syslog
+</span></span></code></pre></div><hr>
+<p>These commands cover most of the situations I run into repeatedly: a service that won&rsquo;t start, a container that died quietly, a disk that filled up overnight, or an SSH session that suddenly stopped working. Keep them somewhere close and they will save you time when it matters.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.pakithecat.eu/tags/linux/">Linux</a></li>
+      <li><a href="https://blog.pakithecat.eu/tags/devops/">Devops</a></li>
+      <li><a href="https://blog.pakithecat.eu/tags/bash/">Bash</a></li>
+      <li><a href="https://blog.pakithecat.eu/tags/sysadmin/">Sysadmin</a></li>
+      <li><a href="https://blog.pakithecat.eu/tags/ssh/">Ssh</a></li>
+      <li><a href="https://blog.pakithecat.eu/tags/docker/">Docker</a></li>
+      <li><a href="https://blog.pakithecat.eu/tags/systemctl/">Systemctl</a></li>
+      <li><a href="https://blog.pakithecat.eu/tags/security/">Security</a></li>
+      <li><a href="https://blog.pakithecat.eu/tags/monitoring/">Monitoring</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://blog.pakithecat.eu/posts/2026/wsl-basic-commands/">
+    <span class="title">Next »</span>
+    <br>
+    <span>WSL Basic Commands Cheatsheet</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Linux DevOps Cheatsheet: Commands Every Engineer Should Know on x"
+            href="https://x.com/intent/tweet/?text=Linux%20DevOps%20Cheatsheet%3a%20Commands%20Every%20Engineer%20Should%20Know&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2flinux-devops-cheatsheet%2f&amp;hashtags=linux%2cdevops%2cbash%2csysadmin%2cssh%2cdocker%2csystemctl%2csecurity%2cmonitoring">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Linux DevOps Cheatsheet: Commands Every Engineer Should Know on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2flinux-devops-cheatsheet%2f&amp;title=Linux%20DevOps%20Cheatsheet%3a%20Commands%20Every%20Engineer%20Should%20Know&amp;summary=Linux%20DevOps%20Cheatsheet%3a%20Commands%20Every%20Engineer%20Should%20Know&amp;source=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2flinux-devops-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Linux DevOps Cheatsheet: Commands Every Engineer Should Know on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2flinux-devops-cheatsheet%2f&title=Linux%20DevOps%20Cheatsheet%3a%20Commands%20Every%20Engineer%20Should%20Know">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Linux DevOps Cheatsheet: Commands Every Engineer Should Know on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2flinux-devops-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Linux DevOps Cheatsheet: Commands Every Engineer Should Know on whatsapp"
+            href="https://api.whatsapp.com/send?text=Linux%20DevOps%20Cheatsheet%3a%20Commands%20Every%20Engineer%20Should%20Know%20-%20https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2flinux-devops-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Linux DevOps Cheatsheet: Commands Every Engineer Should Know on telegram"
+            href="https://telegram.me/share/url?text=Linux%20DevOps%20Cheatsheet%3a%20Commands%20Every%20Engineer%20Should%20Know&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2flinux-devops-cheatsheet%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Linux DevOps Cheatsheet: Commands Every Engineer Should Know on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Linux%20DevOps%20Cheatsheet%3a%20Commands%20Every%20Engineer%20Should%20Know&u=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2flinux-devops-cheatsheet%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>© <a href="https://github.com/concosminx">concosminx</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

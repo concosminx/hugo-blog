@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Monitoring on What I Did All Week</title>
-    <link>https://blog.pakithecat.eu/tags/monitoring/</link>
-    <description>Recent content in Monitoring on What I Did All Week</description>
+    <title>Bash on What I Did All Week</title>
+    <link>https://blog.pakithecat.eu/tags/bash/</link>
+    <description>Recent content in Bash on What I Did All Week</description>
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
     <lastBuildDate>Sun, 26 Jul 2026 12:00:00 +0300</lastBuildDate>
-    <atom:link href="https://blog.pakithecat.eu/tags/monitoring/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.pakithecat.eu/tags/bash/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Linux DevOps Cheatsheet: Commands Every Engineer Should Know</title>
       <link>https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/</link>
@@ -19,13 +19,6 @@
 &lt;p&gt;When a service refuses to start, the first move is always the same: check its status.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl status nginx
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This gives you the current state, recent log lines, and the PID — everything you need to start digging. It&amp;rsquo;s the first command asked about in every DevOps interview. Know it cold.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>JVM Diagnostic Commands Reference</title>
-      <link>https://blog.pakithecat.eu/posts/2026/jvm-diagnostic-commands/</link>
-      <pubDate>Tue, 14 Apr 2026 18:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/posts/2026/jvm-diagnostic-commands/</guid>
-      <description>Essential JVM diagnostic commands for troubleshooting and monitoring Java applications</description>
     </item>
   </channel>
 </rss>
