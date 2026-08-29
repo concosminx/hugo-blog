@@ -56,6 +56,28 @@
                 href="https://blog.pakithecat.eu/"
                 />
   </url><url>
+    <loc>https://blog.pakithecat.eu/tags/diagrams/</loc>
+    <lastmod>2026-08-29T09:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/hugo/</loc>
+    <lastmod>2026-08-29T09:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/mermaid/</loc>
+    <lastmod>2026-08-29T09:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/posts/2026/mermaid-diagrams-hugo/</loc>
+    <lastmod>2026-08-29T09:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/2026/mermaid-diagrams-hugo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/2026/mermaid-diagrams-hugo/"
+                />
+  </url><url>
     <loc>https://blog.pakithecat.eu/posts/2026/yum-command-cheatsheet/</loc>
     <lastmod>2026-08-29T09:00:00+03:00</lastmod>
   </url><url>
@@ -257,9 +279,6 @@
                 />
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/hosting/</loc>
-    <lastmod>2025-07-03T12:18:07+03:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/tags/hugo/</loc>
     <lastmod>2025-07-03T12:18:07+03:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/oci/</loc>

@@ -17,6 +17,13 @@
       <description>Opțiunile curl care merită reținute — trimiterea datelor, inspectarea header-elor, gestionarea cookie-urilor și a timeout-urilor, plus folosirea codurilor de ieșire în scripturi.</description>
     </item>
     <item>
+      <title>Diagrame Mermaid într-un blog Hugo</title>
+      <link>https://blog.pakithecat.eu/ro/posts/2026/mermaid-diagrams-hugo/</link>
+      <pubDate>Sat, 29 Aug 2026 09:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/posts/2026/mermaid-diagrams-hugo/</guid>
+      <description>Cum afișezi diagrame Mermaid în Hugo folosind un render hook pentru blocuri de cod, de ce metoda evidentă de încărcare condiționată eșuează în tăcere pe PaperMod și cum ții diagramele sincronizate cu tema light/dark.</description>
+    </item>
+    <item>
       <title>Comenzi de bază WSL — Cheatsheet</title>
       <link>https://blog.pakithecat.eu/ro/posts/2026/wsl-basic-commands/</link>
       <pubDate>Sat, 25 Apr 2026 10:00:00 +0200</pubDate>

@@ -17,6 +17,13 @@
       <description>The curl flags worth memorising — sending data, inspecting headers, handling cookies and timeouts, and using exit codes to make curl behave in scripts.</description>
     </item>
     <item>
+      <title>Mermaid Diagrams in a Hugo Blog</title>
+      <link>https://blog.pakithecat.eu/posts/2026/mermaid-diagrams-hugo/</link>
+      <pubDate>Sat, 29 Aug 2026 09:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/posts/2026/mermaid-diagrams-hugo/</guid>
+      <description>How to render Mermaid diagrams in Hugo with a code block render hook, why the obvious conditional-loading trick silently fails on PaperMod, and how to keep diagrams in sync with the light/dark toggle.</description>
+    </item>
+    <item>
       <title>YUM Command Cheatsheet</title>
       <link>https://blog.pakithecat.eu/posts/2026/yum-command-cheatsheet/</link>
       <pubDate>Sat, 29 Aug 2026 09:00:00 +0300</pubDate>
