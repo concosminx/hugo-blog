@@ -7,9 +7,9 @@ categories: ["tech"]
 showToc: true
 TocOpen: false
 author: "Me"
-cover:
-  image: gotify-docker-compose-cover.png
-  alt: 'Gotify notification dashboard'
+# cover:
+#   image: gotify-docker-compose-cover.png
+#   alt: 'Gotify notification dashboard'
 # editPost:
 #     URL: "https://github.com/<path_to_repo>/content"
 #     Text: "Suggest Changes" # edit text

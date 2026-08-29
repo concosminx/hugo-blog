@@ -7,9 +7,9 @@ categories: ["tech"]
 showToc: false
 TocOpen: false
 author: "Me"
-cover:
-    image: pexels-pixabay-207580.jpg
-    alt: 'Criptografie'
+# cover:
+#     image: pexels-pixabay-207580.jpg
+#     alt: 'Criptografie'
 ---
 
 GnuPG foloseste criptografia cu chei publice astfel incat utilizatorii sa poata comunica in siguranta. Intr-un sistem cu chei publice, fiecare utilizator are o pereche de chei formata dintr-o cheie privata si o cheie publica. Cheia privata a unui utilizator este pastrata secreta si nu trebuie dezvaluita niciodata. Cheia publica poate fi oferita oricui doreste utilizatorul sa comunice.

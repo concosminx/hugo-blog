@@ -7,10 +7,10 @@ categories: ["tech"]
 showToc: false
 TocOpen: false
 author: "Me"
-cover:
-    image: pexels-harold-vasquez-853421-2653362.jpg
-    alt: 'Code on black IDE theme'
-    #caption: 'Code on black IDE theme'
+# cover:
+#     image: pexels-harold-vasquez-853421-2653362.jpg
+#     alt: 'Code on black IDE theme'
+#     #caption: 'Code on black IDE theme'
 # editPost:
 #     URL: "https://github.com/<path_to_repo>/content"
 #     Text: "Suggest Changes" # edit text

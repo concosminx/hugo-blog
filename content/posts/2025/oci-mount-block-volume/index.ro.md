@@ -7,10 +7,10 @@ categories: ["tech"]
 showToc: false
 TocOpen: false
 author: "Me"
-cover:
-    image: oci-mount-block-volume.png
-    alt: 'Volum'
-    #caption: 'Code on black IDE theme'
+# cover:
+#     image: oci-mount-block-volume.png
+#     alt: 'Volum'
+#     #caption: 'Code on black IDE theme'
 # editPost:
 #     URL: "https://github.com/<path_to_repo>/content"
 #     Text: "Suggest Changes" # edit text

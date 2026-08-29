@@ -8,9 +8,9 @@ showToc: true
 TocOpen: false
 author: "Me"
 description: "A practical reference guide for the most useful WSL (Windows Subsystem for Linux) commands — from installation to managing distributions and mounting disks."
-cover:
-    image: wsl-basics.png
-    alt: 'WSL Basic Commands'
+# cover:
+#     image: wsl-basics.png
+#     alt: 'WSL Basic Commands'
 ShowReadingTime: true
 ShowBreadCrumbs: true
 ShowPostNavLinks: true

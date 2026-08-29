@@ -7,10 +7,10 @@ categories: ["tech"]
 showToc: true
 TocOpen: false
 author: "Me"
-cover:
-    image: yt-dlp-cover.jpg
-    alt: 'yt-dlp command line interface'
-    #caption: 'yt-dlp command line interface'
+# cover:
+#     image: yt-dlp-cover.jpg
+#     alt: 'yt-dlp command line interface'
+#     #caption: 'yt-dlp command line interface'
 # editPost:
 #     URL: "https://github.com/<path_to_repo>/content"
 #     Text: "Suggest Changes" # edit text

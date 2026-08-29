@@ -7,9 +7,9 @@ categories: ["tech"]
 showToc: true
 TocOpen: false
 author: "Me"
-cover:
-  image: rustfs-with-docker.png
-  alt: 'Containerized storage service'
+# cover:
+#   image: rustfs-with-docker.png
+#   alt: 'Containerized storage service'
 # editPost:
 #     URL: "https://github.com/<path_to_repo>/content"
 #     Text: "Suggest Changes" # edit text

@@ -8,9 +8,9 @@ showToc: true
 TocOpen: false
 author: "Me"
 description: "Un ghid practic cu cele mai utile comenzi WSL (Windows Subsystem for Linux) — de la instalare până la gestionarea distribuțiilor și montarea discurilor."
-cover:
-    image: wsl-basics.png
-    alt: 'Comenzi de bază WSL'
+# cover:
+#     image: wsl-basics.png
+#     alt: 'Comenzi de bază WSL'
 ShowReadingTime: true
 ShowBreadCrumbs: true
 ShowPostNavLinks: true

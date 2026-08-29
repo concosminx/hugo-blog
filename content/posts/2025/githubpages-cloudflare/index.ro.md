@@ -7,9 +7,9 @@ categories: ["tech"]
 showToc: false
 TocOpen: false
 author: "Me"
-cover:
-    image: pexels-viktortalashuk-2377295.jpg
-    alt: 'Books'
+# cover:
+#     image: pexels-viktortalashuk-2377295.jpg
+#     alt: 'Books'
 ---
 
 ### Cum sa rutezi site-ul tau GitHub Pages prin Cloudflare pe un subdomeniu

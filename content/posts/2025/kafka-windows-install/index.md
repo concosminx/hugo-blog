@@ -7,10 +7,10 @@ categories: ["tech"]
 showToc: true
 TocOpen: false
 author: "Me"
-cover:
-    image: kafka-cover.png
-    alt: 'Apache Kafka on Windows'
-    #caption: 'Apache Kafka streaming platform'
+# cover:
+#     image: kafka-cover.png
+#     alt: 'Apache Kafka on Windows'
+#     #caption: 'Apache Kafka streaming platform'
 # editPost:
 #     URL: "https://github.com/<path_to_repo>/content"
 #     Text: "Suggest Changes" # edit text

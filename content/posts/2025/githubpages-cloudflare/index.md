@@ -7,9 +7,9 @@ categories: ["tech"]
 showToc: false
 TocOpen: false
 author: "Me"
-cover:
-    image: pexels-viktortalashuk-2377295.jpg
-    alt: 'Books'
+# cover:
+#     image: pexels-viktortalashuk-2377295.jpg
+#     alt: 'Books'
 ---
 
 ### How to route your GitHub Pages site through Cloudflare on a Subdomain

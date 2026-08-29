@@ -7,9 +7,9 @@ categories: ["tech"]
 showToc: false
 TocOpen: false
 author: "Me"
-cover:
-    image: pexels-pixabay-207580.jpg
-    alt: 'Cryptography'
+# cover:
+#     image: pexels-pixabay-207580.jpg
+#     alt: 'Cryptography'
 ---
 
 GnuPG uses public-key cryptography so that users may communicate securely. In a public-key system, each user has a pair of keys consisting of a private key and a public key. A user's private key is kept secret; it need never be revealed. The public key may be given to anyone with whom the user wants to communicate.

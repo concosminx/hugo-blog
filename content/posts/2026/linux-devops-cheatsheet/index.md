@@ -7,9 +7,9 @@ categories: ["tech"]
 showToc: true
 TocOpen: false
 author: "Me"
-cover:
-  image: linux-devops-cheatsheet-cover.jpg
-  alt: 'Linux DevOps terminal commands cheatsheet'
+# cover:
+#   image: linux-devops-cheatsheet-cover.jpg
+#   alt: 'Linux DevOps terminal commands cheatsheet'
 # editPost:
 #     URL: "https://github.com/<path_to_repo>/content"
 #     Text: "Suggest Changes" # edit text

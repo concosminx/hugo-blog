@@ -7,10 +7,10 @@ categorii: ["tech"]
 showToc: true
 TocOpen: false
 author: "Me"
-cover:
-    image: yt-dlp-cover.jpg
-    alt: 'Interfata in linia de comanda yt-dlp'
-    #caption: 'Interfata in linia de comanda yt-dlp'
+# cover:
+#     image: yt-dlp-cover.jpg
+#     alt: 'Interfata in linia de comanda yt-dlp'
+#     #caption: 'Interfata in linia de comanda yt-dlp'
 # editPost:
 #     URL: "https://github.com/<path_to_repo>/content"
 #     Text: "Suggest Changes" # edit text
