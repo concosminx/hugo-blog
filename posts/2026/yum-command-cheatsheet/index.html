@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>YUM Command Cheatsheet | What I Did All Week</title>
+<meta name="keywords" content="cheatsheet">
+<meta name="description" content="A practical reference for yum on Red Hat Enterprise Linux — querying packages, managing repositories, installing and removing software, and undoing transactions when something goes wrong.">
+<meta name="author" content="Me">
+<link rel="canonical" href="https://blog.pakithecat.eu/posts/2026/yum-command-cheatsheet/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d6fcd20a4fb86efa4dfac8ec95da60244cc8871042183da1ef28e3a762ad79c8.css" integrity="sha256-1vzSCk&#43;4bvpN&#43;sjsldpgJEzIhxBCGD2h7yjjp2Ktecg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.pakithecat.eu/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.pakithecat.eu/icons/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.pakithecat.eu/icons/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.pakithecat.eu/icons/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.pakithecat.eu/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://blog.pakithecat.eu/posts/2026/yum-command-cheatsheet/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://blog.pakithecat.eu/posts/2026/yum-command-cheatsheet/">
+  <meta property="og:site_name" content="What I Did All Week">
+  <meta property="og:title" content="YUM Command Cheatsheet">
+  <meta property="og:description" content="A practical reference for yum on Red Hat Enterprise Linux — querying packages, managing repositories, installing and removing software, and undoing transactions when something goes wrong.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-08-29T09:00:00+03:00">
+    <meta property="article:modified_time" content="2026-08-29T09:00:00+03:00">
+    <meta property="article:tag" content="Cheatsheet">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="YUM Command Cheatsheet">
+<meta name="twitter:description" content="A practical reference for yum on Red Hat Enterprise Linux — querying packages, managing repositories, installing and removing software, and undoing transactions when something goes wrong.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.pakithecat.eu/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "YUM Command Cheatsheet",
+      "item": "https://blog.pakithecat.eu/posts/2026/yum-command-cheatsheet/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "YUM Command Cheatsheet",
+  "name": "YUM Command Cheatsheet",
+  "description": "A practical reference for yum on Red Hat Enterprise Linux — querying packages, managing repositories, installing and removing software, and undoing transactions when something goes wrong.",
+  "keywords": [
+    "cheatsheet"
+  ],
+  "articleBody": "yum is the package manager that shipped with Red Hat Enterprise Linux through RHEL 7, and it is still the command you type on RHEL 8 and later — there it is a symlink to dnf, which keeps the same subcommands and options. This is the set of subcommands worth knowing, grouped by what you are actually trying to do.\nQuerying packages Before installing anything, it helps to know what is out there. yum help lists every subcommand and option, but these are the queries you will reach for daily.\nList packages from the configured repositories:\nyum list available yum list installed yum list all The three forms differ only in scope: what you could install, what you have installed, and both together. You can narrow any of them with a package name:\nyum list kernel Handy before a reboot — it shows which kernel versions are installed alongside what the repos are offering.\nTo read the metadata for a single package:\nyum info vsftpd Version, architecture, repository, size, and the full description. Use it to confirm you are about to install what you think you are.\nDependencies are often the interesting part:\nyum deplist nfs-utils This lists each dependency and the package that would satisfy it, which is what makes it more useful than reading the spec.\nThe reverse lookup — “which package owns this file?” — is provides:\nyum provides \"*bin/top\" yum provides \"*/README.top\" Quote the glob so the shell doesn’t expand it first. This is the command that answers “I have a binary and no idea where it came from.”\nWhen you don’t know the package name at all, search names and descriptions:\nyum search samba And for pending updates, updateinfo explains why an update exists:\nyum updateinfo security Security errata, listed with their advisory IDs. Pair it with yum check-update, which simply asks the repositories what has a newer version available.\nPackage groups Groups bundle related packages so you can install a whole role in one step.\nyum grouplist yum groupinfo \"Web Server\" yum groupinstall \"Web Server\" grouplist shows installed and available groups, groupinfo expands one into its package list, and groupinstall pulls the lot in. Always run groupinfo first — groups can be considerably larger than they sound.\nInstalling, updating and removing The core of everyday use:\nyum install vsftpd Updating takes an optional package name; without one it updates everything:\nyum update yum update httpd On a production box you usually want the narrower version — security fixes only:\nyum update --security There are three related variants worth distinguishing. update-to pins the update to a particular version rather than the newest. upgrade behaves like update but also honours obsoletes, so packages that have been replaced upstream get swapped rather than left behind. And localinstall takes a path or a URL instead of a repository name:\nyum localinstall abc-1-1.i686.rpm yum localinstall http://myrepo/abc-1-1.i686.rpm The advantage over plain rpm -i is that yum still resolves dependencies from your configured repositories.\nWhen an update goes badly, step back one version:\nyum downgrade abc When files have been deleted or corrupted but the version is fine, reinstall in place:\nyum reinstall util-linux To replace one package with another in a single transaction:\nyum swap ftp lftp Removal has three spellings with slightly different behaviour. yum remove and yum erase are the same command, and both take the package’s dependencies with it:\nyum remove vsftpd autoremove goes further and also clears out dependencies that nothing else needs any more:\nyum autoremove httpd That extra sweep is usually what you want after decommissioning a service, but read the list before confirming — “nothing else needs it” is judged from the RPM database, not from what you happen to run.\nManaging repositories yum repolist The enabled repositories, one per line. For details on a specific one:\nyum repoinfo rhel-7-server-rpms repo-pkgs scopes an operation to a single repository, which is the clean way to handle an internal repo of your own packages:\nyum repo-pkgs my-rpms list yum repo-pkgs my-rpms install yum repo-pkgs my-rpms remove And when metadata looks stale, prime the cache explicitly:\nyum makecache Troubleshooting and maintenance The transaction history is the feature most people discover too late.\nyum history list Every install, update and erase, numbered. Inspect one:\nyum history info 3 Then undo it, or redo it if the undo was a mistake:\nyum history undo 3 yum history redo 3 This is a genuine safety net — an update that breaks a service can usually be rolled back in one command.\nWhen the cache itself is the problem:\nyum clean packages yum clean all clean packages drops the downloaded RPMs; clean all also drops the repository metadata, forcing a fresh fetch on the next run. Reach for clean all whenever yum insists a package doesn’t exist and you are certain it does.\nTo check the local RPM database for inconsistencies:\nyum check Be patient with this one — on a large system it runs for a long time.\nTwo more, both RHEL 7 additions. fssnapshot lists LVM snapshots, which is what you fall back on when a rollback needs to go deeper than the yum history. And fs filters what actually lands on disk — useful on minimal systems where documentation and translations are dead weight:\nyum fs filters yum fs documentation The second one excludes documentation from future installs. Set it deliberately; a system without man pages is a surprise nobody enjoys inheriting.\nLanguage packs If you don’t need the translations, don’t install them.\nyum langavailable yum langlist yum langinfo es yum langinstall es yum langremove es langavailable lists everything on offer, langlist shows what is installed, and langinfo expands a language code into its package list before you commit.\nOptions worth memorising These apply across most subcommands:\nOption Effect -y Assume yes at every prompt --assumeno Assume no at every prompt -q Suppress output -v Extra debugging output --noplugins Run without loading any plugins --disableplugin= Disable one plugin for this command --enableplugin= Enable an installed-but-disabled plugin --enablerepo= Enable a disabled repo for this command --disablerepo= Disable an enabled repo for this command --downloadonly Download to the cache without installing --changelog Show the package changelog A few of these earn their keep in specific situations. Enabling a repository for a single command avoids leaving it on permanently:\nyum install docker --enablerepo=rhel-7-server-extras-rpms The mirror image is useful when a third-party repo is shadowing a package you want from elsewhere:\nyum list available --disablerepo=epel --downloadonly stages packages in /var/cache/yum/ without touching the running system — the usual first half of a maintenance window:\nyum install --downloadonly vsftpd And --enableplugin=ps turns on the plugin that maps packages to running processes:\nyum --enableplugin=ps ps Not every option works everywhere, since several depend on plugins. Check what you have with yum list \"yum-plugin*\".\nExtra commands from yum-utils Installing the yum-utils package adds a set of standalone commands that fill in the gaps:\nyum install yum-utils Command What it does find-repos-of-install Identify which repository a package came from needs-restarting List processes running against updated libraries repoclosure Report unmet dependencies across repositories repoquery Query remote repos and the local RPM database reposync Mirror a repository to a local directory repotrack Download a package plus all its dependencies show-installed List installed packages with statistics verifytree Check a local repository for consistency yum-complete-transaction Finish transactions that were interrupted yumdb Inspect or modify the yum database yumdownloader Download a package into the current directory Two of these come up constantly. After patching, needs-restarting tells you what is still running against the old libraries — the difference between an update applied and an update actually in effect:\nneeds-restarting And repoquery answers dependency questions without installing anything:\nrepoquery --requires --resolve bash For building a local mirror, reposync pulls a whole repository down:\nreposync -r rhel-atomic-host-beta-rpms repotrack is the narrower version — one package and its full dependency tree, which is what you want when preparing an offline install.\nWhere to go next man yum documents every subcommand and option in full, and on RHEL 8 and later man dnf covers the same ground for the successor. If you are writing automation, yum history and --downloadonly are the two features that make an update reversible and reviewable rather than a leap of faith.\n",
+  "wordCount" : "1372",
+  "inLanguage": "en",
+  "datePublished": "2026-08-29T09:00:00+03:00",
+  "dateModified": "2026-08-29T09:00:00+03:00",
+  "author":{
+    "@type": "Person",
+    "name": "Me"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.pakithecat.eu/posts/2026/yum-command-cheatsheet/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "What I Did All Week",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.pakithecat.eu/icons/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.pakithecat.eu/" accesskey="h" title="What I Did All Week (Alt + H)">What I Did All Week</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://blog.pakithecat.eu/ro/" title="Romanian"
+                            aria-label="🇷🇴">🇷🇴</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.pakithecat.eu/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/concosminx/hugo-blog" title="Repo">
+                    <span>Repo</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://blog.pakithecat.eu/">Home</a>&nbsp;»&nbsp;<a href="https://blog.pakithecat.eu/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      YUM Command Cheatsheet
+    </h1>
+    <div class="post-description">
+      A practical reference for yum on Red Hat Enterprise Linux — querying packages, managing repositories, installing and removing software, and undoing transactions when something goes wrong.
+    </div>
+    <div class="post-meta"><span title='2026-08-29 09:00:00 +0300 +0300'>August 29, 2026</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;1372 words&nbsp;·&nbsp;Me&nbsp;|&nbsp;<a href="https://github.com/concosminx/hugo-blog/tree/main/content/posts/2026/yum-command-cheatsheet/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#querying-packages" aria-label="Querying packages">Querying packages</a></li>
+                <li>
+                    <a href="#package-groups" aria-label="Package groups">Package groups</a></li>
+                <li>
+                    <a href="#installing-updating-and-removing" aria-label="Installing, updating and removing">Installing, updating and removing</a></li>
+                <li>
+                    <a href="#managing-repositories" aria-label="Managing repositories">Managing repositories</a></li>
+                <li>
+                    <a href="#troubleshooting-and-maintenance" aria-label="Troubleshooting and maintenance">Troubleshooting and maintenance</a></li>
+                <li>
+                    <a href="#language-packs" aria-label="Language packs">Language packs</a></li>
+                <li>
+                    <a href="#options-worth-memorising" aria-label="Options worth memorising">Options worth memorising</a></li>
+                <li>
+                    <a href="#extra-commands-from-yum-utils" aria-label="Extra commands from yum-utils">Extra commands from yum-utils</a></li>
+                <li>
+                    <a href="#where-to-go-next" aria-label="Where to go next">Where to go next</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p><code>yum</code> is the package manager that shipped with Red Hat Enterprise Linux through RHEL 7, and it is still the command you type on RHEL 8 and later — there it is a symlink to <code>dnf</code>, which keeps the same subcommands and options. This is the set of subcommands worth knowing, grouped by what you are actually trying to do.</p>
+<h2 id="querying-packages">Querying packages<a hidden class="anchor" aria-hidden="true" href="#querying-packages">#</a></h2>
+<p>Before installing anything, it helps to know what is out there. <code>yum help</code> lists every subcommand and option, but these are the queries you will reach for daily.</p>
+<p>List packages from the configured repositories:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum list available
+</span></span><span class="line"><span class="cl">yum list installed
+</span></span><span class="line"><span class="cl">yum list all
+</span></span></code></pre></div><p>The three forms differ only in scope: what you <em>could</em> install, what you <em>have</em> installed, and both together. You can narrow any of them with a package name:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum list kernel
+</span></span></code></pre></div><p>Handy before a reboot — it shows which kernel versions are installed alongside what the repos are offering.</p>
+<p>To read the metadata for a single package:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum info vsftpd
+</span></span></code></pre></div><p>Version, architecture, repository, size, and the full description. Use it to confirm you are about to install what you think you are.</p>
+<p>Dependencies are often the interesting part:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum deplist nfs-utils
+</span></span></code></pre></div><p>This lists each dependency <em>and</em> the package that would satisfy it, which is what makes it more useful than reading the spec.</p>
+<p>The reverse lookup — &ldquo;which package owns this file?&rdquo; — is <code>provides</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum provides <span class="s2">&#34;*bin/top&#34;</span>
+</span></span><span class="line"><span class="cl">yum provides <span class="s2">&#34;*/README.top&#34;</span>
+</span></span></code></pre></div><p>Quote the glob so the shell doesn&rsquo;t expand it first. This is the command that answers &ldquo;I have a binary and no idea where it came from.&rdquo;</p>
+<p>When you don&rsquo;t know the package name at all, search names and descriptions:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum search samba
+</span></span></code></pre></div><p>And for pending updates, <code>updateinfo</code> explains <em>why</em> an update exists:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum updateinfo security
+</span></span></code></pre></div><p>Security errata, listed with their advisory IDs. Pair it with <code>yum check-update</code>, which simply asks the repositories what has a newer version available.</p>
+<h2 id="package-groups">Package groups<a hidden class="anchor" aria-hidden="true" href="#package-groups">#</a></h2>
+<p>Groups bundle related packages so you can install a whole role in one step.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum grouplist
+</span></span><span class="line"><span class="cl">yum groupinfo <span class="s2">&#34;Web Server&#34;</span>
+</span></span><span class="line"><span class="cl">yum groupinstall <span class="s2">&#34;Web Server&#34;</span>
+</span></span></code></pre></div><p><code>grouplist</code> shows installed and available groups, <code>groupinfo</code> expands one into its package list, and <code>groupinstall</code> pulls the lot in. Always run <code>groupinfo</code> first — groups can be considerably larger than they sound.</p>
+<h2 id="installing-updating-and-removing">Installing, updating and removing<a hidden class="anchor" aria-hidden="true" href="#installing-updating-and-removing">#</a></h2>
+<p>The core of everyday use:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install vsftpd
+</span></span></code></pre></div><p>Updating takes an optional package name; without one it updates everything:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum update
+</span></span><span class="line"><span class="cl">yum update httpd
+</span></span></code></pre></div><p>On a production box you usually want the narrower version — security fixes only:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum update --security
+</span></span></code></pre></div><p>There are three related variants worth distinguishing. <code>update-to</code> pins the update to a particular version rather than the newest. <code>upgrade</code> behaves like <code>update</code> but also honours obsoletes, so packages that have been replaced upstream get swapped rather than left behind. And <code>localinstall</code> takes a path or a URL instead of a repository name:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum localinstall abc-1-1.i686.rpm
+</span></span><span class="line"><span class="cl">yum localinstall http://myrepo/abc-1-1.i686.rpm
+</span></span></code></pre></div><p>The advantage over plain <code>rpm -i</code> is that yum still resolves dependencies from your configured repositories.</p>
+<p>When an update goes badly, step back one version:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum downgrade abc
+</span></span></code></pre></div><p>When files have been deleted or corrupted but the version is fine, reinstall in place:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum reinstall util-linux
+</span></span></code></pre></div><p>To replace one package with another in a single transaction:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum swap ftp lftp
+</span></span></code></pre></div><p>Removal has three spellings with slightly different behaviour. <code>yum remove</code> and <code>yum erase</code> are the same command, and both take the package&rsquo;s dependencies with it:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum remove vsftpd
+</span></span></code></pre></div><p><code>autoremove</code> goes further and also clears out dependencies that nothing else needs any more:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum autoremove httpd
+</span></span></code></pre></div><p>That extra sweep is usually what you want after decommissioning a service, but read the list before confirming — &ldquo;nothing else needs it&rdquo; is judged from the RPM database, not from what you happen to run.</p>
+<h2 id="managing-repositories">Managing repositories<a hidden class="anchor" aria-hidden="true" href="#managing-repositories">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum repolist
+</span></span></code></pre></div><p>The enabled repositories, one per line. For details on a specific one:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum repoinfo rhel-7-server-rpms
+</span></span></code></pre></div><p><code>repo-pkgs</code> scopes an operation to a single repository, which is the clean way to handle an internal repo of your own packages:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum repo-pkgs my-rpms list
+</span></span><span class="line"><span class="cl">yum repo-pkgs my-rpms install
+</span></span><span class="line"><span class="cl">yum repo-pkgs my-rpms remove
+</span></span></code></pre></div><p>And when metadata looks stale, prime the cache explicitly:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum makecache
+</span></span></code></pre></div><h2 id="troubleshooting-and-maintenance">Troubleshooting and maintenance<a hidden class="anchor" aria-hidden="true" href="#troubleshooting-and-maintenance">#</a></h2>
+<p>The transaction history is the feature most people discover too late.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum <span class="nb">history</span> list
+</span></span></code></pre></div><p>Every install, update and erase, numbered. Inspect one:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum <span class="nb">history</span> info <span class="m">3</span>
+</span></span></code></pre></div><p>Then undo it, or redo it if the undo was a mistake:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum <span class="nb">history</span> undo <span class="m">3</span>
+</span></span><span class="line"><span class="cl">yum <span class="nb">history</span> redo <span class="m">3</span>
+</span></span></code></pre></div><p>This is a genuine safety net — an update that breaks a service can usually be rolled back in one command.</p>
+<p>When the cache itself is the problem:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum clean packages
+</span></span><span class="line"><span class="cl">yum clean all
+</span></span></code></pre></div><p><code>clean packages</code> drops the downloaded RPMs; <code>clean all</code> also drops the repository metadata, forcing a fresh fetch on the next run. Reach for <code>clean all</code> whenever yum insists a package doesn&rsquo;t exist and you are certain it does.</p>
+<p>To check the local RPM database for inconsistencies:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum check
+</span></span></code></pre></div><p>Be patient with this one — on a large system it runs for a long time.</p>
+<p>Two more, both RHEL 7 additions. <code>fssnapshot</code> lists LVM snapshots, which is what you fall back on when a rollback needs to go deeper than the yum history. And <code>fs</code> filters what actually lands on disk — useful on minimal systems where documentation and translations are dead weight:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum fs filters
+</span></span><span class="line"><span class="cl">yum fs documentation
+</span></span></code></pre></div><p>The second one excludes documentation from future installs. Set it deliberately; a system without man pages is a surprise nobody enjoys inheriting.</p>
+<h2 id="language-packs">Language packs<a hidden class="anchor" aria-hidden="true" href="#language-packs">#</a></h2>
+<p>If you don&rsquo;t need the translations, don&rsquo;t install them.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum langavailable
+</span></span><span class="line"><span class="cl">yum langlist
+</span></span><span class="line"><span class="cl">yum langinfo es
+</span></span><span class="line"><span class="cl">yum langinstall es
+</span></span><span class="line"><span class="cl">yum langremove es
+</span></span></code></pre></div><p><code>langavailable</code> lists everything on offer, <code>langlist</code> shows what is installed, and <code>langinfo</code> expands a language code into its package list before you commit.</p>
+<h2 id="options-worth-memorising">Options worth memorising<a hidden class="anchor" aria-hidden="true" href="#options-worth-memorising">#</a></h2>
+<p>These apply across most subcommands:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Option</th>
+          <th>Effect</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>-y</code></td>
+          <td>Assume yes at every prompt</td>
+      </tr>
+      <tr>
+          <td><code>--assumeno</code></td>
+          <td>Assume no at every prompt</td>
+      </tr>
+      <tr>
+          <td><code>-q</code></td>
+          <td>Suppress output</td>
+      </tr>
+      <tr>
+          <td><code>-v</code></td>
+          <td>Extra debugging output</td>
+      </tr>
+      <tr>
+          <td><code>--noplugins</code></td>
+          <td>Run without loading any plugins</td>
+      </tr>
+      <tr>
+          <td><code>--disableplugin=</code></td>
+          <td>Disable one plugin for this command</td>
+      </tr>
+      <tr>
+          <td><code>--enableplugin=</code></td>
+          <td>Enable an installed-but-disabled plugin</td>
+      </tr>
+      <tr>
+          <td><code>--enablerepo=</code></td>
+          <td>Enable a disabled repo for this command</td>
+      </tr>
+      <tr>
+          <td><code>--disablerepo=</code></td>
+          <td>Disable an enabled repo for this command</td>
+      </tr>
+      <tr>
+          <td><code>--downloadonly</code></td>
+          <td>Download to the cache without installing</td>
+      </tr>
+      <tr>
+          <td><code>--changelog</code></td>
+          <td>Show the package changelog</td>
+      </tr>
+  </tbody>
+</table>
+<p>A few of these earn their keep in specific situations. Enabling a repository for a single command avoids leaving it on permanently:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install docker --enablerepo<span class="o">=</span>rhel-7-server-extras-rpms
+</span></span></code></pre></div><p>The mirror image is useful when a third-party repo is shadowing a package you want from elsewhere:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum list available --disablerepo<span class="o">=</span>epel
+</span></span></code></pre></div><p><code>--downloadonly</code> stages packages in <code>/var/cache/yum/</code> without touching the running system — the usual first half of a maintenance window:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install --downloadonly vsftpd
+</span></span></code></pre></div><p>And <code>--enableplugin=ps</code> turns on the plugin that maps packages to running processes:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum --enableplugin<span class="o">=</span>ps ps
+</span></span></code></pre></div><p>Not every option works everywhere, since several depend on plugins. Check what you have with <code>yum list &quot;yum-plugin*&quot;</code>.</p>
+<h2 id="extra-commands-from-yum-utils">Extra commands from yum-utils<a hidden class="anchor" aria-hidden="true" href="#extra-commands-from-yum-utils">#</a></h2>
+<p>Installing the <code>yum-utils</code> package adds a set of standalone commands that fill in the gaps:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install yum-utils
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Command</th>
+          <th>What it does</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>find-repos-of-install</code></td>
+          <td>Identify which repository a package came from</td>
+      </tr>
+      <tr>
+          <td><code>needs-restarting</code></td>
+          <td>List processes running against updated libraries</td>
+      </tr>
+      <tr>
+          <td><code>repoclosure</code></td>
+          <td>Report unmet dependencies across repositories</td>
+      </tr>
+      <tr>
+          <td><code>repoquery</code></td>
+          <td>Query remote repos and the local RPM database</td>
+      </tr>
+      <tr>
+          <td><code>reposync</code></td>
+          <td>Mirror a repository to a local directory</td>
+      </tr>
+      <tr>
+          <td><code>repotrack</code></td>
+          <td>Download a package plus all its dependencies</td>
+      </tr>
+      <tr>
+          <td><code>show-installed</code></td>
+          <td>List installed packages with statistics</td>
+      </tr>
+      <tr>
+          <td><code>verifytree</code></td>
+          <td>Check a local repository for consistency</td>
+      </tr>
+      <tr>
+          <td><code>yum-complete-transaction</code></td>
+          <td>Finish transactions that were interrupted</td>
+      </tr>
+      <tr>
+          <td><code>yumdb</code></td>
+          <td>Inspect or modify the yum database</td>
+      </tr>
+      <tr>
+          <td><code>yumdownloader</code></td>
+          <td>Download a package into the current directory</td>
+      </tr>
+  </tbody>
+</table>
+<p>Two of these come up constantly. After patching, <code>needs-restarting</code> tells you what is still running against the old libraries — the difference between an update applied and an update actually in effect:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">needs-restarting
+</span></span></code></pre></div><p>And <code>repoquery</code> answers dependency questions without installing anything:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">repoquery --requires --resolve bash
+</span></span></code></pre></div><p>For building a local mirror, <code>reposync</code> pulls a whole repository down:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">reposync -r rhel-atomic-host-beta-rpms
+</span></span></code></pre></div><p><code>repotrack</code> is the narrower version — one package and its full dependency tree, which is what you want when preparing an offline install.</p>
+<h2 id="where-to-go-next">Where to go next<a hidden class="anchor" aria-hidden="true" href="#where-to-go-next">#</a></h2>
+<p><code>man yum</code> documents every subcommand and option in full, and on RHEL 8 and later <code>man dnf</code> covers the same ground for the successor. If you are writing automation, <code>yum history</code> and <code>--downloadonly</code> are the two features that make an update reversible and reviewable rather than a leap of faith.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.pakithecat.eu/tags/cheatsheet/">Cheatsheet</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://blog.pakithecat.eu/posts/2026/curl-command-cheatsheet/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>cURL Command Cheatsheet</span>
+  </a>
+  <a class="next" href="https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Linux DevOps Cheatsheet: Commands Every Engineer Should Know</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share YUM Command Cheatsheet on x"
+            href="https://x.com/intent/tweet/?text=YUM%20Command%20Cheatsheet&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fyum-command-cheatsheet%2f&amp;hashtags=cheatsheet">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share YUM Command Cheatsheet on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fyum-command-cheatsheet%2f&amp;title=YUM%20Command%20Cheatsheet&amp;summary=YUM%20Command%20Cheatsheet&amp;source=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fyum-command-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share YUM Command Cheatsheet on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fyum-command-cheatsheet%2f&title=YUM%20Command%20Cheatsheet">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share YUM Command Cheatsheet on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fyum-command-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share YUM Command Cheatsheet on whatsapp"
+            href="https://api.whatsapp.com/send?text=YUM%20Command%20Cheatsheet%20-%20https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fyum-command-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share YUM Command Cheatsheet on telegram"
+            href="https://telegram.me/share/url?text=YUM%20Command%20Cheatsheet&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fyum-command-cheatsheet%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share YUM Command Cheatsheet on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=YUM%20Command%20Cheatsheet&u=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fyum-command-cheatsheet%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>© <a href="https://github.com/concosminx">concosminx</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

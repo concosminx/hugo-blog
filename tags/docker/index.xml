@@ -7,19 +7,8 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Sun, 26 Jul 2026 12:00:00 +0300</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2026 12:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/tags/docker/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Linux DevOps Cheatsheet: Commands Every Engineer Should Know</title>
-      <link>https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/</link>
-      <pubDate>Sun, 26 Jul 2026 12:00:00 +0300</pubDate>
-      <guid>https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/</guid>
-      <description>&lt;p&gt;A curated set of Linux commands I keep coming back to for service management, debugging, server hardening, and automation. No fluff — just the commands that actually matter on a production server.&lt;/p&gt;
-&lt;h2 id=&#34;service-management&#34;&gt;Service Management&lt;/h2&gt;
-&lt;p&gt;When a service refuses to start, the first move is always the same: check its status.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl status nginx
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This gives you the current state, recent log lines, and the PID — everything you need to start digging. It&amp;rsquo;s the first command asked about in every DevOps interview. Know it cold.&lt;/p&gt;</description>
-    </item>
     <item>
       <title>Gotify with Docker Compose (Quick Setup)</title>
       <link>https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/</link>

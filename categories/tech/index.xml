@@ -7,8 +7,22 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Sun, 26 Jul 2026 12:00:00 +0300</lastBuildDate>
+    <lastBuildDate>Sat, 29 Aug 2026 10:00:00 +0300</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cURL Command Cheatsheet</title>
+      <link>https://blog.pakithecat.eu/posts/2026/curl-command-cheatsheet/</link>
+      <pubDate>Sat, 29 Aug 2026 10:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/posts/2026/curl-command-cheatsheet/</guid>
+      <description>The curl flags worth memorising — sending data, inspecting headers, handling cookies and timeouts, and using exit codes to make curl behave in scripts.</description>
+    </item>
+    <item>
+      <title>YUM Command Cheatsheet</title>
+      <link>https://blog.pakithecat.eu/posts/2026/yum-command-cheatsheet/</link>
+      <pubDate>Sat, 29 Aug 2026 09:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/posts/2026/yum-command-cheatsheet/</guid>
+      <description>A practical reference for yum on Red Hat Enterprise Linux — querying packages, managing repositories, installing and removing software, and undoing transactions when something goes wrong.</description>
+    </item>
     <item>
       <title>Linux DevOps Cheatsheet: Commands Every Engineer Should Know</title>
       <link>https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/</link>

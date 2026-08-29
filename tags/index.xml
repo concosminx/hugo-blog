@@ -7,76 +7,27 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Sun, 26 Jul 2026 12:00:00 +0300</lastBuildDate>
+    <lastBuildDate>Sat, 29 Aug 2026 10:00:00 +0300</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Bash</title>
-      <link>https://blog.pakithecat.eu/tags/bash/</link>
-      <pubDate>Sun, 26 Jul 2026 12:00:00 +0300</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/bash/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Devops</title>
-      <link>https://blog.pakithecat.eu/tags/devops/</link>
-      <pubDate>Sun, 26 Jul 2026 12:00:00 +0300</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/devops/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Docker</title>
-      <link>https://blog.pakithecat.eu/tags/docker/</link>
-      <pubDate>Sun, 26 Jul 2026 12:00:00 +0300</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/docker/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Linux</title>
-      <link>https://blog.pakithecat.eu/tags/linux/</link>
-      <pubDate>Sun, 26 Jul 2026 12:00:00 +0300</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/linux/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Monitoring</title>
-      <link>https://blog.pakithecat.eu/tags/monitoring/</link>
-      <pubDate>Sun, 26 Jul 2026 12:00:00 +0300</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/monitoring/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Security</title>
-      <link>https://blog.pakithecat.eu/tags/security/</link>
-      <pubDate>Sun, 26 Jul 2026 12:00:00 +0300</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/security/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ssh</title>
-      <link>https://blog.pakithecat.eu/tags/ssh/</link>
-      <pubDate>Sun, 26 Jul 2026 12:00:00 +0300</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/ssh/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Sysadmin</title>
-      <link>https://blog.pakithecat.eu/tags/sysadmin/</link>
-      <pubDate>Sun, 26 Jul 2026 12:00:00 +0300</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/sysadmin/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Systemctl</title>
-      <link>https://blog.pakithecat.eu/tags/systemctl/</link>
-      <pubDate>Sun, 26 Jul 2026 12:00:00 +0300</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/systemctl/</guid>
+      <title>Cheatsheet</title>
+      <link>https://blog.pakithecat.eu/tags/cheatsheet/</link>
+      <pubDate>Sat, 29 Aug 2026 10:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/cheatsheet/</guid>
       <description></description>
     </item>
     <item>
       <title>Cli</title>
       <link>https://blog.pakithecat.eu/tags/cli/</link>
-      <pubDate>Sat, 25 Apr 2026 10:00:00 +0200</pubDate>
+      <pubDate>Sat, 29 Aug 2026 10:00:00 +0300</pubDate>
       <guid>https://blog.pakithecat.eu/tags/cli/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://blog.pakithecat.eu/tags/linux/</link>
+      <pubDate>Sat, 25 Apr 2026 10:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/linux/</guid>
       <description></description>
     </item>
     <item>
@@ -122,6 +73,13 @@
       <description></description>
     </item>
     <item>
+      <title>Monitoring</title>
+      <link>https://blog.pakithecat.eu/tags/monitoring/</link>
+      <pubDate>Tue, 14 Apr 2026 18:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/monitoring/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Performance</title>
       <link>https://blog.pakithecat.eu/tags/performance/</link>
       <pubDate>Tue, 14 Apr 2026 18:00:00 +0200</pubDate>
@@ -133,6 +91,13 @@
       <link>https://blog.pakithecat.eu/tags/compose/</link>
       <pubDate>Sun, 29 Mar 2026 12:00:00 +0200</pubDate>
       <guid>https://blog.pakithecat.eu/tags/compose/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>https://blog.pakithecat.eu/tags/docker/</link>
+      <pubDate>Sun, 29 Mar 2026 12:00:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/docker/</guid>
       <description></description>
     </item>
     <item>
@@ -315,6 +280,13 @@
       <link>https://blog.pakithecat.eu/tags/sftp/</link>
       <pubDate>Fri, 03 Jan 2025 10:55:00 +0200</pubDate>
       <guid>https://blog.pakithecat.eu/tags/sftp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ssh</title>
+      <link>https://blog.pakithecat.eu/tags/ssh/</link>
+      <pubDate>Fri, 03 Jan 2025 10:55:00 +0200</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/ssh/</guid>
       <description></description>
     </item>
   </channel>

@@ -7,8 +7,15 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>ro</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Sat, 25 Apr 2026 10:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 29 Aug 2026 10:00:00 +0300</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/ro/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Comenzi cURL — Cheatsheet</title>
+      <link>https://blog.pakithecat.eu/ro/posts/2026/curl-command-cheatsheet/</link>
+      <pubDate>Sat, 29 Aug 2026 10:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/posts/2026/curl-command-cheatsheet/</guid>
+      <description>Opțiunile curl care merită reținute — trimiterea datelor, inspectarea header-elor, gestionarea cookie-urilor și a timeout-urilor, plus folosirea codurilor de ieșire în scripturi.</description>
+    </item>
     <item>
       <title>Comenzi de bază WSL — Cheatsheet</title>
       <link>https://blog.pakithecat.eu/ro/posts/2026/wsl-basic-commands/</link>

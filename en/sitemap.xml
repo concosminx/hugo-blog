@@ -2,29 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.pakithecat.eu/tags/bash/</loc>
-    <lastmod>2026-07-26T12:00:00+03:00</lastmod>
-  </url><url>
     <loc>https://blog.pakithecat.eu/categories/</loc>
-    <lastmod>2026-07-26T12:00:00+03:00</lastmod>
+    <lastmod>2026-08-29T10:00:00+03:00</lastmod>
   </url><url>
-    <loc>https://blog.pakithecat.eu/tags/devops/</loc>
-    <lastmod>2026-07-26T12:00:00+03:00</lastmod>
+    <loc>https://blog.pakithecat.eu/tags/cheatsheet/</loc>
+    <lastmod>2026-08-29T10:00:00+03:00</lastmod>
   </url><url>
-    <loc>https://blog.pakithecat.eu/tags/docker/</loc>
-    <lastmod>2026-07-26T12:00:00+03:00</lastmod>
+    <loc>https://blog.pakithecat.eu/tags/cli/</loc>
+    <lastmod>2026-08-29T10:00:00+03:00</lastmod>
   </url><url>
-    <loc>https://blog.pakithecat.eu/tags/linux/</loc>
-    <lastmod>2026-07-26T12:00:00+03:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/</loc>
-    <lastmod>2026-07-26T12:00:00+03:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/tags/monitoring/</loc>
-    <lastmod>2026-07-26T12:00:00+03:00</lastmod>
+    <loc>https://blog.pakithecat.eu/posts/2026/curl-command-cheatsheet/</loc>
+    <lastmod>2026-08-29T10:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/2026/curl-command-cheatsheet/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/2026/curl-command-cheatsheet/"
+                />
   </url><url>
     <loc>https://blog.pakithecat.eu/posts/</loc>
-    <lastmod>2026-07-26T12:00:00+03:00</lastmod>
+    <lastmod>2026-08-29T10:00:00+03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
@@ -36,26 +37,14 @@
                 href="https://blog.pakithecat.eu/posts/"
                 />
   </url><url>
-    <loc>https://blog.pakithecat.eu/tags/security/</loc>
-    <lastmod>2026-07-26T12:00:00+03:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/tags/ssh/</loc>
-    <lastmod>2026-07-26T12:00:00+03:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/tags/sysadmin/</loc>
-    <lastmod>2026-07-26T12:00:00+03:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/tags/systemctl/</loc>
-    <lastmod>2026-07-26T12:00:00+03:00</lastmod>
-  </url><url>
     <loc>https://blog.pakithecat.eu/tags/</loc>
-    <lastmod>2026-07-26T12:00:00+03:00</lastmod>
+    <lastmod>2026-08-29T10:00:00+03:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/categories/tech/</loc>
-    <lastmod>2026-07-26T12:00:00+03:00</lastmod>
+    <lastmod>2026-08-29T10:00:00+03:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/</loc>
-    <lastmod>2026-07-26T12:00:00+03:00</lastmod>
+    <lastmod>2026-08-29T10:00:00+03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ro"
@@ -67,7 +56,13 @@
                 href="https://blog.pakithecat.eu/"
                 />
   </url><url>
-    <loc>https://blog.pakithecat.eu/tags/cli/</loc>
+    <loc>https://blog.pakithecat.eu/posts/2026/yum-command-cheatsheet/</loc>
+    <lastmod>2026-08-29T09:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/</loc>
+    <lastmod>2026-07-26T12:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/linux/</loc>
     <lastmod>2026-04-25T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/ubuntu/</loc>
@@ -114,10 +109,16 @@
                 href="https://blog.pakithecat.eu/posts/2026/jvm-diagnostic-commands/"
                 />
   </url><url>
+    <loc>https://blog.pakithecat.eu/tags/monitoring/</loc>
+    <lastmod>2026-04-14T18:00:00+02:00</lastmod>
+  </url><url>
     <loc>https://blog.pakithecat.eu/tags/performance/</loc>
     <lastmod>2026-04-14T18:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/compose/</loc>
+    <lastmod>2026-03-29T12:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/docker/</loc>
     <lastmod>2026-03-29T12:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/gotify/</loc>
@@ -300,6 +301,9 @@
     <lastmod>2025-01-03T10:55:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/sftp/</loc>
+    <lastmod>2025-01-03T10:55:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/ssh/</loc>
     <lastmod>2025-01-03T10:55:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/posts/2025/first/</loc>

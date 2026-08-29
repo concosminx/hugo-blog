@@ -180,6 +180,35 @@
 </header>
 
 <article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">cURL Command Cheatsheet
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>curl has over two hundred options, and you will use perhaps twenty of them. This is that twenty — the flags that come up when debugging an API, scripting a health check, or working out why a request behaves differently from the browser.
+Saving output By default curl writes the response body to stdout. Two flags redirect it, and the difference between them is where the filename comes from:
+curl -o page.html https://example.com curl -O https://example.com/archive.tar.gz -o takes the name you give it. -O reuses the remote filename — convenient for downloads, but it takes the name from the URL, so a URL ending in a path segment rather than a filename gives you something unhelpful.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-29 10:00:00 +0300 +0300'>August 29, 2026</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;1102 words&nbsp;·&nbsp;Me</footer>
+  <a class="entry-link" aria-label="post link to cURL Command Cheatsheet" href="https://blog.pakithecat.eu/posts/2026/curl-command-cheatsheet/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">YUM Command Cheatsheet
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>yum is the package manager that shipped with Red Hat Enterprise Linux through RHEL 7, and it is still the command you type on RHEL 8 and later — there it is a symlink to dnf, which keeps the same subcommands and options. This is the set of subcommands worth knowing, grouped by what you are actually trying to do.
+Querying packages Before installing anything, it helps to know what is out there. yum help lists every subcommand and option, but these are the queries you will reach for daily.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-08-29 09:00:00 +0300 +0300'>August 29, 2026</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;1372 words&nbsp;·&nbsp;Me</footer>
+  <a class="entry-link" aria-label="post link to YUM Command Cheatsheet" href="https://blog.pakithecat.eu/posts/2026/yum-command-cheatsheet/"></a>
+</article>
+
+<article class="post-entry"> 
 <figure class="entry-cover">
         <img loading="lazy" srcset="https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/linux-devops-cheatsheet-cover_hu15212357142461597883.jpg 360w ,https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/linux-devops-cheatsheet-cover_hu1012010704820329318.jpg 480w ,https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/linux-devops-cheatsheet-cover_hu18289675426327155311.jpg 720w ,https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/linux-devops-cheatsheet-cover_hu152242603093354172.jpg 1080w ,https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/linux-devops-cheatsheet-cover.jpg 1376w" 
             sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/linux-devops-cheatsheet-cover.jpg" alt="Linux DevOps terminal commands cheatsheet" 
@@ -195,7 +224,7 @@ Service Management When a service refuses to start, the first move is always the
 systemctl status nginx This gives you the current state, recent log lines, and the PID — everything you need to start digging. It’s the first command asked about in every DevOps interview. Know it cold.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-07-26 12:00:00 +0300 +0300'>July 26, 2026</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;1173 words&nbsp;·&nbsp;Me</footer>
+  <footer class="entry-footer"><span title='2026-07-26 12:00:00 +0300 +0300'>July 26, 2026</span>&nbsp;·&nbsp;16 min&nbsp;·&nbsp;3293 words&nbsp;·&nbsp;Me</footer>
   <a class="entry-link" aria-label="post link to Linux DevOps Cheatsheet: Commands Every Engineer Should Know" href="https://blog.pakithecat.eu/posts/2026/linux-devops-cheatsheet/"></a>
 </article>
 
@@ -331,44 +360,6 @@ java -version Quick Setup 1. Download Kafka Visit Apache Kafka downloads Downloa
   </div>
   <footer class="entry-footer"><span title='2025-12-23 14:00:00 +0200 +0200'>December 23, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;543 words&nbsp;·&nbsp;Me</footer>
   <a class="entry-link" aria-label="post link to yt-dlp: The YouTube Downloader Tutorial" href="https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/"></a>
-</article>
-
-<article class="post-entry"> 
-<figure class="entry-cover">
-        <img loading="lazy" srcset="https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/pexels-viktortalashuk-2377295_hu16815186209690720924.jpg 360w ,https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/pexels-viktortalashuk-2377295_hu7452144795524114320.jpg 480w ,https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/pexels-viktortalashuk-2377295_hu14456332101194481843.jpg 720w ,https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/pexels-viktortalashuk-2377295_hu15865076251452843759.jpg 1080w ,https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/pexels-viktortalashuk-2377295_hu7281340312509189280.jpg 1500w ,https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/pexels-viktortalashuk-2377295.jpg 4928w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/pexels-viktortalashuk-2377295.jpg" alt="Books" 
-            width="4928" height="3264">
-</figure>
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Github Pages, Hugo and Cloudflare
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>How to route your GitHub Pages site through Cloudflare on a Subdomain Do you have a site hosted on GitHub Pages, like https://usergithub.github.io/my-blog/, and want to access it via a custom subdomain (e.g., blog.yourdomain.com) using Cloudflare? It’s a great way to improve your performance, security, and have a cleaner URL. Here’s how you can do it, step-by-step!
-Step 1: Prepare Your Domain in Cloudflare If you haven’t done this essential step already, you’ll need to add your main domain (such as yourdomain.com) to Cloudflare. This process involves changing your domain’s nameservers to those provided by Cloudflare (see docs).
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-07-03 12:18:07 +0300 +0300'>July 3, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Me</footer>
-  <a class="entry-link" aria-label="post link to Github Pages, Hugo and Cloudflare" href="https://blog.pakithecat.eu/posts/2025/githubpages-cloudflare/"></a>
-</article>
-
-<article class="post-entry"> 
-<figure class="entry-cover">
-        <img loading="lazy" srcset="https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/oci-mount-block-volume_hu17395270588731734101.png 360w ,https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/oci-mount-block-volume_hu6501495397708709787.png 480w ,https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/oci-mount-block-volume_hu397720736477613840.png 720w ,https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/oci-mount-block-volume.png 1024w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/oci-mount-block-volume.png" alt="Block Volume" 
-            width="1024" height="1024">
-</figure>
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OCI - Attach and mount a block volume
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Follow the Oracle guide to attach the newly created volume and these steps:
-Identify the New Drive (e.g., /dev/sdb) sudo fdisk -l Create a Partition (If Needed) sudo fdisk /dev/sdb Press n to create a new partition. Choose partition type (p for primary) Select the default values or specify size. Press w to write changes. Format the Partition sudo mkfs.ext4 /dev/sdb1 Create a Mount Point sudo mkdir -p /mnt/mydrive Mount the Drive sudo mount /dev/sdb1 /mnt/mydrive Auto-Mount on Boot Get the UUID of the partition sudo blkid /dev/sdb1 Edit the /etc/fstab file sudo nano /etc/fstab Add this line at the end UUID=&lt;your-uuid&gt; /mnt/mydrive ext4 defaults,noatime,_netdev 0 2 Save and exit
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-16 16:27:00 +0200 +0200'>February 16, 2025</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Me</footer>
-  <a class="entry-link" aria-label="post link to OCI - Attach and mount a block volume" href="https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
