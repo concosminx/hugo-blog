@@ -105,9 +105,7 @@ Cerințe preliminare Docker 20.10&#43; instalat și capabil să tragă imagini U
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2026-03-14T09:00:00+02:00">
     <meta property="article:modified_time" content="2026-03-14T09:00:00+02:00">
-    <meta property="og:image" content="https://blog.pakithecat.eu/rustfs-with-docker.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.pakithecat.eu/rustfs-with-docker.png">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Instalează RustFS cu Docker (Ghid rapid)">
 <meta name="twitter:description" content="RustFS este un sistem de stocare de obiecte rapid și compatibil S3. Acest ghid scurt arată instalarea cu Docker, păstrând doar exemplul complet de configurare a parametrilor și link-urile oficiale către fișierele Docker Compose. Am adăugat și un scurt ghid pentru a permite accesul la un VM în Google Cloud.
 Cerințe preliminare
@@ -153,7 +151,7 @@ Notă despre permisiuni: containerul rulează cu user ID 10001. Dacă montezi un
   "articleBody": "RustFS este un sistem de stocare de obiecte rapid și compatibil S3. Acest ghid scurt arată instalarea cu Docker, păstrând doar exemplul complet de configurare a parametrilor și link-urile oficiale către fișierele Docker Compose. Am adăugat și un scurt ghid pentru a permite accesul la un VM în Google Cloud.\nCerințe preliminare Docker 20.10+ instalat și capabil să tragă imagini Un director local pentru datele RustFS (exemplu: /mnt/rustfs/data) Porturile 9000 (API) și 9001 (consolă) deschise pe host Notă despre permisiuni: containerul rulează cu user ID 10001. Dacă montezi un director local cu -v, asigură-te că acel director este deținut de 10001, altfel vei primi erori de permisiune.\nDescarcă imaginea RustFS docker pull rustfs/rustfs:latest Rulează RustFS (exemplu complet de parametri) docker run -d \\ --name rustfs_container \\ -p 9000:9000 \\ -p 9001:9001 \\ -v /mnt/rustfs/data:/data \\ -e RUSTFS_ACCESS_KEY=rustfsadmin \\ -e RUSTFS_SECRET_KEY=rustfsadmin \\ -e RUSTFS_CONSOLE_ENABLE=true \\ -e RUSTFS_SERVER_DOMAINS=example.com \\ rustfs/rustfs:latest \\ --address :9000 \\ --console-enable \\ --server-domains example.com \\ --access-key rustfsadmin \\ --secret-key rustfsadmin \\ /data După ce containerul pornește, deschide http://:9000 și autentifică-te cu access/secret key-ul configurat (în exemplu: rustfsadmin/rustfsadmin).\nFișiere Docker Compose (oficiale) RustFS oferă definiții Compose gata de folosit în repo-ul principal:\ndocker-compose.yml: https://github.com/rustfs/rustfs/blob/main/docker-compose.yml docker-compose-observability.yml: https://github.com/rustfs/rustfs/blob/main/docker-compose-observability.yml Permite accesul dintr-un VM Google Cloud Dacă RustFS rulează pe un VM în Google Cloud, trebuie să permiți trafic inbound pe porturile 9000 și 9001 în rețeaua VPC a VM-ului.\nPași în consolă Mergi la VPC network → Firewall → Create firewall rule. La Targets, alege Specified target tags și adaugă un tag precum rustfs. La Source IPv4 ranges, setează IP-ul tău (recomandat) sau un CIDR. La Protocols and ports, selectează Specified protocols and ports și introdu tcp:9000,tcp:9001. Salvează regula și aplică același network tag (rustfs) pe VM. Opțional: comandă gcloud gcloud compute firewall-rules create allow-rustfs \\ --network=default \\ --direction=INGRESS \\ --action=ALLOW \\ --rules=tcp:9000,tcp:9001 \\ --source-ranges= \\ --target-tags=rustfs După aceea, poți accesa RustFS la http://:9000.\nSursă: RustFS Docker installation docs\n",
   "wordCount" : "317",
   "inLanguage": "ro",
-  "image":"https://blog.pakithecat.eu/rustfs-with-docker.png","datePublished": "2026-03-14T09:00:00+02:00",
+  "datePublished": "2026-03-14T09:00:00+02:00",
   "dateModified": "2026-03-14T09:00:00+02:00",
   "author":{
     "@type": "Person",
@@ -266,13 +264,7 @@ Notă despre permisiuni: containerul rulează cu user ID 10001. Dacă montezi un
 </ul>&nbsp;|&nbsp;<a href="https://github.com/concosminx/hugo-blog/tree/main/content/posts/2026/rustfs-docker-install/index.ro.md" rel="noopener noreferrer" target="_blank">Sugereaza schimbari</a>
 
 </div>
-  </header> 
-<figure class="entry-cover">
-        <img loading="eager" srcset="https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu17708760385441595367.png 360w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu14862204108476436840.png 480w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu17443722227645238349.png 720w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu17586770206327076378.png 1080w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu13892757768486522560.png 1500w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker.png 1536w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker.png" alt="Containerized storage service" 
-            width="1536" height="1024">
-        
-</figure><div class="toc">
+  </header> <div class="toc">
     <details >
         <summary accesskey="c" title="(Alt + C)">
             <span class="details">Sumar</span>

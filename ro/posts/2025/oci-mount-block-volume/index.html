@@ -129,9 +129,7 @@ Identifica noul disc (de exemplu, /dev/sdb ) sudo fdisk -l Creaza o partitie (da
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-02-16T16:27:00+02:00">
     <meta property="article:modified_time" content="2025-02-16T16:27:00+02:00">
-    <meta property="og:image" content="https://blog.pakithecat.eu/oci-mount-block-volume.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.pakithecat.eu/oci-mount-block-volume.png">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OCI - Atașarea si montarea unui volum bloc">
 <meta name="twitter:description" content="Urmeaza ghidul Oracle pentru a atasa volumul nou creat, apoi executa pasii urmatori:
 Identifica noul disc (de exemplu, /dev/sdb )
@@ -201,7 +199,7 @@ Salveaza fisierul">
   "articleBody": "Urmeaza ghidul Oracle pentru a atasa volumul nou creat, apoi executa pasii urmatori:\nIdentifica noul disc (de exemplu, /dev/sdb ) sudo fdisk -l Creaza o partitie (daca este necesar) sudo fdisk /dev/sdb Apasa n pentru a crea o noua partitie. Alege tipul partitiei (p pentru primara) Selecteaza valorile implicite sau specifica o dimensiune. Apasa w pentru a salva modificarile. Formateaza partitia sudo mkfs.ext4 /dev/sdb1 Creaza un punct de montare sudo mkdir -p /mnt/mydrive Monteaza discul sudo mount /dev/sdb1 /mnt/mydrive Montare automata la pornire Obtine UUID-ul partitiei sudo blkid /dev/sdb1 Editeaza fisierul /etc/fstab sudo nano /etc/fstab Adauga linia de mai jos la sfarsit UUID= /mnt/mydrive ext4 defaults,noatime,_netdev 0 2 Salveaza fisierul\nTesteaza cu\nsudo mount -a ",
   "wordCount" : "115",
   "inLanguage": "ro",
-  "image":"https://blog.pakithecat.eu/oci-mount-block-volume.png","datePublished": "2025-02-16T16:27:00+02:00",
+  "datePublished": "2025-02-16T16:27:00+02:00",
   "dateModified": "2025-02-16T16:27:00+02:00",
   "author":{
     "@type": "Person",
@@ -315,12 +313,6 @@ Salveaza fisierul">
 
 </div>
   </header> 
-<figure class="entry-cover">
-        <img loading="eager" srcset="https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/oci-mount-block-volume_hu17395270588731734101.png 360w ,https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/oci-mount-block-volume_hu6501495397708709787.png 480w ,https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/oci-mount-block-volume_hu397720736477613840.png 720w ,https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/oci-mount-block-volume.png 1024w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/oci-mount-block-volume.png" alt="Volum" 
-            width="1024" height="1024">
-        
-</figure>
   <div class="post-content"><p>Urmeaza <a href="https://docs.oracle.com/en-us/iaas/Content/Block/Tasks/connectingtoavolume_topic-Connecting_to_iSCSIAttached_Volumes.htm">ghidul</a> Oracle pentru a atasa volumul nou creat, apoi executa pasii urmatori:</p>
 <h4 id="identifica-noul-disc-de-exemplu-devsdb-">Identifica noul disc (de exemplu, <code>/dev/sdb</code> )<a hidden class="anchor" aria-hidden="true" href="#identifica-noul-disc-de-exemplu-devsdb-">#</a></h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo fdisk -l

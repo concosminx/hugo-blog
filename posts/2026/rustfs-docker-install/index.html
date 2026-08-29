@@ -111,9 +111,7 @@ Prerequisites Docker 20.10&#43; installed and able to pull images A host directo
     <meta property="article:tag" content="S3">
     <meta property="article:tag" content="Cloud">
     <meta property="article:tag" content="Linux">
-    <meta property="og:image" content="https://blog.pakithecat.eu/rustfs-with-docker.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.pakithecat.eu/rustfs-with-docker.png">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Install RustFS with Docker (Quick Guide)">
 <meta name="twitter:description" content="RustFS is a fast, S3-compatible object storage system. This quick guide shows the Docker install path, keeping only the full parameter configuration example and the official Docker Compose links. I also added a short section for opening access from a VM running in Google Cloud.
 Prerequisites
@@ -159,7 +157,7 @@ Note on permissions: the container runs as user ID 10001. If you mount a host di
   "articleBody": "RustFS is a fast, S3-compatible object storage system. This quick guide shows the Docker install path, keeping only the full parameter configuration example and the official Docker Compose links. I also added a short section for opening access from a VM running in Google Cloud.\nPrerequisites Docker 20.10+ installed and able to pull images A host directory for RustFS data (example: /mnt/rustfs/data) Open ports 9000 (API) and 9001 (console) on the host Note on permissions: the container runs as user ID 10001. If you mount a host directory with -v, make sure that directory is owned by 10001 to avoid permission errors.\nPull the RustFS image docker pull rustfs/rustfs:latest Run RustFS (complete parameter configuration example) docker run -d \\ --name rustfs_container \\ -p 9000:9000 \\ -p 9001:9001 \\ -v /mnt/rustfs/data:/data \\ -e RUSTFS_ACCESS_KEY=rustfsadmin \\ -e RUSTFS_SECRET_KEY=rustfsadmin \\ -e RUSTFS_CONSOLE_ENABLE=true \\ -e RUSTFS_SERVER_DOMAINS=example.com \\ rustfs/rustfs:latest \\ --address :9000 \\ --console-enable \\ --server-domains example.com \\ --access-key rustfsadmin \\ --secret-key rustfsadmin \\ /data Once the container is running, open http://:9000 and log in with the configured access/secret key (the example uses rustfsadmin/rustfsadmin).\nDocker Compose files (official) RustFS provides ready-to-use Compose definitions in the main repository:\ndocker-compose.yml: https://github.com/rustfs/rustfs/blob/main/docker-compose.yml docker-compose-observability.yml: https://github.com/rustfs/rustfs/blob/main/docker-compose-observability.yml Allow access from a Google Cloud VM If RustFS runs on a VM in Google Cloud, you must allow inbound traffic to ports 9000 and 9001 on the VM’s VPC network.\nConsole steps Go to VPC network → Firewall → Create firewall rule. Set Targets to Specified target tags and add a tag like rustfs. Set Source IPv4 ranges to your client IP (recommended) or a CIDR range. Under Protocols and ports, select Specified protocols and ports and enter tcp:9000,tcp:9001. Save the rule and apply the same network tag (rustfs) to your VM. Optional: gcloud command gcloud compute firewall-rules create allow-rustfs \\ --network=default \\ --direction=INGRESS \\ --action=ALLOW \\ --rules=tcp:9000,tcp:9001 \\ --source-ranges= \\ --target-tags=rustfs After that, you can reach RustFS at http://:9000.\nSource reference: RustFS Docker installation docs\n",
   "wordCount" : "323",
   "inLanguage": "en",
-  "image":"https://blog.pakithecat.eu/rustfs-with-docker.png","datePublished": "2026-03-14T09:00:00+02:00",
+  "datePublished": "2026-03-14T09:00:00+02:00",
   "dateModified": "2026-03-14T09:00:00+02:00",
   "author":{
     "@type": "Person",
@@ -277,13 +275,7 @@ Note on permissions: the container runs as user ID 10001. If you mount a host di
 </ul>&nbsp;|&nbsp;<a href="https://github.com/concosminx/hugo-blog/tree/main/content/posts/2026/rustfs-docker-install/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
-  </header> 
-<figure class="entry-cover">
-        <img loading="eager" srcset="https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu17708760385441595367.png 360w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu14862204108476436840.png 480w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu17443722227645238349.png 720w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu17586770206327076378.png 1080w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker_hu13892757768486522560.png 1500w ,https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker.png 1536w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2026/rustfs-docker-install/rustfs-with-docker.png" alt="Containerized storage service" 
-            width="1536" height="1024">
-        
-</figure><div class="toc">
+  </header> <div class="toc">
     <details >
         <summary accesskey="c" title="(Alt + C)">
             <span class="details">Table of Contents</span>

@@ -102,9 +102,9 @@
     <meta property="article:tag" content="Audio">
     <meta property="article:tag" content="Cli">
     <meta property="article:tag" content="Python">
-    <meta property="og:image" content="https://blog.pakithecat.eu/yt-dlp-cover.jpg">
+      <meta property="og:image" content="https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.pakithecat.eu/yt-dlp-cover.jpg">
+<meta name="twitter:image" content="https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover.jpg">
 <meta name="twitter:title" content="yt-dlp: The YouTube Downloader Tutorial">
 <meta name="twitter:description" content="Learn how to install and use yt-dlp, the powerful command-line tool for downloading videos and audio from YouTube">
 
@@ -142,7 +142,7 @@
   "articleBody": "Why this tutorial? While there are numerous online solutions and dedicated software (many paid) for downloading from YouTube, I was looking for a solution that gives me complete control over the process. yt-dlp seems like the perfect answer - free, open-source, and incredibly flexible. The less amusing part? Flexibility comes bundled with an encyclopedia of options that can make you feel like an airplane pilot trying to understand the cockpit dashboard.\n🛩️ This tutorial exists to save you a few hours of “wait, what does this flag do again?”\nWhat is yt-dlp? yt-dlp is a Python-based command-line program that allows you to download videos from YouTube, Vimeo, Twitter, TikTok, and many other video hosting platforms. It supports various formats, quality options, and advanced features like playlist downloads and live stream recording.\nInstallation Windows Download executable Go to the yt-dlp releases page Download yt-dlp.exe Add the executable to your PATH or run it from the download directory Note: Alternative installation methods are available including Python pip, Chocolatey, and Windows Package Manager (winget).\nInstalling FFmpeg (Recommended) For advanced features like audio conversion and video post-processing, you’ll need FFmpeg. While yt-dlp can download videos without it, FFmpeg significantly enhances its capabilities.\nInstalling FFmpeg on Windows Download Pre-compiled Binaries (Easiest) Go to FFmpeg Windows builds Download the win64-gpl variant Extract the ZIP file to C:\\ffmpeg Add C:\\ffmpeg\\bin to your system PATH: Press Win + R, type sysdm.cpl, press Enter Go to “Advanced” tab → “Environment Variables” Under “System Variables”, find and select “Path” → “Edit” Click “New” and add: C:\\ffmpeg\\bin Click “OK” on all dialogs Verify Installation Open Command Prompt and run:\nffmpeg -version If installed correctly, you’ll see FFmpeg version information.\n⚠️ Disclaimer: The installation instructions provided focus primarily on Windows. For macOS, Linux, and other operating systems, please refer to the official yt-dlp documentation for platform-specific installation methods and requirements.\nBasic Usage Download YouTube video as MP3 yt-dlp -x --audio-format mp3 \"https://www.youtube.com/watch?v=VIDEO_ID\" Download a single video yt-dlp \"https://www.youtube.com/watch?v=VIDEO_ID\" Download audio only (best quality) yt-dlp -f bestaudio \"https://www.youtube.com/watch?v=VIDEO_ID\" Download video in specific quality yt-dlp -f \"best[height\u003c=720]\" \"https://www.youtube.com/watch?v=VIDEO_ID\" Advanced Features Download entire playlists yt-dlp \"https://www.youtube.com/playlist?list=PLAYLIST_ID\" Note: The playlist must be public.\nExtract audio and convert to MP3 yt-dlp -x --audio-format mp3 \"https://www.youtube.com/watch?v=VIDEO_ID\" Download multiple YouTube Videos as MP3s yt-dlp -x --audio-format mp3 -i PLAYLIST_ID List available formats yt-dlp -F \"https://www.youtube.com/watch?v=VIDEO_ID\" Note: After that, take a look at the format selection section.\nDownload a YouTube video in best quality yt-dlp -f \"best\" \"https://www.youtube.com/watch?v=VIDEO_ID\" Note: This selects the best pre-merged format which is often not the best option. To let yt-dlp download and merge the best available formats, simply do not pass any format selection.\nBatch download from file # Create a file with URLs (one per line) yt-dlp -a urls.txt Download a file in mp4 format from playlist without downloading the full playlist yt-dlp -f mp4 --no-playlist \"SOME_VIDEO_FROM_PLAYLIST_ID\" Troubleshooting Update yt-dlp regularly YouTube frequently changes its structure, so keep yt-dlp updated:\nyt-dlp -U Common issues “Video unavailable”: The video might be region-locked or private Slow downloads: Try using --limit-rate to avoid throttling Format not available: Use -F to list available formats first References Official yt-dlp Repository - Complete documentation, latest releases, and source code Simple yt-dlp Guide - Reddit Discussion - Community discussion with practical tips and examples ",
   "wordCount" : "543",
   "inLanguage": "en",
-  "image":"https://blog.pakithecat.eu/yt-dlp-cover.jpg","datePublished": "2025-12-23T14:00:00+02:00",
+  "image": "https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover.jpg","datePublished": "2025-12-23T14:00:00+02:00",
   "dateModified": "2025-12-23T14:00:00+02:00",
   "author":{
     "@type": "Person",
@@ -263,13 +263,7 @@
 </ul>&nbsp;|&nbsp;<a href="https://github.com/concosminx/hugo-blog/tree/main/content/posts/2025/yt-dlp-tutorial/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
-  </header> 
-<figure class="entry-cover">
-        <img loading="eager" srcset="https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover_hu16109589205771371826.jpg 360w ,https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover_hu12228473855297320880.jpg 480w ,https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover_hu9844481181291059400.jpg 720w ,https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover.jpg 1024w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover.jpg" alt="yt-dlp command line interface" 
-            width="1024" height="1536">
-        
-</figure><div class="toc">
+  </header> <div class="toc">
     <details >
         <summary accesskey="c" title="(Alt + C)">
             <span class="details">Table of Contents</span>

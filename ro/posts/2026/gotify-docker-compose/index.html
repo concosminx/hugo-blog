@@ -118,9 +118,9 @@ version: &#34;3&#34; services: gotify: image: gotify/server restart: unless-stop
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2026-03-29T12:00:00+02:00">
     <meta property="article:modified_time" content="2026-03-29T12:00:00+02:00">
-    <meta property="og:image" content="https://blog.pakithecat.eu/gotify-docker-compose-cover.png">
+      <meta property="og:image" content="https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.pakithecat.eu/gotify-docker-compose-cover.png">
+<meta name="twitter:image" content="https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover.png">
 <meta name="twitter:title" content="Gotify cu Docker Compose (Ghid rapid)">
 <meta name="twitter:description" content="Gotify este un serviciu de notificări self-hosted, open-source. Expune un API prin care aplicațiile tale pot trimite notificări către telefon (Android sau iOS). În acest ghid îl configurăm cu Docker Compose, securizăm utilizatorul implicit și testăm notificările.
 Configurare Docker Compose
@@ -178,7 +178,7 @@ Adaugă un fișier de mediu numit .env (sau păstrează-l ca .env.example în gi
   "articleBody": "Gotify este un serviciu de notificări self-hosted, open-source. Expune un API prin care aplicațiile tale pot trimite notificări către telefon (Android sau iOS). În acest ghid îl configurăm cu Docker Compose, securizăm utilizatorul implicit și testăm notificările.\nConfigurare Docker Compose Creează un folder (de exemplu ~/gotify) și adaugă următorul docker-compose.yml:\nversion: \"3\" services: gotify: image: gotify/server restart: unless-stopped container_name: gotify ports: - 8989:80 environment: - GOTIFY_DEFAULTUSER_PASS=${GOTIFY_DEFAULTUSER_PASS} volumes: - \"./gotify_data:/app/data\" networks: default: name: my-main-net external: true Adaugă un fișier de mediu numit .env (sau păstrează-l ca .env.example în git și copiază-l ca .env pe server):\nGOTIFY_DEFAULTUSER_PASS=change-me Tip: alege o parolă puternică pentru GOTIFY_DEFAULTUSER_PASS. Poți adăuga ulterior mai multe variabile, dar acesta este minimul pentru o configurare sigură.\nPornește containerul:\ndocker compose up -d Deschide interfața web la http://:8989. Autentifică-te cu utilizatorul admin și parola setată în GOTIFY_DEFAULTUSER_PASS.\nCreează o aplicație Apasă APPS în bara de sus. Selectează CREATE APPLICATION. Dă-i un nume (exemplu: ASimpeTest) și lasă descrierea goală dacă vrei. Salvează și copiază token-ul aplicației — îl vei folosi la trimiterea notificărilor. Instalează aplicația mobilă Instalează Gotify din Play Store sau App Store. Introdu URL-ul Gotify și apasă Check URL. Autentifică-te cu utilizatorul creat (sau admin). Alege un nume pentru client și permite notificările. Ar trebui să vezi o listă goală de notificări, gata pentru test.\nTestează notificările cu curl Folosește token-ul aplicației din interfața web:\ncurl \"https:///message?token=\" \\ -F \"title=Curl Test\" \\ -F \"message=This is a test with curl and gotify\" \\ -F \"priority=5\" -k Telefonul ar trebui să primească notificarea imediat. Câmpul priority este opțional; dacă îl omiți, se folosește prioritatea implicită a aplicației.\nSursă: Documentația Gotify\n",
   "wordCount" : "268",
   "inLanguage": "ro",
-  "image":"https://blog.pakithecat.eu/gotify-docker-compose-cover.png","datePublished": "2026-03-29T12:00:00+02:00",
+  "image": "https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover.png","datePublished": "2026-03-29T12:00:00+02:00",
   "dateModified": "2026-03-29T12:00:00+02:00",
   "author":{
     "@type": "Person",
@@ -291,13 +291,7 @@ Adaugă un fișier de mediu numit .env (sau păstrează-l ca .env.example în gi
 </ul>&nbsp;|&nbsp;<a href="https://github.com/concosminx/hugo-blog/tree/main/content/posts/2026/gotify-docker-compose/index.ro.md" rel="noopener noreferrer" target="_blank">Sugereaza schimbari</a>
 
 </div>
-  </header> 
-<figure class="entry-cover">
-        <img loading="eager" srcset="https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover_hu9546850153936330343.png 360w ,https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover_hu16952575349772223283.png 480w ,https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover_hu14711061776300051580.png 720w ,https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover_hu18125647546828239409.png 1080w ,https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover.png 1408w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/gotify-docker-compose-cover.png" alt="Tablou de bord notificări Gotify" 
-            width="1408" height="768">
-        
-</figure><div class="toc">
+  </header> <div class="toc">
     <details >
         <summary accesskey="c" title="(Alt + C)">
             <span class="details">Sumar</span>

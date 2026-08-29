@@ -96,9 +96,9 @@
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-12-23T14:00:00+02:00">
     <meta property="article:modified_time" content="2025-12-23T14:00:00+02:00">
-    <meta property="og:image" content="https://blog.pakithecat.eu/yt-dlp-cover.jpg">
+      <meta property="og:image" content="https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.pakithecat.eu/yt-dlp-cover.jpg">
+<meta name="twitter:image" content="https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover.jpg">
 <meta name="twitter:title" content="yt-dlp: Tutorial pentru Descarcare Clipuri de pe YouTube">
 <meta name="twitter:description" content="Invata sa instalezi si sa folosesti yt-dlp, instrument in linia de comanda pentru descarcarea videoclipurilor si audio de pe YouTube">
 
@@ -136,7 +136,7 @@
   "articleBody": "De ce acest tutorial? Desi exista numeroase solutii online si software dedicat (multe contra cost) pentru descarcarea de pe YouTube, cautam o solutie care sa imi ofere control complet asupra procesului. yt-dlp pare raspunsul perfect - gratuit, open-source si incredibil de flexibil. Partea mai putin amuzanta? Flexibilitatea vine la pachet cu o enciclopedie de optiuni care te pot face sa te simti ca un pilot de avion care incearca sa inteleaga tabloul de bord.\n🛩️ Acest tutorial exista pentru a-ti evita cateva ore de “wait, what does this flag do again?”\nCe este yt-dlp? yt-dlp este un program bazat pe Python pentru linia de comanda care iti permite sa descarci videoclipuri de pe YouTube, Vimeo, Twitter, TikTok si multe alte platforme de hosting video. Suporta diverse formate, optiuni de calitate si functii avansate precum descarcarea playlisturilor si inregistrarea streamurilor live.\nInstalare Windows Descarca executabilul Mergi la pagina de release-uri yt-dlp Descarca yt-dlp.exe Adauga executabilul la PATH sau ruleaza-l din directorul de descarcare Nota: Exista metode alternative de instalare, inclusiv Python pip, Chocolatey si Windows Package Manager (winget).\nInstalarea FFmpeg (Recomandat) Pentru functii avansate precum conversia audio si post-procesarea video, vei avea nevoie de FFmpeg. Desi yt-dlp poate descarca videoclipuri fara acesta, FFmpeg ii imbunatateste semnificativ capabilitatile.\nInstalarea FFmpeg pe Windows Descarca Binare Pre-compilate (Cel mai simplu) Mergi la FFmpeg Windows builds Descarca varianta win64-gpl Extrage fisierul ZIP in C:\\ffmpeg Adauga C:\\ffmpeg\\bin la PATH-ul sistemului: Apasa Win + R, tasteaza sysdm.cpl, apasa Enter Mergi la tab-ul “Advanced” → “Environment Variables” Sub “System Variables”, gaseste si selecteaza “Path” → “Edit” Da click pe “New” si adauga: C:\\ffmpeg\\bin Da click pe “OK” in toate dialogurile Verifica Instalarea Deschide Command Prompt si ruleaza:\nffmpeg -version Daca s-a instalat corect, vei vedea informatii despre versiunea FFmpeg.\n⚠️ Avertisment: Instructiunile de instalare se concentreaza in primul rand pe Windows. Pentru macOS, Linux si alte sisteme de operare, va rugam sa consultati documentatia oficiala yt-dlp pentru metode de instalare si cerinte specifice platformei.\nUtilizare de Baza Descarca un videoclip YouTube ca MP3 yt-dlp -x --audio-format mp3 \"https://www.youtube.com/watch?v=VIDEO_ID\" Descarca un singur videoclip yt-dlp \"https://www.youtube.com/watch?v=VIDEO_ID\" Descarca doar audio (cea mai buna calitate) yt-dlp -f bestaudio \"https://www.youtube.com/watch?v=VIDEO_ID\" Descarca videoclipul intr-o calitate specifica yt-dlp -f \"best[height\u003c=720]\" \"https://www.youtube.com/watch?v=VIDEO_ID\" Functii Avansate Descarca intregul playlist yt-dlp \"https://www.youtube.com/playlist?list=PLAYLIST_ID\" Nota: Playlist-ul trebuie sa fie public.\nExtrage audio si converteste in MP3 yt-dlp -x --audio-format mp3 \"https://www.youtube.com/watch?v=VIDEO_ID\" Descarca multiple videoclipuri YouTube ca MP3 yt-dlp -x --audio-format mp3 -i PLAYLIST_ID Listeaza formatele disponibile yt-dlp -F \"https://www.youtube.com/watch?v=VIDEO_ID\" Nota: Dupa aceea, arunca o privire la sectiunea de selectie a formatelor.\nDescarca un videoclip YouTube in cea mai buna calitate yt-dlp -f \"best\" \"https://www.youtube.com/watch?v=VIDEO_ID\" Nota: Aceasta selecteaza cel mai bun format pre-imbinat, care adesea nu este cea mai buna optiune. Pentru a permite yt-dlp sa descarce si sa imbine cele mai bune formate disponibile, pur si simplu nu specifica nicio selectie de format.\nDescarcare in lot din fisier # Creaza un fisier cu URL-uri (unul pe linie) yt-dlp -a urls.txt Descarca un fisier in format mp4 dintr-un playlist fara a descarca toata lista yt-dlp -f mp4 --no-playlist \"SOME_VIDEO_FROM_PLAYLIST_ID\" Depanare Actualizeaza yt-dlp in mod regulat YouTube isi schimba frecvent structura, asa ca tine yt-dlp actualizat:\nyt-dlp -U Probleme comune “Video unavailable”: Videoclipul poate fi restrictionat geografic sau privat Descarcari lente: Incearca sa folosesti --limit-rate pentru a evita limitarea vitezei Format not available: Foloseste -F pentru a lista mai intai formatele disponibile Referinte Repositoriul oficial yt-dlp - Documentatie completa, ultimele release-uri si codul sursa Ghidul simplu yt-dlp - Discutie Reddit - Discutie comunitara cu sfaturi practice si exemple ",
   "wordCount" : "585",
   "inLanguage": "ro",
-  "image":"https://blog.pakithecat.eu/yt-dlp-cover.jpg","datePublished": "2025-12-23T14:00:00+02:00",
+  "image": "https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover.jpg","datePublished": "2025-12-23T14:00:00+02:00",
   "dateModified": "2025-12-23T14:00:00+02:00",
   "author":{
     "@type": "Person",
@@ -252,13 +252,7 @@
 </ul>&nbsp;|&nbsp;<a href="https://github.com/concosminx/hugo-blog/tree/main/content/posts/2025/yt-dlp-tutorial/index.ro.md" rel="noopener noreferrer" target="_blank">Sugereaza schimbari</a>
 
 </div>
-  </header> 
-<figure class="entry-cover">
-        <img loading="eager" srcset="https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover_hu16109589205771371826.jpg 360w ,https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover_hu12228473855297320880.jpg 480w ,https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover_hu9844481181291059400.jpg 720w ,https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover.jpg 1024w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2025/yt-dlp-tutorial/yt-dlp-cover.jpg" alt="Interfata in linia de comanda yt-dlp" 
-            width="1024" height="1536">
-        
-</figure><div class="toc">
+  </header> <div class="toc">
     <details >
         <summary accesskey="c" title="(Alt + C)">
             <span class="details">Sumar</span>

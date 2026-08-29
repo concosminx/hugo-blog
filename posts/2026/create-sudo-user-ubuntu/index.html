@@ -100,9 +100,7 @@
     <meta property="article:tag" content="Ubuntu">
     <meta property="article:tag" content="Sudo">
     <meta property="article:tag" content="User-Management">
-    <meta property="og:image" content="https://blog.pakithecat.eu/ubuntu-sudo-user.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.pakithecat.eu/ubuntu-sudo-user.png">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How To Create a New Sudo-Enabled User on Ubuntu">
 <meta name="twitter:description" content="Step-by-step guide to creating a new user with sudo privileges on Ubuntu.">
 
@@ -140,7 +138,7 @@
   "articleBody": "Introduction Granting sudo privileges to a user allows them to perform administrative tasks without logging in as root. This guide explains how to create a new user with sudo access on Ubuntu, following best practices for security and user management.\nStep 1 — Log Into Your Server Connect to your Ubuntu server as the root user (or a user with sudo privileges):\nssh root@your_server_ip_address Step 2 — Add a New User Create a new user account (replace newuser with your desired username):\nadduser newuser You will be prompted to set a password and fill in optional user information. You can press ENTER to accept the defaults.\nStep 3 — Grant Sudo Privileges Add the new user to the sudo group:\nusermod -aG sudo newuser On Ubuntu, users in the sudo group can run commands as root using sudo.\nStep 4 — Test Sudo Access Switch to the new user:\nsu - newuser Test sudo by running a privileged command (e.g., listing the /root directory):\nsudo ls -la /root The first time you use sudo, you will be prompted for the new user’s password. If successful, the command will run with root privileges.\nUnderstanding sudo vs su sudo allows a permitted user to run a command as another user (by default, root) after authenticating with their own password. It logs each command for auditing. su switches to another user account and requires the target user’s password. It starts a new shell session as that user. Best Practices Principle of Least Privilege: Only grant sudo access to users who need it. Limit sudo commands: For tighter security, restrict which commands a user can run with sudo by editing the /etc/sudoers file using visudo. Disable root login: After creating a sudo-enabled user, consider disabling direct root login for better security: sudo passwd -l root References DigitalOcean: How To Create a New Sudo-Enabled User on Ubuntu How To Edit the Sudoers File How to Add and Delete Users on Ubuntu This post is based on the DigitalOcean tutorial linked above. Always follow your organization’s security policies when managing users and sudo access.\n",
   "wordCount" : "348",
   "inLanguage": "en",
-  "image":"https://blog.pakithecat.eu/ubuntu-sudo-user.png","datePublished": "2026-03-07T12:00:00+02:00",
+  "datePublished": "2026-03-07T12:00:00+02:00",
   "dateModified": "2026-03-07T12:00:00+02:00",
   "author":{
     "@type": "Person",
@@ -261,13 +259,7 @@
 </ul>&nbsp;|&nbsp;<a href="https://github.com/concosminx/hugo-blog/tree/main/content/posts/2026/create-sudo-user-ubuntu/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
-  </header> 
-<figure class="entry-cover">
-        <img loading="eager" srcset="https://blog.pakithecat.eu/posts/2026/create-sudo-user-ubuntu/ubuntu-sudo-user_hu13383410245953256842.png 360w ,https://blog.pakithecat.eu/posts/2026/create-sudo-user-ubuntu/ubuntu-sudo-user_hu9327820145453210125.png 480w ,https://blog.pakithecat.eu/posts/2026/create-sudo-user-ubuntu/ubuntu-sudo-user_hu15779612633832597423.png 720w ,https://blog.pakithecat.eu/posts/2026/create-sudo-user-ubuntu/ubuntu-sudo-user_hu807628229689413945.png 1080w ,https://blog.pakithecat.eu/posts/2026/create-sudo-user-ubuntu/ubuntu-sudo-user.png 1408w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.pakithecat.eu/posts/2026/create-sudo-user-ubuntu/ubuntu-sudo-user.png" alt="Ubuntu sudo user" 
-            width="1408" height="768">
-        
-</figure><div class="toc">
+  </header> <div class="toc">
     <details >
         <summary accesskey="c" title="(Alt + C)">
             <span class="details">Table of Contents</span>
