@@ -1,0 +1,14 @@
+/* Mermaid diagrams live inside a <pre>, so undo the code-block chrome. */
+pre.mermaid {
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: var(--gap) 0;
+    text-align: center;
+    overflow-x: auto;
+}
+
+pre.mermaid svg {
+    max-width: 100%;
+    height: auto;
+}

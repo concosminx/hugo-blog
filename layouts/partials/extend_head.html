@@ -1,0 +1,36 @@
+{{- /* Mermaid loader. Identical on every page, because PaperMod renders the head and
+       footer partials through partialCached with a key that carries no page identity —
+       anything conditional on the page would be computed once and reused everywhere.
+       Module scripts are deferred, so the document is parsed by the time this runs and
+       the diagram blocks can be detected here instead. */ -}}
+<script type="module">
+    const blocks = [...document.querySelectorAll('pre.mermaid')];
+    if (blocks.length) {
+        const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs');
+
+        // Mermaid replaces the block's text with an SVG, so keep the source for redraws.
+        blocks.forEach((el) => { el.dataset.mermaidSrc = el.textContent; });
+
+        const currentTheme = () => document.body.classList.contains('dark') ? 'dark' : 'default';
+
+        const render = () => {
+            blocks.forEach((el) => {
+                el.removeAttribute('data-processed');
+                el.textContent = el.dataset.mermaidSrc;
+            });
+            mermaid.initialize({ startOnLoad: false, theme: currentTheme() });
+            return mermaid.run({ nodes: blocks });
+        };
+
+        await render();
+
+        // PaperMod toggles `dark` on <body>; redraw so diagrams follow the theme.
+        let lastTheme = currentTheme();
+        new MutationObserver(() => {
+            const theme = currentTheme();
+            if (theme === lastTheme) return;
+            lastTheme = theme;
+            render();
+        }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    }
+</script>

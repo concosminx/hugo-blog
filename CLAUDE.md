@@ -23,6 +23,7 @@ Personal Hugo blog published at https://blog.pakithecat.eu/. Static site, no app
 - **Content layout:** Posts are page bundles grouped by year — `content/posts/<year>/<slug>/index.md` — with the cover image and any other assets co-located in the same folder. Top-level section pages (`archives.md`, `search.md`) also come in `.md` / `.ro.md` pairs.
 - **Search:** The home page emits a JSON output (`outputs.home` in `hugo.yaml`) that feeds client-side Fuse.js search on `/search/`.
 - **Rendering:** Goldmark is configured with `unsafe: true`, so raw HTML in Markdown is allowed.
+- **Mermaid:** ```` ```mermaid ```` fences render as diagrams. `layouts/_default/_markup/render-codeblock-mermaid.html` emits `<pre class="mermaid">`; `layouts/partials/extend_head.html` carries a deferred module script that looks for those elements and dynamically `import()`s mermaid.js from jsDelivr only when the page has one, redrawing on the PaperMod light/dark toggle. `assets/css/extended/mermaid.css` strips the code-block styling. **Do not make PaperMod extension points page-conditional** — `baseof.html` calls `head.html` and `footer.html` through `partialCached` with a key of `.Layout`/`.Kind` and no page identity, so a `.Store.Get` condition inside `extend_head.html` or `extend_footer.html` is evaluated once and that result is reused site-wide. Decide at runtime in the browser instead. Hugo 0.146 moves render hooks to `layouts/_markup/` — this repo pins 0.140.1 in `deploy.yml`, so the `_default` path is correct for now.
 
 ## Front matter conventions
 

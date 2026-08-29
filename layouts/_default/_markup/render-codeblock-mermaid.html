@@ -1,0 +1,4 @@
+{{- /* Renders ```mermaid fenced blocks as diagrams instead of highlighted code. */ -}}
+<pre class="mermaid">
+{{- .Inner | htmlEscape | safeHTML -}}
+</pre>
