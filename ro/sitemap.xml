@@ -41,6 +41,53 @@
                 href="https://blog.pakithecat.eu/ro/posts/"
                 />
   </url><url>
+    <loc>https://blog.pakithecat.eu/ro/categorii/</loc>
+    <lastmod>2026-09-04T11:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/ro/taguri/cheatsheet/</loc>
+    <lastmod>2026-09-04T11:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/ro/taguri/cryptography/</loc>
+    <lastmod>2026-09-04T11:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/ro/posts/2026/cybersecurity-encryption-cheatsheet/</loc>
+    <lastmod>2026-09-04T11:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/2026/cybersecurity-encryption-cheatsheet/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/2026/cybersecurity-encryption-cheatsheet/"
+                />
+  </url><url>
+    <loc>https://blog.pakithecat.eu/ro/taguri/security/</loc>
+    <lastmod>2026-09-04T11:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/ro/taguri/</loc>
+    <lastmod>2026-09-04T11:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/ro/categorii/tech/</loc>
+    <lastmod>2026-09-04T11:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/ro/taguri/algorithms/</loc>
+    <lastmod>2026-09-04T10:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/ro/posts/2026/big-o-cheatsheet/</loc>
+    <lastmod>2026-09-04T10:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/2026/big-o-cheatsheet/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/2026/big-o-cheatsheet/"
+                />
+  </url><url>
     <loc>https://blog.pakithecat.eu/ro/posts/2026/windows-command-line-cheatsheet/</loc>
     <lastmod>2026-09-04T10:00:00+03:00</lastmod>
     <xhtml:link
@@ -158,9 +205,6 @@
                 href="https://blog.pakithecat.eu/ro/posts/2026/create-sudo-user-ubuntu/"
                 />
   </url><url>
-    <loc>https://blog.pakithecat.eu/ro/categorii/</loc>
-    <lastmod>2025-12-27T10:00:00+02:00</lastmod>
-  </url><url>
     <loc>https://blog.pakithecat.eu/ro/posts/2025/kafka-windows-install/</loc>
     <lastmod>2025-12-27T10:00:00+02:00</lastmod>
     <xhtml:link
@@ -184,12 +228,6 @@
     <lastmod>2025-12-27T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/ro/taguri/streaming/</loc>
-    <lastmod>2025-12-27T10:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/ro/taguri/</loc>
-    <lastmod>2025-12-27T10:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/ro/categorii/tech/</loc>
     <lastmod>2025-12-27T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/ro/taguri/windows/</loc>

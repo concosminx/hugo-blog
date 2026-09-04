@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Algorithms on Ce am făcut toată săptămâna</title>
+    <link>https://blog.pakithecat.eu/ro/taguri/algorithms/</link>
+    <description>Recent content in Algorithms on Ce am făcut toată săptămâna</description>
+    <generator>Hugo -- 0.140.1</generator>
+    <language>ro</language>
+    <copyright>concosminx</copyright>
+    <lastBuildDate>Fri, 04 Sep 2026 10:00:00 +0300</lastBuildDate>
+    <atom:link href="https://blog.pakithecat.eu/ro/taguri/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Big O: Complexitatea de Timp și de Spațiu Explicată</title>
+      <link>https://blog.pakithecat.eu/ro/posts/2026/big-o-cheatsheet/</link>
+      <pubDate>Fri, 04 Sep 2026 10:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/posts/2026/big-o-cheatsheet/</guid>
+      <description>Clasele de complexitate, regulile pentru simplificarea lor și ce consumă de fapt timp și memorie într-o funcție.</description>
+    </item>
+  </channel>
+</rss>

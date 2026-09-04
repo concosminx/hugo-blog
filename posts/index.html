@@ -226,6 +226,34 @@ The full selector grammar is not large. It is a handful of symbols — &gt;, &#4
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Cybersecurity and Encryption Cheatsheet: Algorithms, Protocols and Attacks
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>A working map of applied cryptography and the security machinery built on top of it. Plenty of the algorithms below are here because you will meet them in old code and old exam questions, not because you should deploy them — so each one comes with its current status, which is the part that reference tables usually get wrong.
+Symmetric Encryption Symmetric algorithms use the same secret key to encrypt and decrypt. They are fast, which is why they carry the actual data in nearly every protocol, and their weak point is key distribution: both parties need the key, and getting it to them safely is a separate problem — the one asymmetric cryptography solves.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-04 11:00:00 +0300 +0300'>September 4, 2026</span>&nbsp;·&nbsp;15 min&nbsp;·&nbsp;3056 words&nbsp;·&nbsp;Me</footer>
+  <a class="entry-link" aria-label="post link to Cybersecurity and Encryption Cheatsheet: Algorithms, Protocols and Attacks" href="https://blog.pakithecat.eu/posts/2026/cybersecurity-encryption-cheatsheet/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Big O Cheatsheet: Time and Space Complexity Explained
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Big O describes how the cost of an algorithm grows as its input grows. Not how fast it is on your laptop — how it scales. An O(n²) function can beat an O(n log n) one on ten items and lose catastrophically on ten million, and the whole point of the notation is to make that crossover predictable without benchmarking anything.
+The Complexity Classes From best to worst, these are the ones worth memorising:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-09-04 10:00:00 +0300 +0300'>September 4, 2026</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;1348 words&nbsp;·&nbsp;Me</footer>
+  <a class="entry-link" aria-label="post link to Big O Cheatsheet: Time and Space Complexity Explained" href="https://blog.pakithecat.eu/posts/2026/big-o-cheatsheet/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Windows Command Line Cheatsheet: Files, Folders and Networking
     </h2>
   </header>
@@ -322,38 +350,6 @@ Install WSL wsl --install Installs WSL and the default Ubuntu distribution. You 
   </div>
   <footer class="entry-footer"><span title='2026-04-25 10:00:00 +0200 +0200'>April 25, 2026</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;904 words&nbsp;·&nbsp;Me</footer>
   <a class="entry-link" aria-label="post link to WSL Basic Commands Cheatsheet" href="https://blog.pakithecat.eu/posts/2026/wsl-basic-commands/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">JVM Diagnostic Commands Reference
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Troubleshooting Java applications often requires analyzing heap memory, thread dumps, and JVM internals. This guide provides a quick reference to essential JVM diagnostic commands using tools like jmap, jstack, and jcmd.
-Prerequisites Java Development Kit (JDK) installed Process ID (PID) of the running Java application To find your Java process ID:
-jps -l Heap Dump Generate a binary heap dump for memory analysis:
-path/to/jdk/jmap -dump:format=b,file=&lt;filename&gt; &lt;pid&gt; Example:
-/usr/lib/jvm/java-17-openjdk/bin/jmap -dump:format=b,file=heap_dump.hprof 12345 Use tools like Eclipse MAT or VisualVM to analyze the heap dump file.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-04-14 18:00:00 +0200 +0200'>April 14, 2026</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;488 words&nbsp;·&nbsp;Me</footer>
-  <a class="entry-link" aria-label="post link to JVM Diagnostic Commands Reference" href="https://blog.pakithecat.eu/posts/2026/jvm-diagnostic-commands/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Gotify with Docker Compose (Quick Setup)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Gotify is a self-hosted, open-source notification service. It exposes an API that lets your apps send notifications to your phone (Android or iOS). This guide sets it up with Docker Compose, shows how to secure the default user, and how to test notifications.
-Docker Compose setup Create a folder (for example ~/gotify) and add the following docker-compose.yml:
-version: &#34;3&#34; services: gotify: image: gotify/server restart: unless-stopped container_name: gotify ports: - 8989:80 environment: - GOTIFY_DEFAULTUSER_PASS=${GOTIFY_DEFAULTUSER_PASS} volumes: - &#34;./gotify_data:/app/data&#34; networks: default: name: my-main-net external: true Add an environment file named .env (or keep this as .env.example in git and copy it to .env on the server):
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-03-29 12:00:00 +0200 +0200'>March 29, 2026</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;294 words&nbsp;·&nbsp;Me</footer>
-  <a class="entry-link" aria-label="post link to Gotify with Docker Compose (Quick Setup)" href="https://blog.pakithecat.eu/posts/2026/gotify-docker-compose/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

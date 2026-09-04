@@ -17,6 +17,20 @@
       <description>The full grammar of CSS selectors — combinators, attribute matching, the structural pseudo-classes that count children, and the logical ones that finally let you style a parent.</description>
     </item>
     <item>
+      <title>Cybersecurity and Encryption Cheatsheet: Algorithms, Protocols and Attacks</title>
+      <link>https://blog.pakithecat.eu/posts/2026/cybersecurity-encryption-cheatsheet/</link>
+      <pubDate>Fri, 04 Sep 2026 11:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/posts/2026/cybersecurity-encryption-cheatsheet/</guid>
+      <description>Symmetric and asymmetric ciphers, hashes, TLS, authentication and access control, key management, and the attacks they exist to stop.</description>
+    </item>
+    <item>
+      <title>Big O Cheatsheet: Time and Space Complexity Explained</title>
+      <link>https://blog.pakithecat.eu/posts/2026/big-o-cheatsheet/</link>
+      <pubDate>Fri, 04 Sep 2026 10:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/posts/2026/big-o-cheatsheet/</guid>
+      <description>The complexity classes, the rules for simplifying them, and what actually costs time and memory in a function.</description>
+    </item>
+    <item>
       <title>Windows Command Line Cheatsheet: Files, Folders and Networking</title>
       <link>https://blog.pakithecat.eu/posts/2026/windows-command-line-cheatsheet/</link>
       <pubDate>Fri, 04 Sep 2026 10:00:00 +0300</pubDate>

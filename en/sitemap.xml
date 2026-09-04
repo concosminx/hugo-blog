@@ -56,6 +56,41 @@
                 href="https://blog.pakithecat.eu/"
                 />
   </url><url>
+    <loc>https://blog.pakithecat.eu/tags/cryptography/</loc>
+    <lastmod>2026-09-04T11:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/posts/2026/cybersecurity-encryption-cheatsheet/</loc>
+    <lastmod>2026-09-04T11:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/2026/cybersecurity-encryption-cheatsheet/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/2026/cybersecurity-encryption-cheatsheet/"
+                />
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/security/</loc>
+    <lastmod>2026-09-04T11:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/algorithms/</loc>
+    <lastmod>2026-09-04T10:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/posts/2026/big-o-cheatsheet/</loc>
+    <lastmod>2026-09-04T10:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/2026/big-o-cheatsheet/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/2026/big-o-cheatsheet/"
+                />
+  </url><url>
     <loc>https://blog.pakithecat.eu/tags/windows/</loc>
     <lastmod>2026-09-04T10:00:00+03:00</lastmod>
   </url><url>
@@ -341,9 +376,6 @@
                 hreflang="en"
                 href="https://blog.pakithecat.eu/posts/2025/oci-mount-block-volume/"
                 />
-  </url><url>
-    <loc>https://blog.pakithecat.eu/tags/cryptography/</loc>
-    <lastmod>2025-01-03T15:24:43+02:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/gpg/</loc>
     <lastmod>2025-01-03T15:24:43+02:00</lastmod>

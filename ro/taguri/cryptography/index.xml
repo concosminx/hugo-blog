@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Cryptography on Ce am făcut toată săptămâna</title>
+    <link>https://blog.pakithecat.eu/ro/taguri/cryptography/</link>
+    <description>Recent content in Cryptography on Ce am făcut toată săptămâna</description>
+    <generator>Hugo -- 0.140.1</generator>
+    <language>ro</language>
+    <copyright>concosminx</copyright>
+    <lastBuildDate>Fri, 04 Sep 2026 11:00:00 +0300</lastBuildDate>
+    <atom:link href="https://blog.pakithecat.eu/ro/taguri/cryptography/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Securitate Cibernetică și Criptare: Algoritmi, Protocoale și Atacuri</title>
+      <link>https://blog.pakithecat.eu/ro/posts/2026/cybersecurity-encryption-cheatsheet/</link>
+      <pubDate>Fri, 04 Sep 2026 11:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/posts/2026/cybersecurity-encryption-cheatsheet/</guid>
+      <description>Cifruri simetrice și asimetrice, funcții hash, TLS, autentificare și control al accesului, gestionarea cheilor și atacurile împotriva cărora există toate acestea.</description>
+    </item>
+  </channel>
+</rss>

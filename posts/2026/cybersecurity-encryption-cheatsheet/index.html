@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Cybersecurity and Encryption Cheatsheet: Algorithms, Protocols and Attacks | What I Did All Week</title>
+<meta name="keywords" content="cheatsheet, cryptography, security">
+<meta name="description" content="Symmetric and asymmetric ciphers, hashes, TLS, authentication and access control, key management, and the attacks they exist to stop.">
+<meta name="author" content="Me">
+<link rel="canonical" href="https://blog.pakithecat.eu/posts/2026/cybersecurity-encryption-cheatsheet/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.5b00859891919f07af6a53834e3f9f8f331db42cc5f024277803b41a6758e47a.css" integrity="sha256-WwCFmJGRnwevalODTj&#43;fjzMdtCzF8CQneAO0GmdY5Ho=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.pakithecat.eu/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.pakithecat.eu/icons/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.pakithecat.eu/icons/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.pakithecat.eu/icons/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.pakithecat.eu/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://blog.pakithecat.eu/posts/2026/cybersecurity-encryption-cheatsheet/">
+<link rel="alternate" hreflang="ro" href="https://blog.pakithecat.eu/ro/posts/2026/cybersecurity-encryption-cheatsheet/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script type="module">
+    const blocks = [...document.querySelectorAll('pre.mermaid')];
+    if (blocks.length) {
+        const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs');
+
+        
+        blocks.forEach((el) => { el.dataset.mermaidSrc = el.textContent; });
+
+        const currentTheme = () => document.body.classList.contains('dark') ? 'dark' : 'default';
+
+        const render = () => {
+            blocks.forEach((el) => {
+                el.removeAttribute('data-processed');
+                el.textContent = el.dataset.mermaidSrc;
+            });
+            mermaid.initialize({ startOnLoad: false, theme: currentTheme() });
+            return mermaid.run({ nodes: blocks });
+        };
+
+        await render();
+
+        
+        let lastTheme = currentTheme();
+        new MutationObserver(() => {
+            const theme = currentTheme();
+            if (theme === lastTheme) return;
+            lastTheme = theme;
+            render();
+        }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    }
+</script>
+<meta property="og:url" content="https://blog.pakithecat.eu/posts/2026/cybersecurity-encryption-cheatsheet/">
+  <meta property="og:site_name" content="What I Did All Week">
+  <meta property="og:title" content="Cybersecurity and Encryption Cheatsheet: Algorithms, Protocols and Attacks">
+  <meta property="og:description" content="Symmetric and asymmetric ciphers, hashes, TLS, authentication and access control, key management, and the attacks they exist to stop.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-09-04T11:00:00+03:00">
+    <meta property="article:modified_time" content="2026-09-04T11:00:00+03:00">
+    <meta property="article:tag" content="Cheatsheet">
+    <meta property="article:tag" content="Cryptography">
+    <meta property="article:tag" content="Security">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cybersecurity and Encryption Cheatsheet: Algorithms, Protocols and Attacks">
+<meta name="twitter:description" content="Symmetric and asymmetric ciphers, hashes, TLS, authentication and access control, key management, and the attacks they exist to stop.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.pakithecat.eu/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Cybersecurity and Encryption Cheatsheet: Algorithms, Protocols and Attacks",
+      "item": "https://blog.pakithecat.eu/posts/2026/cybersecurity-encryption-cheatsheet/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Cybersecurity and Encryption Cheatsheet: Algorithms, Protocols and Attacks",
+  "name": "Cybersecurity and Encryption Cheatsheet: Algorithms, Protocols and Attacks",
+  "description": "Symmetric and asymmetric ciphers, hashes, TLS, authentication and access control, key management, and the attacks they exist to stop.",
+  "keywords": [
+    "cheatsheet", "cryptography", "security"
+  ],
+  "articleBody": "A working map of applied cryptography and the security machinery built on top of it. Plenty of the algorithms below are here because you will meet them in old code and old exam questions, not because you should deploy them — so each one comes with its current status, which is the part that reference tables usually get wrong.\nSymmetric Encryption Symmetric algorithms use the same secret key to encrypt and decrypt. They are fast, which is why they carry the actual data in nearly every protocol, and their weak point is key distribution: both parties need the key, and getting it to them safely is a separate problem — the one asymmetric cryptography solves.\nAlgorithm Type Block size Key size Status AES Block 128 bits 128 / 192 / 256 bits Current standard DES Block 64 bits 56 bits Broken — brute-forceable 3DES Block 64 bits 112 / 168 bits Disallowed since 2023 Blowfish Block 64 bits up to 448 bits Superseded Twofish Block 128 bits up to 256 bits Unbroken, little used Serpent Block 128 bits up to 256 bits Unbroken, little used MARS Block 128 bits 128–448 bits Unbroken, little used IDEA Block 64 bits 128 bits Superseded CAST-128 Block 64 bits up to 128 bits Superseded RC2 Block 64 bits up to 1024 bits Insecure RC5 Block variable up to 2040 bits Rarely used RC6 Block 128 bits up to 2040 bits Rarely used RC4 Stream — up to 2048 bits Prohibited AES is the one that matters. It is the current standard, it is implemented in hardware on every modern CPU, and unless you have a specific reason to do otherwise it is the answer. Note that the key size varies but the block size does not: AES-256 still processes 128-bit blocks.\nDES fell to brute force decades ago — 56 bits is simply not enough key material. 3DES was the stopgap, applying DES three times with two or three distinct keys. It is slow, and NIST deprecated it through 2023 and disallowed it for encryption after 31 December 2023 in SP 800-131A Rev. 2; decryption of legacy data is still permitted. If you find 3DES protecting anything live, that is a finding.\nThe 64-bit block ciphers deserve a note of their own. Blowfish, 3DES, IDEA, CAST-128 and RC2 all use 64-bit blocks, and that alone is now a weakness: the Sweet32 birthday attack recovers plaintext from long-lived connections encrypted with any 64-bit block cipher, without touching the key. Blowfish is fast and was widely trusted for years, but its own designer has recommended moving to AES or Twofish for a long time.\nTwofish, Serpent and MARS were AES finalists alongside Rijndael, which won. None of them is broken; they simply lost, and losing meant no hardware acceleration and no ecosystem. MARS was IBM’s entry — the name is not an acronym, whatever expansions you may see attached to it.\nRC4 is the important negative. It was everywhere, it was fast, and it is now formally prohibited in TLS by RFC 7465. It must not be negotiated in any TLS version.\nOne clarification worth making because reference cards routinely file it in the wrong drawer: Kerberos is not an encryption algorithm. It is a network authentication protocol that uses symmetric cryptography to protect its messages. More on it below.\nAsymmetric Encryption Asymmetric cryptography — public-key cryptography — uses two mathematically related keys. The public key can be handed to anyone and is used to encrypt; the private key stays secret and is used to decrypt. Run the pair the other way round and you get digital signatures, which is where the non-repudiation property comes from: only the holder of the private key could have produced the signature, so they cannot credibly deny it.\nThe trade-off against symmetric crypto is speed. Asymmetric operations are orders of magnitude slower, so in practice they are used to authenticate the parties and agree on a symmetric key, and the symmetric cipher does the bulk work. That hybrid arrangement is what TLS is.\nRSA — the workhorse for key transport, signatures and encryption at rest, named for Rivest, Shamir and Adleman. Still fine at 2048-bit keys and above; 1024-bit RSA is retired. Diffie-Hellman — a key exchange method, not an encryption algorithm. It lets two parties derive a shared secret over a public channel without ever transmitting it. Ephemeral variants (DHE, ECDHE) are what give modern TLS its forward secrecy. ECC (Elliptic Curve Cryptography) — the same operations built on elliptic curves, which gives equivalent security at much smaller key sizes. A 256-bit ECC key is roughly comparable to a 3072-bit RSA key, which is why ECC dominates on constrained devices and modern TLS alike. DSA — the Digital Signature Algorithm, for signatures only. ECDSA is its elliptic-curve version and the one you will actually meet; Ed25519 has largely displaced both in new systems. ElGamal — a public-key system usable for both signatures and encryption. Mostly of academic and historical interest, though it survives inside parts of OpenPGP. PGP — not an algorithm but a tool, combining symmetric and asymmetric encryption for secure storage and messaging. See the GPG post for the practical side of using it. Post-quantum Every algorithm in this section rests on problems a sufficiently large quantum computer would solve efficiently. NIST published the first post-quantum standards in August 2024: ML-KEM (FIPS 203) for key encapsulation, ML-DSA (FIPS 204) and SLH-DSA (FIPS 205) for signatures. Hybrid key exchange combining ECDHE with ML-KEM is already deployed in mainstream browsers and TLS libraries. Symmetric cryptography and hashing are much less affected — the practical response there is larger keys and longer digests, not new algorithms.\nHash Functions A hash takes input of any length and produces a fixed-length digest. It is one-way: you cannot recover the input, and finding two inputs with the same digest — a collision — should be computationally infeasible. Hashes underpin signatures, integrity checks, and password storage.\nFamily Digest size Status SHA-2 (SHA-256, SHA-512) 224–512 bits Current standard SHA-3 (Keccak) 224–512 bits Current, different internal design BLAKE2 / BLAKE3 variable Current, very fast SHA-1 160 bits Broken — collisions demonstrated RIPEMD-160 160 bits Unbroken but niche Whirlpool 512 bits Unbroken but niche Tiger 192 bits Legacy MD5 128 bits Broken MD4, MD2 128 bits Broken SHA-2 is the default choice, with SHA-256 the most common member. SHA-3 is not a patch on SHA-2 but a structurally different design chosen through open competition, kept in reserve in case SHA-2 ever falls. BLAKE2 and its successor BLAKE3 are faster than both and appear widely outside standards-mandated contexts.\nSHA-1 is finished. A practical collision was demonstrated in 2017 and chosen-prefix collisions followed in 2020. NIST formally retired it in 2022 and requires it gone by the end of 2030. MD5 has been collision-broken since 2004 and is unfit for any security purpose — its only defensible remaining use is as a non-adversarial checksum.\nThe whole MD family produces 128-bit digests: MD2, MD4 and MD5 alike. All are broken.\nOne deliberate omission: none of these belongs anywhere near a password database. General-purpose hashes are designed to be fast, which is precisely wrong for passwords. Use a deliberately slow, memory-hard function — Argon2id, scrypt, or bcrypt.\nTLS, Not SSL SSL is dead. Every version of it — SSL 2.0 and SSL 3.0 — is formally deprecated, SSL 3.0 by RFC 7568 in 2015. Its successor is TLS, and TLS 1.0 and 1.1 are deprecated too, by RFC 8996 in 2021. Only TLS 1.2 and TLS 1.3 should be enabled anywhere. The word “SSL” survives in library names, configuration keys and job titles, but the protocol underneath is TLS.\nTLS has the same two-part structure SSL had: a handshake that authenticates the server and establishes a shared secret, and a record protocol that carries application data encrypted under that secret.\nThe classic handshake runs roughly like this:\nThe client sends a hello listing the protocol versions and cipher suites it supports. The server replies with the version and cipher suite it has chosen. The server presents its certificate to prove its identity. The client validates that certificate against its trust store, and the two sides complete the key exchange. Everything after that is encrypted with the agreed symmetric key. TLS 1.3 compresses this considerably. It completes in one round trip instead of two, encrypts the certificate rather than sending it in the clear, and strips out every cipher suite with a known weakness — no RC4, no 3DES, no static RSA key exchange, no renegotiation. Its suites are AES-GCM, AES-CCM and ChaCha20-Poly1305, all of them authenticated encryption. Forward secrecy is mandatory, meaning a stolen server key cannot decrypt yesterday’s captured traffic.\nIf you are configuring a server today: TLS 1.2 and 1.3 only, ECDHE key exchange, AEAD ciphers, HSTS enabled. Mozilla’s SSL Configuration Generator produces sound configs for most web servers.\nAuthentication Authentication answers “who are you?” and is conventionally broken into three factors — something you know, something you have, something you are.\nMethod Factor Notes Username and password Know Weakest alone; the baseline everywhere Two-factor / MFA Know + have Password plus a code from an app or token Biometric Are Fingerprint, face; convenient, not revocable Smart card Have Physical card with a chip, read by a terminal Token-based Have USB key or hardware token holding credentials Certificate-based Have Digital certificate issued by a trusted authority Multi-factor is the single highest-value control in this table, but not all second factors are equal: SMS codes are interceptable through SIM swapping and network attacks, app-generated TOTP codes are phishable in real time, and only hardware security keys using WebAuthn/FIDO2 resist phishing outright, because the key checks the origin before it will sign anything.\nThe biometric caveat is worth stating plainly: you cannot reissue a fingerprint. Biometrics work well as a local unlock gesture on a device that holds a real credential, and poorly as a secret transmitted over a network.\nAuthentication protocols Kerberos — a network authentication protocol using symmetric cryptography and a trusted third party, the Key Distribution Center. It issues time-limited tickets rather than passing passwords around, which protects against replay, eavesdropping and machine-in-the-middle attacks. It is the backbone of Active Directory authentication. OAuth 2.0 — an authorisation framework, not authentication. It lets a user grant an application access to their data without handing over their password. OpenID Connect is the identity layer built on top of it, and that is the piece that actually does authentication — a distinction that gets blurred constantly and matters when you are designing a login flow. SAML — Security Assertion Markup Language, an XML standard for exchanging authentication and authorisation data between an identity provider and a service provider. Older than OIDC and still dominant in enterprise single sign-on. RADIUS — Remote Authentication Dial-In User Service (RFC 2865), providing centralised authentication, authorisation and accounting for network access. Its name is a fossil from the dial-up era; it is now what sits behind enterprise Wi-Fi and VPN logins. It encrypts only the password field, not the whole exchange. TACACS+ — Terminal Access Controller Access-Control System Plus (RFC 8907), Cisco’s alternative for device administration. It separates authentication, authorisation and accounting into independent exchanges and encrypts the entire payload, which is its main advantage over RADIUS. Plain TACACS and XTACACS are obsolete. Access Control Models Once you know who someone is, you decide what they may do.\nMAC (Mandatory Access Control) — a central authority sets the rules and users cannot override them. Labels and clearances; standard in government and military systems. SELinux and AppArmor are the everyday Linux examples. DAC (Discretionary Access Control) — the owner of a resource decides who gets access. Unix file permissions are DAC, and so is a shared folder on a home NAS. RBAC (Role-Based Access Control) — permissions attach to roles, users are assigned roles. The dominant model in large organisations because it scales with headcount instead of with individuals. ABAC (Attribute-Based Access Control) — decisions evaluate attributes of the user, resource, action and context, so you can express rules like “finance staff, on a managed device, during business hours.” More expressive than RBAC and correspondingly harder to reason about. Remote Access VPN — an encrypted tunnel over the public internet giving remote access to a network. Site-to-site VPNs join two networks permanently; client VPNs connect individual devices. IPsec — a protocol suite securing traffic at the IP layer, and the basis of most site-to-site VPNs. SSH — secure remote shell access over an untrusted network, and also the transport for scp and sftp. RDP — Remote Desktop Protocol, for graphical remote access to Windows machines. Never expose it directly to the internet; put it behind a VPN or a gateway. PPTP — obsolete and insecure. Its MS-CHAPv2 authentication was broken in 2012 and the whole exchange can be reduced to a single DES key. Do not use it; modern equivalents are WireGuard, OpenVPN or IKEv2/IPsec. 802.11 — the IEEE standard family for wireless LANs. Use WPA3, or WPA2 with AES-CCMP at minimum; WEP and TKIP are broken. RATs — remote access trojans, the attacker’s version of all of the above: malware granting unauthorised remote control of a victim machine. Key Management and the Certificate Life Cycle Cryptography fails at key management far more often than at the mathematics. A certificate moves through a predictable life cycle:\nKey generation — the requesting entity generates a key pair. Identity submission — it presents its identity to a Certificate Authority. Registration — the CA verifies that identity. Certification — the CA signs a certificate binding the entity’s public key to its identity, using the CA’s own private key. Distribution — the certificate is issued to the entity and made publicly available. Usage — the entity authenticates itself and establishes secure communications. Expiration or revocation — every certificate has a time limit, and a compromised one is revoked before it. Renewal — a fresh key pair and certificate are issued as needed. Recovery — a defined procedure for a lost private key. Archival — certificates and keys are retained securely for audit. An HSM (Hardware Security Module) is a dedicated physical device that generates keys, signs and verifies, and encrypts and decrypts, with the private key never leaving the hardware. Cloud providers offer managed equivalents, and the design goal is the same: make key extraction a physical problem rather than a software one.\nTwo practical notes the life cycle above does not capture. Public TLS certificates have short lifetimes now — a little over a year and shrinking — which makes automated renewal mandatory rather than optional; ACME and Let’s Encrypt exist for exactly this. And revocation is the weak link: CRLs and OCSP both have well-known reliability problems, which is a large part of why the industry moved to short-lived certificates instead.\nKey management vs PKI management The two terms get used interchangeably and are not the same thing.\nKey management PKI management Secure creation, distribution, archival and deletion of cryptographic keys Production, distribution and maintenance of digital certificates and their keys Keys encrypt and decrypt messages, authenticate users, and establish secure connections Certificates confirm the identity of parties to a transaction and guarantee data integrity Ensures keys are used correctly and protected from unauthorised access or misuse Establishes trust between parties, and revokes certificates that are compromised or invalid The short version: key management is about protecting secrets; PKI management is about establishing who those secrets belong to.\nAttacks Spoofing Spoofing means faking an identity to gain trust.\nType How it works Defence IP spoofing Sending packets from a forged source address Ingress filtering (BCP 38) Email spoofing Forging the From address to launch phishing or deliver malware SPF, DKIM, DMARC DNS spoofing Poisoning DNS records to redirect traffic to an attacker’s server DNSSEC, DNS over HTTPS Caller ID spoofing Faking a phone number to impersonate a trusted caller STIR/SHAKEN MAC spoofing Changing a device’s MAC address to impersonate another host 802.1X port authentication Machine-in-the-middle The attacker sits between two parties, reading or altering traffic that both sides believe is private.\nWi-Fi hijacking — a rogue access point, often a purpose-built device like a Wi-Fi Pineapple, that clients associate with instead of the real network. SSL stripping — downgrading an HTTPS connection to HTTP so the attacker can read it. HSTS is the defence: it tells browsers never to use plaintext for that domain. Email hijacking — intercepting and altering mail between two parties. The commercial version is business email compromise, where invoice details are quietly changed in transit. Banking trojans — malware on the endpoint itself, watching sessions with a bank to harvest credentials and authorise fraudulent transfers. Certificate validation is what stops most of these at the protocol level, which is why “just click through the certificate warning” is worse advice than it sounds.\nDenial of service DoS attacks exhaust a resource — bandwidth, connection state, CPU — until the service stops answering legitimate requests. Distributed versions (DDoS) source the traffic from many hosts at once.\nAttack Mechanism Ping flood Floods the target with ICMP echo requests SYN flood Opens half-finished TCP connections until the connection table is exhausted UDP flood Saturates the network with UDP packets HTTP flood Sends large volumes of legitimate-looking HTTP requests DNS flood Overwhelms the target’s DNS servers Smurf attack Sends ICMP echoes to broadcast addresses so replies flood the victim NTP amplification Abuses open NTP servers to multiply traffic volume at the target Slowloris Opens many connections and sends partial HTTP requests slowly, holding sockets open The distinction that matters operationally is between volumetric attacks, which try to fill the pipe, and resource-exhaustion attacks like Slowloris, which use very little bandwidth and instead consume connection slots. The first is absorbed with capacity and upstream scrubbing; the second is defeated with connection limits and timeouts, and no amount of bandwidth helps.\nAmplification attacks — NTP, DNS, memcached and others — work by sending a small spoofed request to a server that answers with a much larger response directed at the victim. They depend on both IP spoofing and misconfigured public servers, which is why closing open resolvers and deploying ingress filtering helps everyone rather than just the operator who does it. The Smurf attack is largely historical for the same reason: routers stopped forwarding directed broadcasts by default.\n",
+  "wordCount" : "3056",
+  "inLanguage": "en",
+  "datePublished": "2026-09-04T11:00:00+03:00",
+  "dateModified": "2026-09-04T11:00:00+03:00",
+  "author":{
+    "@type": "Person",
+    "name": "Me"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.pakithecat.eu/posts/2026/cybersecurity-encryption-cheatsheet/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "What I Did All Week",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.pakithecat.eu/icons/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.pakithecat.eu/" accesskey="h" title="What I Did All Week (Alt + H)">What I Did All Week</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://blog.pakithecat.eu/ro/" title="Romanian"
+                            aria-label="🇷🇴">🇷🇴</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.pakithecat.eu/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/concosminx/hugo-blog" title="Repo">
+                    <span>Repo</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://blog.pakithecat.eu/">Home</a>&nbsp;»&nbsp;<a href="https://blog.pakithecat.eu/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Cybersecurity and Encryption Cheatsheet: Algorithms, Protocols and Attacks
+    </h1>
+    <div class="post-description">
+      Symmetric and asymmetric ciphers, hashes, TLS, authentication and access control, key management, and the attacks they exist to stop.
+    </div>
+    <div class="post-meta"><span title='2026-09-04 11:00:00 +0300 +0300'>September 4, 2026</span>&nbsp;·&nbsp;15 min&nbsp;·&nbsp;3056 words&nbsp;·&nbsp;Me&nbsp;|&nbsp;Translations:
+<ul class="i18n_list">
+    <li>
+        <a href="https://blog.pakithecat.eu/ro/posts/2026/cybersecurity-encryption-cheatsheet/">🇷🇴</a>
+    </li>
+</ul>&nbsp;|&nbsp;<a href="https://github.com/concosminx/hugo-blog/tree/main/content/posts/2026/cybersecurity-encryption-cheatsheet/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#symmetric-encryption" aria-label="Symmetric Encryption">Symmetric Encryption</a></li>
+                <li>
+                    <a href="#asymmetric-encryption" aria-label="Asymmetric Encryption">Asymmetric Encryption</a><ul>
+                        
+                <li>
+                    <a href="#post-quantum" aria-label="Post-quantum">Post-quantum</a></li></ul>
+                </li>
+                <li>
+                    <a href="#hash-functions" aria-label="Hash Functions">Hash Functions</a></li>
+                <li>
+                    <a href="#tls-not-ssl" aria-label="TLS, Not SSL">TLS, Not SSL</a></li>
+                <li>
+                    <a href="#authentication" aria-label="Authentication">Authentication</a><ul>
+                        
+                <li>
+                    <a href="#authentication-protocols" aria-label="Authentication protocols">Authentication protocols</a></li></ul>
+                </li>
+                <li>
+                    <a href="#access-control-models" aria-label="Access Control Models">Access Control Models</a></li>
+                <li>
+                    <a href="#remote-access" aria-label="Remote Access">Remote Access</a></li>
+                <li>
+                    <a href="#key-management-and-the-certificate-life-cycle" aria-label="Key Management and the Certificate Life Cycle">Key Management and the Certificate Life Cycle</a><ul>
+                        
+                <li>
+                    <a href="#key-management-vs-pki-management" aria-label="Key management vs PKI management">Key management vs PKI management</a></li></ul>
+                </li>
+                <li>
+                    <a href="#attacks" aria-label="Attacks">Attacks</a><ul>
+                        
+                <li>
+                    <a href="#spoofing" aria-label="Spoofing">Spoofing</a></li>
+                <li>
+                    <a href="#machine-in-the-middle" aria-label="Machine-in-the-middle">Machine-in-the-middle</a></li>
+                <li>
+                    <a href="#denial-of-service" aria-label="Denial of service">Denial of service</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>A working map of applied cryptography and the security machinery built on top of it. Plenty of the algorithms below are here because you will meet them in old code and old exam questions, not because you should deploy them — so each one comes with its current status, which is the part that reference tables usually get wrong.</p>
+<h2 id="symmetric-encryption">Symmetric Encryption<a hidden class="anchor" aria-hidden="true" href="#symmetric-encryption">#</a></h2>
+<p>Symmetric algorithms use the <em>same</em> secret key to encrypt and decrypt. They are fast, which is why they carry the actual data in nearly every protocol, and their weak point is key distribution: both parties need the key, and getting it to them safely is a separate problem — the one asymmetric cryptography solves.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Algorithm</th>
+          <th>Type</th>
+          <th>Block size</th>
+          <th>Key size</th>
+          <th>Status</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>AES</td>
+          <td>Block</td>
+          <td>128 bits</td>
+          <td>128 / 192 / 256 bits</td>
+          <td><strong>Current standard</strong></td>
+      </tr>
+      <tr>
+          <td>DES</td>
+          <td>Block</td>
+          <td>64 bits</td>
+          <td>56 bits</td>
+          <td>Broken — brute-forceable</td>
+      </tr>
+      <tr>
+          <td>3DES</td>
+          <td>Block</td>
+          <td>64 bits</td>
+          <td>112 / 168 bits</td>
+          <td>Disallowed since 2023</td>
+      </tr>
+      <tr>
+          <td>Blowfish</td>
+          <td>Block</td>
+          <td>64 bits</td>
+          <td>up to 448 bits</td>
+          <td>Superseded</td>
+      </tr>
+      <tr>
+          <td>Twofish</td>
+          <td>Block</td>
+          <td>128 bits</td>
+          <td>up to 256 bits</td>
+          <td>Unbroken, little used</td>
+      </tr>
+      <tr>
+          <td>Serpent</td>
+          <td>Block</td>
+          <td>128 bits</td>
+          <td>up to 256 bits</td>
+          <td>Unbroken, little used</td>
+      </tr>
+      <tr>
+          <td>MARS</td>
+          <td>Block</td>
+          <td>128 bits</td>
+          <td>128–448 bits</td>
+          <td>Unbroken, little used</td>
+      </tr>
+      <tr>
+          <td>IDEA</td>
+          <td>Block</td>
+          <td>64 bits</td>
+          <td>128 bits</td>
+          <td>Superseded</td>
+      </tr>
+      <tr>
+          <td>CAST-128</td>
+          <td>Block</td>
+          <td>64 bits</td>
+          <td>up to 128 bits</td>
+          <td>Superseded</td>
+      </tr>
+      <tr>
+          <td>RC2</td>
+          <td>Block</td>
+          <td>64 bits</td>
+          <td>up to 1024 bits</td>
+          <td>Insecure</td>
+      </tr>
+      <tr>
+          <td>RC5</td>
+          <td>Block</td>
+          <td>variable</td>
+          <td>up to 2040 bits</td>
+          <td>Rarely used</td>
+      </tr>
+      <tr>
+          <td>RC6</td>
+          <td>Block</td>
+          <td>128 bits</td>
+          <td>up to 2040 bits</td>
+          <td>Rarely used</td>
+      </tr>
+      <tr>
+          <td>RC4</td>
+          <td>Stream</td>
+          <td>—</td>
+          <td>up to 2048 bits</td>
+          <td><strong>Prohibited</strong></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>AES</strong> is the one that matters. It is the current standard, it is implemented in hardware on every modern CPU, and unless you have a specific reason to do otherwise it is the answer. Note that the key size varies but the block size does not: AES-256 still processes 128-bit blocks.</p>
+<p><strong>DES</strong> fell to brute force decades ago — 56 bits is simply not enough key material. <strong>3DES</strong> was the stopgap, applying DES three times with two or three distinct keys. It is slow, and NIST deprecated it through 2023 and disallowed it for encryption after 31 December 2023 in SP 800-131A Rev. 2; decryption of legacy data is still permitted. If you find 3DES protecting anything live, that is a finding.</p>
+<p>The 64-bit block ciphers deserve a note of their own. <strong>Blowfish</strong>, <strong>3DES</strong>, <strong>IDEA</strong>, <strong>CAST-128</strong> and <strong>RC2</strong> all use 64-bit blocks, and that alone is now a weakness: the Sweet32 birthday attack recovers plaintext from long-lived connections encrypted with any 64-bit block cipher, without touching the key. Blowfish is fast and was widely trusted for years, but its own designer has recommended moving to AES or Twofish for a long time.</p>
+<p><strong>Twofish</strong>, <strong>Serpent</strong> and <strong>MARS</strong> were AES finalists alongside Rijndael, which won. None of them is broken; they simply lost, and losing meant no hardware acceleration and no ecosystem. MARS was IBM&rsquo;s entry — the name is not an acronym, whatever expansions you may see attached to it.</p>
+<p><strong>RC4</strong> is the important negative. It was everywhere, it was fast, and it is now formally prohibited in TLS by RFC 7465. It must not be negotiated in any TLS version.</p>
+<p>One clarification worth making because reference cards routinely file it in the wrong drawer: <strong>Kerberos is not an encryption algorithm.</strong> It is a network authentication protocol that <em>uses</em> symmetric cryptography to protect its messages. More on it below.</p>
+<h2 id="asymmetric-encryption">Asymmetric Encryption<a hidden class="anchor" aria-hidden="true" href="#asymmetric-encryption">#</a></h2>
+<p>Asymmetric cryptography — public-key cryptography — uses two mathematically related keys. The public key can be handed to anyone and is used to encrypt; the private key stays secret and is used to decrypt. Run the pair the other way round and you get digital signatures, which is where the <strong>non-repudiation</strong> property comes from: only the holder of the private key could have produced the signature, so they cannot credibly deny it.</p>
+<p>The trade-off against symmetric crypto is speed. Asymmetric operations are orders of magnitude slower, so in practice they are used to authenticate the parties and agree on a symmetric key, and the symmetric cipher does the bulk work. That hybrid arrangement is what TLS is.</p>
+<ul>
+<li><strong>RSA</strong> — the workhorse for key transport, signatures and encryption at rest, named for Rivest, Shamir and Adleman. Still fine at 2048-bit keys and above; 1024-bit RSA is retired.</li>
+<li><strong>Diffie-Hellman</strong> — a key <em>exchange</em> method, not an encryption algorithm. It lets two parties derive a shared secret over a public channel without ever transmitting it. Ephemeral variants (DHE, ECDHE) are what give modern TLS its forward secrecy.</li>
+<li><strong>ECC (Elliptic Curve Cryptography)</strong> — the same operations built on elliptic curves, which gives equivalent security at much smaller key sizes. A 256-bit ECC key is roughly comparable to a 3072-bit RSA key, which is why ECC dominates on constrained devices and modern TLS alike.</li>
+<li><strong>DSA</strong> — the Digital Signature Algorithm, for signatures only. ECDSA is its elliptic-curve version and the one you will actually meet; Ed25519 has largely displaced both in new systems.</li>
+<li><strong>ElGamal</strong> — a public-key system usable for both signatures and encryption. Mostly of academic and historical interest, though it survives inside parts of OpenPGP.</li>
+<li><strong>PGP</strong> — not an algorithm but a tool, combining symmetric and asymmetric encryption for secure storage and messaging. See the <a href="../../2025/gpg/">GPG post</a> for the practical side of using it.</li>
+</ul>
+<h3 id="post-quantum">Post-quantum<a hidden class="anchor" aria-hidden="true" href="#post-quantum">#</a></h3>
+<p>Every algorithm in this section rests on problems a sufficiently large quantum computer would solve efficiently. NIST published the first post-quantum standards in August 2024: <strong>ML-KEM</strong> (FIPS 203) for key encapsulation, <strong>ML-DSA</strong> (FIPS 204) and <strong>SLH-DSA</strong> (FIPS 205) for signatures. Hybrid key exchange combining ECDHE with ML-KEM is already deployed in mainstream browsers and TLS libraries. Symmetric cryptography and hashing are much less affected — the practical response there is larger keys and longer digests, not new algorithms.</p>
+<h2 id="hash-functions">Hash Functions<a hidden class="anchor" aria-hidden="true" href="#hash-functions">#</a></h2>
+<p>A hash takes input of any length and produces a fixed-length digest. It is one-way: you cannot recover the input, and finding two inputs with the same digest — a collision — should be computationally infeasible. Hashes underpin signatures, integrity checks, and password storage.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Family</th>
+          <th>Digest size</th>
+          <th>Status</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SHA-2 (SHA-256, SHA-512)</td>
+          <td>224–512 bits</td>
+          <td><strong>Current standard</strong></td>
+      </tr>
+      <tr>
+          <td>SHA-3 (Keccak)</td>
+          <td>224–512 bits</td>
+          <td>Current, different internal design</td>
+      </tr>
+      <tr>
+          <td>BLAKE2 / BLAKE3</td>
+          <td>variable</td>
+          <td>Current, very fast</td>
+      </tr>
+      <tr>
+          <td>SHA-1</td>
+          <td>160 bits</td>
+          <td>Broken — collisions demonstrated</td>
+      </tr>
+      <tr>
+          <td>RIPEMD-160</td>
+          <td>160 bits</td>
+          <td>Unbroken but niche</td>
+      </tr>
+      <tr>
+          <td>Whirlpool</td>
+          <td>512 bits</td>
+          <td>Unbroken but niche</td>
+      </tr>
+      <tr>
+          <td>Tiger</td>
+          <td>192 bits</td>
+          <td>Legacy</td>
+      </tr>
+      <tr>
+          <td>MD5</td>
+          <td>128 bits</td>
+          <td>Broken</td>
+      </tr>
+      <tr>
+          <td>MD4, MD2</td>
+          <td>128 bits</td>
+          <td>Broken</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>SHA-2</strong> is the default choice, with SHA-256 the most common member. <strong>SHA-3</strong> is not a patch on SHA-2 but a structurally different design chosen through open competition, kept in reserve in case SHA-2 ever falls. <strong>BLAKE2</strong> and its successor BLAKE3 are faster than both and appear widely outside standards-mandated contexts.</p>
+<p><strong>SHA-1</strong> is finished. A practical collision was demonstrated in 2017 and chosen-prefix collisions followed in 2020. NIST formally retired it in 2022 and requires it gone by the end of 2030. <strong>MD5</strong> has been collision-broken since 2004 and is unfit for any security purpose — its only defensible remaining use is as a non-adversarial checksum.</p>
+<p>The whole MD family produces 128-bit digests: MD2, MD4 and MD5 alike. All are broken.</p>
+<p>One deliberate omission: <strong>none of these belongs anywhere near a password database.</strong> General-purpose hashes are designed to be fast, which is precisely wrong for passwords. Use a deliberately slow, memory-hard function — Argon2id, scrypt, or bcrypt.</p>
+<h2 id="tls-not-ssl">TLS, Not SSL<a hidden class="anchor" aria-hidden="true" href="#tls-not-ssl">#</a></h2>
+<p>SSL is dead. Every version of it — SSL 2.0 and SSL 3.0 — is formally deprecated, SSL 3.0 by RFC 7568 in 2015. Its successor is TLS, and TLS 1.0 and 1.1 are deprecated too, by RFC 8996 in 2021. Only <strong>TLS 1.2 and TLS 1.3</strong> should be enabled anywhere. The word &ldquo;SSL&rdquo; survives in library names, configuration keys and job titles, but the protocol underneath is TLS.</p>
+<p>TLS has the same two-part structure SSL had: a <strong>handshake</strong> that authenticates the server and establishes a shared secret, and a <strong>record protocol</strong> that carries application data encrypted under that secret.</p>
+<p>The classic handshake runs roughly like this:</p>
+<ol>
+<li>The client sends a hello listing the protocol versions and cipher suites it supports.</li>
+<li>The server replies with the version and cipher suite it has chosen.</li>
+<li>The server presents its certificate to prove its identity.</li>
+<li>The client validates that certificate against its trust store, and the two sides complete the key exchange.</li>
+<li>Everything after that is encrypted with the agreed symmetric key.</li>
+</ol>
+<p><strong>TLS 1.3 compresses this considerably.</strong> It completes in one round trip instead of two, encrypts the certificate rather than sending it in the clear, and strips out every cipher suite with a known weakness — no RC4, no 3DES, no static RSA key exchange, no renegotiation. Its suites are AES-GCM, AES-CCM and ChaCha20-Poly1305, all of them authenticated encryption. Forward secrecy is mandatory, meaning a stolen server key cannot decrypt yesterday&rsquo;s captured traffic.</p>
+<p>If you are configuring a server today: TLS 1.2 and 1.3 only, ECDHE key exchange, AEAD ciphers, HSTS enabled. Mozilla&rsquo;s SSL Configuration Generator produces sound configs for most web servers.</p>
+<h2 id="authentication">Authentication<a hidden class="anchor" aria-hidden="true" href="#authentication">#</a></h2>
+<p>Authentication answers &ldquo;who are you?&rdquo; and is conventionally broken into three factors — something you know, something you have, something you are.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Method</th>
+          <th>Factor</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Username and password</td>
+          <td>Know</td>
+          <td>Weakest alone; the baseline everywhere</td>
+      </tr>
+      <tr>
+          <td>Two-factor / MFA</td>
+          <td>Know + have</td>
+          <td>Password plus a code from an app or token</td>
+      </tr>
+      <tr>
+          <td>Biometric</td>
+          <td>Are</td>
+          <td>Fingerprint, face; convenient, not revocable</td>
+      </tr>
+      <tr>
+          <td>Smart card</td>
+          <td>Have</td>
+          <td>Physical card with a chip, read by a terminal</td>
+      </tr>
+      <tr>
+          <td>Token-based</td>
+          <td>Have</td>
+          <td>USB key or hardware token holding credentials</td>
+      </tr>
+      <tr>
+          <td>Certificate-based</td>
+          <td>Have</td>
+          <td>Digital certificate issued by a trusted authority</td>
+      </tr>
+  </tbody>
+</table>
+<p>Multi-factor is the single highest-value control in this table, but not all second factors are equal: SMS codes are interceptable through SIM swapping and network attacks, app-generated TOTP codes are phishable in real time, and only hardware security keys using WebAuthn/FIDO2 resist phishing outright, because the key checks the origin before it will sign anything.</p>
+<p>The biometric caveat is worth stating plainly: you cannot reissue a fingerprint. Biometrics work well as a local unlock gesture on a device that holds a real credential, and poorly as a secret transmitted over a network.</p>
+<h3 id="authentication-protocols">Authentication protocols<a hidden class="anchor" aria-hidden="true" href="#authentication-protocols">#</a></h3>
+<ul>
+<li><strong>Kerberos</strong> — a network authentication protocol using symmetric cryptography and a trusted third party, the Key Distribution Center. It issues time-limited tickets rather than passing passwords around, which protects against replay, eavesdropping and machine-in-the-middle attacks. It is the backbone of Active Directory authentication.</li>
+<li><strong>OAuth 2.0</strong> — an <em>authorisation</em> framework, not authentication. It lets a user grant an application access to their data without handing over their password. <strong>OpenID Connect</strong> is the identity layer built on top of it, and that is the piece that actually does authentication — a distinction that gets blurred constantly and matters when you are designing a login flow.</li>
+<li><strong>SAML</strong> — Security Assertion Markup Language, an XML standard for exchanging authentication and authorisation data between an identity provider and a service provider. Older than OIDC and still dominant in enterprise single sign-on.</li>
+<li><strong>RADIUS</strong> — Remote Authentication Dial-In User Service (RFC 2865), providing centralised authentication, authorisation and accounting for network access. Its name is a fossil from the dial-up era; it is now what sits behind enterprise Wi-Fi and VPN logins. It encrypts only the password field, not the whole exchange.</li>
+<li><strong>TACACS+</strong> — Terminal Access Controller Access-Control System Plus (RFC 8907), Cisco&rsquo;s alternative for device administration. It separates authentication, authorisation and accounting into independent exchanges and encrypts the entire payload, which is its main advantage over RADIUS. Plain TACACS and XTACACS are obsolete.</li>
+</ul>
+<h2 id="access-control-models">Access Control Models<a hidden class="anchor" aria-hidden="true" href="#access-control-models">#</a></h2>
+<p>Once you know who someone is, you decide what they may do.</p>
+<ul>
+<li><strong>MAC (Mandatory Access Control)</strong> — a central authority sets the rules and users cannot override them. Labels and clearances; standard in government and military systems. SELinux and AppArmor are the everyday Linux examples.</li>
+<li><strong>DAC (Discretionary Access Control)</strong> — the owner of a resource decides who gets access. Unix file permissions are DAC, and so is a shared folder on a home NAS.</li>
+<li><strong>RBAC (Role-Based Access Control)</strong> — permissions attach to roles, users are assigned roles. The dominant model in large organisations because it scales with headcount instead of with individuals.</li>
+<li><strong>ABAC (Attribute-Based Access Control)</strong> — decisions evaluate attributes of the user, resource, action and context, so you can express rules like &ldquo;finance staff, on a managed device, during business hours.&rdquo; More expressive than RBAC and correspondingly harder to reason about.</li>
+</ul>
+<h2 id="remote-access">Remote Access<a hidden class="anchor" aria-hidden="true" href="#remote-access">#</a></h2>
+<ul>
+<li><strong>VPN</strong> — an encrypted tunnel over the public internet giving remote access to a network. <strong>Site-to-site</strong> VPNs join two networks permanently; <strong>client</strong> VPNs connect individual devices.</li>
+<li><strong>IPsec</strong> — a protocol suite securing traffic at the IP layer, and the basis of most site-to-site VPNs.</li>
+<li><strong>SSH</strong> — secure remote shell access over an untrusted network, and also the transport for <code>scp</code> and <code>sftp</code>.</li>
+<li><strong>RDP</strong> — Remote Desktop Protocol, for graphical remote access to Windows machines. Never expose it directly to the internet; put it behind a VPN or a gateway.</li>
+<li><strong>PPTP</strong> — obsolete and insecure. Its MS-CHAPv2 authentication was broken in 2012 and the whole exchange can be reduced to a single DES key. Do not use it; modern equivalents are WireGuard, OpenVPN or IKEv2/IPsec.</li>
+<li><strong>802.11</strong> — the IEEE standard family for <em>wireless</em> LANs. Use WPA3, or WPA2 with AES-CCMP at minimum; WEP and TKIP are broken.</li>
+<li><strong>RATs</strong> — remote access trojans, the attacker&rsquo;s version of all of the above: malware granting unauthorised remote control of a victim machine.</li>
+</ul>
+<h2 id="key-management-and-the-certificate-life-cycle">Key Management and the Certificate Life Cycle<a hidden class="anchor" aria-hidden="true" href="#key-management-and-the-certificate-life-cycle">#</a></h2>
+<p>Cryptography fails at key management far more often than at the mathematics. A certificate moves through a predictable life cycle:</p>
+<ol>
+<li><strong>Key generation</strong> — the requesting entity generates a key pair.</li>
+<li><strong>Identity submission</strong> — it presents its identity to a Certificate Authority.</li>
+<li><strong>Registration</strong> — the CA verifies that identity.</li>
+<li><strong>Certification</strong> — the CA signs a certificate binding the entity&rsquo;s public key to its identity, using the CA&rsquo;s own private key.</li>
+<li><strong>Distribution</strong> — the certificate is issued to the entity and made publicly available.</li>
+<li><strong>Usage</strong> — the entity authenticates itself and establishes secure communications.</li>
+<li><strong>Expiration or revocation</strong> — every certificate has a time limit, and a compromised one is revoked before it.</li>
+<li><strong>Renewal</strong> — a fresh key pair and certificate are issued as needed.</li>
+<li><strong>Recovery</strong> — a defined procedure for a lost private key.</li>
+<li><strong>Archival</strong> — certificates and keys are retained securely for audit.</li>
+</ol>
+<p>An <strong>HSM (Hardware Security Module)</strong> is a dedicated physical device that generates keys, signs and verifies, and encrypts and decrypts, with the private key never leaving the hardware. Cloud providers offer managed equivalents, and the design goal is the same: make key extraction a physical problem rather than a software one.</p>
+<p>Two practical notes the life cycle above does not capture. Public TLS certificates have short lifetimes now — a little over a year and shrinking — which makes automated renewal mandatory rather than optional; ACME and Let&rsquo;s Encrypt exist for exactly this. And revocation is the weak link: CRLs and OCSP both have well-known reliability problems, which is a large part of why the industry moved to short-lived certificates instead.</p>
+<h3 id="key-management-vs-pki-management">Key management vs PKI management<a hidden class="anchor" aria-hidden="true" href="#key-management-vs-pki-management">#</a></h3>
+<p>The two terms get used interchangeably and are not the same thing.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Key management</th>
+          <th>PKI management</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Secure creation, distribution, archival and deletion of cryptographic keys</td>
+          <td>Production, distribution and maintenance of digital certificates and their keys</td>
+      </tr>
+      <tr>
+          <td>Keys encrypt and decrypt messages, authenticate users, and establish secure connections</td>
+          <td>Certificates confirm the identity of parties to a transaction and guarantee data integrity</td>
+      </tr>
+      <tr>
+          <td>Ensures keys are used correctly and protected from unauthorised access or misuse</td>
+          <td>Establishes trust between parties, and revokes certificates that are compromised or invalid</td>
+      </tr>
+  </tbody>
+</table>
+<p>The short version: key management is about protecting secrets; PKI management is about establishing who those secrets belong to.</p>
+<h2 id="attacks">Attacks<a hidden class="anchor" aria-hidden="true" href="#attacks">#</a></h2>
+<h3 id="spoofing">Spoofing<a hidden class="anchor" aria-hidden="true" href="#spoofing">#</a></h3>
+<p>Spoofing means faking an identity to gain trust.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>How it works</th>
+          <th>Defence</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>IP spoofing</td>
+          <td>Sending packets from a forged source address</td>
+          <td>Ingress filtering (BCP 38)</td>
+      </tr>
+      <tr>
+          <td>Email spoofing</td>
+          <td>Forging the <code>From</code> address to launch phishing or deliver malware</td>
+          <td>SPF, DKIM, DMARC</td>
+      </tr>
+      <tr>
+          <td>DNS spoofing</td>
+          <td>Poisoning DNS records to redirect traffic to an attacker&rsquo;s server</td>
+          <td>DNSSEC, DNS over HTTPS</td>
+      </tr>
+      <tr>
+          <td>Caller ID spoofing</td>
+          <td>Faking a phone number to impersonate a trusted caller</td>
+          <td>STIR/SHAKEN</td>
+      </tr>
+      <tr>
+          <td>MAC spoofing</td>
+          <td>Changing a device&rsquo;s MAC address to impersonate another host</td>
+          <td>802.1X port authentication</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="machine-in-the-middle">Machine-in-the-middle<a hidden class="anchor" aria-hidden="true" href="#machine-in-the-middle">#</a></h3>
+<p>The attacker sits between two parties, reading or altering traffic that both sides believe is private.</p>
+<ul>
+<li><strong>Wi-Fi hijacking</strong> — a rogue access point, often a purpose-built device like a Wi-Fi Pineapple, that clients associate with instead of the real network.</li>
+<li><strong>SSL stripping</strong> — downgrading an HTTPS connection to HTTP so the attacker can read it. HSTS is the defence: it tells browsers never to use plaintext for that domain.</li>
+<li><strong>Email hijacking</strong> — intercepting and altering mail between two parties. The commercial version is business email compromise, where invoice details are quietly changed in transit.</li>
+<li><strong>Banking trojans</strong> — malware on the endpoint itself, watching sessions with a bank to harvest credentials and authorise fraudulent transfers.</li>
+</ul>
+<p>Certificate validation is what stops most of these at the protocol level, which is why &ldquo;just click through the certificate warning&rdquo; is worse advice than it sounds.</p>
+<h3 id="denial-of-service">Denial of service<a hidden class="anchor" aria-hidden="true" href="#denial-of-service">#</a></h3>
+<p>DoS attacks exhaust a resource — bandwidth, connection state, CPU — until the service stops answering legitimate requests. Distributed versions (DDoS) source the traffic from many hosts at once.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Attack</th>
+          <th>Mechanism</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Ping flood</td>
+          <td>Floods the target with ICMP echo requests</td>
+      </tr>
+      <tr>
+          <td>SYN flood</td>
+          <td>Opens half-finished TCP connections until the connection table is exhausted</td>
+      </tr>
+      <tr>
+          <td>UDP flood</td>
+          <td>Saturates the network with UDP packets</td>
+      </tr>
+      <tr>
+          <td>HTTP flood</td>
+          <td>Sends large volumes of legitimate-looking HTTP requests</td>
+      </tr>
+      <tr>
+          <td>DNS flood</td>
+          <td>Overwhelms the target&rsquo;s DNS servers</td>
+      </tr>
+      <tr>
+          <td>Smurf attack</td>
+          <td>Sends ICMP echoes to broadcast addresses so replies flood the victim</td>
+      </tr>
+      <tr>
+          <td>NTP amplification</td>
+          <td>Abuses open NTP servers to multiply traffic volume at the target</td>
+      </tr>
+      <tr>
+          <td>Slowloris</td>
+          <td>Opens many connections and sends partial HTTP requests slowly, holding sockets open</td>
+      </tr>
+  </tbody>
+</table>
+<p>The distinction that matters operationally is between <strong>volumetric</strong> attacks, which try to fill the pipe, and <strong>resource-exhaustion</strong> attacks like Slowloris, which use very little bandwidth and instead consume connection slots. The first is absorbed with capacity and upstream scrubbing; the second is defeated with connection limits and timeouts, and no amount of bandwidth helps.</p>
+<p>Amplification attacks — NTP, DNS, memcached and others — work by sending a small spoofed request to a server that answers with a much larger response directed at the victim. They depend on both IP spoofing and misconfigured public servers, which is why closing open resolvers and deploying ingress filtering helps everyone rather than just the operator who does it. The Smurf attack is largely historical for the same reason: routers stopped forwarding directed broadcasts by default.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.pakithecat.eu/tags/cheatsheet/">Cheatsheet</a></li>
+      <li><a href="https://blog.pakithecat.eu/tags/cryptography/">Cryptography</a></li>
+      <li><a href="https://blog.pakithecat.eu/tags/security/">Security</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://blog.pakithecat.eu/posts/2026/css-selectors-cheatsheet/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>CSS Selectors Cheatsheet</span>
+  </a>
+  <a class="next" href="https://blog.pakithecat.eu/posts/2026/big-o-cheatsheet/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Big O Cheatsheet: Time and Space Complexity Explained</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cybersecurity and Encryption Cheatsheet: Algorithms, Protocols and Attacks on x"
+            href="https://x.com/intent/tweet/?text=Cybersecurity%20and%20Encryption%20Cheatsheet%3a%20Algorithms%2c%20Protocols%20and%20Attacks&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fcybersecurity-encryption-cheatsheet%2f&amp;hashtags=cheatsheet%2ccryptography%2csecurity">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cybersecurity and Encryption Cheatsheet: Algorithms, Protocols and Attacks on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fcybersecurity-encryption-cheatsheet%2f&amp;title=Cybersecurity%20and%20Encryption%20Cheatsheet%3a%20Algorithms%2c%20Protocols%20and%20Attacks&amp;summary=Cybersecurity%20and%20Encryption%20Cheatsheet%3a%20Algorithms%2c%20Protocols%20and%20Attacks&amp;source=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fcybersecurity-encryption-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cybersecurity and Encryption Cheatsheet: Algorithms, Protocols and Attacks on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fcybersecurity-encryption-cheatsheet%2f&title=Cybersecurity%20and%20Encryption%20Cheatsheet%3a%20Algorithms%2c%20Protocols%20and%20Attacks">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cybersecurity and Encryption Cheatsheet: Algorithms, Protocols and Attacks on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fcybersecurity-encryption-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cybersecurity and Encryption Cheatsheet: Algorithms, Protocols and Attacks on whatsapp"
+            href="https://api.whatsapp.com/send?text=Cybersecurity%20and%20Encryption%20Cheatsheet%3a%20Algorithms%2c%20Protocols%20and%20Attacks%20-%20https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fcybersecurity-encryption-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cybersecurity and Encryption Cheatsheet: Algorithms, Protocols and Attacks on telegram"
+            href="https://telegram.me/share/url?text=Cybersecurity%20and%20Encryption%20Cheatsheet%3a%20Algorithms%2c%20Protocols%20and%20Attacks&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fcybersecurity-encryption-cheatsheet%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cybersecurity and Encryption Cheatsheet: Algorithms, Protocols and Attacks on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Cybersecurity%20and%20Encryption%20Cheatsheet%3a%20Algorithms%2c%20Protocols%20and%20Attacks&u=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fcybersecurity-encryption-cheatsheet%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>© <a href="https://github.com/concosminx">concosminx</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

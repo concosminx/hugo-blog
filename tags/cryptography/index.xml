@@ -7,8 +7,15 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Fri, 03 Jan 2025 15:24:43 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2026 11:00:00 +0300</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/tags/cryptography/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cybersecurity and Encryption Cheatsheet: Algorithms, Protocols and Attacks</title>
+      <link>https://blog.pakithecat.eu/posts/2026/cybersecurity-encryption-cheatsheet/</link>
+      <pubDate>Fri, 04 Sep 2026 11:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/posts/2026/cybersecurity-encryption-cheatsheet/</guid>
+      <description>Symmetric and asymmetric ciphers, hashes, TLS, authentication and access control, key management, and the attacks they exist to stop.</description>
+    </item>
     <item>
       <title>How to use GPG to encrypt/decrypt files</title>
       <link>https://blog.pakithecat.eu/posts/2025/gpg/</link>
