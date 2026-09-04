@@ -7,8 +7,15 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>ro</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Sat, 29 Aug 2026 10:00:00 +0300</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2026 09:00:00 +0300</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/ro/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Comenzi Git — Cheatsheet</title>
+      <link>https://blog.pakithecat.eu/ro/posts/2026/git-command-cheatsheet/</link>
+      <pubDate>Fri, 04 Sep 2026 09:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/posts/2026/git-command-cheatsheet/</guid>
+      <description>Comenzile Git care merită ținute la îndemână — configurare, ciclul zilnic de commit-uri, branch-uri și remote-uri, citirea istoricului și instrumentele de recuperare la care ajungi doar când ceva a mers prost.</description>
+    </item>
     <item>
       <title>Comenzi cURL — Cheatsheet</title>
       <link>https://blog.pakithecat.eu/ro/posts/2026/curl-command-cheatsheet/</link>

@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ro" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Comenzi Git — Cheatsheet | Ce am făcut toată săptămâna</title>
+<meta name="keywords" content="cheatsheet, git">
+<meta name="description" content="Comenzile Git care merită ținute la îndemână — configurare, ciclul zilnic de commit-uri, branch-uri și remote-uri, citirea istoricului și instrumentele de recuperare la care ajungi doar când ceva a mers prost.">
+<meta name="author" content="Me">
+<link rel="canonical" href="https://blog.pakithecat.eu/ro/posts/2026/git-command-cheatsheet/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.5b00859891919f07af6a53834e3f9f8f331db42cc5f024277803b41a6758e47a.css" integrity="sha256-WwCFmJGRnwevalODTj&#43;fjzMdtCzF8CQneAO0GmdY5Ho=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.pakithecat.eu/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.pakithecat.eu/icons/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.pakithecat.eu/icons/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.pakithecat.eu/icons/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.pakithecat.eu/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://blog.pakithecat.eu/posts/2026/git-command-cheatsheet/">
+<link rel="alternate" hreflang="ro" href="https://blog.pakithecat.eu/ro/posts/2026/git-command-cheatsheet/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script type="module">
+    const blocks = [...document.querySelectorAll('pre.mermaid')];
+    if (blocks.length) {
+        const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs');
+
+        
+        blocks.forEach((el) => { el.dataset.mermaidSrc = el.textContent; });
+
+        const currentTheme = () => document.body.classList.contains('dark') ? 'dark' : 'default';
+
+        const render = () => {
+            blocks.forEach((el) => {
+                el.removeAttribute('data-processed');
+                el.textContent = el.dataset.mermaidSrc;
+            });
+            mermaid.initialize({ startOnLoad: false, theme: currentTheme() });
+            return mermaid.run({ nodes: blocks });
+        };
+
+        await render();
+
+        
+        let lastTheme = currentTheme();
+        new MutationObserver(() => {
+            const theme = currentTheme();
+            if (theme === lastTheme) return;
+            lastTheme = theme;
+            render();
+        }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    }
+</script>
+<meta property="og:url" content="https://blog.pakithecat.eu/ro/posts/2026/git-command-cheatsheet/">
+  <meta property="og:site_name" content="Ce am făcut toată săptămâna">
+  <meta property="og:title" content="Comenzi Git — Cheatsheet">
+  <meta property="og:description" content="Comenzile Git care merită ținute la îndemână — configurare, ciclul zilnic de commit-uri, branch-uri și remote-uri, citirea istoricului și instrumentele de recuperare la care ajungi doar când ceva a mers prost.">
+  <meta property="og:locale" content="ro">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-09-04T09:00:00+03:00">
+    <meta property="article:modified_time" content="2026-09-04T09:00:00+03:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Comenzi Git — Cheatsheet">
+<meta name="twitter:description" content="Comenzile Git care merită ținute la îndemână — configurare, ciclul zilnic de commit-uri, branch-uri și remote-uri, citirea istoricului și instrumentele de recuperare la care ajungi doar când ceva a mers prost.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.pakithecat.eu/ro/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Comenzi Git — Cheatsheet",
+      "item": "https://blog.pakithecat.eu/ro/posts/2026/git-command-cheatsheet/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Comenzi Git — Cheatsheet",
+  "name": "Comenzi Git — Cheatsheet",
+  "description": "Comenzile Git care merită ținute la îndemână — configurare, ciclul zilnic de commit-uri, branch-uri și remote-uri, citirea istoricului și instrumentele de recuperare la care ajungi doar când ceva a mers prost.",
+  "keywords": [
+    "cheatsheet", "git"
+  ],
+  "articleBody": "În majoritatea zilelor ai nevoie de vreo opt comenzi Git. Problema sunt celelalte patruzeci, cele care apar când un branch a ajuns unde nu trebuie, când un commit trebuie despărțit în două sau când un bug s-a strecurat undeva în ultimele două sute de commit-uri și nimeni nu mai știe când.\nCe urmează acoperă ambele jumătăți: mai întâi ciclul zilnic, apoi instrumentele de recuperare. Firul comun este că Git îți ține munca în trei locuri — working directory-ul în care editezi, index-ul (zona de staging) în care asamblezi următorul commit și repository-ul în care commit-urile devin permanente. Aproape orice comandă care pare confuză capătă sens odată ce știi pe care dintre cele trei o atinge.\nConfigurare Două setări sunt obligatorii, pentru că Git le atașează fiecărui commit și fiecărui tag pe care îl creezi:\ngit config --global user.name \"Your Name\" git config --global user.email \"you@example.com\" --global scrie în configurația de utilizator și se aplică peste tot. Renunță la opțiune în interiorul unui repository ca să o suprascrii doar acolo — util când commit-urile de la serviciu și cele personale au nevoie de adrese diferite.\nÎncepând cu Git 2.28 poți alege numele pe care repository-urile noi îl dau primului branch. GitHub, GitLab și majoritatea proiectelor au trecut la main, iar setarea asta îți scutește o redenumire la fiecare repo nou:\ngit config --global init.defaultBranch main Alias-urile merită cele două minute pe care le cer. Cel clasic este un graf compact al istoricului:\ngit config --global alias.glog \"log --graph --oneline --decorate\" Astfel git glog funcționează oriunde. Încă două setări utile — editorul pe care Git îl deschide pentru mesajele de commit și pentru rebase interactiv, plus o cale directă către fișierul de configurare atunci când preferi să îl editezi manual:\ngit config --global core.editor vim git config --global --edit Pornirea unui repository git init git init my-project Fără argument, git init transformă directorul curent într-un repository. Cu un nume, creează întâi directorul respectiv.\nClonarea aduce un proiect împreună cu tot istoricul lui:\ngit clone https://github.com/user/project.git Istoricul acela poate fi mare. Când vrei doar starea curentă — un agent de build, o privire rapidă peste codul altcuiva — cere o clonă superficială:\ngit clone --depth=1 https://github.com/user/project.git Primești istoric cât un singur commit. git log va afișa o singură intrare, și exact asta e ideea: descărcarea este o fracțiune din dimensiune. Poți adânci ulterior cu git fetch --unshallow dacă te răzgândești.\nCiclul zilnic git status este comanda pe care o rulezi când nu ești sigur de nimic. Îți listează ce este modificat, ce este în staging, pe ce branch te afli și cât de mult a divergat față de remote-ul lui.\ngit status git status -s Forma scurtă -s afișează o linie per fișier și este mult mai ușor de parcurs odată ce cunoști notația.\nStaging-ul este selectiv prin design. Tu alegi ce intră în următorul commit, nu comiți tot ce ai atins:\ngit add file.txt git add src/ git add . Înainte de staging, verifică ce urmează să incluzi. Cele două comenzi de diff răspund la întrebări diferite:\ngit diff git diff --staged git diff arată ce ai modificat, dar nu ai pus încă în staging. git diff --staged (scris și --cached) arată ce este în staging și va ajunge în următorul commit. Verificarea celei de-a doua înainte de fiecare commit prinde surprinzător de multe linii de debug rătăcite.\nApoi comiți:\ngit commit -m \"Fix header alignment on mobile\" Fără -m, Git îți deschide editorul, ceea ce este varianta mai bună pentru orice merită un paragraf care explică de ce.\nCa să oprești urmărirea unui fișier și să îl ștergi într-un singur pas:\ngit rm file.txt git rm --cached file.txt --cached îl scoate din Git, dar îl lasă pe disc — soluția pentru un fișier de configurare sau un secret comis din greșeală, pe care acum vrei să îl ignori.\nAnularea muncii înainte de commit Git-ul modern împarte treaba asta între două comenzi. git restore se ocupă de conținutul fișierelor, iar git switch de branch-uri. Ambele au fost introduse în Git 2.23 ca să înlocuiască supraîncărcatul git checkout, și ambele sunt stabile — checkout funcționează în continuare, dar comenzile mai noi sunt mult mai greu de folosit greșit.\nCa să arunci modificările necomise dintr-un fișier:\ngit restore file.txt Operația nu se poate anula. Modificările nu au fost niciodată comise, deci Git nu are nicio copie a lor.\nCa să scoți ceva din staging fără să îți atingi modificările:\ngit restore --staged file.txt Formele mai vechi ale acestor două comenzi sunt git checkout -- file.txt, respectiv git reset file.txt, pe care le vei mai întâlni în scripturi și în documentație mai veche.\nNiciuna dintre ele nu atinge fișierele untracked. Pentru acelea ai nevoie de git clean, iar aici e obligatoriu să rulezi întâi în modul de probă:\ngit clean -nd git clean -df -n arată ce ar fi șters, -d include și directoarele, -f chiar execută. Să rulezi -df fără să verifici întâi cu -nd este o metodă sigură de a pierde o oră de muncă ce nu a fost niciodată în Git.\nStash Când trebuie să schimbi contextul, dar munca nu e gata de commit:\ngit stash git stash pop git stash îți pune deoparte modificările necomise și îți lasă un working directory curat. git stash pop le aduce înapoi și șterge intrarea din stash. Stash-urile formează o stivă, așa că le poți lista și le poți arunca pe cele de care nu mai ai nevoie:\ngit stash list git stash drop stash@{1} Branch-uri git branch git branch -a git branch simplu listează branch-urile locale; -a adaugă și pe cele de urmărire de la distanță. Adaugă -v ca să vezi ultimul commit al fiecărui branch și cum stă față de upstream-ul lui.\nCreare și comutare:\ngit switch -c feature/login git switch main -c creează branch-ul și te mută pe el. Fără el comuți pe un branch care există deja. Echivalentele cu checkout sunt git checkout -b feature/login și git checkout main.\nMerge-ul aduce alt branch în cel pe care te afli:\ngit switch main git merge feature/login Ștergerea este intenționat incomodă atunci când ar putea pierde muncă:\ngit branch -d feature/login git branch -D feature/login -d refuză dacă branch-ul are commit-uri care nu au fost integrate nicăieri. -D forțează. Folosește -d implicit și lasă-l să te oprească.\nDupă un proiect lung, branch-urile locale se adună. Ca să faci curat peste tot în afară de main:\ngit branch | grep -v \"main\" | xargs git branch -D Asta este o ștergere forțată pe tot ce se potrivește, așa că rulează întâi doar partea git branch | grep -v \"main\" și citește lista.\nRedenumirea unui branch — inclusiv trecerea de la master la main într-un proiect mai vechi — se face cu -m:\ngit branch -m master main Dacă branch-ul există și pe un remote, redenumește-l și în interfața platformei de hosting, apoi reindică branch-ul local cu git push -u origin main.\nRemote-uri Un remote este un URL cu nume. origin este numele convențional pentru cel din care ai clonat, dar nu are nimic special:\ngit remote -v git remote add upstream https://github.com/original/project.git git remote get-url origin Git este distribuit, așa că poți avea oricâte remote-uri vrei și poți face push către oricare dintre ele:\ngit remote add working https://gitlab.com/user/mirror.git git push working main Fetch-ul descarcă commit-uri noi fără să îți schimbe working directory-ul:\ngit fetch origin git fetch --prune origin --prune șterge referințele locale către branch-uri remote care nu mai există în amonte — merită adăugat ori de câte ori lista ta de branch-uri pare învechită.\ngit pull este un fetch urmat imediat de un merge în branch-ul curent:\ngit pull origin main git pull --rebase origin main --rebase îți rejoacă commit-urile locale peste ce ai adus, în loc să creeze un commit de merge, ceea ce păstrează istoricul liniar.\nPush-ul trimite commit-urile în cealaltă direcție:\ngit push origin main git push -u origin feature/login git push --tags origin -u setează upstream-ul, astfel încât următoarele git push și git pull pe acel branch nu mai au nevoie de argumente.\nPush-ul forțat rescrie branch-ul de pe remote și poate distruge commit-urile altcuiva. Când chiar ai nevoie de el — de obicei după un rebase interactiv pe un branch folosit doar de tine — preferă forma mai sigură:\ngit push --force-with-lease origin feature/login --force-with-lease refuză dacă remote-ul are commit-uri pe care nu le-ai văzut, adică exact situația în care --force simplu ar șterge în tăcere munca unui coleg.\nMenținerea unui fork la zi Un fork nu se actualizează singur. Când proiectul original merge mai departe, fork-ul tău rămâne unde era. Soluția este un al doilea remote, numit prin convenție upstream, care indică spre proiectul din care ai făcut fork:\ngit remote add upstream https://github.com/original/project.git git remote -v Ar trebui să vezi acum origin (fork-ul tău) și upstream (originalul), fiecare listat pentru fetch și push. Aducerea fork-ului la zi înseamnă apoi un fetch și un merge:\ngit switch main git fetch upstream git merge upstream/main git push origin main Fă asta înainte să începi orice ramură nouă de lucru. Un rebase al unui branch vechi de o săptămână peste o țintă care s-a mutat este considerabil mai neplăcut decât pornirea de la unul actualizat.\nCitirea istoricului git log în forma implicită este stufos. Acestea patru merită memorate:\ngit log --oneline git log -5 git log --oneline --graph --decorate git log -p Un commit per linie; ultimele cinci commit-uri; un graf text cu etichetele de branch-uri și tag-uri atașate; și diff-ul complet al fiecărui commit.\nFiltrarea este momentul în care log devine un instrument de căutare, nu un zid de text:\nComandă Ce găsește git log --oneline --after=\"24 months ago\" Commit-uri de la o dată încoace, în engleză simplă sau în format ISO git log --oneline --before=\"2026-01-01\" Celălalt capăt al intervalului git log --grep=\"[Aa]nimation\" Commit-uri al căror mesaj se potrivește cu un tipar git log --author=\"Maria\" Commit-urile unei singure persoane git log -- src/index.html Commit-urile care au atins un anumit fișier git log --stat Ce fișiere s-au schimbat, cu numărul de linii git log main..feature Commit-uri de pe feature care nu sunt încă în main Acestea se combină, iar acolo stă valoarea reală. Un istoric concis al muncii pe animații din ultimii doi ani înseamnă o singură comandă:\ngit log --oneline --after=\"24 months ago\" --grep=\"[Aa]nimation\" Ca să vezi un singur commit în întregime, inclusiv diff-ul lui:\ngit show a1b2c3d Iar ca să afli cine a modificat ultima dată fiecare linie dintr-un fișier și în ce commit:\ngit blame build/index.html git blame -s build/index.html -s ascunde numele autorului și data, lăsând doar hash-urile commit-urilor — o vedere mai strânsă când vrei doar să sari la commit-uri.\nTag-uri Tag-urile marchează un commit ca fiind important, de obicei o versiune:\ngit tag git tag v2.0.1 git tag -a v2.0.1 -m \"Release 2.0.1\" git tag -d v2.0.1 git tag simplu creează un tag lightweight, un simplu pointer către un commit. -a creează un tag adnotat, un obiect real cu autor, dată și mesaj. Folosește tag-uri adnotate pentru orice publici; cele lightweight sunt potrivite ca semne de carte private.\nAdaugă un hash de commit ca să marchezi altceva decât HEAD:\ngit tag v1.0.0 a1b2c3d Tag-urile nu sunt trimise printr-un git push obișnuit. Trimite-le explicit cu git push --tags origin, cum s-a arătat mai sus.\nRescrierea istoricului Tot ce urmează în această secțiune modifică commit-uri care există deja. Asta este sigur pe commit-uri pe care nu le-ai distribuit și deranjant pe commit-uri pe care alții le-au adus deja la ei.\nCa să repari commit-ul tocmai făcut:\ngit commit --amend -m \"A better message for the previous commit\" git commit --amend --no-edit Prima variantă înlocuiește ultimul commit cu modificările din staging plus un mesaj nou. A doua adaugă modificările din staging în ultimul commit, lăsându-i mesajul neschimbat — mișcarea standard când ai uitat un fișier.\nRebase-ul interactiv este instrumentul pentru a face ordine într-o serie de commit-uri înainte de a deschide un pull request:\ngit rebase -i HEAD~4 Comanda deschide ultimele patru commit-uri în editor, câte unul per linie, fiecare precedat de o instrucțiune. Schimbă pick în squash ca să topești un commit în cel de deasupra, în reword ca să îi editezi mesajul, în drop ca să îl ștergi, sau rearanjează liniile ca să reordonezi commit-urile. Așa ajunge un branch care conține „fix typo\", „fix typo again\" și „actually fix it\" un singur commit coerent.\nUn rebase obișnuit îți mută branch-ul peste o bază nouă:\ngit rebase main Mutarea unor commit-uri anume între branch-uri Când vrei două-trei commit-uri de pe alt branch, nu tot branch-ul, folosește cherry-pick:\ngit switch main git cherry-pick a1b2c3d e4f5g6h Fiecare este aplicat pe branch-ul curent ca un commit nou. Adăugarea lui -n aplică modificările în working directory și în index fără să comită, ca să le poți revizui sau combina înainte de a face un singur commit:\ngit cherry-pick a1b2c3d e4f5g6h -n Ia hash-urile întâi cu git log --oneline pe branch-ul sursă.\nAnularea muncii deja comise Două comenzi fac asta, iar diferența contează.\ngit revert creează un commit nou care anulează unul vechi:\ngit revert a1b2c3d Nu se șterge nimic, deci este alegerea sigură pentru orice a fost deja trimis cu push.\ngit reset mută pointerul branch-ului înapoi, iar cele trei moduri ale lui diferă prin cât iau cu ele:\ngit reset --soft HEAD~1 git reset HEAD~1 git reset --hard HEAD~1 --soft mută doar branch-ul, lăsându-ți modificările în staging. Modul implicit --mixed resetează și index-ul, lăsând modificările în working directory ca editări nepuse în staging. --hard resetează și working directory-ul și aruncă tot ce era după acel commit.\nRecuperarea după un reset greșit git reset --hard pare definitiv, dar de cele mai multe ori nu este. Git ține un jurnal al tuturor pozițiilor prin care a trecut HEAD, inclusiv cele pe care le-ai abandonat prin reset:\ngit reflog Fiecare linie are un hash și o descriere a ce a mutat HEAD acolo. Găsește starea pe care o vrei înapoi și fă reset la ea:\ngit reset --hard a1b2c3d Reflog-ul este local, nu se distribuie și expiră implicit după nouăzeci de zile. A salvat mai multă muncă decât orice altă comandă Git și merită verificat înainte să tragi concluzia că ceva s-a pierdut.\nGăsirea commit-ului care a stricat ceva Când un bug există acum și nu exista la un moment dat în trecut, git bisect găsește commit-ul vinovat prin căutare binară. Douăzeci de commit-uri cer vreo patru testări; o mie cer vreo zece.\ngit bisect start git bisect bad git bisect good a1b2c3d Marchezi starea curentă ca fiind proastă și un commit despre care știi că era bun, luat din git log --oneline. Git face checkout la un commit aflat la jumătatea drumului. Testează-l, apoi spune-i lui Git ce ai găsit:\ngit bisect good git bisect bad Repetă până când Git îți numește primul commit problematic. Apoi încheie sesiunea și întoarce-te de unde ai plecat:\ngit bisect reset Dacă uiți git bisect reset, rămâi pe un checkout detașat în mijlocul istoricului, o stare confuză în care nu vrei să te trezești mai târziu.\nDacă bug-ul poate fi detectat de un script sau de un test, dă-i lui Git toată treaba:\ngit bisect run npm test Git rulează comanda la fiecare pas și îi folosește codul de ieșire — zero pentru bun, diferit de zero pentru prost — ca să conducă singur căutarea.\nLucrul pe două branch-uri în același timp Stash-uitul și comutatul devin obositoare când ai nevoie de două branch-uri unul lângă altul — ca să compari comportamente, sau ca să repari un bug în timp ce rulează un build lung. Un worktree îți dă un al doilea director cu checkout, susținut de același repository:\ngit worktree add ../project-hotfix git worktree list cd ../project-hotfix git worktree add creează directorul și face checkout la un branch acolo. Ambele directoare împart același .git, așa că un commit făcut în oricare dintre ele este imediat vizibil în celălalt și nu ai o a doua clonă de ținut sincronizată. Fă curat când ai terminat:\ngit worktree remove ../project-hotfix Exportarea unui snapshot git archive împachetează arborele unui commit ca arhivă, fără director .git și fără istoric:\ngit archive -o ../release.zip main git archive -o ../build.zip feature/login -- build A doua formă limitează arhiva la o singură cale. Aceasta este metoda corectă de a-i da cuiva o copie a codului fără repository și este mai bună decât copierea manuală a folderului — conținutul vine din Git, deci fișierele ignorate și cele untracked nu ajung niciodată acolo.\nIgnorarea fișierelor Un fișier .gitignore în rădăcina repository-ului ține fișierele generate și pe cele locale în afara lui git status și în afara commit-urilor:\n/logs/* !logs/.gitkeep /tmp *.swp .env Tiparele sunt relative la directorul propriu al fișierului și se aplică și subdirectoarelor. Un ! la început reinclude ceva exclus de un tipar anterior — mai sus, directorul logs/ rămâne în repository prin .gitkeep, în timp ce conținutul lui este ignorat.\n.gitignore afectează doar fișierele untracked. Un fișier pe care Git îl urmărește deja rămâne urmărit indiferent ce adaugi în listă; folosește git rm --cached ca să oprești asta, cum am descris mai devreme.\nUnde să cauți mai departe git help deschide manualul complet pentru orice comandă de aici, iar referința oficială de la git-scm.com/docs este chiar bună. Pentru modelul din spate, nu doar pentru comenzi, Pro Git de Scott Chacon și Ben Straub este gratuit online la git-scm.com/book și rămâne cea mai bună explicație a motivului pentru care Git funcționează așa cum funcționează.\n",
+  "wordCount" : "2895",
+  "inLanguage": "ro",
+  "datePublished": "2026-09-04T09:00:00+03:00",
+  "dateModified": "2026-09-04T09:00:00+03:00",
+  "author":{
+    "@type": "Person",
+    "name": "Me"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.pakithecat.eu/ro/posts/2026/git-command-cheatsheet/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ce am făcut toată săptămâna",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.pakithecat.eu/icons/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.pakithecat.eu/ro/" accesskey="h" title="Ce am făcut toată săptămâna (Alt + H)">Ce am făcut toată săptămâna</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://blog.pakithecat.eu/" title="🇬🇧"
+                            aria-label=":uk:">🇬🇧</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.pakithecat.eu/ro/archives/" title="Arhive">
+                    <span>Arhive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/ro/taguri" title="Taguri">
+                    <span>Taguri</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/ro/categorii" title="Categorii">
+                    <span>Categorii</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/concosminx/hugo-blog" title="Repo">
+                    <span>Repo</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://blog.pakithecat.eu/ro/">Acasă</a>&nbsp;»&nbsp;<a href="https://blog.pakithecat.eu/ro/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Comenzi Git — Cheatsheet
+    </h1>
+    <div class="post-description">
+      Comenzile Git care merită ținute la îndemână — configurare, ciclul zilnic de commit-uri, branch-uri și remote-uri, citirea istoricului și instrumentele de recuperare la care ajungi doar când ceva a mers prost.
+    </div>
+    <div class="post-meta"><span title='2026-09-04 09:00:00 +0300 +0300'>septembrie 4, 2026</span>&nbsp;·&nbsp;14 minute&nbsp;·&nbsp;2895 cuvinte&nbsp;·&nbsp;Me&nbsp;|&nbsp;Traduceri:
+<ul class="i18n_list">
+    <li>
+        <a href="https://blog.pakithecat.eu/posts/2026/git-command-cheatsheet/">🇬🇧</a>
+    </li>
+</ul>&nbsp;|&nbsp;<a href="https://github.com/concosminx/hugo-blog/tree/main/content/posts/2026/git-command-cheatsheet/index.ro.md" rel="noopener noreferrer" target="_blank">Sugereaza schimbari</a>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Sumar</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#configurare" aria-label="Configurare">Configurare</a></li>
+                <li>
+                    <a href="#pornirea-unui-repository" aria-label="Pornirea unui repository">Pornirea unui repository</a></li>
+                <li>
+                    <a href="#ciclul-zilnic" aria-label="Ciclul zilnic">Ciclul zilnic</a></li>
+                <li>
+                    <a href="#anularea-muncii-%c3%aenainte-de-commit" aria-label="Anularea muncii înainte de commit">Anularea muncii înainte de commit</a></li>
+                <li>
+                    <a href="#stash" aria-label="Stash">Stash</a></li>
+                <li>
+                    <a href="#branch-uri" aria-label="Branch-uri">Branch-uri</a></li>
+                <li>
+                    <a href="#remote-uri" aria-label="Remote-uri">Remote-uri</a></li>
+                <li>
+                    <a href="#men%c8%9binerea-unui-fork-la-zi" aria-label="Menținerea unui fork la zi">Menținerea unui fork la zi</a></li>
+                <li>
+                    <a href="#citirea-istoricului" aria-label="Citirea istoricului">Citirea istoricului</a></li>
+                <li>
+                    <a href="#tag-uri" aria-label="Tag-uri">Tag-uri</a></li>
+                <li>
+                    <a href="#rescrierea-istoricului" aria-label="Rescrierea istoricului">Rescrierea istoricului</a></li>
+                <li>
+                    <a href="#mutarea-unor-commit-uri-anume-%c3%aentre-branch-uri" aria-label="Mutarea unor commit-uri anume între branch-uri">Mutarea unor commit-uri anume între branch-uri</a></li>
+                <li>
+                    <a href="#anularea-muncii-deja-comise" aria-label="Anularea muncii deja comise">Anularea muncii deja comise</a><ul>
+                        
+                <li>
+                    <a href="#recuperarea-dup%c4%83-un-reset-gre%c8%99it" aria-label="Recuperarea după un reset greșit">Recuperarea după un reset greșit</a></li></ul>
+                </li>
+                <li>
+                    <a href="#g%c4%83sirea-commit-ului-care-a-stricat-ceva" aria-label="Găsirea commit-ului care a stricat ceva">Găsirea commit-ului care a stricat ceva</a></li>
+                <li>
+                    <a href="#lucrul-pe-dou%c4%83-branch-uri-%c3%aen-acela%c8%99i-timp" aria-label="Lucrul pe două branch-uri în același timp">Lucrul pe două branch-uri în același timp</a></li>
+                <li>
+                    <a href="#exportarea-unui-snapshot" aria-label="Exportarea unui snapshot">Exportarea unui snapshot</a></li>
+                <li>
+                    <a href="#ignorarea-fi%c8%99ierelor" aria-label="Ignorarea fișierelor">Ignorarea fișierelor</a></li>
+                <li>
+                    <a href="#unde-s%c4%83-cau%c8%9bi-mai-departe" aria-label="Unde să cauți mai departe">Unde să cauți mai departe</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>În majoritatea zilelor ai nevoie de vreo opt comenzi Git. Problema sunt celelalte patruzeci, cele care apar când un branch a ajuns unde nu trebuie, când un commit trebuie despărțit în două sau când un bug s-a strecurat undeva în ultimele două sute de commit-uri și nimeni nu mai știe când.</p>
+<p>Ce urmează acoperă ambele jumătăți: mai întâi ciclul zilnic, apoi instrumentele de recuperare. Firul comun este că Git îți ține munca în trei locuri — working directory-ul în care editezi, index-ul (zona de staging) în care asamblezi următorul commit și repository-ul în care commit-urile devin permanente. Aproape orice comandă care pare confuză capătă sens odată ce știi pe care dintre cele trei o atinge.</p>
+<h2 id="configurare">Configurare<a hidden class="anchor" aria-hidden="true" href="#configurare">#</a></h2>
+<p>Două setări sunt obligatorii, pentru că Git le atașează fiecărui commit și fiecărui tag pe care îl creezi:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global user.name <span class="s2">&#34;Your Name&#34;</span>
+</span></span><span class="line"><span class="cl">git config --global user.email <span class="s2">&#34;you@example.com&#34;</span>
+</span></span></code></pre></div><p><code>--global</code> scrie în configurația de utilizator și se aplică peste tot. Renunță la opțiune în interiorul unui repository ca să o suprascrii doar acolo — util când commit-urile de la serviciu și cele personale au nevoie de adrese diferite.</p>
+<p>Începând cu Git 2.28 poți alege numele pe care repository-urile noi îl dau primului branch. GitHub, GitLab și majoritatea proiectelor au trecut la <code>main</code>, iar setarea asta îți scutește o redenumire la fiecare repo nou:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global init.defaultBranch main
+</span></span></code></pre></div><p>Alias-urile merită cele două minute pe care le cer. Cel clasic este un graf compact al istoricului:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global alias.glog <span class="s2">&#34;log --graph --oneline --decorate&#34;</span>
+</span></span></code></pre></div><p>Astfel <code>git glog</code> funcționează oriunde. Încă două setări utile — editorul pe care Git îl deschide pentru mesajele de commit și pentru rebase interactiv, plus o cale directă către fișierul de configurare atunci când preferi să îl editezi manual:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global core.editor vim
+</span></span><span class="line"><span class="cl">git config --global --edit
+</span></span></code></pre></div><h2 id="pornirea-unui-repository">Pornirea unui repository<a hidden class="anchor" aria-hidden="true" href="#pornirea-unui-repository">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git init
+</span></span><span class="line"><span class="cl">git init my-project
+</span></span></code></pre></div><p>Fără argument, <code>git init</code> transformă directorul curent într-un repository. Cu un nume, creează întâi directorul respectiv.</p>
+<p>Clonarea aduce un proiect împreună cu tot istoricul lui:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/user/project.git
+</span></span></code></pre></div><p>Istoricul acela poate fi mare. Când vrei doar starea curentă — un agent de build, o privire rapidă peste codul altcuiva — cere o clonă superficială:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone --depth<span class="o">=</span><span class="m">1</span> https://github.com/user/project.git
+</span></span></code></pre></div><p>Primești istoric cât un singur commit. <code>git log</code> va afișa o singură intrare, și exact asta e ideea: descărcarea este o fracțiune din dimensiune. Poți adânci ulterior cu <code>git fetch --unshallow</code> dacă te răzgândești.</p>
+<h2 id="ciclul-zilnic">Ciclul zilnic<a hidden class="anchor" aria-hidden="true" href="#ciclul-zilnic">#</a></h2>
+<p><code>git status</code> este comanda pe care o rulezi când nu ești sigur de nimic. Îți listează ce este modificat, ce este în staging, pe ce branch te afli și cât de mult a divergat față de remote-ul lui.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git status
+</span></span><span class="line"><span class="cl">git status -s
+</span></span></code></pre></div><p>Forma scurtă <code>-s</code> afișează o linie per fișier și este mult mai ușor de parcurs odată ce cunoști notația.</p>
+<p>Staging-ul este selectiv prin design. Tu alegi ce intră în următorul commit, nu comiți tot ce ai atins:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git add file.txt
+</span></span><span class="line"><span class="cl">git add src/
+</span></span><span class="line"><span class="cl">git add .
+</span></span></code></pre></div><p>Înainte de staging, verifică ce urmează să incluzi. Cele două comenzi de diff răspund la întrebări diferite:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git diff
+</span></span><span class="line"><span class="cl">git diff --staged
+</span></span></code></pre></div><p><code>git diff</code> arată ce ai modificat, dar nu ai pus încă în staging. <code>git diff --staged</code> (scris și <code>--cached</code>) arată ce este în staging și va ajunge în următorul commit. Verificarea celei de-a doua înainte de fiecare commit prinde surprinzător de multe linii de debug rătăcite.</p>
+<p>Apoi comiți:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git commit -m <span class="s2">&#34;Fix header alignment on mobile&#34;</span>
+</span></span></code></pre></div><p>Fără <code>-m</code>, Git îți deschide editorul, ceea ce este varianta mai bună pentru orice merită un paragraf care explică <em>de ce</em>.</p>
+<p>Ca să oprești urmărirea unui fișier și să îl ștergi într-un singur pas:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git rm file.txt
+</span></span><span class="line"><span class="cl">git rm --cached file.txt
+</span></span></code></pre></div><p><code>--cached</code> îl scoate din Git, dar îl lasă pe disc — soluția pentru un fișier de configurare sau un secret comis din greșeală, pe care acum vrei să îl ignori.</p>
+<h2 id="anularea-muncii-înainte-de-commit">Anularea muncii înainte de commit<a hidden class="anchor" aria-hidden="true" href="#anularea-muncii-înainte-de-commit">#</a></h2>
+<p>Git-ul modern împarte treaba asta între două comenzi. <code>git restore</code> se ocupă de conținutul fișierelor, iar <code>git switch</code> de branch-uri. Ambele au fost introduse în Git 2.23 ca să înlocuiască supraîncărcatul <code>git checkout</code>, și ambele sunt stabile — <code>checkout</code> funcționează în continuare, dar comenzile mai noi sunt mult mai greu de folosit greșit.</p>
+<p>Ca să arunci modificările necomise dintr-un fișier:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git restore file.txt
+</span></span></code></pre></div><p>Operația nu se poate anula. Modificările nu au fost niciodată comise, deci Git nu are nicio copie a lor.</p>
+<p>Ca să scoți ceva din staging fără să îți atingi modificările:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git restore --staged file.txt
+</span></span></code></pre></div><p>Formele mai vechi ale acestor două comenzi sunt <code>git checkout -- file.txt</code>, respectiv <code>git reset file.txt</code>, pe care le vei mai întâlni în scripturi și în documentație mai veche.</p>
+<p>Niciuna dintre ele nu atinge fișierele untracked. Pentru acelea ai nevoie de <code>git clean</code>, iar aici e obligatoriu să rulezi întâi în modul de probă:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clean -nd
+</span></span><span class="line"><span class="cl">git clean -df
+</span></span></code></pre></div><p><code>-n</code> arată ce ar fi șters, <code>-d</code> include și directoarele, <code>-f</code> chiar execută. Să rulezi <code>-df</code> fără să verifici întâi cu <code>-nd</code> este o metodă sigură de a pierde o oră de muncă ce nu a fost niciodată în Git.</p>
+<h2 id="stash">Stash<a hidden class="anchor" aria-hidden="true" href="#stash">#</a></h2>
+<p>Când trebuie să schimbi contextul, dar munca nu e gata de commit:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git stash
+</span></span><span class="line"><span class="cl">git stash pop
+</span></span></code></pre></div><p><code>git stash</code> îți pune deoparte modificările necomise și îți lasă un working directory curat. <code>git stash pop</code> le aduce înapoi și șterge intrarea din stash. Stash-urile formează o stivă, așa că le poți lista și le poți arunca pe cele de care nu mai ai nevoie:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git stash list
+</span></span><span class="line"><span class="cl">git stash drop stash@<span class="o">{</span>1<span class="o">}</span>
+</span></span></code></pre></div><h2 id="branch-uri">Branch-uri<a hidden class="anchor" aria-hidden="true" href="#branch-uri">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git branch
+</span></span><span class="line"><span class="cl">git branch -a
+</span></span></code></pre></div><p><code>git branch</code> simplu listează branch-urile locale; <code>-a</code> adaugă și pe cele de urmărire de la distanță. Adaugă <code>-v</code> ca să vezi ultimul commit al fiecărui branch și cum stă față de upstream-ul lui.</p>
+<p>Creare și comutare:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git switch -c feature/login
+</span></span><span class="line"><span class="cl">git switch main
+</span></span></code></pre></div><p><code>-c</code> creează branch-ul și te mută pe el. Fără el comuți pe un branch care există deja. Echivalentele cu <code>checkout</code> sunt <code>git checkout -b feature/login</code> și <code>git checkout main</code>.</p>
+<p>Merge-ul aduce alt branch în cel pe care te afli:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git switch main
+</span></span><span class="line"><span class="cl">git merge feature/login
+</span></span></code></pre></div><p>Ștergerea este intenționat incomodă atunci când ar putea pierde muncă:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git branch -d feature/login
+</span></span><span class="line"><span class="cl">git branch -D feature/login
+</span></span></code></pre></div><p><code>-d</code> refuză dacă branch-ul are commit-uri care nu au fost integrate nicăieri. <code>-D</code> forțează. Folosește <code>-d</code> implicit și lasă-l să te oprească.</p>
+<p>După un proiect lung, branch-urile locale se adună. Ca să faci curat peste tot în afară de <code>main</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git branch <span class="p">|</span> grep -v <span class="s2">&#34;main&#34;</span> <span class="p">|</span> xargs git branch -D
+</span></span></code></pre></div><p>Asta este o ștergere forțată pe tot ce se potrivește, așa că rulează întâi doar partea <code>git branch | grep -v &quot;main&quot;</code> și citește lista.</p>
+<p>Redenumirea unui branch — inclusiv trecerea de la <code>master</code> la <code>main</code> într-un proiect mai vechi — se face cu <code>-m</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git branch -m master main
+</span></span></code></pre></div><p>Dacă branch-ul există și pe un remote, redenumește-l și în interfața platformei de hosting, apoi reindică branch-ul local cu <code>git push -u origin main</code>.</p>
+<h2 id="remote-uri">Remote-uri<a hidden class="anchor" aria-hidden="true" href="#remote-uri">#</a></h2>
+<p>Un remote este un URL cu nume. <code>origin</code> este numele convențional pentru cel din care ai clonat, dar nu are nimic special:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git remote -v
+</span></span><span class="line"><span class="cl">git remote add upstream https://github.com/original/project.git
+</span></span><span class="line"><span class="cl">git remote get-url origin
+</span></span></code></pre></div><p>Git este distribuit, așa că poți avea oricâte remote-uri vrei și poți face push către oricare dintre ele:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git remote add working https://gitlab.com/user/mirror.git
+</span></span><span class="line"><span class="cl">git push working main
+</span></span></code></pre></div><p>Fetch-ul descarcă commit-uri noi fără să îți schimbe working directory-ul:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git fetch origin
+</span></span><span class="line"><span class="cl">git fetch --prune origin
+</span></span></code></pre></div><p><code>--prune</code> șterge referințele locale către branch-uri remote care nu mai există în amonte — merită adăugat ori de câte ori lista ta de branch-uri pare învechită.</p>
+<p><code>git pull</code> este un fetch urmat imediat de un merge în branch-ul curent:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git pull origin main
+</span></span><span class="line"><span class="cl">git pull --rebase origin main
+</span></span></code></pre></div><p><code>--rebase</code> îți rejoacă commit-urile locale peste ce ai adus, în loc să creeze un commit de merge, ceea ce păstrează istoricul liniar.</p>
+<p>Push-ul trimite commit-urile în cealaltă direcție:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git push origin main
+</span></span><span class="line"><span class="cl">git push -u origin feature/login
+</span></span><span class="line"><span class="cl">git push --tags origin
+</span></span></code></pre></div><p><code>-u</code> setează upstream-ul, astfel încât următoarele <code>git push</code> și <code>git pull</code> pe acel branch nu mai au nevoie de argumente.</p>
+<p>Push-ul forțat rescrie branch-ul de pe remote și poate distruge commit-urile altcuiva. Când chiar ai nevoie de el — de obicei după un rebase interactiv pe un branch folosit doar de tine — preferă forma mai sigură:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git push --force-with-lease origin feature/login
+</span></span></code></pre></div><p><code>--force-with-lease</code> refuză dacă remote-ul are commit-uri pe care nu le-ai văzut, adică exact situația în care <code>--force</code> simplu ar șterge în tăcere munca unui coleg.</p>
+<h2 id="menținerea-unui-fork-la-zi">Menținerea unui fork la zi<a hidden class="anchor" aria-hidden="true" href="#menținerea-unui-fork-la-zi">#</a></h2>
+<p>Un fork nu se actualizează singur. Când proiectul original merge mai departe, fork-ul tău rămâne unde era. Soluția este un al doilea remote, numit prin convenție <code>upstream</code>, care indică spre proiectul din care ai făcut fork:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git remote add upstream https://github.com/original/project.git
+</span></span><span class="line"><span class="cl">git remote -v
+</span></span></code></pre></div><p>Ar trebui să vezi acum <code>origin</code> (fork-ul tău) și <code>upstream</code> (originalul), fiecare listat pentru fetch și push. Aducerea fork-ului la zi înseamnă apoi un fetch și un merge:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git switch main
+</span></span><span class="line"><span class="cl">git fetch upstream
+</span></span><span class="line"><span class="cl">git merge upstream/main
+</span></span><span class="line"><span class="cl">git push origin main
+</span></span></code></pre></div><p>Fă asta înainte să începi orice ramură nouă de lucru. Un rebase al unui branch vechi de o săptămână peste o țintă care s-a mutat este considerabil mai neplăcut decât pornirea de la unul actualizat.</p>
+<h2 id="citirea-istoricului">Citirea istoricului<a hidden class="anchor" aria-hidden="true" href="#citirea-istoricului">#</a></h2>
+<p><code>git log</code> în forma implicită este stufos. Acestea patru merită memorate:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git log --oneline
+</span></span><span class="line"><span class="cl">git log -5
+</span></span><span class="line"><span class="cl">git log --oneline --graph --decorate
+</span></span><span class="line"><span class="cl">git log -p
+</span></span></code></pre></div><p>Un commit per linie; ultimele cinci commit-uri; un graf text cu etichetele de branch-uri și tag-uri atașate; și diff-ul complet al fiecărui commit.</p>
+<p>Filtrarea este momentul în care log devine un instrument de căutare, nu un zid de text:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Comandă</th>
+          <th>Ce găsește</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>git log --oneline --after=&quot;24 months ago&quot;</code></td>
+          <td>Commit-uri de la o dată încoace, în engleză simplă sau în format ISO</td>
+      </tr>
+      <tr>
+          <td><code>git log --oneline --before=&quot;2026-01-01&quot;</code></td>
+          <td>Celălalt capăt al intervalului</td>
+      </tr>
+      <tr>
+          <td><code>git log --grep=&quot;[Aa]nimation&quot;</code></td>
+          <td>Commit-uri al căror mesaj se potrivește cu un tipar</td>
+      </tr>
+      <tr>
+          <td><code>git log --author=&quot;Maria&quot;</code></td>
+          <td>Commit-urile unei singure persoane</td>
+      </tr>
+      <tr>
+          <td><code>git log -- src/index.html</code></td>
+          <td>Commit-urile care au atins un anumit fișier</td>
+      </tr>
+      <tr>
+          <td><code>git log --stat</code></td>
+          <td>Ce fișiere s-au schimbat, cu numărul de linii</td>
+      </tr>
+      <tr>
+          <td><code>git log main..feature</code></td>
+          <td>Commit-uri de pe <code>feature</code> care nu sunt încă în <code>main</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>Acestea se combină, iar acolo stă valoarea reală. Un istoric concis al muncii pe animații din ultimii doi ani înseamnă o singură comandă:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git log --oneline --after<span class="o">=</span><span class="s2">&#34;24 months ago&#34;</span> --grep<span class="o">=</span><span class="s2">&#34;[Aa]nimation&#34;</span>
+</span></span></code></pre></div><p>Ca să vezi un singur commit în întregime, inclusiv diff-ul lui:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git show a1b2c3d
+</span></span></code></pre></div><p>Iar ca să afli cine a modificat ultima dată fiecare linie dintr-un fișier și în ce commit:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git blame build/index.html
+</span></span><span class="line"><span class="cl">git blame -s build/index.html
+</span></span></code></pre></div><p><code>-s</code> ascunde numele autorului și data, lăsând doar hash-urile commit-urilor — o vedere mai strânsă când vrei doar să sari la commit-uri.</p>
+<h2 id="tag-uri">Tag-uri<a hidden class="anchor" aria-hidden="true" href="#tag-uri">#</a></h2>
+<p>Tag-urile marchează un commit ca fiind important, de obicei o versiune:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git tag
+</span></span><span class="line"><span class="cl">git tag v2.0.1
+</span></span><span class="line"><span class="cl">git tag -a v2.0.1 -m <span class="s2">&#34;Release 2.0.1&#34;</span>
+</span></span><span class="line"><span class="cl">git tag -d v2.0.1
+</span></span></code></pre></div><p><code>git tag &lt;nume&gt;</code> simplu creează un tag lightweight, un simplu pointer către un commit. <code>-a</code> creează un tag adnotat, un obiect real cu autor, dată și mesaj. Folosește tag-uri adnotate pentru orice publici; cele lightweight sunt potrivite ca semne de carte private.</p>
+<p>Adaugă un hash de commit ca să marchezi altceva decât <code>HEAD</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git tag v1.0.0 a1b2c3d
+</span></span></code></pre></div><p>Tag-urile nu sunt trimise printr-un <code>git push</code> obișnuit. Trimite-le explicit cu <code>git push --tags origin</code>, cum s-a arătat mai sus.</p>
+<h2 id="rescrierea-istoricului">Rescrierea istoricului<a hidden class="anchor" aria-hidden="true" href="#rescrierea-istoricului">#</a></h2>
+<p>Tot ce urmează în această secțiune modifică commit-uri care există deja. Asta este sigur pe commit-uri pe care nu le-ai distribuit și deranjant pe commit-uri pe care alții le-au adus deja la ei.</p>
+<p>Ca să repari commit-ul tocmai făcut:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git commit --amend -m <span class="s2">&#34;A better message for the previous commit&#34;</span>
+</span></span><span class="line"><span class="cl">git commit --amend --no-edit
+</span></span></code></pre></div><p>Prima variantă înlocuiește ultimul commit cu modificările din staging plus un mesaj nou. A doua adaugă modificările din staging în ultimul commit, lăsându-i mesajul neschimbat — mișcarea standard când ai uitat un fișier.</p>
+<p>Rebase-ul interactiv este instrumentul pentru a face ordine într-o serie de commit-uri înainte de a deschide un pull request:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git rebase -i HEAD~4
+</span></span></code></pre></div><p>Comanda deschide ultimele patru commit-uri în editor, câte unul per linie, fiecare precedat de o instrucțiune. Schimbă <code>pick</code> în <code>squash</code> ca să topești un commit în cel de deasupra, în <code>reword</code> ca să îi editezi mesajul, în <code>drop</code> ca să îl ștergi, sau rearanjează liniile ca să reordonezi commit-urile. Așa ajunge un branch care conține „fix typo&quot;, „fix typo again&quot; și „actually fix it&quot; un singur commit coerent.</p>
+<p>Un rebase obișnuit îți mută branch-ul peste o bază nouă:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git rebase main
+</span></span></code></pre></div><h2 id="mutarea-unor-commit-uri-anume-între-branch-uri">Mutarea unor commit-uri anume între branch-uri<a hidden class="anchor" aria-hidden="true" href="#mutarea-unor-commit-uri-anume-între-branch-uri">#</a></h2>
+<p>Când vrei două-trei commit-uri de pe alt branch, nu tot branch-ul, folosește cherry-pick:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git switch main
+</span></span><span class="line"><span class="cl">git cherry-pick a1b2c3d e4f5g6h
+</span></span></code></pre></div><p>Fiecare este aplicat pe branch-ul curent ca un commit nou. Adăugarea lui <code>-n</code> aplică modificările în working directory și în index fără să comită, ca să le poți revizui sau combina înainte de a face un singur commit:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git cherry-pick a1b2c3d e4f5g6h -n
+</span></span></code></pre></div><p>Ia hash-urile întâi cu <code>git log --oneline</code> pe branch-ul sursă.</p>
+<h2 id="anularea-muncii-deja-comise">Anularea muncii deja comise<a hidden class="anchor" aria-hidden="true" href="#anularea-muncii-deja-comise">#</a></h2>
+<p>Două comenzi fac asta, iar diferența contează.</p>
+<p><code>git revert</code> creează un commit <em>nou</em> care anulează unul vechi:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git revert a1b2c3d
+</span></span></code></pre></div><p>Nu se șterge nimic, deci este alegerea sigură pentru orice a fost deja trimis cu push.</p>
+<p><code>git reset</code> mută pointerul branch-ului înapoi, iar cele trei moduri ale lui diferă prin cât iau cu ele:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git reset --soft HEAD~1
+</span></span><span class="line"><span class="cl">git reset HEAD~1
+</span></span><span class="line"><span class="cl">git reset --hard HEAD~1
+</span></span></code></pre></div><p><code>--soft</code> mută doar branch-ul, lăsându-ți modificările în staging. Modul implicit <code>--mixed</code> resetează și index-ul, lăsând modificările în working directory ca editări nepuse în staging. <code>--hard</code> resetează și working directory-ul și aruncă tot ce era după acel commit.</p>
+<h3 id="recuperarea-după-un-reset-greșit">Recuperarea după un reset greșit<a hidden class="anchor" aria-hidden="true" href="#recuperarea-după-un-reset-greșit">#</a></h3>
+<p><code>git reset --hard</code> pare definitiv, dar de cele mai multe ori nu este. Git ține un jurnal al tuturor pozițiilor prin care a trecut <code>HEAD</code>, inclusiv cele pe care le-ai abandonat prin reset:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git reflog
+</span></span></code></pre></div><p>Fiecare linie are un hash și o descriere a ce a mutat <code>HEAD</code> acolo. Găsește starea pe care o vrei înapoi și fă reset la ea:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git reset --hard a1b2c3d
+</span></span></code></pre></div><p>Reflog-ul este local, nu se distribuie și expiră implicit după nouăzeci de zile. A salvat mai multă muncă decât orice altă comandă Git și merită verificat înainte să tragi concluzia că ceva s-a pierdut.</p>
+<h2 id="găsirea-commit-ului-care-a-stricat-ceva">Găsirea commit-ului care a stricat ceva<a hidden class="anchor" aria-hidden="true" href="#găsirea-commit-ului-care-a-stricat-ceva">#</a></h2>
+<p>Când un bug există acum și nu exista la un moment dat în trecut, <code>git bisect</code> găsește commit-ul vinovat prin căutare binară. Douăzeci de commit-uri cer vreo patru testări; o mie cer vreo zece.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git bisect start
+</span></span><span class="line"><span class="cl">git bisect bad
+</span></span><span class="line"><span class="cl">git bisect good a1b2c3d
+</span></span></code></pre></div><p>Marchezi starea curentă ca fiind proastă și un commit despre care știi că era bun, luat din <code>git log --oneline</code>. Git face checkout la un commit aflat la jumătatea drumului. Testează-l, apoi spune-i lui Git ce ai găsit:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git bisect good
+</span></span><span class="line"><span class="cl">git bisect bad
+</span></span></code></pre></div><p>Repetă până când Git îți numește primul commit problematic. Apoi încheie sesiunea și întoarce-te de unde ai plecat:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git bisect reset
+</span></span></code></pre></div><p>Dacă uiți <code>git bisect reset</code>, rămâi pe un checkout detașat în mijlocul istoricului, o stare confuză în care nu vrei să te trezești mai târziu.</p>
+<p>Dacă bug-ul poate fi detectat de un script sau de un test, dă-i lui Git toată treaba:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git bisect run npm <span class="nb">test</span>
+</span></span></code></pre></div><p>Git rulează comanda la fiecare pas și îi folosește codul de ieșire — zero pentru bun, diferit de zero pentru prost — ca să conducă singur căutarea.</p>
+<h2 id="lucrul-pe-două-branch-uri-în-același-timp">Lucrul pe două branch-uri în același timp<a hidden class="anchor" aria-hidden="true" href="#lucrul-pe-două-branch-uri-în-același-timp">#</a></h2>
+<p>Stash-uitul și comutatul devin obositoare când ai nevoie de două branch-uri unul lângă altul — ca să compari comportamente, sau ca să repari un bug în timp ce rulează un build lung. Un worktree îți dă un al doilea director cu checkout, susținut de același repository:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git worktree add ../project-hotfix
+</span></span><span class="line"><span class="cl">git worktree list
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ../project-hotfix
+</span></span></code></pre></div><p><code>git worktree add</code> creează directorul și face checkout la un branch acolo. Ambele directoare împart același <code>.git</code>, așa că un commit făcut în oricare dintre ele este imediat vizibil în celălalt și nu ai o a doua clonă de ținut sincronizată. Fă curat când ai terminat:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git worktree remove ../project-hotfix
+</span></span></code></pre></div><h2 id="exportarea-unui-snapshot">Exportarea unui snapshot<a hidden class="anchor" aria-hidden="true" href="#exportarea-unui-snapshot">#</a></h2>
+<p><code>git archive</code> împachetează arborele unui commit ca arhivă, fără director <code>.git</code> și fără istoric:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git archive -o ../release.zip main
+</span></span><span class="line"><span class="cl">git archive -o ../build.zip feature/login -- build
+</span></span></code></pre></div><p>A doua formă limitează arhiva la o singură cale. Aceasta este metoda corectă de a-i da cuiva o copie a codului fără repository și este mai bună decât copierea manuală a folderului — conținutul vine din Git, deci fișierele ignorate și cele untracked nu ajung niciodată acolo.</p>
+<h2 id="ignorarea-fișierelor">Ignorarea fișierelor<a hidden class="anchor" aria-hidden="true" href="#ignorarea-fișierelor">#</a></h2>
+<p>Un fișier <code>.gitignore</code> în rădăcina repository-ului ține fișierele generate și pe cele locale în afara lui <code>git status</code> și în afara commit-urilor:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">/logs/*
+</span></span><span class="line"><span class="cl">!logs/.gitkeep
+</span></span><span class="line"><span class="cl">/tmp
+</span></span><span class="line"><span class="cl">*.swp
+</span></span><span class="line"><span class="cl">.env
+</span></span></code></pre></div><p>Tiparele sunt relative la directorul propriu al fișierului și se aplică și subdirectoarelor. Un <code>!</code> la început reinclude ceva exclus de un tipar anterior — mai sus, directorul <code>logs/</code> rămâne în repository prin <code>.gitkeep</code>, în timp ce conținutul lui este ignorat.</p>
+<p><code>.gitignore</code> afectează doar fișierele untracked. Un fișier pe care Git îl urmărește deja rămâne urmărit indiferent ce adaugi în listă; folosește <code>git rm --cached</code> ca să oprești asta, cum am descris mai devreme.</p>
+<h2 id="unde-să-cauți-mai-departe">Unde să cauți mai departe<a hidden class="anchor" aria-hidden="true" href="#unde-să-cauți-mai-departe">#</a></h2>
+<p><code>git help &lt;comandă&gt;</code> deschide manualul complet pentru orice comandă de aici, iar referința oficială de la <a href="https://git-scm.com/docs">git-scm.com/docs</a> este chiar bună. Pentru modelul din spate, nu doar pentru comenzi, <em>Pro Git</em> de Scott Chacon și Ben Straub este gratuit online la <a href="https://git-scm.com/book">git-scm.com/book</a> și rămâne cea mai bună explicație a motivului pentru care Git funcționează așa cum funcționează.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://blog.pakithecat.eu/ro/posts/2026/curl-command-cheatsheet/">
+    <span class="title">Înainte »</span>
+    <br>
+    <span>Comenzi cURL — Cheatsheet</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Comenzi Git — Cheatsheet on x"
+            href="https://x.com/intent/tweet/?text=Comenzi%20Git%20%e2%80%94%20Cheatsheet&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fgit-command-cheatsheet%2f&amp;hashtags=cheatsheet%2cgit">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Comenzi Git — Cheatsheet on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fgit-command-cheatsheet%2f&amp;title=Comenzi%20Git%20%e2%80%94%20Cheatsheet&amp;summary=Comenzi%20Git%20%e2%80%94%20Cheatsheet&amp;source=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fgit-command-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Comenzi Git — Cheatsheet on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fgit-command-cheatsheet%2f&title=Comenzi%20Git%20%e2%80%94%20Cheatsheet">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Comenzi Git — Cheatsheet on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fgit-command-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Comenzi Git — Cheatsheet on whatsapp"
+            href="https://api.whatsapp.com/send?text=Comenzi%20Git%20%e2%80%94%20Cheatsheet%20-%20https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fgit-command-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Comenzi Git — Cheatsheet on telegram"
+            href="https://telegram.me/share/url?text=Comenzi%20Git%20%e2%80%94%20Cheatsheet&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fgit-command-cheatsheet%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Comenzi Git — Cheatsheet on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Comenzi%20Git%20%e2%80%94%20Cheatsheet&u=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fgit-command-cheatsheet%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>© <a href="https://github.com/concosminx">concosminx</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copiază';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copiat!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copiază';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

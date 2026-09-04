@@ -3,10 +3,58 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.pakithecat.eu/categories/</loc>
-    <lastmod>2026-08-29T10:00:00+03:00</lastmod>
+    <lastmod>2026-09-04T09:00:00+03:00</lastmod>
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/cheatsheet/</loc>
-    <lastmod>2026-08-29T10:00:00+03:00</lastmod>
+    <lastmod>2026-09-04T09:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/git/</loc>
+    <lastmod>2026-09-04T09:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/posts/2026/git-command-cheatsheet/</loc>
+    <lastmod>2026-09-04T09:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/2026/git-command-cheatsheet/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/2026/git-command-cheatsheet/"
+                />
+  </url><url>
+    <loc>https://blog.pakithecat.eu/posts/</loc>
+    <lastmod>2026-09-04T09:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/posts/"
+                />
+  </url><url>
+    <loc>https://blog.pakithecat.eu/tags/</loc>
+    <lastmod>2026-09-04T09:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/categories/tech/</loc>
+    <lastmod>2026-09-04T09:00:00+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.pakithecat.eu/</loc>
+    <lastmod>2026-09-04T09:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ro"
+                href="https://blog.pakithecat.eu/ro/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.pakithecat.eu/"
+                />
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/cli/</loc>
     <lastmod>2026-08-29T10:00:00+03:00</lastmod>
@@ -22,38 +70,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://blog.pakithecat.eu/posts/2026/curl-command-cheatsheet/"
-                />
-  </url><url>
-    <loc>https://blog.pakithecat.eu/posts/</loc>
-    <lastmod>2026-08-29T10:00:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ro"
-                href="https://blog.pakithecat.eu/ro/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://blog.pakithecat.eu/posts/"
-                />
-  </url><url>
-    <loc>https://blog.pakithecat.eu/tags/</loc>
-    <lastmod>2026-08-29T10:00:00+03:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/categories/tech/</loc>
-    <lastmod>2026-08-29T10:00:00+03:00</lastmod>
-  </url><url>
-    <loc>https://blog.pakithecat.eu/</loc>
-    <lastmod>2026-08-29T10:00:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ro"
-                href="https://blog.pakithecat.eu/ro/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://blog.pakithecat.eu/"
                 />
   </url><url>
     <loc>https://blog.pakithecat.eu/tags/diagrams/</loc>
