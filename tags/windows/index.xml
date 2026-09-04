@@ -7,8 +7,15 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Sat, 25 Apr 2026 10:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2026 10:00:00 +0300</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows Command Line Cheatsheet: Files, Folders and Networking</title>
+      <link>https://blog.pakithecat.eu/posts/2026/windows-command-line-cheatsheet/</link>
+      <pubDate>Fri, 04 Sep 2026 10:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/posts/2026/windows-command-line-cheatsheet/</guid>
+      <description>A practical reference for the Windows Command Prompt — moving around the filesystem, managing files, and diagnosing network problems with ipconfig, ping, tracert, netstat and friends.</description>
+    </item>
     <item>
       <title>WSL Basic Commands Cheatsheet</title>
       <link>https://blog.pakithecat.eu/posts/2026/wsl-basic-commands/</link>

@@ -7,8 +7,22 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>ro</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Fri, 04 Sep 2026 09:00:00 +0300</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2026 17:00:00 +0300</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/ro/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cheatsheet pentru Selectorii CSS</title>
+      <link>https://blog.pakithecat.eu/ro/posts/2026/css-selectors-cheatsheet/</link>
+      <pubDate>Fri, 04 Sep 2026 17:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/posts/2026/css-selectors-cheatsheet/</guid>
+      <description>Toată gramatica selectorilor CSS — combinatorii, potrivirea după atribute, pseudo-clasele structurale care numără copiii și cele logice care îți permit în sfârșit să stilizezi un părinte.</description>
+    </item>
+    <item>
+      <title>Cheatsheet pentru linia de comandă Windows: fișiere, foldere și rețelistică</title>
+      <link>https://blog.pakithecat.eu/ro/posts/2026/windows-command-line-cheatsheet/</link>
+      <pubDate>Fri, 04 Sep 2026 10:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/posts/2026/windows-command-line-cheatsheet/</guid>
+      <description>O referință practică pentru Command Prompt-ul din Windows — navigarea prin sistemul de fișiere, gestionarea fișierelor și diagnosticarea problemelor de rețea cu ipconfig, ping, tracert, netstat și celelalte.</description>
+    </item>
     <item>
       <title>Comenzi Git — Cheatsheet</title>
       <link>https://blog.pakithecat.eu/ro/posts/2026/git-command-cheatsheet/</link>

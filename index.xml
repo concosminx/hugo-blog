@@ -7,8 +7,22 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Fri, 04 Sep 2026 09:00:00 +0300</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2026 17:00:00 +0300</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CSS Selectors Cheatsheet</title>
+      <link>https://blog.pakithecat.eu/posts/2026/css-selectors-cheatsheet/</link>
+      <pubDate>Fri, 04 Sep 2026 17:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/posts/2026/css-selectors-cheatsheet/</guid>
+      <description>The full grammar of CSS selectors — combinators, attribute matching, the structural pseudo-classes that count children, and the logical ones that finally let you style a parent.</description>
+    </item>
+    <item>
+      <title>Windows Command Line Cheatsheet: Files, Folders and Networking</title>
+      <link>https://blog.pakithecat.eu/posts/2026/windows-command-line-cheatsheet/</link>
+      <pubDate>Fri, 04 Sep 2026 10:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/posts/2026/windows-command-line-cheatsheet/</guid>
+      <description>A practical reference for the Windows Command Prompt — moving around the filesystem, managing files, and diagnosing network problems with ipconfig, ping, tracert, netstat and friends.</description>
+    </item>
     <item>
       <title>Git Command Cheatsheet</title>
       <link>https://blog.pakithecat.eu/posts/2026/git-command-cheatsheet/</link>

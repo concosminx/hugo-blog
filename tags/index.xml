@@ -7,13 +7,27 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Fri, 04 Sep 2026 09:00:00 +0300</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2026 17:00:00 +0300</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cheatsheet</title>
       <link>https://blog.pakithecat.eu/tags/cheatsheet/</link>
-      <pubDate>Fri, 04 Sep 2026 09:00:00 +0300</pubDate>
+      <pubDate>Fri, 04 Sep 2026 17:00:00 +0300</pubDate>
       <guid>https://blog.pakithecat.eu/tags/cheatsheet/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Css</title>
+      <link>https://blog.pakithecat.eu/tags/css/</link>
+      <pubDate>Fri, 04 Sep 2026 17:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/css/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Windows</title>
+      <link>https://blog.pakithecat.eu/tags/windows/</link>
+      <pubDate>Fri, 04 Sep 2026 10:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/windows/</guid>
       <description></description>
     </item>
     <item>
@@ -63,13 +77,6 @@
       <link>https://blog.pakithecat.eu/tags/ubuntu/</link>
       <pubDate>Sat, 25 Apr 2026 10:00:00 +0200</pubDate>
       <guid>https://blog.pakithecat.eu/tags/ubuntu/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Windows</title>
-      <link>https://blog.pakithecat.eu/tags/windows/</link>
-      <pubDate>Sat, 25 Apr 2026 10:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/windows/</guid>
       <description></description>
     </item>
     <item>

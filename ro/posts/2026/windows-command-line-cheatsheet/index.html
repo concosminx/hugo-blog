@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ro" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Cheatsheet pentru linia de comandă Windows: fișiere, foldere și rețelistică | Ce am făcut toată săptămâna</title>
+<meta name="keywords" content="windows, cheatsheet">
+<meta name="description" content="O referință practică pentru Command Prompt-ul din Windows — navigarea prin sistemul de fișiere, gestionarea fișierelor și diagnosticarea problemelor de rețea cu ipconfig, ping, tracert, netstat și celelalte.">
+<meta name="author" content="Me">
+<link rel="canonical" href="https://blog.pakithecat.eu/ro/posts/2026/windows-command-line-cheatsheet/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.5b00859891919f07af6a53834e3f9f8f331db42cc5f024277803b41a6758e47a.css" integrity="sha256-WwCFmJGRnwevalODTj&#43;fjzMdtCzF8CQneAO0GmdY5Ho=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.pakithecat.eu/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.pakithecat.eu/icons/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.pakithecat.eu/icons/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.pakithecat.eu/icons/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.pakithecat.eu/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://blog.pakithecat.eu/posts/2026/windows-command-line-cheatsheet/">
+<link rel="alternate" hreflang="ro" href="https://blog.pakithecat.eu/ro/posts/2026/windows-command-line-cheatsheet/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script type="module">
+    const blocks = [...document.querySelectorAll('pre.mermaid')];
+    if (blocks.length) {
+        const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs');
+
+        
+        blocks.forEach((el) => { el.dataset.mermaidSrc = el.textContent; });
+
+        const currentTheme = () => document.body.classList.contains('dark') ? 'dark' : 'default';
+
+        const render = () => {
+            blocks.forEach((el) => {
+                el.removeAttribute('data-processed');
+                el.textContent = el.dataset.mermaidSrc;
+            });
+            mermaid.initialize({ startOnLoad: false, theme: currentTheme() });
+            return mermaid.run({ nodes: blocks });
+        };
+
+        await render();
+
+        
+        let lastTheme = currentTheme();
+        new MutationObserver(() => {
+            const theme = currentTheme();
+            if (theme === lastTheme) return;
+            lastTheme = theme;
+            render();
+        }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    }
+</script>
+<meta property="og:url" content="https://blog.pakithecat.eu/ro/posts/2026/windows-command-line-cheatsheet/">
+  <meta property="og:site_name" content="Ce am făcut toată săptămâna">
+  <meta property="og:title" content="Cheatsheet pentru linia de comandă Windows: fișiere, foldere și rețelistică">
+  <meta property="og:description" content="O referință practică pentru Command Prompt-ul din Windows — navigarea prin sistemul de fișiere, gestionarea fișierelor și diagnosticarea problemelor de rețea cu ipconfig, ping, tracert, netstat și celelalte.">
+  <meta property="og:locale" content="ro">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-09-04T10:00:00+03:00">
+    <meta property="article:modified_time" content="2026-09-04T10:00:00+03:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cheatsheet pentru linia de comandă Windows: fișiere, foldere și rețelistică">
+<meta name="twitter:description" content="O referință practică pentru Command Prompt-ul din Windows — navigarea prin sistemul de fișiere, gestionarea fișierelor și diagnosticarea problemelor de rețea cu ipconfig, ping, tracert, netstat și celelalte.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.pakithecat.eu/ro/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Cheatsheet pentru linia de comandă Windows: fișiere, foldere și rețelistică",
+      "item": "https://blog.pakithecat.eu/ro/posts/2026/windows-command-line-cheatsheet/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Cheatsheet pentru linia de comandă Windows: fișiere, foldere și rețelistică",
+  "name": "Cheatsheet pentru linia de comandă Windows: fișiere, foldere și rețelistică",
+  "description": "O referință practică pentru Command Prompt-ul din Windows — navigarea prin sistemul de fișiere, gestionarea fișierelor și diagnosticarea problemelor de rețea cu ipconfig, ping, tracert, netstat și celelalte.",
+  "keywords": [
+    "windows", "cheatsheet"
+  ],
+  "articleBody": "PowerShell este de ani buni shell-ul implicit pe Windows, dar cmd.exe refuză să dispară — și pe bună dreptate. Pornește instantaneu, există pe orice mașină Windows livrată vreodată, funcționează în Safe Mode și în consolele de recuperare, iar jumătate dintre diagnosticele de rețea de care vei avea nevoie sunt la o comandă scurtă distanță. Când te sună cineva pentru că „nu merge internetul\", Win+R → cmd rămâne cea mai rapidă cale către un răspuns.\nAcesta este setul de comenzi care merită ținut minte: mai întâi bazele legate de sistemul de fișiere, apoi trusa de rețelistică ce face Command Prompt-ul cu adevărat util.\nUnde ești și ce se află în jur Un filepath este pur și simplu poziția ta în sistemul de fișiere. C: este unitatea C, C:\\Users\\Me\\Documents este un folder din interiorul ei, iar C:\\Users\\Me\\Documents\\notes.txt este un fișier din acel folder. Tot ce urmează presupune că știi în care dintre ele te afli.\ndir afișează conținutul folderului curent:\ndir dir myfolder Două opțiuni transformă dir dintr-o listare într-un instrument de căutare. /a include fișierele ascunse și de sistem, pe care listarea simplă le omite discret — de obicei acesta este motivul pentru care un folder „nu este gol\" atunci când încerci să îl ștergi. /s intră recursiv în subfoldere, așa că dir /s /b *.log parcurge un arbore întreg și afișează căile brute, fără antete.\ncd (sau aliasul său mai lung, chdir) schimbă directorul, iar fără argument afișează pur și simplu unde te afli:\ncd C:\\Users\\Me\\Documents cd .. cd cd .. urcă un nivel. O capcană care păcălește pe toată lumea: cd D:\\some\\path dintr-un prompt aflat pe C: nu te va muta acolo. Fiecare unitate își păstrează propriul director curent, așa că schimbi unitatea tastând litera ei singură sau folosind cd /d, care face ambele lucruri deodată:\nD: cd /d D:\\some\\path Pentru o privire de ansamblu asupra unui arbore întreg, nu doar asupra unui nivel, tree îl desenează în ASCII. Adaugă /f ca să incluzi și fișierele, nu doar folderele:\ntree C:\\Projects /f Creare, mutare și ștergere md creează un folder; mkdir este aceeași comandă sub alt nume.\nmd new-folder Ștergerea este locul unde fișele de referință greșesc suficient de des încât să merite spus răspicat: comanda din Command Prompt este rd, sau echivalent rmdir. Nu există rm în cmd.exe — rm funcționează doar în PowerShell, unde este un alias pentru Remove-Item. Tastat într-un Command Prompt îți dă „not recognized as an internal or external command\".\nrd empty-folder rd /s /q folder-with-stuff-in-it rd simplu refuză să șteargă orice mai conține fișiere. /s șterge directorul și tot ce se află sub el, iar /q suprimă cererea de confirmare. /q are efect doar atunci când este prezent și /s — iar combinația șterge un arbore întreg fără să întrebe, așa că citește calea de două ori înainte de a apăsa Enter.\nPentru fișiere, nu foldere, del acceptă unul sau mai multe nume și lucrează cu wildcard-uri:\ndel report.txt del *.tmp copy duplică un fișier, move îl relocalizează, iar ren (forma lungă rename) îi schimbă numele pe loc:\ncopy C:\\data\\report.txt D:\\backup\\ move folder1\\file.txt folder2\\ ren oldname.txt newname.txt copy este potrivit pentru câteva fișiere. Pentru orice seamănă cu un backup real — arbori întregi, transferuri care se pot relua, reîncercări pentru fișierele blocate — folosește robocopy, care vine cu Windows și este construit exact pentru asta.\nCitirea fișierelor și controlul ecranului type afișează un fișier text în consolă, cea mai rapidă cale de a verifica un fișier de configurare sau un log scurt:\ntype C:\\Windows\\System32\\drivers\\etc\\hosts fc compară două fișiere și afișează diferențele, ceea ce este mai util decât pare atunci când încerci să îți dai seama care dintre două fișiere de configurare aproape identice este cel stricat:\nfc config.old config.new echo afișează un mesaj, iar cls curăță ecranul. exit închide Command Prompt-ul sau termină scriptul batch curent.\necho Backup finished cls Cum obții ajutor Două forme, care fac lucruri diferite. help singur listează comenzile interne, iar help explică una dintre ele:\nhelp help rd Dar help cunoaște doar comenzile integrate în cmd.exe. Pentru toate celelalte — ping, netstat, ipconfig — adaugă /? la comanda respectivă:\nping /? netstat /? Când eziți, /? este varianta de ales; funcționează pentru ambele categorii.\nPropria configurație de rețea ipconfig este punctul de plecare pentru orice întrebare legată de rețea. Rulat simplu, afișează adresa IP, masca de subrețea și gateway-ul implicit pentru fiecare adaptor. /all este versiunea pe care o vrei de fapt — adaugă adresa MAC, serverul DHCP, durata lease-ului și serverele DNS configurate:\nipconfig ipconfig /all Opțiunile legate de DNS sunt cele care chiar rezolvă probleme, nu doar le descriu:\nipconfig /displaydns ipconfig /flushdns ipconfig /registerdns /displaydns arată ce a memorat resolver-ul în cache, /flushdns golește acel cache, iar /registerdns reînnoiește lease-ul DHCP și reînregistrează numele mașinii în DNS. /flushdns este răspunsul standard la „am schimbat înregistrarea DNS acum o oră și mașina asta tot merge la serverul vechi\". /registerdns are nevoie de un prompt cu drepturi de administrator.\nEste accesibil? ping trimite cereri ICMP echo și raportează ce se întoarce. Implicit trimite patru și se oprește.\nping 192.168.1.144 ping google.com Opțiunile care merită știute:\nOpțiune Ce face -t Trimite continuu până îl oprești cu Ctrl+C. Ctrl+Break afișează statisticile fără să iasă. -n Trimite exact atâtea cereri, în loc de patru. -l Setează dimensiunea în octeți a datelor din pachet. Implicit 32, maximum 65500. -f Setează flag-ul „don’t fragment\". Doar pentru IPv4. -w Cât se așteaptă fiecare răspuns. Implicit 4000 ms. -4 / -6 Forțează IPv4 sau IPv6. Necesar doar când dai un hostname, nu o adresă. -a Rezolvă invers adresa țintă la un hostname. Observă ce face de fapt -l: setează dimensiunea datelor din pachet, nu îți permite să editezi conținutul pachetului. Combinat cu -f devine un test de path MTU — trimiți un pachet mare, care nu poate fi fragmentat, și vezi dacă se plânge ceva pe traseu:\nping -f -l 1300 8.8.8.8 Dacă un router de pe traseu are un MTU mai mic decât pachetul trimis, nu îl poate fragmenta și nu îl poate transmite mai departe, așa că răspunde cu „Packet needs to be fragmented but DF set\". Scazi dimensiunea până când ping-urile trec și ai găsit MTU-ul efectiv. Pentru că -f este o opțiune exclusiv IPv4, trucul nu funcționează peste IPv6.\nUn ping eșuat este o dovadă mai slabă decât presupun majoritatea. Destule mașini — inclusiv Windows Firewall în configurația implicită — aruncă ICMP-ul din principiu, deși servesc traficul perfect. „Ping-ul nu merge\" înseamnă „ICMP-ul nu se întoarce\", nu „mașina este picată\".\nPe unde trece traficul, de fapt tracert listează fiecare router de pe traseul dintre tine și destinație:\ntracert google.com tracert -d 8.8.8.8 -d sare peste rezolvarea DNS inversă pentru fiecare hop, ceea ce face ca rezultatul să apară mult mai repede când router-ele intermediare nu au înregistrări PTR. -h limitează numărul de hop-uri, util când te interesează doar primele și nu vrei să aștepți treizeci.\npathping este tracert plus măsurare susținută. Întâi mapează traseul, apoi dă ping repetat fiecărui hop și raportează latența și pierderea de pachete per hop:\npathping -n google.com Pregătește-te să aștepți. Implicit trimite 100 de interogări către fiecare hop, la intervale de 250 ms, ceea ce înseamnă aproximativ 25 de secunde per hop — un traseu de zece hop-uri durează cam patru minute. -q reduce numărul de interogări, iar -p scurtează intervalul, dacă vrei un răspuns mai devreme. Câștigul este că distinge între un router care tratează cu prioritate scăzută ICMP-ul adresat lui însuși și o legătură care chiar pierde traficul transmis mai departe — ceva ce un tracert simplu nu poate face.\nCu ce vorbește mașina asta? netstat arată conexiunile și porturile pe care se ascultă. Aproape nimeni nu îl rulează gol; combinația utilă este:\nnetstat -ano -a include porturile în ascultare, nu doar conexiunile stabilite, -n afișează adresele și porturile numeric în loc să încerce să rezolve nume, iar -o adaugă ID-ul procesului deținător, ca să poți lega un port de ceva din Task Manager. -n merită adăugat fie și doar pentru viteză — rezolvarea numelor pe o listă lungă de conexiuni este lentă.\nCa să treci direct de la un port la numele executabilului, înlocuiește -o cu -b:\nnetstat -ab -b are nevoie de un prompt cu drepturi de administrator și eșuează fără el, iar în plus este vizibil mai lent decât -o. Un proces gazdă precum svchost.exe afișează lanțul de componente între paranteze drepte, nu un singur nume.\nDouă lucruri pe care ți le arată rezultatul. Un proces care ascultă pe 0.0.0.0 acceptă conexiuni pe orice interfață, în timp ce unul legat de 127.0.0.1 este accesibil doar de pe mașina însăși — distincția asta explică o grămadă de sesizări de tipul „local merge, de pe laptopul meu nu\". Și când un serviciu refuză să pornească cu „address already in use\", netstat -ano plus PID-ul îți spune exact cine a ajuns acolo primul.\nPentru contoare pe protocol, nu pentru conexiuni individuale, -s afișează statistici per protocol — IPv4, IPv6, TCP, UDP și ICMP:\nnetstat -s -p tcp netstat -r afișează tabela de rutare și este identic cu route print.\nRezolvarea numelor nslookup interoghează DNS-ul direct, ceea ce contează pentru că întreabă un server, nu raportează ce crede deja clientul:\nnslookup www.google.com Rulat fără argumente intră într-un mod interactiv în care poți schimba tipul înregistrării și interoga repetat. set q=mx pentru înregistrările de mail, set q=cname pentru alias-uri, set q=ns pentru serverele de nume autoritative:\nnslookup \u003e set q=mx \u003e example.com \u003e exit Îl poți îndrepta și către un server anume, adăugându-l ca al doilea argument — nslookup example.com 8.8.8.8 întreabă resolver-ul Google în loc de al tău. Compararea răspunsului serverului tău DNS cu cel al unuia public este cea mai rapidă cale de a confirma o înregistrare învechită.\nCache-ul ARP ARP mapează adresele IP la adrese MAC în segmentul local. Cache-ul este ceea ce crede mașina ta în acest moment despre vecinii ei:\narp -a Intrările sunt fie dinamice (învățate de la un vecin și expirate în timp), fie statice (adăugate manual sau de sistem). FF-FF-FF-FF-FF-FF este adresa de broadcast, nu o mașină reală.\nPoți șterge o intrare sau adăuga una:\narp -d 192.168.1.1 arp -s 192.168.1.1 00-AA-22-BB-33-CC Ambele au nevoie de un prompt cu drepturi de administrator. O limitare a lui arp -s merită știută înainte să te bazezi pe el: intrarea este eliminată de fiecare dată când stiva TCP/IP este oprită și repornită, deci nu supraviețuiește unui restart. Pentru o mapare statică persistentă, folosește netsh interface ipv4 add neighbors \"Ethernet\" 192.168.1.1 00-aa-22-bb-33-cc sau echivalentul din PowerShell, New-NetNeighbor — ambele stochează intrarea persistent, implicit.\nȘtergerea unei intrări este, în practică, mișcarea mai frecventă — după înlocuirea unui router sau după un failover, o intrare ARP învechită care indică vechiul MAC va înghiți traficul până expiră, iar arp -d scutește așteptarea.\nTabela de rutare route print afișează tabela de rutare a mașinii:\nroute print Intrarea pe care o cauți este ruta implicită: destinație 0.0.0.0, mască 0.0.0.0, îndreptată către gateway-ul tău. Aceasta este regula „tot restul merge pe aici\", iar absența ei explică pierderea totală a conectivității externe în timp ce rețeaua locală continuă să funcționeze. Un client de VPN care s-a închis prost este o cauză frecventă pentru o rută rămasă în urmă, care trimite traficul într-un tunel ce nu mai există.\nAdăugarea unei rute are nevoie de o destinație, o mască și un gateway — un simplu route add 192.168.1.1 nu va face nimic util:\nroute add 10.41.0.0 mask 255.255.0.0 10.27.0.1 route -p add 10.41.0.0 mask 255.255.0.0 10.27.0.1 route delete 10.41.0.0 Fără -p, ruta trăiește doar până la repornirea stivei TCP/IP. -p o face persistentă, scriind-o în registry. Toate trei comenzile au nevoie de un prompt cu drepturi de administrator.\nTestarea unui singur port Ping-ul îți spune dacă o mașină răspunde la ICMP. Nu îți spune nimic despre faptul că serviciul care te interesează ascultă sau nu. Pentru asta, deschide o conexiune TCP către portul respectiv:\ntelnet mail.example.com 25 telnet example.com 80 Un ecran gol sau un banner al serviciului înseamnă că portul este deschis și accesibil. Un „Could not open connection to the host\" imediat înseamnă că ceva — serviciul, un firewall sau un echipament de rețea de pe traseu — l-a refuzat sau l-a aruncat. Portul implicit al telnet-ului este 23, dar ca test de conectivitate exact portul pe care îl indici tu este esențial: 25 pentru SMTP, 80 pentru HTTP, 443 pentru HTTPS, 3389 pentru RDP.\nO problemă: clientul Telnet nu mai este instalat implicit din Windows Vista încoace. Activează-l o singură dată, dintr-un prompt cu drepturi de administrator:\ndism /online /Enable-Feature /FeatureName:TelnetClient Dacă preferi să nu instalezi nimic, Test-NetConnection -ComputerName example.com -Port 443 din PowerShell face același test și raportează rezultatul, în loc să te lase într-o sesiune brută.\nNetBIOS, dacă încă îți trebuie nbtstat acoperă NetBIOS peste TCP/IP — rezolvarea numelor din epoca dinaintea generalizării DNS-ului în rețelele Windows. Într-o rețea modernă vei avea rareori nevoie de el, dar share-urile de fișiere vechi și aplicațiile de business învechite încă se sprijină pe el.\nnbtstat -n nbtstat -c nbtstat -A 10.0.0.99 -n arată tabela de nume NetBIOS a mașinii locale, -c arată cache-ul de nume — numele pe care le-a rezolvat și adresele către care le-a rezolvat. Sesiunile sunt o opțiune diferită: -s listează sesiunile NetBIOS client și server cu nume, iar -S le listează pe aceleași doar cu adrese IP. Confuzia dintre -c și -s se face ușor și îți dă cu totul altă tabelă. Pentru interogări la distanță, -a cu literă mică primește un nume NetBIOS, iar -A cu literă mare primește o adresă IP — nbtstat este una dintre puținele comenzi Windows unde majusculele chiar contează.\nEchivalentele din PowerShell Nimic din toate acestea nu dispare, dar PowerShell are înlocuitori de primă mână pentru majoritatea, iar aceștia întorc obiecte pe care le poți filtra și sorta, nu text pe care trebuie să îl parsezi:\nCommand Prompt PowerShell ipconfig /all Get-NetIPConfiguration -Detailed ipconfig /flushdns Clear-DnsClientCache ping Test-Connection telnet host port Test-NetConnection -ComputerName host -Port port tracert Test-NetConnection -TraceRoute nslookup Resolve-DnsName netstat -ano Get-NetTCPConnection arp -a Get-NetNeighbor route print Get-NetRoute Comenzile clasice rămân alegerea corectă când ești pe o mașină necunoscută, într-un mediu de recuperare sau când citești scriptul altcuiva. Învață-le pe ambele — te costă cam o după-amiază împreună, iar una dintre ele este întotdeauna disponibilă.\nMicrosoft documentează fiecare comandă din acest articol în referința Windows Commands, locul unde să mergi când /? este prea concis.\n",
+  "wordCount" : "2394",
+  "inLanguage": "ro",
+  "datePublished": "2026-09-04T10:00:00+03:00",
+  "dateModified": "2026-09-04T10:00:00+03:00",
+  "author":{
+    "@type": "Person",
+    "name": "Me"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.pakithecat.eu/ro/posts/2026/windows-command-line-cheatsheet/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ce am făcut toată săptămâna",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.pakithecat.eu/icons/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.pakithecat.eu/ro/" accesskey="h" title="Ce am făcut toată săptămâna (Alt + H)">Ce am făcut toată săptămâna</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://blog.pakithecat.eu/" title="🇬🇧"
+                            aria-label=":uk:">🇬🇧</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.pakithecat.eu/ro/archives/" title="Arhive">
+                    <span>Arhive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/ro/taguri" title="Taguri">
+                    <span>Taguri</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/ro/categorii" title="Categorii">
+                    <span>Categorii</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/concosminx/hugo-blog" title="Repo">
+                    <span>Repo</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://blog.pakithecat.eu/ro/">Acasă</a>&nbsp;»&nbsp;<a href="https://blog.pakithecat.eu/ro/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Cheatsheet pentru linia de comandă Windows: fișiere, foldere și rețelistică
+    </h1>
+    <div class="post-description">
+      O referință practică pentru Command Prompt-ul din Windows — navigarea prin sistemul de fișiere, gestionarea fișierelor și diagnosticarea problemelor de rețea cu ipconfig, ping, tracert, netstat și celelalte.
+    </div>
+    <div class="post-meta"><span title='2026-09-04 10:00:00 +0300 +0300'>septembrie 4, 2026</span>&nbsp;·&nbsp;12 minute&nbsp;·&nbsp;2394 cuvinte&nbsp;·&nbsp;Me&nbsp;|&nbsp;Traduceri:
+<ul class="i18n_list">
+    <li>
+        <a href="https://blog.pakithecat.eu/posts/2026/windows-command-line-cheatsheet/">🇬🇧</a>
+    </li>
+</ul>&nbsp;|&nbsp;<a href="https://github.com/concosminx/hugo-blog/tree/main/content/posts/2026/windows-command-line-cheatsheet/index.ro.md" rel="noopener noreferrer" target="_blank">Sugereaza schimbari</a>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Sumar</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#unde-e%c8%99ti-%c8%99i-ce-se-afl%c4%83-%c3%aen-jur" aria-label="Unde ești și ce se află în jur">Unde ești și ce se află în jur</a></li>
+                <li>
+                    <a href="#creare-mutare-%c8%99i-%c8%99tergere" aria-label="Creare, mutare și ștergere">Creare, mutare și ștergere</a></li>
+                <li>
+                    <a href="#citirea-fi%c8%99ierelor-%c8%99i-controlul-ecranului" aria-label="Citirea fișierelor și controlul ecranului">Citirea fișierelor și controlul ecranului</a></li>
+                <li>
+                    <a href="#cum-ob%c8%9bii-ajutor" aria-label="Cum obții ajutor">Cum obții ajutor</a></li>
+                <li>
+                    <a href="#propria-configura%c8%9bie-de-re%c8%9bea" aria-label="Propria configurație de rețea">Propria configurație de rețea</a></li>
+                <li>
+                    <a href="#este-accesibil" aria-label="Este accesibil?">Este accesibil?</a></li>
+                <li>
+                    <a href="#pe-unde-trece-traficul-de-fapt" aria-label="Pe unde trece traficul, de fapt">Pe unde trece traficul, de fapt</a></li>
+                <li>
+                    <a href="#cu-ce-vorbe%c8%99te-ma%c8%99ina-asta" aria-label="Cu ce vorbește mașina asta?">Cu ce vorbește mașina asta?</a></li>
+                <li>
+                    <a href="#rezolvarea-numelor" aria-label="Rezolvarea numelor">Rezolvarea numelor</a></li>
+                <li>
+                    <a href="#cache-ul-arp" aria-label="Cache-ul ARP">Cache-ul ARP</a></li>
+                <li>
+                    <a href="#tabela-de-rutare" aria-label="Tabela de rutare">Tabela de rutare</a></li>
+                <li>
+                    <a href="#testarea-unui-singur-port" aria-label="Testarea unui singur port">Testarea unui singur port</a></li>
+                <li>
+                    <a href="#netbios-dac%c4%83-%c3%aenc%c4%83-%c3%ae%c8%9bi-trebuie" aria-label="NetBIOS, dacă încă îți trebuie">NetBIOS, dacă încă îți trebuie</a></li>
+                <li>
+                    <a href="#echivalentele-din-powershell" aria-label="Echivalentele din PowerShell">Echivalentele din PowerShell</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>PowerShell este de ani buni shell-ul implicit pe Windows, dar <code>cmd.exe</code> refuză să dispară — și pe bună dreptate. Pornește instantaneu, există pe orice mașină Windows livrată vreodată, funcționează în Safe Mode și în consolele de recuperare, iar jumătate dintre diagnosticele de rețea de care vei avea nevoie sunt la o comandă scurtă distanță. Când te sună cineva pentru că „nu merge internetul&quot;, <code>Win</code>+<code>R</code> → <code>cmd</code> rămâne cea mai rapidă cale către un răspuns.</p>
+<p>Acesta este setul de comenzi care merită ținut minte: mai întâi bazele legate de sistemul de fișiere, apoi trusa de rețelistică ce face Command Prompt-ul cu adevărat util.</p>
+<h2 id="unde-ești-și-ce-se-află-în-jur">Unde ești și ce se află în jur<a hidden class="anchor" aria-hidden="true" href="#unde-ești-și-ce-se-află-în-jur">#</a></h2>
+<p>Un filepath este pur și simplu poziția ta în sistemul de fișiere. <code>C:</code> este unitatea C, <code>C:\Users\Me\Documents</code> este un folder din interiorul ei, iar <code>C:\Users\Me\Documents\notes.txt</code> este un fișier din acel folder. Tot ce urmează presupune că știi în care dintre ele te afli.</p>
+<p><code>dir</code> afișează conținutul folderului curent:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl"><span class="k">dir</span>
+</span></span><span class="line"><span class="cl"><span class="k">dir</span> myfolder
+</span></span></code></pre></div><p>Două opțiuni transformă <code>dir</code> dintr-o listare într-un instrument de căutare. <code>/a</code> include fișierele ascunse și de sistem, pe care listarea simplă le omite discret — de obicei acesta este motivul pentru care un folder „nu este gol&quot; atunci când încerci să îl ștergi. <code>/s</code> intră recursiv în subfoldere, așa că <code>dir /s /b *.log</code> parcurge un arbore întreg și afișează căile brute, fără antete.</p>
+<p><code>cd</code> (sau aliasul său mai lung, <code>chdir</code>) schimbă directorul, iar fără argument afișează pur și simplu unde te afli:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl"><span class="k">cd</span> C:\Users\Me\Documents
+</span></span><span class="line"><span class="cl"><span class="k">cd</span> ..
+</span></span><span class="line"><span class="cl"><span class="k">cd</span>
+</span></span></code></pre></div><p><code>cd ..</code> urcă un nivel. O capcană care păcălește pe toată lumea: <code>cd D:\some\path</code> dintr-un prompt aflat pe <code>C:</code> <em>nu</em> te va muta acolo. Fiecare unitate își păstrează propriul director curent, așa că schimbi unitatea tastând litera ei singură sau folosind <code>cd /d</code>, care face ambele lucruri deodată:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">D<span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="k">cd</span> /d D:\some\path
+</span></span></code></pre></div><p>Pentru o privire de ansamblu asupra unui arbore întreg, nu doar asupra unui nivel, <code>tree</code> îl desenează în ASCII. Adaugă <code>/f</code> ca să incluzi și fișierele, nu doar folderele:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">tree C:\Projects /f
+</span></span></code></pre></div><h2 id="creare-mutare-și-ștergere">Creare, mutare și ștergere<a hidden class="anchor" aria-hidden="true" href="#creare-mutare-și-ștergere">#</a></h2>
+<p><code>md</code> creează un folder; <code>mkdir</code> este aceeași comandă sub alt nume.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl"><span class="k">md</span> new-folder
+</span></span></code></pre></div><p>Ștergerea este locul unde fișele de referință greșesc suficient de des încât să merite spus răspicat: comanda din Command Prompt este <code>rd</code>, sau echivalent <code>rmdir</code>. <strong>Nu există <code>rm</code> în <code>cmd.exe</code></strong> — <code>rm</code> funcționează doar în PowerShell, unde este un alias pentru <code>Remove-Item</code>. Tastat într-un Command Prompt îți dă „not recognized as an internal or external command&quot;.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl"><span class="k">rd</span> empty-folder
+</span></span><span class="line"><span class="cl"><span class="k">rd</span> /s /q folder-with-stuff-in-it
+</span></span></code></pre></div><p><code>rd</code> simplu refuză să șteargă orice mai conține fișiere. <code>/s</code> șterge directorul și tot ce se află sub el, iar <code>/q</code> suprimă cererea de confirmare. <code>/q</code> are efect doar atunci când este prezent și <code>/s</code> — iar combinația șterge un arbore întreg fără să întrebe, așa că citește calea de două ori înainte de a apăsa Enter.</p>
+<p>Pentru fișiere, nu foldere, <code>del</code> acceptă unul sau mai multe nume și lucrează cu wildcard-uri:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl"><span class="k">del</span> report.txt
+</span></span><span class="line"><span class="cl"><span class="k">del</span> *.tmp
+</span></span></code></pre></div><p><code>copy</code> duplică un fișier, <code>move</code> îl relocalizează, iar <code>ren</code> (forma lungă <code>rename</code>) îi schimbă numele pe loc:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl"><span class="k">copy</span> C:\data\report.txt D:\backup\
+</span></span><span class="line"><span class="cl"><span class="k">move</span> folder1\file.txt folder2\
+</span></span><span class="line"><span class="cl"><span class="k">ren</span> oldname.txt newname.txt
+</span></span></code></pre></div><p><code>copy</code> este potrivit pentru câteva fișiere. Pentru orice seamănă cu un backup real — arbori întregi, transferuri care se pot relua, reîncercări pentru fișierele blocate — folosește <code>robocopy</code>, care vine cu Windows și este construit exact pentru asta.</p>
+<h2 id="citirea-fișierelor-și-controlul-ecranului">Citirea fișierelor și controlul ecranului<a hidden class="anchor" aria-hidden="true" href="#citirea-fișierelor-și-controlul-ecranului">#</a></h2>
+<p><code>type</code> afișează un fișier text în consolă, cea mai rapidă cale de a verifica un fișier de configurare sau un log scurt:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl"><span class="k">type</span> C:\Windows\System32\drivers\etc\hosts
+</span></span></code></pre></div><p><code>fc</code> compară două fișiere și afișează diferențele, ceea ce este mai util decât pare atunci când încerci să îți dai seama care dintre două fișiere de configurare aproape identice este cel stricat:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">fc config.old config.new
+</span></span></code></pre></div><p><code>echo</code> afișează un mesaj, iar <code>cls</code> curăță ecranul. <code>exit</code> închide Command Prompt-ul sau termină scriptul batch curent.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl"><span class="k">echo</span> Backup finished
+</span></span><span class="line"><span class="cl"><span class="k">cls</span>
+</span></span></code></pre></div><h2 id="cum-obții-ajutor">Cum obții ajutor<a hidden class="anchor" aria-hidden="true" href="#cum-obții-ajutor">#</a></h2>
+<p>Două forme, care fac lucruri diferite. <code>help</code> singur listează comenzile interne, iar <code>help &lt;comandă&gt;</code> explică una dintre ele:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">help
+</span></span><span class="line"><span class="cl">help rd
+</span></span></code></pre></div><p>Dar <code>help</code> cunoaște doar comenzile integrate în <code>cmd.exe</code>. Pentru toate celelalte — <code>ping</code>, <code>netstat</code>, <code>ipconfig</code> — adaugă <code>/?</code> la comanda respectivă:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">ping /?
+</span></span><span class="line"><span class="cl">netstat /?
+</span></span></code></pre></div><p>Când eziți, <code>/?</code> este varianta de ales; funcționează pentru ambele categorii.</p>
+<h2 id="propria-configurație-de-rețea">Propria configurație de rețea<a hidden class="anchor" aria-hidden="true" href="#propria-configurație-de-rețea">#</a></h2>
+<p><code>ipconfig</code> este punctul de plecare pentru orice întrebare legată de rețea. Rulat simplu, afișează adresa IP, masca de subrețea și gateway-ul implicit pentru fiecare adaptor. <code>/all</code> este versiunea pe care o vrei de fapt — adaugă adresa MAC, serverul DHCP, durata lease-ului și serverele DNS configurate:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">ipconfig
+</span></span><span class="line"><span class="cl">ipconfig /all
+</span></span></code></pre></div><p>Opțiunile legate de DNS sunt cele care chiar rezolvă probleme, nu doar le descriu:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">ipconfig /displaydns
+</span></span><span class="line"><span class="cl">ipconfig /flushdns
+</span></span><span class="line"><span class="cl">ipconfig /registerdns
+</span></span></code></pre></div><p><code>/displaydns</code> arată ce a memorat resolver-ul în cache, <code>/flushdns</code> golește acel cache, iar <code>/registerdns</code> reînnoiește lease-ul DHCP și reînregistrează numele mașinii în DNS. <code>/flushdns</code> este răspunsul standard la „am schimbat înregistrarea DNS acum o oră și mașina asta tot merge la serverul vechi&quot;. <code>/registerdns</code> are nevoie de un prompt cu drepturi de administrator.</p>
+<h2 id="este-accesibil">Este accesibil?<a hidden class="anchor" aria-hidden="true" href="#este-accesibil">#</a></h2>
+<p><code>ping</code> trimite cereri ICMP echo și raportează ce se întoarce. Implicit trimite patru și se oprește.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">ping 192.168.1.144
+</span></span><span class="line"><span class="cl">ping google.com
+</span></span></code></pre></div><p>Opțiunile care merită știute:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Opțiune</th>
+          <th>Ce face</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>-t</code></td>
+          <td>Trimite continuu până îl oprești cu <code>Ctrl</code>+<code>C</code>. <code>Ctrl</code>+<code>Break</code> afișează statisticile fără să iasă.</td>
+      </tr>
+      <tr>
+          <td><code>-n &lt;număr&gt;</code></td>
+          <td>Trimite exact atâtea cereri, în loc de patru.</td>
+      </tr>
+      <tr>
+          <td><code>-l &lt;dimensiune&gt;</code></td>
+          <td>Setează dimensiunea în octeți a datelor din pachet. Implicit 32, maximum 65500.</td>
+      </tr>
+      <tr>
+          <td><code>-f</code></td>
+          <td>Setează flag-ul „don&rsquo;t fragment&quot;. Doar pentru IPv4.</td>
+      </tr>
+      <tr>
+          <td><code>-w &lt;ms&gt;</code></td>
+          <td>Cât se așteaptă fiecare răspuns. Implicit 4000 ms.</td>
+      </tr>
+      <tr>
+          <td><code>-4</code> / <code>-6</code></td>
+          <td>Forțează IPv4 sau IPv6. Necesar doar când dai un hostname, nu o adresă.</td>
+      </tr>
+      <tr>
+          <td><code>-a</code></td>
+          <td>Rezolvă invers adresa țintă la un hostname.</td>
+      </tr>
+  </tbody>
+</table>
+<p>Observă ce face de fapt <code>-l</code>: setează dimensiunea datelor din pachet, nu îți permite să editezi conținutul pachetului. Combinat cu <code>-f</code> devine un test de path MTU — trimiți un pachet mare, care nu poate fi fragmentat, și vezi dacă se plânge ceva pe traseu:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">ping -f -l 1300 8.8.8.8
+</span></span></code></pre></div><p>Dacă un router de pe traseu are un MTU mai mic decât pachetul trimis, nu îl poate fragmenta și nu îl poate transmite mai departe, așa că răspunde cu „Packet needs to be fragmented but DF set&quot;. Scazi dimensiunea până când ping-urile trec și ai găsit MTU-ul efectiv. Pentru că <code>-f</code> este o opțiune exclusiv IPv4, trucul nu funcționează peste IPv6.</p>
+<p>Un ping eșuat este o dovadă mai slabă decât presupun majoritatea. Destule mașini — inclusiv Windows Firewall în configurația implicită — aruncă ICMP-ul din principiu, deși servesc traficul perfect. „Ping-ul nu merge&quot; înseamnă „ICMP-ul nu se întoarce&quot;, nu „mașina este picată&quot;.</p>
+<h2 id="pe-unde-trece-traficul-de-fapt">Pe unde trece traficul, de fapt<a hidden class="anchor" aria-hidden="true" href="#pe-unde-trece-traficul-de-fapt">#</a></h2>
+<p><code>tracert</code> listează fiecare router de pe traseul dintre tine și destinație:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">tracert google.com
+</span></span><span class="line"><span class="cl">tracert -d 8.8.8.8
+</span></span></code></pre></div><p><code>-d</code> sare peste rezolvarea DNS inversă pentru fiecare hop, ceea ce face ca rezultatul să apară mult mai repede când router-ele intermediare nu au înregistrări PTR. <code>-h &lt;număr&gt;</code> limitează numărul de hop-uri, util când te interesează doar primele și nu vrei să aștepți treizeci.</p>
+<p><code>pathping</code> este <code>tracert</code> plus măsurare susținută. Întâi mapează traseul, apoi dă ping repetat fiecărui hop și raportează latența și pierderea de pachete per hop:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">pathping -n google.com
+</span></span></code></pre></div><p>Pregătește-te să aștepți. Implicit trimite 100 de interogări către fiecare hop, la intervale de 250 ms, ceea ce înseamnă aproximativ 25 de secunde per hop — un traseu de zece hop-uri durează cam patru minute. <code>-q</code> reduce numărul de interogări, iar <code>-p</code> scurtează intervalul, dacă vrei un răspuns mai devreme. Câștigul este că distinge între un router care tratează cu prioritate scăzută ICMP-ul adresat lui însuși și o legătură care chiar pierde traficul transmis mai departe — ceva ce un <code>tracert</code> simplu nu poate face.</p>
+<h2 id="cu-ce-vorbește-mașina-asta">Cu ce vorbește mașina asta?<a hidden class="anchor" aria-hidden="true" href="#cu-ce-vorbește-mașina-asta">#</a></h2>
+<p><code>netstat</code> arată conexiunile și porturile pe care se ascultă. Aproape nimeni nu îl rulează gol; combinația utilă este:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">netstat -ano
+</span></span></code></pre></div><p><code>-a</code> include porturile în ascultare, nu doar conexiunile stabilite, <code>-n</code> afișează adresele și porturile numeric în loc să încerce să rezolve nume, iar <code>-o</code> adaugă ID-ul procesului deținător, ca să poți lega un port de ceva din Task Manager. <code>-n</code> merită adăugat fie și doar pentru viteză — rezolvarea numelor pe o listă lungă de conexiuni este lentă.</p>
+<p>Ca să treci direct de la un port la numele executabilului, înlocuiește <code>-o</code> cu <code>-b</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">netstat -ab
+</span></span></code></pre></div><p><code>-b</code> are nevoie de un prompt cu drepturi de administrator și eșuează fără el, iar în plus este vizibil mai lent decât <code>-o</code>. Un proces gazdă precum <code>svchost.exe</code> afișează lanțul de componente între paranteze drepte, nu un singur nume.</p>
+<p>Două lucruri pe care ți le arată rezultatul. Un proces care ascultă pe <code>0.0.0.0</code> acceptă conexiuni pe orice interfață, în timp ce unul legat de <code>127.0.0.1</code> este accesibil doar de pe mașina însăși — distincția asta explică o grămadă de sesizări de tipul „local merge, de pe laptopul meu nu&quot;. Și când un serviciu refuză să pornească cu „address already in use&quot;, <code>netstat -ano</code> plus PID-ul îți spune exact cine a ajuns acolo primul.</p>
+<p>Pentru contoare pe protocol, nu pentru conexiuni individuale, <code>-s</code> afișează statistici per protocol — IPv4, IPv6, TCP, UDP și ICMP:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">netstat -s -p tcp
+</span></span></code></pre></div><p><code>netstat -r</code> afișează tabela de rutare și este identic cu <code>route print</code>.</p>
+<h2 id="rezolvarea-numelor">Rezolvarea numelor<a hidden class="anchor" aria-hidden="true" href="#rezolvarea-numelor">#</a></h2>
+<p><code>nslookup</code> interoghează DNS-ul direct, ceea ce contează pentru că întreabă un server, nu raportează ce crede deja clientul:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">nslookup www.google.com
+</span></span></code></pre></div><p>Rulat fără argumente intră într-un mod interactiv în care poți schimba tipul înregistrării și interoga repetat. <code>set q=mx</code> pentru înregistrările de mail, <code>set q=cname</code> pentru alias-uri, <code>set q=ns</code> pentru serverele de nume autoritative:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">nslookup
+</span></span><span class="line"><span class="cl"><span class="p">&gt;</span> set q=mx
+</span></span><span class="line"><span class="cl"><span class="p">&gt;</span> example.com
+</span></span><span class="line"><span class="cl"><span class="p">&gt;</span> exit
+</span></span></code></pre></div><p>Îl poți îndrepta și către un server anume, adăugându-l ca al doilea argument — <code>nslookup example.com 8.8.8.8</code> întreabă resolver-ul Google în loc de al tău. Compararea răspunsului serverului tău DNS cu cel al unuia public este cea mai rapidă cale de a confirma o înregistrare învechită.</p>
+<h2 id="cache-ul-arp">Cache-ul ARP<a hidden class="anchor" aria-hidden="true" href="#cache-ul-arp">#</a></h2>
+<p>ARP mapează adresele IP la adrese MAC în segmentul local. Cache-ul este ceea ce crede mașina ta în acest moment despre vecinii ei:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">arp -a
+</span></span></code></pre></div><p>Intrările sunt fie dinamice (învățate de la un vecin și expirate în timp), fie statice (adăugate manual sau de sistem). <code>FF-FF-FF-FF-FF-FF</code> este adresa de broadcast, nu o mașină reală.</p>
+<p>Poți șterge o intrare sau adăuga una:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">arp -d 192.168.1.1
+</span></span><span class="line"><span class="cl">arp -s 192.168.1.1 00-AA-22-BB-33-CC
+</span></span></code></pre></div><p>Ambele au nevoie de un prompt cu drepturi de administrator. O limitare a lui <code>arp -s</code> merită știută înainte să te bazezi pe el: intrarea este eliminată de fiecare dată când stiva TCP/IP este oprită și repornită, deci nu supraviețuiește unui restart. Pentru o mapare statică persistentă, folosește <code>netsh interface ipv4 add neighbors &quot;Ethernet&quot; 192.168.1.1 00-aa-22-bb-33-cc</code> sau echivalentul din PowerShell, <code>New-NetNeighbor</code> — ambele stochează intrarea persistent, implicit.</p>
+<p>Ștergerea unei intrări este, în practică, mișcarea mai frecventă — după înlocuirea unui router sau după un failover, o intrare ARP învechită care indică vechiul MAC va înghiți traficul până expiră, iar <code>arp -d</code> scutește așteptarea.</p>
+<h2 id="tabela-de-rutare">Tabela de rutare<a hidden class="anchor" aria-hidden="true" href="#tabela-de-rutare">#</a></h2>
+<p><code>route print</code> afișează tabela de rutare a mașinii:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">route print
+</span></span></code></pre></div><p>Intrarea pe care o cauți este ruta implicită: destinație <code>0.0.0.0</code>, mască <code>0.0.0.0</code>, îndreptată către gateway-ul tău. Aceasta este regula „tot restul merge pe aici&quot;, iar absența ei explică pierderea totală a conectivității externe în timp ce rețeaua locală continuă să funcționeze. Un client de VPN care s-a închis prost este o cauză frecventă pentru o rută rămasă în urmă, care trimite traficul într-un tunel ce nu mai există.</p>
+<p>Adăugarea unei rute are nevoie de o destinație, o mască și un gateway — un simplu <code>route add 192.168.1.1</code> nu va face nimic util:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">route add 10.41.0.0 mask 255.255.0.0 10.27.0.1
+</span></span><span class="line"><span class="cl">route -p add 10.41.0.0 mask 255.255.0.0 10.27.0.1
+</span></span><span class="line"><span class="cl">route delete 10.41.0.0
+</span></span></code></pre></div><p>Fără <code>-p</code>, ruta trăiește doar până la repornirea stivei TCP/IP. <code>-p</code> o face persistentă, scriind-o în registry. Toate trei comenzile au nevoie de un prompt cu drepturi de administrator.</p>
+<h2 id="testarea-unui-singur-port">Testarea unui singur port<a hidden class="anchor" aria-hidden="true" href="#testarea-unui-singur-port">#</a></h2>
+<p>Ping-ul îți spune dacă o mașină răspunde la ICMP. Nu îți spune nimic despre faptul că serviciul care te interesează ascultă sau nu. Pentru asta, deschide o conexiune TCP către portul respectiv:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">telnet mail.example.com 25
+</span></span><span class="line"><span class="cl">telnet example.com 80
+</span></span></code></pre></div><p>Un ecran gol sau un banner al serviciului înseamnă că portul este deschis și accesibil. Un „Could not open connection to the host&quot; imediat înseamnă că ceva — serviciul, un firewall sau un echipament de rețea de pe traseu — l-a refuzat sau l-a aruncat. Portul implicit al telnet-ului este 23, dar ca test de conectivitate exact portul pe care îl indici tu este esențial: 25 pentru SMTP, 80 pentru HTTP, 443 pentru HTTPS, 3389 pentru RDP.</p>
+<p>O problemă: clientul Telnet nu mai este instalat implicit din Windows Vista încoace. Activează-l o singură dată, dintr-un prompt cu drepturi de administrator:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">dism /online /Enable-Feature /FeatureName:TelnetClient
+</span></span></code></pre></div><p>Dacă preferi să nu instalezi nimic, <code>Test-NetConnection -ComputerName example.com -Port 443</code> din PowerShell face același test și raportează rezultatul, în loc să te lase într-o sesiune brută.</p>
+<h2 id="netbios-dacă-încă-îți-trebuie">NetBIOS, dacă încă îți trebuie<a hidden class="anchor" aria-hidden="true" href="#netbios-dacă-încă-îți-trebuie">#</a></h2>
+<p><code>nbtstat</code> acoperă NetBIOS peste TCP/IP — rezolvarea numelor din epoca dinaintea generalizării DNS-ului în rețelele Windows. Într-o rețea modernă vei avea rareori nevoie de el, dar share-urile de fișiere vechi și aplicațiile de business învechite încă se sprijină pe el.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">nbtstat -n
+</span></span><span class="line"><span class="cl">nbtstat -c
+</span></span><span class="line"><span class="cl">nbtstat -A 10.0.0.99
+</span></span></code></pre></div><p><code>-n</code> arată tabela de nume NetBIOS a mașinii locale, <code>-c</code> arată cache-ul de nume — numele pe care le-a rezolvat și adresele către care le-a rezolvat. Sesiunile sunt o opțiune diferită: <code>-s</code> listează sesiunile NetBIOS client și server cu nume, iar <code>-S</code> le listează pe aceleași doar cu adrese IP. Confuzia dintre <code>-c</code> și <code>-s</code> se face ușor și îți dă cu totul altă tabelă. Pentru interogări la distanță, <code>-a</code> cu literă mică primește un nume NetBIOS, iar <code>-A</code> cu literă mare primește o adresă IP — <code>nbtstat</code> este una dintre puținele comenzi Windows unde majusculele chiar contează.</p>
+<h2 id="echivalentele-din-powershell">Echivalentele din PowerShell<a hidden class="anchor" aria-hidden="true" href="#echivalentele-din-powershell">#</a></h2>
+<p>Nimic din toate acestea nu dispare, dar PowerShell are înlocuitori de primă mână pentru majoritatea, iar aceștia întorc obiecte pe care le poți filtra și sorta, nu text pe care trebuie să îl parsezi:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Command Prompt</th>
+          <th>PowerShell</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>ipconfig /all</code></td>
+          <td><code>Get-NetIPConfiguration -Detailed</code></td>
+      </tr>
+      <tr>
+          <td><code>ipconfig /flushdns</code></td>
+          <td><code>Clear-DnsClientCache</code></td>
+      </tr>
+      <tr>
+          <td><code>ping</code></td>
+          <td><code>Test-Connection</code></td>
+      </tr>
+      <tr>
+          <td><code>telnet host port</code></td>
+          <td><code>Test-NetConnection -ComputerName host -Port port</code></td>
+      </tr>
+      <tr>
+          <td><code>tracert</code></td>
+          <td><code>Test-NetConnection -TraceRoute</code></td>
+      </tr>
+      <tr>
+          <td><code>nslookup</code></td>
+          <td><code>Resolve-DnsName</code></td>
+      </tr>
+      <tr>
+          <td><code>netstat -ano</code></td>
+          <td><code>Get-NetTCPConnection</code></td>
+      </tr>
+      <tr>
+          <td><code>arp -a</code></td>
+          <td><code>Get-NetNeighbor</code></td>
+      </tr>
+      <tr>
+          <td><code>route print</code></td>
+          <td><code>Get-NetRoute</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>Comenzile clasice rămân alegerea corectă când ești pe o mașină necunoscută, într-un mediu de recuperare sau când citești scriptul altcuiva. Învață-le pe ambele — te costă cam o după-amiază împreună, iar una dintre ele este întotdeauna disponibilă.</p>
+<p>Microsoft documentează fiecare comandă din acest articol în <a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands">referința Windows Commands</a>, locul unde să mergi când <code>/?</code> este prea concis.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://blog.pakithecat.eu/ro/posts/2026/css-selectors-cheatsheet/">
+    <span class="title">« Înapoi</span>
+    <br>
+    <span>Cheatsheet pentru Selectorii CSS</span>
+  </a>
+  <a class="next" href="https://blog.pakithecat.eu/ro/posts/2026/git-command-cheatsheet/">
+    <span class="title">Înainte »</span>
+    <br>
+    <span>Comenzi Git — Cheatsheet</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cheatsheet pentru linia de comandă Windows: fișiere, foldere și rețelistică on x"
+            href="https://x.com/intent/tweet/?text=Cheatsheet%20pentru%20linia%20de%20comand%c4%83%20Windows%3a%20fi%c8%99iere%2c%20foldere%20%c8%99i%20re%c8%9belistic%c4%83&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fwindows-command-line-cheatsheet%2f&amp;hashtags=windows%2ccheatsheet">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cheatsheet pentru linia de comandă Windows: fișiere, foldere și rețelistică on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fwindows-command-line-cheatsheet%2f&amp;title=Cheatsheet%20pentru%20linia%20de%20comand%c4%83%20Windows%3a%20fi%c8%99iere%2c%20foldere%20%c8%99i%20re%c8%9belistic%c4%83&amp;summary=Cheatsheet%20pentru%20linia%20de%20comand%c4%83%20Windows%3a%20fi%c8%99iere%2c%20foldere%20%c8%99i%20re%c8%9belistic%c4%83&amp;source=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fwindows-command-line-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cheatsheet pentru linia de comandă Windows: fișiere, foldere și rețelistică on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fwindows-command-line-cheatsheet%2f&title=Cheatsheet%20pentru%20linia%20de%20comand%c4%83%20Windows%3a%20fi%c8%99iere%2c%20foldere%20%c8%99i%20re%c8%9belistic%c4%83">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cheatsheet pentru linia de comandă Windows: fișiere, foldere și rețelistică on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fwindows-command-line-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cheatsheet pentru linia de comandă Windows: fișiere, foldere și rețelistică on whatsapp"
+            href="https://api.whatsapp.com/send?text=Cheatsheet%20pentru%20linia%20de%20comand%c4%83%20Windows%3a%20fi%c8%99iere%2c%20foldere%20%c8%99i%20re%c8%9belistic%c4%83%20-%20https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fwindows-command-line-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cheatsheet pentru linia de comandă Windows: fișiere, foldere și rețelistică on telegram"
+            href="https://telegram.me/share/url?text=Cheatsheet%20pentru%20linia%20de%20comand%c4%83%20Windows%3a%20fi%c8%99iere%2c%20foldere%20%c8%99i%20re%c8%9belistic%c4%83&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fwindows-command-line-cheatsheet%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cheatsheet pentru linia de comandă Windows: fișiere, foldere și rețelistică on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Cheatsheet%20pentru%20linia%20de%20comand%c4%83%20Windows%3a%20fi%c8%99iere%2c%20foldere%20%c8%99i%20re%c8%9belistic%c4%83&u=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fwindows-command-line-cheatsheet%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>© <a href="https://github.com/concosminx">concosminx</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copiază';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copiat!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copiază';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

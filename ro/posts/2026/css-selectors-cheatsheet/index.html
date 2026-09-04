@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ro" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Cheatsheet pentru Selectorii CSS | Ce am făcut toată săptămâna</title>
+<meta name="keywords" content="cheatsheet, css">
+<meta name="description" content="Toată gramatica selectorilor CSS — combinatorii, potrivirea după atribute, pseudo-clasele structurale care numără copiii și cele logice care îți permit în sfârșit să stilizezi un părinte.">
+<meta name="author" content="Me">
+<link rel="canonical" href="https://blog.pakithecat.eu/ro/posts/2026/css-selectors-cheatsheet/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.5b00859891919f07af6a53834e3f9f8f331db42cc5f024277803b41a6758e47a.css" integrity="sha256-WwCFmJGRnwevalODTj&#43;fjzMdtCzF8CQneAO0GmdY5Ho=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.pakithecat.eu/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.pakithecat.eu/icons/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.pakithecat.eu/icons/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.pakithecat.eu/icons/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.pakithecat.eu/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://blog.pakithecat.eu/posts/2026/css-selectors-cheatsheet/">
+<link rel="alternate" hreflang="ro" href="https://blog.pakithecat.eu/ro/posts/2026/css-selectors-cheatsheet/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script type="module">
+    const blocks = [...document.querySelectorAll('pre.mermaid')];
+    if (blocks.length) {
+        const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs');
+
+        
+        blocks.forEach((el) => { el.dataset.mermaidSrc = el.textContent; });
+
+        const currentTheme = () => document.body.classList.contains('dark') ? 'dark' : 'default';
+
+        const render = () => {
+            blocks.forEach((el) => {
+                el.removeAttribute('data-processed');
+                el.textContent = el.dataset.mermaidSrc;
+            });
+            mermaid.initialize({ startOnLoad: false, theme: currentTheme() });
+            return mermaid.run({ nodes: blocks });
+        };
+
+        await render();
+
+        
+        let lastTheme = currentTheme();
+        new MutationObserver(() => {
+            const theme = currentTheme();
+            if (theme === lastTheme) return;
+            lastTheme = theme;
+            render();
+        }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    }
+</script>
+<meta property="og:url" content="https://blog.pakithecat.eu/ro/posts/2026/css-selectors-cheatsheet/">
+  <meta property="og:site_name" content="Ce am făcut toată săptămâna">
+  <meta property="og:title" content="Cheatsheet pentru Selectorii CSS">
+  <meta property="og:description" content="Toată gramatica selectorilor CSS — combinatorii, potrivirea după atribute, pseudo-clasele structurale care numără copiii și cele logice care îți permit în sfârșit să stilizezi un părinte.">
+  <meta property="og:locale" content="ro">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-09-04T17:00:00+03:00">
+    <meta property="article:modified_time" content="2026-09-04T17:00:00+03:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cheatsheet pentru Selectorii CSS">
+<meta name="twitter:description" content="Toată gramatica selectorilor CSS — combinatorii, potrivirea după atribute, pseudo-clasele structurale care numără copiii și cele logice care îți permit în sfârșit să stilizezi un părinte.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.pakithecat.eu/ro/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Cheatsheet pentru Selectorii CSS",
+      "item": "https://blog.pakithecat.eu/ro/posts/2026/css-selectors-cheatsheet/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Cheatsheet pentru Selectorii CSS",
+  "name": "Cheatsheet pentru Selectorii CSS",
+  "description": "Toată gramatica selectorilor CSS — combinatorii, potrivirea după atribute, pseudo-clasele structurale care numără copiii și cele logice care îți permit în sfârșit să stilizezi un părinte.",
+  "keywords": [
+    "cheatsheet", "css"
+  ],
+  "articleBody": "Majoritatea oamenilor scriu CSS cu patru selectori — numele tag-ului, clasa, ID-ul și un spațiu între doi dintre ei — iar restul îl improvizează adăugând încă o clasă ori de câte ori stilul refuză să se aplice. Merge, până în momentul în care ai nevoie de al treilea element dintr-o listă, de fiecare input care urmează după un checkbox bifat, sau de un card care se întâmplă să conțină o imagine.\nGramatica completă a selectorilor nu este mare. Sunt câteva simboluri — \u003e, +, ~, [], :, :: — și o sintaxă de numărare care arată mai rău decât este. Ce urmează parcurge tot, în ordinea în care piesele se construiesc una peste alta.\nPotrivirea după nume, clasă și ID Trei selectori fac cea mai mare parte a muncii, iar unul le potrivește pe toate:\np { } /* type selector: fiecare */ .card { } /* class selector: class=\"card\" */ #header { } /* ID selector: id=\"header\" */ * { } /* universal selector: fiecare element */ Scriși unul lângă altul, fără spațiu, formează un selector compus — un set de condiții care trebuie să fie adevărate toate pentru același element:\na.button { } /* un care are și class=\"button\" */ input.field.error { } /* ambele clase, pe un singur */ Spațiul contează enorm aici. a.button înseamnă un singur element care satisface două condiții; a .button înseamnă două elemente aflate într-o relație de descendență. Este cea mai frecventă greșeală de tastare din CSS și eșuează în tăcere.\nSelectorii de tip ID sunt de evitat în stilizarea de zi cu zi, iar motivul este specificitatea.\nPe scurt despre specificitate Când două reguli setează aceeași proprietate pe același element, câștigă selectorul mai specific, indiferent de ordinea din fișier. Specificitatea se numără ca trei numere, comparate de la stânga la dreapta:\nComponentă Contează în Exemple ID prima coloană #header Clasă, atribut, pseudo-clasă a doua .card, [type=\"text\"], :hover Tip, pseudo-element a treia div, ::before Selectorul universal * și combinatorii nu contribuie cu nimic. Atributul style scris inline le depășește pe toate, iar !important stă complet în afara sistemului.\nAșa că #header .title (1-1-0) bate .page .header .title span (0-3-1), oricât de precis ar părea al doilea. Un singur ID nu poate fi învins de nicio cantitate de clase, motiv pentru care un stylesheet construit pe ID-uri ajunge la !important în câteva luni. Clasele mențin numerele mici, iar cascada rămâne negociabilă.\nListe de selectori O virgulă aplică un singur bloc mai multor selectori independenți:\nh1, h2, h3 { margin-block: 0; } Virgula nu este un combinator — nu descrie nicio relație, doar evită repetiția. O singură atenționare: dacă browserul nu poate interpreta vreunul dintre selectorii dintr-o listă simplă separată prin virgule, aruncă regula întreagă. :is() și :where(), mai jos, rezolvă exact asta.\nCombinatorii Combinatorii descriu relația dintre două elemente în arborele documentului. Ia un section care conține un titlu, un div și trei paragrafe — unul dintre ele imbricat în div:\nflowchart TD sec[\"section\"] --\u003e hd[\"h2\"] sec --\u003e dv[\"div\"] sec --\u003e p1[\"p 1\"] sec --\u003e p3[\"p 3\"] dv --\u003e p2[\"p 2\"] dv --\u003e sp[\"span\"] classDef hit fill:#2d7d46,stroke:#1e5631,color:#ffffff; class p1,p3 hit Paragrafele evidențiate sunt cele pe care le potrivește section \u003e p. Toți cei patru combinatori, citiți pe același arbore:\nsection p { } /* descendant: p 1, p 2 și p 3 */ section \u003e p { } /* child: doar p 1 și p 3 */ h2 + div { } /* adjacent sibling: div-ul */ h2 ~ p { } /* general sibling: p 1 și p 3 */ Un spațiu este combinatorul de descendență — orice adâncime dedesubt. \u003e îl restrânge la copiii direcți, ceea ce vrei ori de câte ori o componentă ar putea conține o copie imbricată a ei însăși.\n+ potrivește elementul imediat următor, pe același nivel. h2 + p nu potrivește nimic în arborele de mai sus, pentru că div-ul stă între ele. ~ relaxează cerința la orice frate de mai târziu, așa că div-ul intercalat încetează să mai conteze.\nNu există niciun combinator pentru direcția inversă — nimic nu selectează un frate anterior sau un părinte. Această lipsă este exact ce acoperă :has().\nSelectorii de atribute Parantezele drepte potrivesc după atribute, cu sau fără test pe valoare:\nSelector Potrivește când [href] atributul este prezent, indiferent de valoare [type=\"checkbox\"] valoarea este exact aceasta [class~=\"card\"] valoarea este o listă separată prin spații care conține acest cuvânt [lang|=\"en\"] valoarea este aceasta, sau aceasta urmată de o cratimă — en, en-GB [href^=\"https\"] valoarea începe cu aceasta [src$=\".svg\"] valoarea se termină cu aceasta [href*=\"example\"] valoarea o conține oriunde Formele ~= și |= sunt cele două care se uită. ~= există pentru că class este o listă, iar |= există pentru subtag-urile de limbă, motiv pentru care tratează cratima ca pe o graniță.\n^=, $= și *= sunt simple teste pe subșiruri și sunt case-sensitive în documentele HTML, cu excepția atributelor pe care HTML însuși le definește ca fiind case-insensitive. Un flag pus la final rezolvă asta explicit:\na[href$=\".PDF\" i] { } /* case-insensitive */ a[href*=\"cAsE\" s] { } /* forțează case-sensitive */ Flag-ul i este suportat pe scară largă. s este mult mai rar, așa că tratează-l ca pe un moft, nu ca pe ceva pe care să te bazezi.\nObservă că [class~=\"card\"] este un mod mai lung de a scrie .card, iar [id=\"header\"] este un #header cu specificitate mai mică — ultimul este ocazional util tocmai pentru că iese din coloana ID-urilor și intră în cea a claselor.\nStările de link și de interacțiune Selectorii de atribute se potrivesc după ce spune HTML-ul. Pseudo-clasele de stare se potrivesc după ce face elementul în acest moment, iar perechea merită observată: button[disabled] și button:disabled ajung la aceleași butoane pe drumuri diferite.\nCinci acoperă link-urile și interacțiunea cu pointer-ul:\na:link { } /* o ancoră cu href, încă nevizitată */ a:visited { } /* una pe care utilizatorul a vizitat-o deja */ a:hover { } /* pointer-ul se află deasupra ei */ a:active { } /* în timpul clicului, între apăsare și eliberare */ a:focus { } /* focalizată prin clic, tab sau script */ Ordinea contează aici, pentru că mai multe pot fi adevărate simultan și au specificitate identică — deci câștigă cea scrisă ultima. Secvența consacrată este :link, :visited, :focus, :hover, :active. Pui :visited după :hover și trecerea cu mouse-ul peste un link vizitat va părea că nu face nimic.\n:visited este, de asemenea, limitată intenționat. Pentru că citirea stilului ei calculat ar dezvălui istoricul de navigare, browserele o restrâng la o listă scurtă de proprietăți de culoare și mint în getComputedStyle în privința rezultatului. Nu îi poți schimba dimensiunea, nu îi poți da o imagine de fundal și nu o poți folosi în :has().\nDouă adăugiri mai recente sunt, de obicei, ceea ce vrei de fapt:\nbutton:focus-visible { outline: 2px solid; } form:focus-within { background: #f6f6f6; } :focus-visible se potrivește doar atunci când browserul consideră că inelul de focus ar trebui afișat — la navigarea cu tastatura da, la un clic de mouse pe un buton nu. Asta rezolvă vechea dilemă dintre un contur care îi enervează pe utilizatorii de mouse și lipsa totală a conturului, care îi lasă descoperiți pe cei care folosesc tastatura. Este disponibilă pe scară largă din martie 2022. :focus-within se potrivește unui element care conține elementul focalizat, așa că un formular se poate evidenția singur cât timp oricare câmp din interiorul lui este activ.\nStările de formular și de validare Pseudo-clasele de formular citesc starea în timp real din chiar mecanismul de validare al browserului, ceea ce înseamnă că o bună parte din feedback nu are deloc nevoie de JavaScript.\nSelector Se potrivește cu :enabled / :disabled un control care acceptă, sau nu, date de intrare :checked un radio sau checkbox bifat și un selectat :indeterminate un checkbox pus în stare indeterminată din script, un grup de radio fără nimic ales, un fără valoare :default opțiunea implicită din cadrul unui grup — vezi mai jos :required / :optional un control cu, sau fără, atributul required :valid / :invalid conținut care satisface sau nu tipul și constrângerile controlului :in-range / :out-of-range o valoare aflată în interiorul sau în afara limitelor min/max :read-write / :read-only editabil, sau nu Câteva dintre acestea sunt mai înguste — sau mai largi — decât sugerează numele lor.\n:default nu înseamnă „un element aflat în starea lui implicită\". Este opțiunea implicită a grupului său: radio-ul sau checkbox-ul care poartă atributul checked în markup, primul selectat, butonul de submit implicit al formularului. Continuă să indice acel element inițial chiar și după ce utilizatorul alege altceva, exact ceea ce o face utilă pentru a marca opțiunea recomandată.\n:in-range și :out-of-range se aplică doar câmpurilor care chiar au un min sau un max — un câmp text simplu nu este nici una, nici alta. Un câmp gol nu este nici el vreuna dintre ele, așa că un câmp numeric obligatoriu și neatins nu se va colora în roșu din cauza lui :out-of-range. Aceea este treaba lui :invalid.\n:read-only este definită ca tot ceea ce :read-write nu acoperă, ceea ce o face mult mai largă decât formularele. Un paragraf obișnuit este :read-only; un paragraf cu contenteditable este :read-write. Când te referi la „un input cu atributul readonly\", scrie input:read-only.\nStilizarea validării are o capcană practică. :invalid se potrivește încă de la încărcarea paginii, așa că un câmp obligatoriu gol este marcat ca eroare înainte ca utilizatorul să fi tastat ceva. Combin-o cu :placeholder-shown ca să aștepți până când există ceva de judecat:\ninput:invalid:not(:placeholder-shown) { border-color: crimson; } input:required:valid { border-color: seagreen; } Numărarea copiilor Această familie selectează elementele după poziția lor între copiii părintelui:\nli:first-child { } li:last-child { } li:only-child { } li:nth-child(3) { } li:nth-last-child(2) { } /* numărând de la sfârșit */ Citește-le cu atenție, pentru că numele sugerează altceva decât fac. li:first-child nu înseamnă „primul li”. Înseamnă „un li care se întâmplă să fie primul copil al părintelui său” — dacă deasupra elementelor din listă stă un titlu, nu se potrivește nimic. Exact această greșeală o repară secțiunea următoare.\n:nth-child() primește o formulă, An+B, unde n ia valorile 0, 1, 2, 3… iar fiecare rezultat care cade pe o poziție reală se potrivește:\nli:nth-child(2n) { } /* 2, 4, 6… — identic cu :nth-child(even) */ li:nth-child(2n+1) { } /* 1, 3, 5… — identic cu :nth-child(odd) */ li:nth-child(3n+1) { } /* 1, 4, 7… — începutul fiecărui rând de trei */ li:nth-child(-n+3) { } /* primele trei */ li:nth-child(n+4) { } /* de la al patrulea încolo */ Ultimele două sunt trucul care merită ținut minte: un coeficient negativ numără descrescător și îți dă astfel „primele N”, în timp ce un simplu n+B îți dă tot de la B încolo. Înlănțuiește-le ca să obții o felie — li:nth-child(n+3):nth-child(-n+6) înseamnă elementele de la trei la șase.\nExistă și o formă of S, care schimbă ce anume se numără:\nli:nth-child(-n+3 of .featured) { } Aceasta potrivește primele trei elemente featured, oriunde s-ar afla în listă. Scris invers, li.featured:nth-child(-n+3) filtrează primii trei copii, păstrându-i doar pe cei featured — de obicei nu la asta te gândeai. Forma of S a ajuns în ultimul browser în 2023, deci este cam la fel de recentă ca :has() de mai jos.\nNumărarea după tip Fiecare selector de mai sus are un geamăn -of-type, care numără doar frații cu același nume de element:\np:first-of-type { } p:last-of-type { } p:only-of-type { } p:nth-of-type(2) { } p:nth-last-of-type(2) { } Diferența merită o imagine. Fie un article ai cărui copii sunt un titlu urmat de trei paragrafe:\nflowchart TD art[\"article\"] --\u003e hd[\"h2 = copil 1\"] art --\u003e p1[\"p = copil 2, paragraf 1\"] art --\u003e p2[\"p = copil 3, paragraf 2\"] art --\u003e p3[\"p = copil 4, paragraf 3\"] classDef nthchild fill:#2d7d46,stroke:#1e5631,color:#ffffff; classDef nthtype fill:#2b6cb0,stroke:#1a4971,color:#ffffff; class p1 nthchild class p2 nthtype p:nth-child(2) îl potrivește pe cel verde — copilul numărul doi, care se întâmplă să fie un paragraf. p:nth-of-type(2) îl potrivește pe cel albastru — al doilea paragraf, indiferent de poziția lui între copii. Iar p:first-child nu potrivește absolut nimic aici, pentru că primul copil este h2.\nRegula practică: folosește familia -child atunci când poziția în container este ceea ce te interesează, cum ar fi la alternarea culorilor într-un tabel sau într-un grid. Folosește -of-type când vrei să spui „primul paragraf” și nu poți controla ce altceva mai conține containerul.\n:only-child și :only-of-type se despart pe aceeași linie. Un element este singurul copil atunci când este unicul copil al părintelui său; este singurul de tipul lui atunci când niciun frate nu are același nume de tag, chiar dacă alte elemente sunt prezente.\nInterogări după cantitate Înlănțuirea a două pseudo-clase de numărare pe același element le transformă într-un test pentru câți frați există — o container query pentru numărul de elemente, scrisă cu ani înainte să existe container queries.\nTrucul se bazează pe faptul că :nth-child() numără de la început, în timp ce :nth-last-child() numără de la sfârșit. Cerându-le pe amândouă deodată, fixezi totalul:\nli:nth-child(7):last-child { } Un li care este simultan al șaptelea copil și ultimul copil poate exista doar într-o listă de exact șapte elemente. Într-o listă de șase sau de opt, regula nu se potrivește cu nimic.\nAsta stilizează un singur element. Ca să stilizezi întregul set, potrivește primul element sub aceeași condiție și apoi adună-i frații cu ~:\nli:first-child:nth-last-child(3), li:first-child:nth-last-child(3) ~ li { } „Un prim copil care este și al treilea de la sfârșit\" descrie o listă de exact trei elemente; al doilea selector le prinde apoi pe celelalte două. Schimbă formula ca să schimbi testul — :nth-last-child(n+3) pentru trei sau mai multe, :nth-last-child(-n+3) pentru trei sau mai puține, iar amândouă împreună pentru un interval:\nli:first-child:nth-last-child(n+2):nth-last-child(-n+4), li:first-child:nth-last-child(n+2):nth-last-child(-n+4) ~ li { } Aceasta se potrivește doar când lista conține între două și patru elemente. Aplicația obișnuită este un layout care ar trebui să își schimbe forma peste un anumit număr — carduri unul lângă altul până când devin cinci, moment în care trec într-un grid — fără să ceri JavaScript-ului să numere ceva.\nPseudo-clasele logice Patru pseudo-clase primesc ca argument o listă de selectori și sunt cea mai utilă adăugire recentă la limbaj.\n:not() inversează o potrivire. Începând cu Selectors Level 4 acceptă o listă completă, așa că un singur apel acoperă mai multe excluderi:\nbutton:not(.primary, .danger) { } li:not(:last-child) { border-bottom: 1px solid; } :is() se potrivește dacă oricare selector din listă se potrivește, ceea ce comprimă repetiția combinatorică:\n:is(article, aside, section) :is(h1, h2, h3) { margin-block-start: 1.5rem; } Specificitatea ei este cea a argumentului cel mai specific, ceea ce ocazional mușcă — :is(#main, p) cântărește cât #main chiar și atunci când a potrivit p-ul.\n:where() este :is() cu specificitatea forțată la zero. Asta o face unealta potrivită pentru valori implicite și reset-uri, pentru că orice se scrie mai târziu o bate fără să fie nevoie de !important:\n:where(h1, h2, h3) { margin: 0; } Ambele liste sunt iertătoare: un selector nerecunoscut din interiorul lor este sărit, în loc să invalideze regula. Este o metodă sigură de a folosi un selector mai nou păstrând în același stylesheet și varianta de rezervă.\n:has() este cea care schimbă ce se poate face. Potrivește un element în funcție de ce conține acel element, așa că elementul pe care îl stilizezi este cel dinaintea celor două puncte:\nflowchart TD fig[\"figure -- elementul stilizat\"] --\u003e img[\"img\"] fig --\u003e cap[\"figcaption -- condiția\"] classDef subject fill:#2d7d46,stroke:#1e5631,color:#ffffff; classDef cond fill:#b7791f,stroke:#7b5310,color:#ffffff; class fig subject class cap cond Argumentul este relativ la acel element, așa că și combinatorii dinăuntru se citesc pornind de acolo:\nfigure:has(figcaption) { } /* un figure care conține un caption, la orice adâncime */ label:has(\u003e input:invalid) { } /* doar un input copil direct */ h2:has(+ p) { } /* un h2 urmat imediat de un paragraf */ Ultimul este selectorul de frate anterior pe care CSS nu l-a avut niciodată, obținut din celălalt capăt. :has() este disponibil pe scară largă din decembrie 2023. Două restricții de reținut: nu poate fi imbricat în alt :has(), iar pseudo-elementele nu sunt valide nici ca argument, nici ca subiect al lui.\n:empty și câțiva selectori răzleți :empty potrivește elementele fără elemente copil și fără text — iar spațiul alb contează ca text, așa că un element scris pe două rânduri, cu indentare între tag-uri, nu este gol. Comentariile sunt ignorate, deci nu îl strică.\ntd:empty { background: #f4f4f4; } Este un mod bun de a scoate la iveală markup-ul de tip placeholder pe care un template a uitat să îl completeze și o sursă sigură de confuzie atunci când un newline rătăcit îl împiedică să se potrivească.\nAlți trei merită știuți alături de cei structurali. :root potrivește rădăcina documentului — — și este locul unde stau de obicei custom properties. :target potrivește elementul al cărui ID se află în acel moment în fragmentul din URL, ceea ce îți oferă componente de tip disclosure făcute doar din CSS. :lang(en) potrivește după limbă, urmând aceeași logică de prefix ca [lang|=\"en\"], dar respectând moștenirea atributului lang de la un strămoș.\nPseudo-clase versus pseudo-elemente Tot ce am văzut mai sus folosește două puncte simple, pentru că selectează un element real pe baza unei stări sau a unei poziții. Două puncte duble selectează ceva ce nu se află deloc în document:\np::first-line { } p::first-letter { } li::marker { } ::selection { } input::placeholder { } blockquote::before { content: \"\\201C\"; } blockquote::after { content: \"\\201D\"; } ::before și ::after creează o cutie în interiorul elementului, înainte și după conținutul lui, și nu fac absolut nimic fără o proprietate content — content: \"\" este valoarea uzuală atunci când cutia există doar ca să fie stilizată. Niciuna nu funcționează pe un element înlocuit precum , sau , pentru că acestea nu au o cutie de conținut în care să se insereze ceva; învelește elementul într-un container dacă ai nevoie de conținut generat în jurul lui.\nVei mai vedea :before și :after scrise cu un singur caracter de două puncte. Aceea este sintaxa originală din CSS2, ținută în viață pentru compatibilitate, iar cele patru pseudo-elemente originale acceptă ambele forme. Scrie totuși forma dublă, pentru că nimic adăugat de atunci încoace nu suportă varianta scurtă.\nDistincția mai are o consecință practică: un pseudo-element poate apărea doar la finalul unui selector, motiv pentru care nu poate sta niciodată în interiorul lui :has() și nu poate fi urmat de un combinator.\nTrei tipare care merită furate * + * — „bufnița lobotomizată\" — se potrivește oricărui element care urmează după alt element, adică fiecărui copil în afară de primul. Setează spațierea dintre frați fără să lase o margine rătăcită în partea de sus a containerului:\n.stack \u003e * + * { margin-block-start: 1.5rem; } Varianta de folosit este cea delimitată cu \u003e, ca mai sus. Simplul * + * se aplică fiecărui element din document și este un instrument foarte bont.\nCheckbox hack-ul combină :checked cu un combinator de frate ca să construiască controale personalizate fără niciun script. Un al cărui for corespunde cu id-ul unui input comută acel input la clic, așa că poți ascunde checkbox-ul real și stiliza label-ul în locul lui:\ninput[type=\"checkbox\"] { position: absolute; opacity: 0; } input[type=\"checkbox\"] + label { background: #333; } input[type=\"checkbox\"]:checked + label { background: orange; } Ține input-ul în document și doar fă-l invizibil. display: none îl scoate din arborele de accesibilitate și din focusul cu tastatura, ceea ce strică controlul pentru oricine nu folosește mouse-ul; opacity: 0 împreună cu position: absolute îl păstrează focalizabil. Adaugă o regulă :focus-visible pe label ca să readuci inelul de focus.\nÎn fine, attr() aduce valoarea unui atribut în conținutul generat:\n@media print { a[href^=\"http\"]::after { content: \" (\" attr(href) \")\"; } } O pagină tipărită își pierde destinațiile link-urilor; asta le pune la loc. attr() în interiorul lui content este de încredere din 2015. Folosirea lui în alte proprietăți este o extindere mai nouă și încă experimentală, așa că tratează content drept cazul pe care te poți baza.\nUnde poți continua Specificația din spatele a tot ce am parcurs este Selectors Level 4, iar referința de selectori de pe MDN este varianta practică a aceluiași material, cu un tabel de suport în browsere pe fiecare pagină. Când un selector nu face nimic în tăcere, devtools-urile din browser bat orice raționament: lipește selectorul în caseta de căutare din inspectorul de elemente și vezi câte noduri se aprind.\n",
+  "wordCount" : "3384",
+  "inLanguage": "ro",
+  "datePublished": "2026-09-04T17:00:00+03:00",
+  "dateModified": "2026-09-04T17:00:00+03:00",
+  "author":{
+    "@type": "Person",
+    "name": "Me"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.pakithecat.eu/ro/posts/2026/css-selectors-cheatsheet/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ce am făcut toată săptămâna",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.pakithecat.eu/icons/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.pakithecat.eu/ro/" accesskey="h" title="Ce am făcut toată săptămâna (Alt + H)">Ce am făcut toată săptămâna</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://blog.pakithecat.eu/" title="🇬🇧"
+                            aria-label=":uk:">🇬🇧</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.pakithecat.eu/ro/archives/" title="Arhive">
+                    <span>Arhive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/ro/taguri" title="Taguri">
+                    <span>Taguri</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/ro/categorii" title="Categorii">
+                    <span>Categorii</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/concosminx/hugo-blog" title="Repo">
+                    <span>Repo</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://blog.pakithecat.eu/ro/">Acasă</a>&nbsp;»&nbsp;<a href="https://blog.pakithecat.eu/ro/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Cheatsheet pentru Selectorii CSS
+    </h1>
+    <div class="post-description">
+      Toată gramatica selectorilor CSS — combinatorii, potrivirea după atribute, pseudo-clasele structurale care numără copiii și cele logice care îți permit în sfârșit să stilizezi un părinte.
+    </div>
+    <div class="post-meta"><span title='2026-09-04 17:00:00 +0300 +0300'>septembrie 4, 2026</span>&nbsp;·&nbsp;16 minute&nbsp;·&nbsp;3384 cuvinte&nbsp;·&nbsp;Me&nbsp;|&nbsp;Traduceri:
+<ul class="i18n_list">
+    <li>
+        <a href="https://blog.pakithecat.eu/posts/2026/css-selectors-cheatsheet/">🇬🇧</a>
+    </li>
+</ul>&nbsp;|&nbsp;<a href="https://github.com/concosminx/hugo-blog/tree/main/content/posts/2026/css-selectors-cheatsheet/index.ro.md" rel="noopener noreferrer" target="_blank">Sugereaza schimbari</a>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Sumar</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#potrivirea-dup%c4%83-nume-clas%c4%83-%c8%99i-id" aria-label="Potrivirea după nume, clasă și ID">Potrivirea după nume, clasă și ID</a></li>
+                <li>
+                    <a href="#pe-scurt-despre-specificitate" aria-label="Pe scurt despre specificitate">Pe scurt despre specificitate</a></li>
+                <li>
+                    <a href="#liste-de-selectori" aria-label="Liste de selectori">Liste de selectori</a></li>
+                <li>
+                    <a href="#combinatorii" aria-label="Combinatorii">Combinatorii</a></li>
+                <li>
+                    <a href="#selectorii-de-atribute" aria-label="Selectorii de atribute">Selectorii de atribute</a></li>
+                <li>
+                    <a href="#st%c4%83rile-de-link-%c8%99i-de-interac%c8%9biune" aria-label="Stările de link și de interacțiune">Stările de link și de interacțiune</a></li>
+                <li>
+                    <a href="#st%c4%83rile-de-formular-%c8%99i-de-validare" aria-label="Stările de formular și de validare">Stările de formular și de validare</a></li>
+                <li>
+                    <a href="#num%c4%83rarea-copiilor" aria-label="Numărarea copiilor">Numărarea copiilor</a></li>
+                <li>
+                    <a href="#num%c4%83rarea-dup%c4%83-tip" aria-label="Numărarea după tip">Numărarea după tip</a></li>
+                <li>
+                    <a href="#interog%c4%83ri-dup%c4%83-cantitate" aria-label="Interogări după cantitate">Interogări după cantitate</a></li>
+                <li>
+                    <a href="#pseudo-clasele-logice" aria-label="Pseudo-clasele logice">Pseudo-clasele logice</a></li>
+                <li>
+                    <a href="#empty-%c8%99i-c%c3%a2%c8%9biva-selectori-r%c4%83zle%c8%9bi" aria-label=":empty și câțiva selectori răzleți">:empty și câțiva selectori răzleți</a></li>
+                <li>
+                    <a href="#pseudo-clase-versus-pseudo-elemente" aria-label="Pseudo-clase versus pseudo-elemente">Pseudo-clase versus pseudo-elemente</a></li>
+                <li>
+                    <a href="#trei-tipare-care-merit%c4%83-furate" aria-label="Trei tipare care merită furate">Trei tipare care merită furate</a></li>
+                <li>
+                    <a href="#unde-po%c8%9bi-continua" aria-label="Unde poți continua">Unde poți continua</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Majoritatea oamenilor scriu CSS cu patru selectori — numele tag-ului, clasa, ID-ul și un spațiu între doi dintre ei — iar restul îl improvizează adăugând încă o clasă ori de câte ori stilul refuză să se aplice. Merge, până în momentul în care ai nevoie de al treilea element dintr-o listă, de fiecare input care urmează după un checkbox bifat, sau de un card care se întâmplă să conțină o imagine.</p>
+<p>Gramatica completă a selectorilor nu este mare. Sunt câteva simboluri — <code>&gt;</code>, <code>+</code>, <code>~</code>, <code>[]</code>, <code>:</code>, <code>::</code> — și o sintaxă de numărare care arată mai rău decât este. Ce urmează parcurge tot, în ordinea în care piesele se construiesc una peste alta.</p>
+<h2 id="potrivirea-după-nume-clasă-și-id">Potrivirea după nume, clasă și ID<a hidden class="anchor" aria-hidden="true" href="#potrivirea-după-nume-clasă-și-id">#</a></h2>
+<p>Trei selectori fac cea mai mare parte a muncii, iar unul le potrivește pe toate:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">p</span>        <span class="p">{</span> <span class="p">}</span>   <span class="c">/* type selector: fiecare &lt;p&gt; */</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">card</span>    <span class="p">{</span> <span class="p">}</span>   <span class="c">/* class selector: class=&#34;card&#34; */</span>
+</span></span><span class="line"><span class="cl"><span class="p">#</span><span class="nn">header</span>  <span class="p">{</span> <span class="p">}</span>   <span class="c">/* ID selector: id=&#34;header&#34; */</span>
+</span></span><span class="line"><span class="cl"><span class="o">*</span>        <span class="p">{</span> <span class="p">}</span>   <span class="c">/* universal selector: fiecare element */</span>
+</span></span></code></pre></div><p>Scriși unul lângă altul, fără spațiu, formează un <strong>selector compus</strong> — un set de condiții care trebuie să fie adevărate toate pentru același element:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">a</span><span class="p">.</span><span class="nc">button</span>          <span class="p">{</span> <span class="p">}</span>   <span class="c">/* un &lt;a&gt; care are și class=&#34;button&#34; */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">input</span><span class="p">.</span><span class="nc">field</span><span class="p">.</span><span class="nc">error</span> <span class="p">{</span> <span class="p">}</span>   <span class="c">/* ambele clase, pe un singur &lt;input&gt; */</span>
+</span></span></code></pre></div><p>Spațiul contează enorm aici. <code>a.button</code> înseamnă un singur element care satisface două condiții; <code>a .button</code> înseamnă două elemente aflate într-o relație de descendență. Este cea mai frecventă greșeală de tastare din CSS și eșuează în tăcere.</p>
+<p>Selectorii de tip ID sunt de evitat în stilizarea de zi cu zi, iar motivul este specificitatea.</p>
+<h2 id="pe-scurt-despre-specificitate">Pe scurt despre specificitate<a hidden class="anchor" aria-hidden="true" href="#pe-scurt-despre-specificitate">#</a></h2>
+<p>Când două reguli setează aceeași proprietate pe același element, câștigă selectorul mai specific, indiferent de ordinea din fișier. Specificitatea se numără ca trei numere, comparate de la stânga la dreapta:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Componentă</th>
+          <th>Contează în</th>
+          <th>Exemple</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ID</td>
+          <td>prima coloană</td>
+          <td><code>#header</code></td>
+      </tr>
+      <tr>
+          <td>Clasă, atribut, pseudo-clasă</td>
+          <td>a doua</td>
+          <td><code>.card</code>, <code>[type=&quot;text&quot;]</code>, <code>:hover</code></td>
+      </tr>
+      <tr>
+          <td>Tip, pseudo-element</td>
+          <td>a treia</td>
+          <td><code>div</code>, <code>::before</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>Selectorul universal <code>*</code> și combinatorii nu contribuie cu nimic. Atributul <code>style</code> scris inline le depășește pe toate, iar <code>!important</code> stă complet în afara sistemului.</p>
+<p>Așa că <code>#header .title</code> (1-1-0) bate <code>.page .header .title span</code> (0-3-1), oricât de precis ar părea al doilea. Un singur ID nu poate fi învins de nicio cantitate de clase, motiv pentru care un stylesheet construit pe ID-uri ajunge la <code>!important</code> în câteva luni. Clasele mențin numerele mici, iar cascada rămâne negociabilă.</p>
+<h2 id="liste-de-selectori">Liste de selectori<a hidden class="anchor" aria-hidden="true" href="#liste-de-selectori">#</a></h2>
+<p>O virgulă aplică un singur bloc mai multor selectori independenți:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span> <span class="p">{</span> <span class="n">margin-block</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p>Virgula nu este un combinator — nu descrie nicio relație, doar evită repetiția. O singură atenționare: dacă browserul nu poate interpreta <strong>vreunul</strong> dintre selectorii dintr-o listă simplă separată prin virgule, aruncă regula întreagă. <code>:is()</code> și <code>:where()</code>, mai jos, rezolvă exact asta.</p>
+<h2 id="combinatorii">Combinatorii<a hidden class="anchor" aria-hidden="true" href="#combinatorii">#</a></h2>
+<p>Combinatorii descriu relația dintre două elemente în arborele documentului. Ia un <code>section</code> care conține un titlu, un <code>div</code> și trei paragrafe — unul dintre ele imbricat în <code>div</code>:</p>
+<pre class="mermaid">flowchart TD
+    sec[&#34;section&#34;] --&gt; hd[&#34;h2&#34;]
+    sec --&gt; dv[&#34;div&#34;]
+    sec --&gt; p1[&#34;p 1&#34;]
+    sec --&gt; p3[&#34;p 3&#34;]
+    dv --&gt; p2[&#34;p 2&#34;]
+    dv --&gt; sp[&#34;span&#34;]
+
+    classDef hit fill:#2d7d46,stroke:#1e5631,color:#ffffff;
+    class p1,p3 hit</pre>
+<p>Paragrafele evidențiate sunt cele pe care le potrivește <code>section &gt; p</code>. Toți cei patru combinatori, citiți pe același arbore:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">section</span> <span class="nt">p</span>    <span class="p">{</span> <span class="p">}</span>   <span class="c">/* descendant: p 1, p 2 și p 3 */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">section</span> <span class="o">&gt;</span> <span class="nt">p</span>  <span class="p">{</span> <span class="p">}</span>   <span class="c">/* child: doar p 1 și p 3 */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">h2</span> <span class="o">+</span> <span class="nt">div</span>     <span class="p">{</span> <span class="p">}</span>   <span class="c">/* adjacent sibling: div-ul */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">h2</span> <span class="o">~</span> <span class="nt">p</span>       <span class="p">{</span> <span class="p">}</span>   <span class="c">/* general sibling: p 1 și p 3 */</span>
+</span></span></code></pre></div><p>Un <strong>spațiu</strong> este combinatorul de descendență — orice adâncime dedesubt. <code>&gt;</code> îl restrânge la copiii direcți, ceea ce vrei ori de câte ori o componentă ar putea conține o copie imbricată a ei însăși.</p>
+<p><code>+</code> potrivește elementul imediat următor, pe același nivel. <code>h2 + p</code> nu potrivește nimic în arborele de mai sus, pentru că <code>div</code>-ul stă între ele. <code>~</code> relaxează cerința la <em>orice</em> frate de mai târziu, așa că <code>div</code>-ul intercalat încetează să mai conteze.</p>
+<p>Nu există niciun combinator pentru direcția inversă — nimic nu selectează un frate anterior sau un părinte. Această lipsă este exact ce acoperă <code>:has()</code>.</p>
+<h2 id="selectorii-de-atribute">Selectorii de atribute<a hidden class="anchor" aria-hidden="true" href="#selectorii-de-atribute">#</a></h2>
+<p>Parantezele drepte potrivesc după atribute, cu sau fără test pe valoare:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Selector</th>
+          <th>Potrivește când</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>[href]</code></td>
+          <td>atributul este prezent, indiferent de valoare</td>
+      </tr>
+      <tr>
+          <td><code>[type=&quot;checkbox&quot;]</code></td>
+          <td>valoarea este exact aceasta</td>
+      </tr>
+      <tr>
+          <td><code>[class~=&quot;card&quot;]</code></td>
+          <td>valoarea este o listă separată prin spații care conține acest cuvânt</td>
+      </tr>
+      <tr>
+          <td><code>[lang|=&quot;en&quot;]</code></td>
+          <td>valoarea este aceasta, sau aceasta urmată de o cratimă — <code>en</code>, <code>en-GB</code></td>
+      </tr>
+      <tr>
+          <td><code>[href^=&quot;https&quot;]</code></td>
+          <td>valoarea începe cu aceasta</td>
+      </tr>
+      <tr>
+          <td><code>[src$=&quot;.svg&quot;]</code></td>
+          <td>valoarea se termină cu aceasta</td>
+      </tr>
+      <tr>
+          <td><code>[href*=&quot;example&quot;]</code></td>
+          <td>valoarea o conține oriunde</td>
+      </tr>
+  </tbody>
+</table>
+<p>Formele <code>~=</code> și <code>|=</code> sunt cele două care se uită. <code>~=</code> există pentru că <code>class</code> este o listă, iar <code>|=</code> există pentru subtag-urile de limbă, motiv pentru care tratează cratima ca pe o graniță.</p>
+<p><code>^=</code>, <code>$=</code> și <code>*=</code> sunt simple teste pe subșiruri și sunt case-sensitive în documentele HTML, cu excepția atributelor pe care HTML însuși le definește ca fiind case-insensitive. Un flag pus la final rezolvă asta explicit:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">$=</span><span class="s2">&#34;.PDF&#34;</span> <span class="nt">i</span><span class="o">]</span> <span class="p">{</span> <span class="p">}</span>   <span class="c">/* case-insensitive */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">*=</span><span class="s2">&#34;cAsE&#34;</span> <span class="nt">s</span><span class="o">]</span> <span class="p">{</span> <span class="p">}</span>   <span class="c">/* forțează case-sensitive */</span>
+</span></span></code></pre></div><p>Flag-ul <code>i</code> este suportat pe scară largă. <code>s</code> este mult mai rar, așa că tratează-l ca pe un moft, nu ca pe ceva pe care să te bazezi.</p>
+<p>Observă că <code>[class~=&quot;card&quot;]</code> este un mod mai lung de a scrie <code>.card</code>, iar <code>[id=&quot;header&quot;]</code> este un <code>#header</code> cu specificitate mai mică — ultimul este ocazional util tocmai pentru că iese din coloana ID-urilor și intră în cea a claselor.</p>
+<h2 id="stările-de-link-și-de-interacțiune">Stările de link și de interacțiune<a hidden class="anchor" aria-hidden="true" href="#stările-de-link-și-de-interacțiune">#</a></h2>
+<p>Selectorii de atribute se potrivesc după ce spune HTML-ul. Pseudo-clasele de stare se potrivesc după ce <em>face</em> elementul în acest moment, iar perechea merită observată: <code>button[disabled]</code> și <code>button:disabled</code> ajung la aceleași butoane pe drumuri diferite.</p>
+<p>Cinci acoperă link-urile și interacțiunea cu pointer-ul:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">a</span><span class="p">:</span><span class="nd">link</span>    <span class="p">{</span> <span class="p">}</span>   <span class="c">/* o ancoră cu href, încă nevizitată */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">a</span><span class="p">:</span><span class="nd">visited</span> <span class="p">{</span> <span class="p">}</span>   <span class="c">/* una pe care utilizatorul a vizitat-o deja */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">a</span><span class="p">:</span><span class="nd">hover</span>   <span class="p">{</span> <span class="p">}</span>   <span class="c">/* pointer-ul se află deasupra ei */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">a</span><span class="p">:</span><span class="nd">active</span>  <span class="p">{</span> <span class="p">}</span>   <span class="c">/* în timpul clicului, între apăsare și eliberare */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">a</span><span class="p">:</span><span class="nd">focus</span>   <span class="p">{</span> <span class="p">}</span>   <span class="c">/* focalizată prin clic, tab sau script */</span>
+</span></span></code></pre></div><p>Ordinea contează aici, pentru că mai multe pot fi adevărate simultan și au specificitate identică — deci câștigă cea scrisă ultima. Secvența consacrată este <code>:link</code>, <code>:visited</code>, <code>:focus</code>, <code>:hover</code>, <code>:active</code>. Pui <code>:visited</code> după <code>:hover</code> și trecerea cu mouse-ul peste un link vizitat va părea că nu face nimic.</p>
+<p><code>:visited</code> este, de asemenea, limitată intenționat. Pentru că citirea stilului ei calculat ar dezvălui istoricul de navigare, browserele o restrâng la o listă scurtă de proprietăți de culoare și mint în <code>getComputedStyle</code> în privința rezultatului. Nu îi poți schimba dimensiunea, nu îi poți da o imagine de fundal și nu o poți folosi în <code>:has()</code>.</p>
+<p>Două adăugiri mai recente sunt, de obicei, ceea ce vrei de fapt:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">button</span><span class="p">:</span><span class="nd">focus-visible</span> <span class="p">{</span> <span class="k">outline</span><span class="p">:</span> <span class="mi">2</span><span class="kt">px</span> <span class="kc">solid</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">form</span><span class="p">:</span><span class="nd">focus-within</span>    <span class="p">{</span> <span class="k">background</span><span class="p">:</span> <span class="mh">#f6f6f6</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p><code>:focus-visible</code> se potrivește doar atunci când browserul consideră că inelul de focus ar trebui afișat — la navigarea cu tastatura da, la un clic de mouse pe un buton nu. Asta rezolvă vechea dilemă dintre un contur care îi enervează pe utilizatorii de mouse și lipsa totală a conturului, care îi lasă descoperiți pe cei care folosesc tastatura. Este disponibilă pe scară largă din martie 2022. <code>:focus-within</code> se potrivește unui element care <em>conține</em> elementul focalizat, așa că un formular se poate evidenția singur cât timp oricare câmp din interiorul lui este activ.</p>
+<h2 id="stările-de-formular-și-de-validare">Stările de formular și de validare<a hidden class="anchor" aria-hidden="true" href="#stările-de-formular-și-de-validare">#</a></h2>
+<p>Pseudo-clasele de formular citesc starea în timp real din chiar mecanismul de validare al browserului, ceea ce înseamnă că o bună parte din feedback nu are deloc nevoie de JavaScript.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Selector</th>
+          <th>Se potrivește cu</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>:enabled</code> / <code>:disabled</code></td>
+          <td>un control care acceptă, sau nu, date de intrare</td>
+      </tr>
+      <tr>
+          <td><code>:checked</code></td>
+          <td>un radio sau checkbox bifat și un <code>&lt;option&gt;</code> selectat</td>
+      </tr>
+      <tr>
+          <td><code>:indeterminate</code></td>
+          <td>un checkbox pus în stare indeterminată din script, un grup de radio fără nimic ales, un <code>&lt;progress&gt;</code> fără valoare</td>
+      </tr>
+      <tr>
+          <td><code>:default</code></td>
+          <td>opțiunea implicită din cadrul unui grup — vezi mai jos</td>
+      </tr>
+      <tr>
+          <td><code>:required</code> / <code>:optional</code></td>
+          <td>un control cu, sau fără, atributul <code>required</code></td>
+      </tr>
+      <tr>
+          <td><code>:valid</code> / <code>:invalid</code></td>
+          <td>conținut care satisface sau nu tipul și constrângerile controlului</td>
+      </tr>
+      <tr>
+          <td><code>:in-range</code> / <code>:out-of-range</code></td>
+          <td>o valoare aflată în interiorul sau în afara limitelor <code>min</code>/<code>max</code></td>
+      </tr>
+      <tr>
+          <td><code>:read-write</code> / <code>:read-only</code></td>
+          <td>editabil, sau nu</td>
+      </tr>
+  </tbody>
+</table>
+<p>Câteva dintre acestea sunt mai înguste — sau mai largi — decât sugerează numele lor.</p>
+<p><code>:default</code> nu înseamnă „un element aflat în starea lui implicită&quot;. Este opțiunea implicită <em>a grupului său</em>: radio-ul sau checkbox-ul care poartă atributul <code>checked</code> în markup, primul <code>&lt;option&gt;</code> selectat, butonul de submit implicit al formularului. Continuă să indice acel element inițial chiar și după ce utilizatorul alege altceva, exact ceea ce o face utilă pentru a marca opțiunea recomandată.</p>
+<p><code>:in-range</code> și <code>:out-of-range</code> se aplică doar câmpurilor care chiar au un <code>min</code> sau un <code>max</code> — un câmp text simplu nu este nici una, nici alta. Un câmp gol nu este nici el vreuna dintre ele, așa că un câmp numeric obligatoriu și neatins nu se va colora în roșu din cauza lui <code>:out-of-range</code>. Aceea este treaba lui <code>:invalid</code>.</p>
+<p><code>:read-only</code> este definită ca tot ceea ce <code>:read-write</code> nu acoperă, ceea ce o face mult mai largă decât formularele. Un paragraf obișnuit este <code>:read-only</code>; un paragraf cu <code>contenteditable</code> este <code>:read-write</code>. Când te referi la „un input cu atributul readonly&quot;, scrie <code>input:read-only</code>.</p>
+<p>Stilizarea validării are o capcană practică. <code>:invalid</code> se potrivește încă de la încărcarea paginii, așa că un câmp obligatoriu gol este marcat ca eroare înainte ca utilizatorul să fi tastat ceva. Combin-o cu <code>:placeholder-shown</code> ca să aștepți până când există ceva de judecat:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">input</span><span class="p">:</span><span class="nd">invalid</span><span class="p">:</span><span class="nd">not</span><span class="o">(</span><span class="p">:</span><span class="nd">placeholder-shown</span><span class="o">)</span> <span class="p">{</span> <span class="k">border-color</span><span class="p">:</span> <span class="kc">crimson</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">input</span><span class="p">:</span><span class="nd">required</span><span class="p">:</span><span class="nd">valid</span>                  <span class="p">{</span> <span class="k">border-color</span><span class="p">:</span> <span class="kc">seagreen</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><h2 id="numărarea-copiilor">Numărarea copiilor<a hidden class="anchor" aria-hidden="true" href="#numărarea-copiilor">#</a></h2>
+<p>Această familie selectează elementele după poziția lor între copiii părintelui:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">first-child</span>       <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">last-child</span>        <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">only-child</span>        <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">3</span><span class="o">)</span>      <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">nth-last-child</span><span class="o">(</span><span class="nt">2</span><span class="o">)</span> <span class="p">{</span> <span class="p">}</span>   <span class="c">/* numărând de la sfârșit */</span>
+</span></span></code></pre></div><p>Citește-le cu atenție, pentru că numele sugerează altceva decât fac. <code>li:first-child</code> nu înseamnă „primul <code>li</code>”. Înseamnă „un <code>li</code> care se întâmplă să fie primul copil al părintelui său” — dacă deasupra elementelor din listă stă un titlu, nu se potrivește nimic. Exact această greșeală o repară secțiunea următoare.</p>
+<p><code>:nth-child()</code> primește o formulă, <code>An+B</code>, unde <code>n</code> ia valorile 0, 1, 2, 3… iar fiecare rezultat care cade pe o poziție reală se potrivește:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">2n</span><span class="o">)</span>   <span class="p">{</span> <span class="p">}</span>   <span class="c">/* 2, 4, 6…  — identic cu :nth-child(even) */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">2n</span><span class="o">+</span><span class="nt">1</span><span class="o">)</span> <span class="p">{</span> <span class="p">}</span>   <span class="c">/* 1, 3, 5…  — identic cu :nth-child(odd)  */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">3n</span><span class="o">+</span><span class="nt">1</span><span class="o">)</span> <span class="p">{</span> <span class="p">}</span>   <span class="c">/* 1, 4, 7…  — începutul fiecărui rând de trei */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">-n</span><span class="o">+</span><span class="nt">3</span><span class="o">)</span> <span class="p">{</span> <span class="p">}</span>   <span class="c">/* primele trei */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">n</span><span class="o">+</span><span class="nt">4</span><span class="o">)</span>  <span class="p">{</span> <span class="p">}</span>   <span class="c">/* de la al patrulea încolo */</span>
+</span></span></code></pre></div><p>Ultimele două sunt trucul care merită ținut minte: un coeficient negativ numără descrescător și îți dă astfel „primele N”, în timp ce un simplu <code>n+B</code> îți dă tot de la B încolo. Înlănțuiește-le ca să obții o felie — <code>li:nth-child(n+3):nth-child(-n+6)</code> înseamnă elementele de la trei la șase.</p>
+<p>Există și o formă <code>of S</code>, care schimbă ce anume se numără:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">-n</span><span class="o">+</span><span class="nt">3</span> <span class="nt">of</span> <span class="p">.</span><span class="nc">featured</span><span class="o">)</span> <span class="p">{</span> <span class="p">}</span>
+</span></span></code></pre></div><p>Aceasta potrivește primele trei elemente <em>featured</em>, oriunde s-ar afla în listă. Scris invers, <code>li.featured:nth-child(-n+3)</code> filtrează primii trei copii, păstrându-i doar pe cei featured — de obicei nu la asta te gândeai. Forma <code>of S</code> a ajuns în ultimul browser în 2023, deci este cam la fel de recentă ca <code>:has()</code> de mai jos.</p>
+<h2 id="numărarea-după-tip">Numărarea după tip<a hidden class="anchor" aria-hidden="true" href="#numărarea-după-tip">#</a></h2>
+<p>Fiecare selector de mai sus are un geamăn <code>-of-type</code>, care numără doar frații cu același nume de element:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">p</span><span class="p">:</span><span class="nd">first-of-type</span>       <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">p</span><span class="p">:</span><span class="nd">last-of-type</span>        <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">p</span><span class="p">:</span><span class="nd">only-of-type</span>        <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">p</span><span class="p">:</span><span class="nd">nth-of-type</span><span class="o">(</span><span class="nt">2</span><span class="o">)</span>      <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">p</span><span class="p">:</span><span class="nd">nth-last-of-type</span><span class="o">(</span><span class="nt">2</span><span class="o">)</span> <span class="p">{</span> <span class="p">}</span>
+</span></span></code></pre></div><p>Diferența merită o imagine. Fie un <code>article</code> ai cărui copii sunt un titlu urmat de trei paragrafe:</p>
+<pre class="mermaid">flowchart TD
+    art[&#34;article&#34;] --&gt; hd[&#34;h2 = copil 1&#34;]
+    art --&gt; p1[&#34;p = copil 2, paragraf 1&#34;]
+    art --&gt; p2[&#34;p = copil 3, paragraf 2&#34;]
+    art --&gt; p3[&#34;p = copil 4, paragraf 3&#34;]
+
+    classDef nthchild fill:#2d7d46,stroke:#1e5631,color:#ffffff;
+    classDef nthtype fill:#2b6cb0,stroke:#1a4971,color:#ffffff;
+    class p1 nthchild
+    class p2 nthtype</pre>
+<p><code>p:nth-child(2)</code> îl potrivește pe cel verde — copilul numărul doi, care se întâmplă să fie un paragraf. <code>p:nth-of-type(2)</code> îl potrivește pe cel albastru — al doilea paragraf, indiferent de poziția lui între copii. Iar <code>p:first-child</code> nu potrivește absolut nimic aici, pentru că primul copil este <code>h2</code>.</p>
+<p>Regula practică: folosește familia <code>-child</code> atunci când poziția în container este ceea ce te interesează, cum ar fi la alternarea culorilor într-un tabel sau într-un grid. Folosește <code>-of-type</code> când vrei să spui „primul paragraf” și nu poți controla ce altceva mai conține containerul.</p>
+<p><code>:only-child</code> și <code>:only-of-type</code> se despart pe aceeași linie. Un element este singurul copil atunci când este unicul copil al părintelui său; este singurul de tipul lui atunci când niciun frate nu are același nume de tag, chiar dacă alte elemente sunt prezente.</p>
+<h2 id="interogări-după-cantitate">Interogări după cantitate<a hidden class="anchor" aria-hidden="true" href="#interogări-după-cantitate">#</a></h2>
+<p>Înlănțuirea a două pseudo-clase de numărare pe același element le transformă într-un test pentru <em>câți</em> frați există — o container query pentru numărul de elemente, scrisă cu ani înainte să existe container queries.</p>
+<p>Trucul se bazează pe faptul că <code>:nth-child()</code> numără de la început, în timp ce <code>:nth-last-child()</code> numără de la sfârșit. Cerându-le pe amândouă deodată, fixezi totalul:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">7</span><span class="o">)</span><span class="p">:</span><span class="nd">last-child</span> <span class="p">{</span> <span class="p">}</span>
+</span></span></code></pre></div><p>Un <code>li</code> care este simultan al șaptelea copil și ultimul copil poate exista doar într-o listă de exact șapte elemente. Într-o listă de șase sau de opt, regula nu se potrivește cu nimic.</p>
+<p>Asta stilizează un singur element. Ca să stilizezi întregul set, potrivește primul element sub aceeași condiție și apoi adună-i frații cu <code>~</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">first-child</span><span class="p">:</span><span class="nd">nth-last-child</span><span class="o">(</span><span class="nt">3</span><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">first-child</span><span class="p">:</span><span class="nd">nth-last-child</span><span class="o">(</span><span class="nt">3</span><span class="o">)</span> <span class="o">~</span> <span class="nt">li</span> <span class="p">{</span> <span class="p">}</span>
+</span></span></code></pre></div><p>„Un prim copil care este și al treilea de la sfârșit&quot; descrie o listă de exact trei elemente; al doilea selector le prinde apoi pe celelalte două. Schimbă formula ca să schimbi testul — <code>:nth-last-child(n+3)</code> pentru trei <em>sau mai multe</em>, <code>:nth-last-child(-n+3)</code> pentru trei sau mai puține, iar amândouă împreună pentru un interval:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">first-child</span><span class="p">:</span><span class="nd">nth-last-child</span><span class="o">(</span><span class="nt">n</span><span class="o">+</span><span class="nt">2</span><span class="o">)</span><span class="p">:</span><span class="nd">nth-last-child</span><span class="o">(</span><span class="nt">-n</span><span class="o">+</span><span class="nt">4</span><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">first-child</span><span class="p">:</span><span class="nd">nth-last-child</span><span class="o">(</span><span class="nt">n</span><span class="o">+</span><span class="nt">2</span><span class="o">)</span><span class="p">:</span><span class="nd">nth-last-child</span><span class="o">(</span><span class="nt">-n</span><span class="o">+</span><span class="nt">4</span><span class="o">)</span> <span class="o">~</span> <span class="nt">li</span> <span class="p">{</span> <span class="p">}</span>
+</span></span></code></pre></div><p>Aceasta se potrivește doar când lista conține între două și patru elemente. Aplicația obișnuită este un layout care ar trebui să își schimbe forma peste un anumit număr — carduri unul lângă altul până când devin cinci, moment în care trec într-un grid — fără să ceri JavaScript-ului să numere ceva.</p>
+<h2 id="pseudo-clasele-logice">Pseudo-clasele logice<a hidden class="anchor" aria-hidden="true" href="#pseudo-clasele-logice">#</a></h2>
+<p>Patru pseudo-clase primesc ca argument o listă de selectori și sunt cea mai utilă adăugire recentă la limbaj.</p>
+<p><code>:not()</code> inversează o potrivire. Începând cu Selectors Level 4 acceptă o listă completă, așa că un singur apel acoperă mai multe excluderi:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">button</span><span class="p">:</span><span class="nd">not</span><span class="o">(</span><span class="p">.</span><span class="nc">primary</span><span class="o">,</span> <span class="p">.</span><span class="nc">danger</span><span class="o">)</span> <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">not</span><span class="o">(</span><span class="p">:</span><span class="nd">last-child</span><span class="o">)</span>           <span class="p">{</span> <span class="k">border-bottom</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p><code>:is()</code> se potrivește dacă oricare selector din listă se potrivește, ceea ce comprimă repetiția combinatorică:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">:</span><span class="nd">is</span><span class="o">(</span><span class="nt">article</span><span class="o">,</span> <span class="nt">aside</span><span class="o">,</span> <span class="nt">section</span><span class="o">)</span> <span class="p">:</span><span class="nd">is</span><span class="o">(</span><span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">)</span> <span class="p">{</span> <span class="n">margin-block-start</span><span class="p">:</span> <span class="mf">1.5</span><span class="kt">rem</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p>Specificitatea ei este cea a argumentului <strong>cel mai specific</strong>, ceea ce ocazional mușcă — <code>:is(#main, p)</code> cântărește cât <code>#main</code> chiar și atunci când a potrivit <code>p</code>-ul.</p>
+<p><code>:where()</code> este <code>:is()</code> cu specificitatea forțată la zero. Asta o face unealta potrivită pentru valori implicite și reset-uri, pentru că orice se scrie mai târziu o bate fără să fie nevoie de <code>!important</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">:</span><span class="nd">where</span><span class="o">(</span><span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">)</span> <span class="p">{</span> <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p>Ambele liste sunt <strong>iertătoare</strong>: un selector nerecunoscut din interiorul lor este sărit, în loc să invalideze regula. Este o metodă sigură de a folosi un selector mai nou păstrând în același stylesheet și varianta de rezervă.</p>
+<p><code>:has()</code> este cea care schimbă ce se poate face. Potrivește un element în funcție de ce conține acel element, așa că elementul pe care îl stilizezi este cel dinaintea celor două puncte:</p>
+<pre class="mermaid">flowchart TD
+    fig[&#34;figure -- elementul stilizat&#34;] --&gt; img[&#34;img&#34;]
+    fig --&gt; cap[&#34;figcaption -- condiția&#34;]
+
+    classDef subject fill:#2d7d46,stroke:#1e5631,color:#ffffff;
+    classDef cond fill:#b7791f,stroke:#7b5310,color:#ffffff;
+    class fig subject
+    class cap cond</pre>
+<p>Argumentul este relativ la acel element, așa că și combinatorii dinăuntru se citesc pornind de acolo:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">figure</span><span class="p">:</span><span class="nd">has</span><span class="o">(</span><span class="nt">figcaption</span><span class="o">)</span>     <span class="p">{</span> <span class="p">}</span>   <span class="c">/* un figure care conține un caption, la orice adâncime */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">label</span><span class="p">:</span><span class="nd">has</span><span class="o">(&gt;</span> <span class="nt">input</span><span class="p">:</span><span class="nd">invalid</span><span class="o">)</span> <span class="p">{</span> <span class="p">}</span>   <span class="c">/* doar un input copil direct */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">h2</span><span class="p">:</span><span class="nd">has</span><span class="o">(+</span> <span class="nt">p</span><span class="o">)</span>                <span class="p">{</span> <span class="p">}</span>   <span class="c">/* un h2 urmat imediat de un paragraf */</span>
+</span></span></code></pre></div><p>Ultimul este selectorul de frate anterior pe care CSS nu l-a avut niciodată, obținut din celălalt capăt. <code>:has()</code> este disponibil pe scară largă din decembrie 2023. Două restricții de reținut: nu poate fi imbricat în alt <code>:has()</code>, iar pseudo-elementele nu sunt valide nici ca argument, nici ca subiect al lui.</p>
+<h2 id="empty-și-câțiva-selectori-răzleți">:empty și câțiva selectori răzleți<a hidden class="anchor" aria-hidden="true" href="#empty-și-câțiva-selectori-răzleți">#</a></h2>
+<p><code>:empty</code> potrivește elementele fără elemente copil <strong>și</strong> fără text — iar spațiul alb contează ca text, așa că un element scris pe două rânduri, cu indentare între tag-uri, nu este gol. Comentariile sunt ignorate, deci nu îl strică.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">td</span><span class="p">:</span><span class="nd">empty</span> <span class="p">{</span> <span class="k">background</span><span class="p">:</span> <span class="mh">#f4f4f4</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p>Este un mod bun de a scoate la iveală markup-ul de tip placeholder pe care un template a uitat să îl completeze și o sursă sigură de confuzie atunci când un newline rătăcit îl împiedică să se potrivească.</p>
+<p>Alți trei merită știuți alături de cei structurali. <code>:root</code> potrivește rădăcina documentului — <code>&lt;html&gt;</code> — și este locul unde stau de obicei custom properties. <code>:target</code> potrivește elementul al cărui ID se află în acel moment în fragmentul din URL, ceea ce îți oferă componente de tip disclosure făcute doar din CSS. <code>:lang(en)</code> potrivește după limbă, urmând aceeași logică de prefix ca <code>[lang|=&quot;en&quot;]</code>, dar respectând moștenirea atributului <code>lang</code> de la un strămoș.</p>
+<h2 id="pseudo-clase-versus-pseudo-elemente">Pseudo-clase versus pseudo-elemente<a hidden class="anchor" aria-hidden="true" href="#pseudo-clase-versus-pseudo-elemente">#</a></h2>
+<p>Tot ce am văzut mai sus folosește două puncte simple, pentru că selectează un element real pe baza unei stări sau a unei poziții. Două puncte duble selectează ceva ce nu se află deloc în document:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">p</span><span class="p">::</span><span class="nd">first-line</span>      <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">p</span><span class="p">::</span><span class="nd">first-letter</span>    <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">::</span><span class="nd">marker</span>         <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">::</span><span class="nd">selection</span>        <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">input</span><span class="p">::</span><span class="nd">placeholder</span> <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">blockquote</span><span class="p">::</span><span class="nd">before</span> <span class="p">{</span> <span class="k">content</span><span class="p">:</span> <span class="s2">&#34;\201C&#34;</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">blockquote</span><span class="p">::</span><span class="nd">after</span>  <span class="p">{</span> <span class="k">content</span><span class="p">:</span> <span class="s2">&#34;\201D&#34;</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p><code>::before</code> și <code>::after</code> creează o cutie în interiorul elementului, înainte și după conținutul lui, și nu fac absolut nimic fără o proprietate <code>content</code> — <code>content: &quot;&quot;</code> este valoarea uzuală atunci când cutia există doar ca să fie stilizată. Niciuna nu funcționează pe un element înlocuit precum <code>&lt;img&gt;</code>, <code>&lt;input&gt;</code> sau <code>&lt;br&gt;</code>, pentru că acestea nu au o cutie de conținut în care să se insereze ceva; învelește elementul într-un container dacă ai nevoie de conținut generat în jurul lui.</p>
+<p>Vei mai vedea <code>:before</code> și <code>:after</code> scrise cu un singur caracter de două puncte. Aceea este sintaxa originală din CSS2, ținută în viață pentru compatibilitate, iar cele patru pseudo-elemente originale acceptă ambele forme. Scrie totuși forma dublă, pentru că nimic adăugat de atunci încoace nu suportă varianta scurtă.</p>
+<p>Distincția mai are o consecință practică: un pseudo-element poate apărea doar la finalul unui selector, motiv pentru care nu poate sta niciodată în interiorul lui <code>:has()</code> și nu poate fi urmat de un combinator.</p>
+<h2 id="trei-tipare-care-merită-furate">Trei tipare care merită furate<a hidden class="anchor" aria-hidden="true" href="#trei-tipare-care-merită-furate">#</a></h2>
+<p><code>* + *</code> — „bufnița lobotomizată&quot; — se potrivește oricărui element care urmează după alt element, adică fiecărui copil în afară de primul. Setează spațierea <em>dintre</em> frați fără să lase o margine rătăcită în partea de sus a containerului:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">stack</span> <span class="o">&gt;</span> <span class="o">*</span> <span class="o">+</span> <span class="o">*</span> <span class="p">{</span> <span class="n">margin-block-start</span><span class="p">:</span> <span class="mf">1.5</span><span class="kt">rem</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p>Varianta de folosit este cea delimitată cu <code>&gt;</code>, ca mai sus. Simplul <code>* + *</code> se aplică fiecărui element din document și este un instrument foarte bont.</p>
+<p><strong>Checkbox hack-ul</strong> combină <code>:checked</code> cu un combinator de frate ca să construiască controale personalizate fără niciun script. Un <code>&lt;label&gt;</code> al cărui <code>for</code> corespunde cu <code>id</code>-ul unui input comută acel input la clic, așa că poți ascunde checkbox-ul real și stiliza label-ul în locul lui:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">&#34;checkbox&#34;</span><span class="o">]</span>          <span class="p">{</span> <span class="k">position</span><span class="p">:</span> <span class="kc">absolute</span><span class="p">;</span> <span class="k">opacity</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">&#34;checkbox&#34;</span><span class="o">]</span> <span class="o">+</span> <span class="nt">label</span>  <span class="p">{</span> <span class="k">background</span><span class="p">:</span> <span class="mh">#333</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">&#34;checkbox&#34;</span><span class="o">]</span><span class="p">:</span><span class="nd">checked</span> <span class="o">+</span> <span class="nt">label</span> <span class="p">{</span> <span class="k">background</span><span class="p">:</span> <span class="kc">orange</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p>Ține input-ul în document și doar fă-l invizibil. <code>display: none</code> îl scoate din arborele de accesibilitate și din focusul cu tastatura, ceea ce strică controlul pentru oricine nu folosește mouse-ul; <code>opacity: 0</code> împreună cu <code>position: absolute</code> îl păstrează focalizabil. Adaugă o regulă <code>:focus-visible</code> pe label ca să readuci inelul de focus.</p>
+<p>În fine, <code>attr()</code> aduce valoarea unui atribut în conținutul generat:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">@</span><span class="k">media</span> <span class="nt">print</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">^=</span><span class="s2">&#34;http&#34;</span><span class="o">]</span><span class="p">::</span><span class="nd">after</span> <span class="p">{</span> <span class="k">content</span><span class="p">:</span> <span class="s2">&#34; (&#34;</span> <span class="nb">attr</span><span class="p">(</span><span class="n">href</span><span class="p">)</span> <span class="s2">&#34;)&#34;</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>O pagină tipărită își pierde destinațiile link-urilor; asta le pune la loc. <code>attr()</code> în interiorul lui <code>content</code> este de încredere din 2015. Folosirea lui în alte proprietăți este o extindere mai nouă și încă experimentală, așa că tratează <code>content</code> drept cazul pe care te poți baza.</p>
+<h2 id="unde-poți-continua">Unde poți continua<a hidden class="anchor" aria-hidden="true" href="#unde-poți-continua">#</a></h2>
+<p>Specificația din spatele a tot ce am parcurs este <a href="https://www.w3.org/TR/selectors-4/">Selectors Level 4</a>, iar <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors">referința de selectori de pe MDN</a> este varianta practică a aceluiași material, cu un tabel de suport în browsere pe fiecare pagină. Când un selector nu face nimic în tăcere, devtools-urile din browser bat orice raționament: lipește selectorul în caseta de căutare din inspectorul de elemente și vezi câte noduri se aprind.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://blog.pakithecat.eu/ro/posts/2026/windows-command-line-cheatsheet/">
+    <span class="title">Înainte »</span>
+    <br>
+    <span>Cheatsheet pentru linia de comandă Windows: fișiere, foldere și rețelistică</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cheatsheet pentru Selectorii CSS on x"
+            href="https://x.com/intent/tweet/?text=Cheatsheet%20pentru%20Selectorii%20CSS&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fcss-selectors-cheatsheet%2f&amp;hashtags=cheatsheet%2ccss">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cheatsheet pentru Selectorii CSS on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fcss-selectors-cheatsheet%2f&amp;title=Cheatsheet%20pentru%20Selectorii%20CSS&amp;summary=Cheatsheet%20pentru%20Selectorii%20CSS&amp;source=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fcss-selectors-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cheatsheet pentru Selectorii CSS on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fcss-selectors-cheatsheet%2f&title=Cheatsheet%20pentru%20Selectorii%20CSS">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cheatsheet pentru Selectorii CSS on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fcss-selectors-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cheatsheet pentru Selectorii CSS on whatsapp"
+            href="https://api.whatsapp.com/send?text=Cheatsheet%20pentru%20Selectorii%20CSS%20-%20https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fcss-selectors-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cheatsheet pentru Selectorii CSS on telegram"
+            href="https://telegram.me/share/url?text=Cheatsheet%20pentru%20Selectorii%20CSS&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fcss-selectors-cheatsheet%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cheatsheet pentru Selectorii CSS on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Cheatsheet%20pentru%20Selectorii%20CSS&u=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2fcss-selectors-cheatsheet%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>© <a href="https://github.com/concosminx">concosminx</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copiază';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copiat!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copiază';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

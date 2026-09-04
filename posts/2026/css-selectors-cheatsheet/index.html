@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>CSS Selectors Cheatsheet | What I Did All Week</title>
+<meta name="keywords" content="cheatsheet, css">
+<meta name="description" content="The full grammar of CSS selectors — combinators, attribute matching, the structural pseudo-classes that count children, and the logical ones that finally let you style a parent.">
+<meta name="author" content="Me">
+<link rel="canonical" href="https://blog.pakithecat.eu/posts/2026/css-selectors-cheatsheet/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.5b00859891919f07af6a53834e3f9f8f331db42cc5f024277803b41a6758e47a.css" integrity="sha256-WwCFmJGRnwevalODTj&#43;fjzMdtCzF8CQneAO0GmdY5Ho=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.pakithecat.eu/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.pakithecat.eu/icons/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.pakithecat.eu/icons/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.pakithecat.eu/icons/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.pakithecat.eu/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://blog.pakithecat.eu/posts/2026/css-selectors-cheatsheet/">
+<link rel="alternate" hreflang="ro" href="https://blog.pakithecat.eu/ro/posts/2026/css-selectors-cheatsheet/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script type="module">
+    const blocks = [...document.querySelectorAll('pre.mermaid')];
+    if (blocks.length) {
+        const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs');
+
+        
+        blocks.forEach((el) => { el.dataset.mermaidSrc = el.textContent; });
+
+        const currentTheme = () => document.body.classList.contains('dark') ? 'dark' : 'default';
+
+        const render = () => {
+            blocks.forEach((el) => {
+                el.removeAttribute('data-processed');
+                el.textContent = el.dataset.mermaidSrc;
+            });
+            mermaid.initialize({ startOnLoad: false, theme: currentTheme() });
+            return mermaid.run({ nodes: blocks });
+        };
+
+        await render();
+
+        
+        let lastTheme = currentTheme();
+        new MutationObserver(() => {
+            const theme = currentTheme();
+            if (theme === lastTheme) return;
+            lastTheme = theme;
+            render();
+        }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    }
+</script>
+<meta property="og:url" content="https://blog.pakithecat.eu/posts/2026/css-selectors-cheatsheet/">
+  <meta property="og:site_name" content="What I Did All Week">
+  <meta property="og:title" content="CSS Selectors Cheatsheet">
+  <meta property="og:description" content="The full grammar of CSS selectors — combinators, attribute matching, the structural pseudo-classes that count children, and the logical ones that finally let you style a parent.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-09-04T17:00:00+03:00">
+    <meta property="article:modified_time" content="2026-09-04T17:00:00+03:00">
+    <meta property="article:tag" content="Cheatsheet">
+    <meta property="article:tag" content="Css">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS Selectors Cheatsheet">
+<meta name="twitter:description" content="The full grammar of CSS selectors — combinators, attribute matching, the structural pseudo-classes that count children, and the logical ones that finally let you style a parent.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.pakithecat.eu/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "CSS Selectors Cheatsheet",
+      "item": "https://blog.pakithecat.eu/posts/2026/css-selectors-cheatsheet/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "CSS Selectors Cheatsheet",
+  "name": "CSS Selectors Cheatsheet",
+  "description": "The full grammar of CSS selectors — combinators, attribute matching, the structural pseudo-classes that count children, and the logical ones that finally let you style a parent.",
+  "keywords": [
+    "cheatsheet", "css"
+  ],
+  "articleBody": "Most people write CSS with four selectors — the tag name, the class, the ID, and a space between two of them — and improvise the rest by adding another class whenever the styling refuses to land. That works, right up until you need the third item in a list, or every input that follows a checked checkbox, or a card that happens to contain an image.\nThe full selector grammar is not large. It is a handful of symbols — \u003e, +, ~, [], :, :: — and a counting syntax that looks worse than it is. What follows walks through all of it, in the order the pieces build on each other.\nMatching by name, class and ID Three selectors do most of the work, and one matches everything:\np { } /* type selector: every */ .card { } /* class selector: class=\"card\" */ #header { } /* ID selector: id=\"header\" */ * { } /* universal selector: every element */ Written next to each other with no space, they form a compound selector — a set of conditions that must all hold for the same element:\na.button { } /* an that also has class=\"button\" */ input.field.error { } /* both classes, on one */ The space matters enormously here. a.button is one element satisfying two conditions; a .button is two elements in an ancestor relationship. This is the most common typo in CSS, and it fails silently.\nID selectors are best avoided in day-to-day styling, and the reason is specificity.\nSpecificity, briefly When two rules set the same property on the same element, the more specific selector wins regardless of source order. Specificity is counted as three numbers, compared left to right:\nComponent Counts in Examples ID the first column #header Class, attribute, pseudo-class the second .card, [type=\"text\"], :hover Type, pseudo-element the third div, ::before The universal selector * and the combinators contribute nothing. Inline style attributes outrank all of it, and !important sits outside the system entirely.\nSo #header .title (1-1-0) beats .page .header .title span (0-3-1), no matter how much more precise the second one looks. A single ID is unbeatable by any quantity of classes, which is why a stylesheet built on IDs tends to escalate into !important within a few months. Classes keep the numbers flat and the cascade arguable.\nSelector lists A comma applies one block to several independent selectors:\nh1, h2, h3 { margin-block: 0; } The comma is not a combinator — it describes no relationship, it just avoids repetition. One caveat: if the browser cannot parse any selector in a plain comma-separated list, it discards the entire rule. :is() and :where(), further down, fix exactly that.\nCombinators Combinators describe how two elements relate in the document tree. Take a section holding a heading, a div, and three paragraphs — one of them nested inside the div:\nflowchart TD sec[\"section\"] --\u003e hd[\"h2\"] sec --\u003e dv[\"div\"] sec --\u003e p1[\"p 1\"] sec --\u003e p3[\"p 3\"] dv --\u003e p2[\"p 2\"] dv --\u003e sp[\"span\"] classDef hit fill:#2d7d46,stroke:#1e5631,color:#ffffff; class p1,p3 hit The highlighted paragraphs are the ones section \u003e p matches. All four combinators, read against that same tree:\nsection p { } /* descendant: p 1, p 2 and p 3 */ section \u003e p { } /* child: p 1 and p 3 only */ h2 + div { } /* adjacent sibling: the div */ h2 ~ p { } /* general sibling: p 1 and p 3 */ A space is the descendant combinator — any depth below. \u003e narrows that to direct children, which is what you want whenever a component might contain a nested copy of itself.\n+ matches the element immediately after another at the same level. h2 + p matches nothing in that tree, because the div sits between them. ~ relaxes the requirement to any later sibling, so the intervening div stops mattering.\nThere is no combinator for the reverse direction — nothing selects a previous sibling or a parent. That gap is what :has() closes.\nAttribute selectors Square brackets match on attributes, with or without a value test:\nSelector Matches when [href] the attribute is present, whatever its value [type=\"checkbox\"] the value is exactly this [class~=\"card\"] the value is a space-separated list containing this word [lang|=\"en\"] the value is this, or this followed by a hyphen — en, en-GB [href^=\"https\"] the value starts with this [src$=\".svg\"] the value ends with this [href*=\"example\"] the value contains this anywhere The ~= and |= forms are the two that get forgotten. ~= exists because class is a list, and |= exists for language subtags, which is why it treats a hyphen as a boundary.\n^=, $= and *= are plain substring tests, and they are case-sensitive in HTML documents unless the attribute is one that HTML itself defines as case-insensitive. A trailing flag settles it explicitly:\na[href$=\".PDF\" i] { } /* case-insensitive */ a[href*=\"cAsE\" s] { } /* force case-sensitive */ The i flag is broadly supported. s is much rarer, so treat it as a nicety rather than something to depend on.\nNote that [class~=\"card\"] is a longer way to write .card, and [id=\"header\"] is a lower-specificity #header — the latter is occasionally useful precisely because it drops out of the ID column and into the class column.\nLink and interaction states Attribute selectors match what the HTML says. State pseudo-classes match what the element is doing right now, and the pair is worth noticing: button[disabled] and button:disabled reach the same buttons by different routes.\nFive cover links and pointer interaction:\na:link { } /* an anchor with an href, not yet visited */ a:visited { } /* one the user has been to */ a:hover { } /* the pointer is over it */ a:active { } /* mid-click, between press and release */ a:focus { } /* focused by click, tab or script */ Order matters here, because several can be true at once and they carry identical specificity — so whichever is written last wins. The conventional sequence is :link, :visited, :focus, :hover, :active. Put :visited after :hover and hovering a visited link will appear to do nothing.\n:visited is also deliberately crippled. Because reading its computed style would leak browsing history, browsers restrict it to a short list of colour properties and lie to getComputedStyle about the result. You cannot change its size, give it a background image, or match it inside :has().\nTwo later additions are usually what you actually want:\nbutton:focus-visible { outline: 2px solid; } form:focus-within { background: #f6f6f6; } :focus-visible matches only when the browser judges that a focus ring ought to be shown — keyboard navigation yes, a mouse click on a button no. That resolves the old dilemma between an outline that irritates mouse users and no outline at all, which strands keyboard users. It has been widely available since March 2022. :focus-within matches an element that contains the focused element, so a form can highlight itself while any field inside it is active.\nForm and validation states The form pseudo-classes read live state out of the browser’s own validation machinery, which means a good deal of feedback needs no JavaScript at all.\nSelector Matches :enabled / :disabled a control that is, or is not, accepting input :checked a checked radio or checkbox, and a selected :indeterminate a checkbox set indeterminate from script, a radio group with nothing chosen, a with no value :default the default choice within a group — see below :required / :optional a control with, or without, the required attribute :valid / :invalid contents that do or do not satisfy the control’s type and constraints :in-range / :out-of-range a value inside or outside the min/max bounds :read-write / :read-only editable, or not Several of these are narrower — or wider — than their names suggest.\n:default is not “an element in its default state”. It is the default of its group: the radio or checkbox carrying the checked attribute in the markup, the first selected , the form’s default submit button. It keeps pointing at that original element even after the user chooses something else, which is exactly what makes it useful for marking the recommended option.\n:in-range and :out-of-range apply only to inputs that genuinely have a min or max — a plain text field is neither one. An empty input is also neither, so an untouched required number field will not turn red from :out-of-range. That is :invalid’s job.\n:read-only is defined as everything :read-write does not match, which makes it far broader than forms. An ordinary paragraph is :read-only; a paragraph with contenteditable is :read-write. When you mean “an input carrying the readonly attribute”, write input:read-only.\nValidation styling has one practical trap. :invalid matches from page load, so an empty required field is flagged as an error before the user has typed anything. Pair it with :placeholder-shown to hold off until there is something to judge:\ninput:invalid:not(:placeholder-shown) { border-color: crimson; } input:required:valid { border-color: seagreen; } Counting children This family selects elements by their position among their parent’s children:\nli:first-child { } li:last-child { } li:only-child { } li:nth-child(3) { } li:nth-last-child(2) { } /* counting from the end */ Read these carefully, because the names suggest the wrong thing. li:first-child does not mean “the first li”. It means “an li that happens to be the first child of its parent” — if a heading sits above the list items, nothing matches at all. That is the mistake the next section exists to fix.\n:nth-child() takes a formula, An+B, where n runs 0, 1, 2, 3… and every result landing on a real position matches:\nli:nth-child(2n) { } /* 2, 4, 6… — same as :nth-child(even) */ li:nth-child(2n+1) { } /* 1, 3, 5… — same as :nth-child(odd) */ li:nth-child(3n+1) { } /* 1, 4, 7… — the start of each row of three */ li:nth-child(-n+3) { } /* the first three */ li:nth-child(n+4) { } /* the fourth onwards */ The last two are the trick worth memorising: a negative coefficient counts downwards and so gives you a “first N”, while a bare n+B gives you everything from B on. Chain them to take a slice — li:nth-child(n+3):nth-child(-n+6) is items three through six.\nThere is also an of S form, which changes what gets counted:\nli:nth-child(-n+3 of .featured) { } That matches the first three featured items, wherever they sit in the list. Written the other way round, li.featured:nth-child(-n+3) filters the first three children down to those that are featured — usually not what you meant. The of S form landed in the last browser in 2023, so it is about as fresh as :has() below.\nCounting by type Every selector above has a -of-type twin that counts only siblings sharing the same element name:\np:first-of-type { } p:last-of-type { } p:only-of-type { } p:nth-of-type(2) { } p:nth-last-of-type(2) { } The difference is worth a picture. Given an article whose children are a heading followed by three paragraphs:\nflowchart TD art[\"article\"] --\u003e hd[\"h2 = child 1\"] art --\u003e p1[\"p = child 2, paragraph 1\"] art --\u003e p2[\"p = child 3, paragraph 2\"] art --\u003e p3[\"p = child 4, paragraph 3\"] classDef nthchild fill:#2d7d46,stroke:#1e5631,color:#ffffff; classDef nthtype fill:#2b6cb0,stroke:#1a4971,color:#ffffff; class p1 nthchild class p2 nthtype p:nth-child(2) matches the green one — child number two, which happens to be a paragraph. p:nth-of-type(2) matches the blue one — the second paragraph, whatever its position among the children. And p:first-child matches nothing at all here, because child number one is the h2.\nThe rule of thumb: reach for the -child family when position inside the container is the thing you care about, such as striping a table or a grid. Reach for -of-type when you mean “the first paragraph” and cannot control what else the container holds.\n:only-child and :only-of-type divide along the same line. An element is an only child when it is its parent’s sole child; it is the only one of its type when no sibling shares its tag name, even if other elements are present.\nQuantity queries Chaining two counting pseudo-classes onto the same element turns them into a test of how many siblings there are — a container query for element count, written years before container queries existed.\nThe trick rests on :nth-child() counting from the start while :nth-last-child() counts from the end. Requiring both at once pins down the total:\nli:nth-child(7):last-child { } An li that is simultaneously the seventh child and the last child can only exist in a list of exactly seven. In a list of six or eight, the rule matches nothing.\nThat styles one item. To style the whole set, match the first item under the same condition and then sweep up its siblings with ~:\nli:first-child:nth-last-child(3), li:first-child:nth-last-child(3) ~ li { } “A first child that is also third from the end” describes a list of exactly three; the second selector then catches the other two. Change the formula to change the test — :nth-last-child(n+3) for three or more, :nth-last-child(-n+3) for three or fewer, and both together for a range:\nli:first-child:nth-last-child(n+2):nth-last-child(-n+4), li:first-child:nth-last-child(n+2):nth-last-child(-n+4) ~ li { } That matches only when the list holds between two and four items. The usual application is a layout that should change shape past a certain count — cards side by side until there are five of them, at which point they wrap into a grid — without asking JavaScript to count anything.\nLogical pseudo-classes Four pseudo-classes take a selector list as their argument, and they are the most useful recent addition to the language.\n:not() inverts a match. Since Selectors Level 4 it accepts a full list, so one call covers several exclusions:\nbutton:not(.primary, .danger) { } li:not(:last-child) { border-bottom: 1px solid; } :is() matches if any selector in the list matches, which collapses combinatorial repetition:\n:is(article, aside, section) :is(h1, h2, h3) { margin-block-start: 1.5rem; } Its specificity is that of its most specific argument, which occasionally bites — :is(#main, p) weighs as much as #main even on the occasions it matched the p.\n:where() is :is() with the specificity forced to zero. That makes it the right tool for defaults and resets, because anything written later beats it without needing !important:\n:where(h1, h2, h3) { margin: 0; } Both lists are forgiving: an unrecognised selector inside them is skipped instead of invalidating the rule. That is a safe way to use a newer selector while keeping a fallback in the same stylesheet.\n:has() is the one that changes what is possible. It matches an element based on what that element contains, so the thing you style is the one before the colon:\nflowchart TD fig[\"figure -- the element being styled\"] --\u003e img[\"img\"] fig --\u003e cap[\"figcaption -- the condition\"] classDef subject fill:#2d7d46,stroke:#1e5631,color:#ffffff; classDef cond fill:#b7791f,stroke:#7b5310,color:#ffffff; class fig subject class cap cond The argument is relative to that element, so combinators inside it are read starting from there:\nfigure:has(figcaption) { } /* a figure containing a caption, at any depth */ label:has(\u003e input:invalid) { } /* only a direct child input */ h2:has(+ p) { } /* an h2 immediately followed by a paragraph */ That last one is the previous-sibling selector CSS never had, arrived at from the other end. :has() has been widely available since December 2023. Two restrictions to know: it cannot be nested inside another :has(), and pseudo-elements are valid neither as its argument nor as its subject.\n:empty and a few strays :empty matches elements with no child elements and no text — and whitespace counts as text, so an element written across two lines with indentation between the tags is not empty. Comments are ignored, so they do not break it.\ntd:empty { background: #f4f4f4; } It is a good way to reveal placeholder markup a template forgot to fill, and a reliable source of confusion when a stray newline keeps it from matching.\nThree more worth knowing alongside the structural ones. :root matches the document root — — and is where custom properties usually live. :target matches the element whose ID is currently in the URL fragment, which gets you pure-CSS disclosure widgets. :lang(en) matches by language, following the same prefix logic as [lang|=\"en\"] but respecting inheritance from an ancestor’s lang attribute.\nPseudo-classes versus pseudo-elements Everything above uses a single colon, because it selects a real element on the basis of some state or position. A double colon selects something that is not in the document at all:\np::first-line { } p::first-letter { } li::marker { } ::selection { } input::placeholder { } blockquote::before { content: \"\\201C\"; } blockquote::after { content: \"\\201D\"; } ::before and ::after create a box inside the element, before and after its content, and do nothing whatsoever without a content property — content: \"\" is the usual value when the box exists only to be styled. Neither works on a replaced element such as , or , because those have no content box to insert into; wrap the element in a container if you need generated content around it.\nYou will still see :before and :after written with one colon. That is the original CSS2 syntax, kept alive for compatibility, and the four original pseudo-elements accept either form. Write the double colon anyway, because nothing added since supports the short version.\nThe distinction has one more practical consequence: a pseudo-element can only appear at the very end of a selector, which is why it can never sit inside :has() or be followed by a combinator.\nThree patterns worth stealing * + * — the “lobotomised owl” — matches every element that follows another element, which is to say every child except the first. It sets spacing between siblings without leaving a stray margin at the top of the container:\n.stack \u003e * + * { margin-block-start: 1.5rem; } Scoping it with \u003e as above is the version to use. The bare * + * applies to every element in the document and is a very blunt instrument.\nThe checkbox hack combines :checked with a sibling combinator to build custom controls with no script at all. A whose for matches an input’s id toggles that input when clicked, so you can hide the real checkbox and style the label in its place:\ninput[type=\"checkbox\"] { position: absolute; opacity: 0; } input[type=\"checkbox\"] + label { background: #333; } input[type=\"checkbox\"]:checked + label { background: orange; } Keep the input in the document and merely invisible. display: none removes it from the accessibility tree and from keyboard focus, which breaks the control for anyone not using a mouse; opacity: 0 with position: absolute keeps it focusable. Add a :focus-visible rule on the label to restore the focus ring.\nFinally, attr() pulls an attribute’s value into generated content:\n@media print { a[href^=\"http\"]::after { content: \" (\" attr(href) \")\"; } } A printed page loses its link targets; this puts them back. attr() inside content has been reliable since 2015. Using it in other properties is a newer, still experimental extension, so treat content as the case you can depend on.\nWhere to go next The specification behind all of this is Selectors Level 4, and MDN’s selector reference is the practical version of the same material, with a browser support table on every page. When a selector silently does nothing, browser devtools beat reasoning about it: paste the selector into the element inspector’s search box and see how many nodes light up.\n",
+  "wordCount" : "3237",
+  "inLanguage": "en",
+  "datePublished": "2026-09-04T17:00:00+03:00",
+  "dateModified": "2026-09-04T17:00:00+03:00",
+  "author":{
+    "@type": "Person",
+    "name": "Me"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.pakithecat.eu/posts/2026/css-selectors-cheatsheet/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "What I Did All Week",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.pakithecat.eu/icons/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.pakithecat.eu/" accesskey="h" title="What I Did All Week (Alt + H)">What I Did All Week</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://blog.pakithecat.eu/ro/" title="Romanian"
+                            aria-label="🇷🇴">🇷🇴</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.pakithecat.eu/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/concosminx/hugo-blog" title="Repo">
+                    <span>Repo</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://blog.pakithecat.eu/">Home</a>&nbsp;»&nbsp;<a href="https://blog.pakithecat.eu/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      CSS Selectors Cheatsheet
+    </h1>
+    <div class="post-description">
+      The full grammar of CSS selectors — combinators, attribute matching, the structural pseudo-classes that count children, and the logical ones that finally let you style a parent.
+    </div>
+    <div class="post-meta"><span title='2026-09-04 17:00:00 +0300 +0300'>September 4, 2026</span>&nbsp;·&nbsp;16 min&nbsp;·&nbsp;3237 words&nbsp;·&nbsp;Me&nbsp;|&nbsp;Translations:
+<ul class="i18n_list">
+    <li>
+        <a href="https://blog.pakithecat.eu/ro/posts/2026/css-selectors-cheatsheet/">🇷🇴</a>
+    </li>
+</ul>&nbsp;|&nbsp;<a href="https://github.com/concosminx/hugo-blog/tree/main/content/posts/2026/css-selectors-cheatsheet/index.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#matching-by-name-class-and-id" aria-label="Matching by name, class and ID">Matching by name, class and ID</a></li>
+                <li>
+                    <a href="#specificity-briefly" aria-label="Specificity, briefly">Specificity, briefly</a></li>
+                <li>
+                    <a href="#selector-lists" aria-label="Selector lists">Selector lists</a></li>
+                <li>
+                    <a href="#combinators" aria-label="Combinators">Combinators</a></li>
+                <li>
+                    <a href="#attribute-selectors" aria-label="Attribute selectors">Attribute selectors</a></li>
+                <li>
+                    <a href="#link-and-interaction-states" aria-label="Link and interaction states">Link and interaction states</a></li>
+                <li>
+                    <a href="#form-and-validation-states" aria-label="Form and validation states">Form and validation states</a></li>
+                <li>
+                    <a href="#counting-children" aria-label="Counting children">Counting children</a></li>
+                <li>
+                    <a href="#counting-by-type" aria-label="Counting by type">Counting by type</a></li>
+                <li>
+                    <a href="#quantity-queries" aria-label="Quantity queries">Quantity queries</a></li>
+                <li>
+                    <a href="#logical-pseudo-classes" aria-label="Logical pseudo-classes">Logical pseudo-classes</a></li>
+                <li>
+                    <a href="#empty-and-a-few-strays" aria-label=":empty and a few strays">:empty and a few strays</a></li>
+                <li>
+                    <a href="#pseudo-classes-versus-pseudo-elements" aria-label="Pseudo-classes versus pseudo-elements">Pseudo-classes versus pseudo-elements</a></li>
+                <li>
+                    <a href="#three-patterns-worth-stealing" aria-label="Three patterns worth stealing">Three patterns worth stealing</a></li>
+                <li>
+                    <a href="#where-to-go-next" aria-label="Where to go next">Where to go next</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Most people write CSS with four selectors — the tag name, the class, the ID, and a space between two of them — and improvise the rest by adding another class whenever the styling refuses to land. That works, right up until you need the third item in a list, or every input that follows a checked checkbox, or a card that happens to contain an image.</p>
+<p>The full selector grammar is not large. It is a handful of symbols — <code>&gt;</code>, <code>+</code>, <code>~</code>, <code>[]</code>, <code>:</code>, <code>::</code> — and a counting syntax that looks worse than it is. What follows walks through all of it, in the order the pieces build on each other.</p>
+<h2 id="matching-by-name-class-and-id">Matching by name, class and ID<a hidden class="anchor" aria-hidden="true" href="#matching-by-name-class-and-id">#</a></h2>
+<p>Three selectors do most of the work, and one matches everything:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">p</span>        <span class="p">{</span> <span class="p">}</span>   <span class="c">/* type selector: every &lt;p&gt; */</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">card</span>    <span class="p">{</span> <span class="p">}</span>   <span class="c">/* class selector: class=&#34;card&#34; */</span>
+</span></span><span class="line"><span class="cl"><span class="p">#</span><span class="nn">header</span>  <span class="p">{</span> <span class="p">}</span>   <span class="c">/* ID selector: id=&#34;header&#34; */</span>
+</span></span><span class="line"><span class="cl"><span class="o">*</span>        <span class="p">{</span> <span class="p">}</span>   <span class="c">/* universal selector: every element */</span>
+</span></span></code></pre></div><p>Written next to each other with no space, they form a <strong>compound selector</strong> — a set of conditions that must all hold for the same element:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">a</span><span class="p">.</span><span class="nc">button</span>          <span class="p">{</span> <span class="p">}</span>   <span class="c">/* an &lt;a&gt; that also has class=&#34;button&#34; */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">input</span><span class="p">.</span><span class="nc">field</span><span class="p">.</span><span class="nc">error</span> <span class="p">{</span> <span class="p">}</span>   <span class="c">/* both classes, on one &lt;input&gt; */</span>
+</span></span></code></pre></div><p>The space matters enormously here. <code>a.button</code> is one element satisfying two conditions; <code>a .button</code> is two elements in an ancestor relationship. This is the most common typo in CSS, and it fails silently.</p>
+<p>ID selectors are best avoided in day-to-day styling, and the reason is specificity.</p>
+<h2 id="specificity-briefly">Specificity, briefly<a hidden class="anchor" aria-hidden="true" href="#specificity-briefly">#</a></h2>
+<p>When two rules set the same property on the same element, the more specific selector wins regardless of source order. Specificity is counted as three numbers, compared left to right:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Component</th>
+          <th>Counts in</th>
+          <th>Examples</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ID</td>
+          <td>the first column</td>
+          <td><code>#header</code></td>
+      </tr>
+      <tr>
+          <td>Class, attribute, pseudo-class</td>
+          <td>the second</td>
+          <td><code>.card</code>, <code>[type=&quot;text&quot;]</code>, <code>:hover</code></td>
+      </tr>
+      <tr>
+          <td>Type, pseudo-element</td>
+          <td>the third</td>
+          <td><code>div</code>, <code>::before</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>The universal selector <code>*</code> and the combinators contribute nothing. Inline <code>style</code> attributes outrank all of it, and <code>!important</code> sits outside the system entirely.</p>
+<p>So <code>#header .title</code> (1-1-0) beats <code>.page .header .title span</code> (0-3-1), no matter how much more precise the second one looks. A single ID is unbeatable by any quantity of classes, which is why a stylesheet built on IDs tends to escalate into <code>!important</code> within a few months. Classes keep the numbers flat and the cascade arguable.</p>
+<h2 id="selector-lists">Selector lists<a hidden class="anchor" aria-hidden="true" href="#selector-lists">#</a></h2>
+<p>A comma applies one block to several independent selectors:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span> <span class="p">{</span> <span class="n">margin-block</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p>The comma is not a combinator — it describes no relationship, it just avoids repetition. One caveat: if the browser cannot parse <strong>any</strong> selector in a plain comma-separated list, it discards the entire rule. <code>:is()</code> and <code>:where()</code>, further down, fix exactly that.</p>
+<h2 id="combinators">Combinators<a hidden class="anchor" aria-hidden="true" href="#combinators">#</a></h2>
+<p>Combinators describe how two elements relate in the document tree. Take a <code>section</code> holding a heading, a <code>div</code>, and three paragraphs — one of them nested inside the <code>div</code>:</p>
+<pre class="mermaid">flowchart TD
+    sec[&#34;section&#34;] --&gt; hd[&#34;h2&#34;]
+    sec --&gt; dv[&#34;div&#34;]
+    sec --&gt; p1[&#34;p 1&#34;]
+    sec --&gt; p3[&#34;p 3&#34;]
+    dv --&gt; p2[&#34;p 2&#34;]
+    dv --&gt; sp[&#34;span&#34;]
+
+    classDef hit fill:#2d7d46,stroke:#1e5631,color:#ffffff;
+    class p1,p3 hit</pre>
+<p>The highlighted paragraphs are the ones <code>section &gt; p</code> matches. All four combinators, read against that same tree:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">section</span> <span class="nt">p</span>    <span class="p">{</span> <span class="p">}</span>   <span class="c">/* descendant: p 1, p 2 and p 3 */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">section</span> <span class="o">&gt;</span> <span class="nt">p</span>  <span class="p">{</span> <span class="p">}</span>   <span class="c">/* child: p 1 and p 3 only */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">h2</span> <span class="o">+</span> <span class="nt">div</span>     <span class="p">{</span> <span class="p">}</span>   <span class="c">/* adjacent sibling: the div */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">h2</span> <span class="o">~</span> <span class="nt">p</span>       <span class="p">{</span> <span class="p">}</span>   <span class="c">/* general sibling: p 1 and p 3 */</span>
+</span></span></code></pre></div><p>A <strong>space</strong> is the descendant combinator — any depth below. <code>&gt;</code> narrows that to direct children, which is what you want whenever a component might contain a nested copy of itself.</p>
+<p><code>+</code> matches the element immediately after another at the same level. <code>h2 + p</code> matches nothing in that tree, because the <code>div</code> sits between them. <code>~</code> relaxes the requirement to <em>any</em> later sibling, so the intervening <code>div</code> stops mattering.</p>
+<p>There is no combinator for the reverse direction — nothing selects a previous sibling or a parent. That gap is what <code>:has()</code> closes.</p>
+<h2 id="attribute-selectors">Attribute selectors<a hidden class="anchor" aria-hidden="true" href="#attribute-selectors">#</a></h2>
+<p>Square brackets match on attributes, with or without a value test:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Selector</th>
+          <th>Matches when</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>[href]</code></td>
+          <td>the attribute is present, whatever its value</td>
+      </tr>
+      <tr>
+          <td><code>[type=&quot;checkbox&quot;]</code></td>
+          <td>the value is exactly this</td>
+      </tr>
+      <tr>
+          <td><code>[class~=&quot;card&quot;]</code></td>
+          <td>the value is a space-separated list containing this word</td>
+      </tr>
+      <tr>
+          <td><code>[lang|=&quot;en&quot;]</code></td>
+          <td>the value is this, or this followed by a hyphen — <code>en</code>, <code>en-GB</code></td>
+      </tr>
+      <tr>
+          <td><code>[href^=&quot;https&quot;]</code></td>
+          <td>the value starts with this</td>
+      </tr>
+      <tr>
+          <td><code>[src$=&quot;.svg&quot;]</code></td>
+          <td>the value ends with this</td>
+      </tr>
+      <tr>
+          <td><code>[href*=&quot;example&quot;]</code></td>
+          <td>the value contains this anywhere</td>
+      </tr>
+  </tbody>
+</table>
+<p>The <code>~=</code> and <code>|=</code> forms are the two that get forgotten. <code>~=</code> exists because <code>class</code> is a list, and <code>|=</code> exists for language subtags, which is why it treats a hyphen as a boundary.</p>
+<p><code>^=</code>, <code>$=</code> and <code>*=</code> are plain substring tests, and they are case-sensitive in HTML documents unless the attribute is one that HTML itself defines as case-insensitive. A trailing flag settles it explicitly:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">$=</span><span class="s2">&#34;.PDF&#34;</span> <span class="nt">i</span><span class="o">]</span> <span class="p">{</span> <span class="p">}</span>   <span class="c">/* case-insensitive */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">*=</span><span class="s2">&#34;cAsE&#34;</span> <span class="nt">s</span><span class="o">]</span> <span class="p">{</span> <span class="p">}</span>   <span class="c">/* force case-sensitive */</span>
+</span></span></code></pre></div><p>The <code>i</code> flag is broadly supported. <code>s</code> is much rarer, so treat it as a nicety rather than something to depend on.</p>
+<p>Note that <code>[class~=&quot;card&quot;]</code> is a longer way to write <code>.card</code>, and <code>[id=&quot;header&quot;]</code> is a lower-specificity <code>#header</code> — the latter is occasionally useful precisely because it drops out of the ID column and into the class column.</p>
+<h2 id="link-and-interaction-states">Link and interaction states<a hidden class="anchor" aria-hidden="true" href="#link-and-interaction-states">#</a></h2>
+<p>Attribute selectors match what the HTML says. State pseudo-classes match what the element is <em>doing</em> right now, and the pair is worth noticing: <code>button[disabled]</code> and <code>button:disabled</code> reach the same buttons by different routes.</p>
+<p>Five cover links and pointer interaction:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">a</span><span class="p">:</span><span class="nd">link</span>    <span class="p">{</span> <span class="p">}</span>   <span class="c">/* an anchor with an href, not yet visited */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">a</span><span class="p">:</span><span class="nd">visited</span> <span class="p">{</span> <span class="p">}</span>   <span class="c">/* one the user has been to */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">a</span><span class="p">:</span><span class="nd">hover</span>   <span class="p">{</span> <span class="p">}</span>   <span class="c">/* the pointer is over it */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">a</span><span class="p">:</span><span class="nd">active</span>  <span class="p">{</span> <span class="p">}</span>   <span class="c">/* mid-click, between press and release */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">a</span><span class="p">:</span><span class="nd">focus</span>   <span class="p">{</span> <span class="p">}</span>   <span class="c">/* focused by click, tab or script */</span>
+</span></span></code></pre></div><p>Order matters here, because several can be true at once and they carry identical specificity — so whichever is written last wins. The conventional sequence is <code>:link</code>, <code>:visited</code>, <code>:focus</code>, <code>:hover</code>, <code>:active</code>. Put <code>:visited</code> after <code>:hover</code> and hovering a visited link will appear to do nothing.</p>
+<p><code>:visited</code> is also deliberately crippled. Because reading its computed style would leak browsing history, browsers restrict it to a short list of colour properties and lie to <code>getComputedStyle</code> about the result. You cannot change its size, give it a background image, or match it inside <code>:has()</code>.</p>
+<p>Two later additions are usually what you actually want:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">button</span><span class="p">:</span><span class="nd">focus-visible</span> <span class="p">{</span> <span class="k">outline</span><span class="p">:</span> <span class="mi">2</span><span class="kt">px</span> <span class="kc">solid</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">form</span><span class="p">:</span><span class="nd">focus-within</span>    <span class="p">{</span> <span class="k">background</span><span class="p">:</span> <span class="mh">#f6f6f6</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p><code>:focus-visible</code> matches only when the browser judges that a focus ring ought to be shown — keyboard navigation yes, a mouse click on a button no. That resolves the old dilemma between an outline that irritates mouse users and no outline at all, which strands keyboard users. It has been widely available since March 2022. <code>:focus-within</code> matches an element that <em>contains</em> the focused element, so a form can highlight itself while any field inside it is active.</p>
+<h2 id="form-and-validation-states">Form and validation states<a hidden class="anchor" aria-hidden="true" href="#form-and-validation-states">#</a></h2>
+<p>The form pseudo-classes read live state out of the browser&rsquo;s own validation machinery, which means a good deal of feedback needs no JavaScript at all.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Selector</th>
+          <th>Matches</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>:enabled</code> / <code>:disabled</code></td>
+          <td>a control that is, or is not, accepting input</td>
+      </tr>
+      <tr>
+          <td><code>:checked</code></td>
+          <td>a checked radio or checkbox, and a selected <code>&lt;option&gt;</code></td>
+      </tr>
+      <tr>
+          <td><code>:indeterminate</code></td>
+          <td>a checkbox set indeterminate from script, a radio group with nothing chosen, a <code>&lt;progress&gt;</code> with no value</td>
+      </tr>
+      <tr>
+          <td><code>:default</code></td>
+          <td>the default choice within a group — see below</td>
+      </tr>
+      <tr>
+          <td><code>:required</code> / <code>:optional</code></td>
+          <td>a control with, or without, the <code>required</code> attribute</td>
+      </tr>
+      <tr>
+          <td><code>:valid</code> / <code>:invalid</code></td>
+          <td>contents that do or do not satisfy the control&rsquo;s type and constraints</td>
+      </tr>
+      <tr>
+          <td><code>:in-range</code> / <code>:out-of-range</code></td>
+          <td>a value inside or outside the <code>min</code>/<code>max</code> bounds</td>
+      </tr>
+      <tr>
+          <td><code>:read-write</code> / <code>:read-only</code></td>
+          <td>editable, or not</td>
+      </tr>
+  </tbody>
+</table>
+<p>Several of these are narrower — or wider — than their names suggest.</p>
+<p><code>:default</code> is not &ldquo;an element in its default state&rdquo;. It is the default <em>of its group</em>: the radio or checkbox carrying the <code>checked</code> attribute in the markup, the first selected <code>&lt;option&gt;</code>, the form&rsquo;s default submit button. It keeps pointing at that original element even after the user chooses something else, which is exactly what makes it useful for marking the recommended option.</p>
+<p><code>:in-range</code> and <code>:out-of-range</code> apply only to inputs that genuinely have a <code>min</code> or <code>max</code> — a plain text field is neither one. An empty input is also neither, so an untouched required number field will not turn red from <code>:out-of-range</code>. That is <code>:invalid</code>&rsquo;s job.</p>
+<p><code>:read-only</code> is defined as everything <code>:read-write</code> does not match, which makes it far broader than forms. An ordinary paragraph is <code>:read-only</code>; a paragraph with <code>contenteditable</code> is <code>:read-write</code>. When you mean &ldquo;an input carrying the readonly attribute&rdquo;, write <code>input:read-only</code>.</p>
+<p>Validation styling has one practical trap. <code>:invalid</code> matches from page load, so an empty required field is flagged as an error before the user has typed anything. Pair it with <code>:placeholder-shown</code> to hold off until there is something to judge:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">input</span><span class="p">:</span><span class="nd">invalid</span><span class="p">:</span><span class="nd">not</span><span class="o">(</span><span class="p">:</span><span class="nd">placeholder-shown</span><span class="o">)</span> <span class="p">{</span> <span class="k">border-color</span><span class="p">:</span> <span class="kc">crimson</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">input</span><span class="p">:</span><span class="nd">required</span><span class="p">:</span><span class="nd">valid</span>                  <span class="p">{</span> <span class="k">border-color</span><span class="p">:</span> <span class="kc">seagreen</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><h2 id="counting-children">Counting children<a hidden class="anchor" aria-hidden="true" href="#counting-children">#</a></h2>
+<p>This family selects elements by their position among their parent&rsquo;s children:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">first-child</span>       <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">last-child</span>        <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">only-child</span>        <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">3</span><span class="o">)</span>      <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">nth-last-child</span><span class="o">(</span><span class="nt">2</span><span class="o">)</span> <span class="p">{</span> <span class="p">}</span>   <span class="c">/* counting from the end */</span>
+</span></span></code></pre></div><p>Read these carefully, because the names suggest the wrong thing. <code>li:first-child</code> does not mean &ldquo;the first <code>li</code>&rdquo;. It means &ldquo;an <code>li</code> that happens to be the first child of its parent&rdquo; — if a heading sits above the list items, nothing matches at all. That is the mistake the next section exists to fix.</p>
+<p><code>:nth-child()</code> takes a formula, <code>An+B</code>, where <code>n</code> runs 0, 1, 2, 3… and every result landing on a real position matches:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">2n</span><span class="o">)</span>   <span class="p">{</span> <span class="p">}</span>   <span class="c">/* 2, 4, 6…  — same as :nth-child(even) */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">2n</span><span class="o">+</span><span class="nt">1</span><span class="o">)</span> <span class="p">{</span> <span class="p">}</span>   <span class="c">/* 1, 3, 5…  — same as :nth-child(odd)  */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">3n</span><span class="o">+</span><span class="nt">1</span><span class="o">)</span> <span class="p">{</span> <span class="p">}</span>   <span class="c">/* 1, 4, 7…  — the start of each row of three */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">-n</span><span class="o">+</span><span class="nt">3</span><span class="o">)</span> <span class="p">{</span> <span class="p">}</span>   <span class="c">/* the first three */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">n</span><span class="o">+</span><span class="nt">4</span><span class="o">)</span>  <span class="p">{</span> <span class="p">}</span>   <span class="c">/* the fourth onwards */</span>
+</span></span></code></pre></div><p>The last two are the trick worth memorising: a negative coefficient counts downwards and so gives you a &ldquo;first N&rdquo;, while a bare <code>n+B</code> gives you everything from B on. Chain them to take a slice — <code>li:nth-child(n+3):nth-child(-n+6)</code> is items three through six.</p>
+<p>There is also an <code>of S</code> form, which changes what gets counted:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">-n</span><span class="o">+</span><span class="nt">3</span> <span class="nt">of</span> <span class="p">.</span><span class="nc">featured</span><span class="o">)</span> <span class="p">{</span> <span class="p">}</span>
+</span></span></code></pre></div><p>That matches the first three <em>featured</em> items, wherever they sit in the list. Written the other way round, <code>li.featured:nth-child(-n+3)</code> filters the first three children down to those that are featured — usually not what you meant. The <code>of S</code> form landed in the last browser in 2023, so it is about as fresh as <code>:has()</code> below.</p>
+<h2 id="counting-by-type">Counting by type<a hidden class="anchor" aria-hidden="true" href="#counting-by-type">#</a></h2>
+<p>Every selector above has a <code>-of-type</code> twin that counts only siblings sharing the same element name:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">p</span><span class="p">:</span><span class="nd">first-of-type</span>       <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">p</span><span class="p">:</span><span class="nd">last-of-type</span>        <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">p</span><span class="p">:</span><span class="nd">only-of-type</span>        <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">p</span><span class="p">:</span><span class="nd">nth-of-type</span><span class="o">(</span><span class="nt">2</span><span class="o">)</span>      <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">p</span><span class="p">:</span><span class="nd">nth-last-of-type</span><span class="o">(</span><span class="nt">2</span><span class="o">)</span> <span class="p">{</span> <span class="p">}</span>
+</span></span></code></pre></div><p>The difference is worth a picture. Given an <code>article</code> whose children are a heading followed by three paragraphs:</p>
+<pre class="mermaid">flowchart TD
+    art[&#34;article&#34;] --&gt; hd[&#34;h2 = child 1&#34;]
+    art --&gt; p1[&#34;p = child 2, paragraph 1&#34;]
+    art --&gt; p2[&#34;p = child 3, paragraph 2&#34;]
+    art --&gt; p3[&#34;p = child 4, paragraph 3&#34;]
+
+    classDef nthchild fill:#2d7d46,stroke:#1e5631,color:#ffffff;
+    classDef nthtype fill:#2b6cb0,stroke:#1a4971,color:#ffffff;
+    class p1 nthchild
+    class p2 nthtype</pre>
+<p><code>p:nth-child(2)</code> matches the green one — child number two, which happens to be a paragraph. <code>p:nth-of-type(2)</code> matches the blue one — the second paragraph, whatever its position among the children. And <code>p:first-child</code> matches nothing at all here, because child number one is the <code>h2</code>.</p>
+<p>The rule of thumb: reach for the <code>-child</code> family when position inside the container is the thing you care about, such as striping a table or a grid. Reach for <code>-of-type</code> when you mean &ldquo;the first paragraph&rdquo; and cannot control what else the container holds.</p>
+<p><code>:only-child</code> and <code>:only-of-type</code> divide along the same line. An element is an only child when it is its parent&rsquo;s sole child; it is the only one of its type when no sibling shares its tag name, even if other elements are present.</p>
+<h2 id="quantity-queries">Quantity queries<a hidden class="anchor" aria-hidden="true" href="#quantity-queries">#</a></h2>
+<p>Chaining two counting pseudo-classes onto the same element turns them into a test of <em>how many</em> siblings there are — a container query for element count, written years before container queries existed.</p>
+<p>The trick rests on <code>:nth-child()</code> counting from the start while <code>:nth-last-child()</code> counts from the end. Requiring both at once pins down the total:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">7</span><span class="o">)</span><span class="p">:</span><span class="nd">last-child</span> <span class="p">{</span> <span class="p">}</span>
+</span></span></code></pre></div><p>An <code>li</code> that is simultaneously the seventh child and the last child can only exist in a list of exactly seven. In a list of six or eight, the rule matches nothing.</p>
+<p>That styles one item. To style the whole set, match the first item under the same condition and then sweep up its siblings with <code>~</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">first-child</span><span class="p">:</span><span class="nd">nth-last-child</span><span class="o">(</span><span class="nt">3</span><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">first-child</span><span class="p">:</span><span class="nd">nth-last-child</span><span class="o">(</span><span class="nt">3</span><span class="o">)</span> <span class="o">~</span> <span class="nt">li</span> <span class="p">{</span> <span class="p">}</span>
+</span></span></code></pre></div><p>&ldquo;A first child that is also third from the end&rdquo; describes a list of exactly three; the second selector then catches the other two. Change the formula to change the test — <code>:nth-last-child(n+3)</code> for three <em>or more</em>, <code>:nth-last-child(-n+3)</code> for three or fewer, and both together for a range:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">first-child</span><span class="p">:</span><span class="nd">nth-last-child</span><span class="o">(</span><span class="nt">n</span><span class="o">+</span><span class="nt">2</span><span class="o">)</span><span class="p">:</span><span class="nd">nth-last-child</span><span class="o">(</span><span class="nt">-n</span><span class="o">+</span><span class="nt">4</span><span class="o">),</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">first-child</span><span class="p">:</span><span class="nd">nth-last-child</span><span class="o">(</span><span class="nt">n</span><span class="o">+</span><span class="nt">2</span><span class="o">)</span><span class="p">:</span><span class="nd">nth-last-child</span><span class="o">(</span><span class="nt">-n</span><span class="o">+</span><span class="nt">4</span><span class="o">)</span> <span class="o">~</span> <span class="nt">li</span> <span class="p">{</span> <span class="p">}</span>
+</span></span></code></pre></div><p>That matches only when the list holds between two and four items. The usual application is a layout that should change shape past a certain count — cards side by side until there are five of them, at which point they wrap into a grid — without asking JavaScript to count anything.</p>
+<h2 id="logical-pseudo-classes">Logical pseudo-classes<a hidden class="anchor" aria-hidden="true" href="#logical-pseudo-classes">#</a></h2>
+<p>Four pseudo-classes take a selector list as their argument, and they are the most useful recent addition to the language.</p>
+<p><code>:not()</code> inverts a match. Since Selectors Level 4 it accepts a full list, so one call covers several exclusions:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">button</span><span class="p">:</span><span class="nd">not</span><span class="o">(</span><span class="p">.</span><span class="nc">primary</span><span class="o">,</span> <span class="p">.</span><span class="nc">danger</span><span class="o">)</span> <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">:</span><span class="nd">not</span><span class="o">(</span><span class="p">:</span><span class="nd">last-child</span><span class="o">)</span>           <span class="p">{</span> <span class="k">border-bottom</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p><code>:is()</code> matches if any selector in the list matches, which collapses combinatorial repetition:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">:</span><span class="nd">is</span><span class="o">(</span><span class="nt">article</span><span class="o">,</span> <span class="nt">aside</span><span class="o">,</span> <span class="nt">section</span><span class="o">)</span> <span class="p">:</span><span class="nd">is</span><span class="o">(</span><span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">)</span> <span class="p">{</span> <span class="n">margin-block-start</span><span class="p">:</span> <span class="mf">1.5</span><span class="kt">rem</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p>Its specificity is that of its <strong>most specific</strong> argument, which occasionally bites — <code>:is(#main, p)</code> weighs as much as <code>#main</code> even on the occasions it matched the <code>p</code>.</p>
+<p><code>:where()</code> is <code>:is()</code> with the specificity forced to zero. That makes it the right tool for defaults and resets, because anything written later beats it without needing <code>!important</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">:</span><span class="nd">where</span><span class="o">(</span><span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">)</span> <span class="p">{</span> <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p>Both lists are <strong>forgiving</strong>: an unrecognised selector inside them is skipped instead of invalidating the rule. That is a safe way to use a newer selector while keeping a fallback in the same stylesheet.</p>
+<p><code>:has()</code> is the one that changes what is possible. It matches an element based on what that element contains, so the thing you style is the one <em>before</em> the colon:</p>
+<pre class="mermaid">flowchart TD
+    fig[&#34;figure -- the element being styled&#34;] --&gt; img[&#34;img&#34;]
+    fig --&gt; cap[&#34;figcaption -- the condition&#34;]
+
+    classDef subject fill:#2d7d46,stroke:#1e5631,color:#ffffff;
+    classDef cond fill:#b7791f,stroke:#7b5310,color:#ffffff;
+    class fig subject
+    class cap cond</pre>
+<p>The argument is relative to that element, so combinators inside it are read starting from there:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">figure</span><span class="p">:</span><span class="nd">has</span><span class="o">(</span><span class="nt">figcaption</span><span class="o">)</span>     <span class="p">{</span> <span class="p">}</span>   <span class="c">/* a figure containing a caption, at any depth */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">label</span><span class="p">:</span><span class="nd">has</span><span class="o">(&gt;</span> <span class="nt">input</span><span class="p">:</span><span class="nd">invalid</span><span class="o">)</span> <span class="p">{</span> <span class="p">}</span>   <span class="c">/* only a direct child input */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">h2</span><span class="p">:</span><span class="nd">has</span><span class="o">(+</span> <span class="nt">p</span><span class="o">)</span>                <span class="p">{</span> <span class="p">}</span>   <span class="c">/* an h2 immediately followed by a paragraph */</span>
+</span></span></code></pre></div><p>That last one is the previous-sibling selector CSS never had, arrived at from the other end. <code>:has()</code> has been widely available since December 2023. Two restrictions to know: it cannot be nested inside another <code>:has()</code>, and pseudo-elements are valid neither as its argument nor as its subject.</p>
+<h2 id="empty-and-a-few-strays">:empty and a few strays<a hidden class="anchor" aria-hidden="true" href="#empty-and-a-few-strays">#</a></h2>
+<p><code>:empty</code> matches elements with no child elements <strong>and</strong> no text — and whitespace counts as text, so an element written across two lines with indentation between the tags is not empty. Comments are ignored, so they do not break it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">td</span><span class="p">:</span><span class="nd">empty</span> <span class="p">{</span> <span class="k">background</span><span class="p">:</span> <span class="mh">#f4f4f4</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p>It is a good way to reveal placeholder markup a template forgot to fill, and a reliable source of confusion when a stray newline keeps it from matching.</p>
+<p>Three more worth knowing alongside the structural ones. <code>:root</code> matches the document root — <code>&lt;html&gt;</code> — and is where custom properties usually live. <code>:target</code> matches the element whose ID is currently in the URL fragment, which gets you pure-CSS disclosure widgets. <code>:lang(en)</code> matches by language, following the same prefix logic as <code>[lang|=&quot;en&quot;]</code> but respecting inheritance from an ancestor&rsquo;s <code>lang</code> attribute.</p>
+<h2 id="pseudo-classes-versus-pseudo-elements">Pseudo-classes versus pseudo-elements<a hidden class="anchor" aria-hidden="true" href="#pseudo-classes-versus-pseudo-elements">#</a></h2>
+<p>Everything above uses a single colon, because it selects a real element on the basis of some state or position. A double colon selects something that is not in the document at all:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">p</span><span class="p">::</span><span class="nd">first-line</span>      <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">p</span><span class="p">::</span><span class="nd">first-letter</span>    <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">::</span><span class="nd">marker</span>         <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">::</span><span class="nd">selection</span>        <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">input</span><span class="p">::</span><span class="nd">placeholder</span> <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">blockquote</span><span class="p">::</span><span class="nd">before</span> <span class="p">{</span> <span class="k">content</span><span class="p">:</span> <span class="s2">&#34;\201C&#34;</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">blockquote</span><span class="p">::</span><span class="nd">after</span>  <span class="p">{</span> <span class="k">content</span><span class="p">:</span> <span class="s2">&#34;\201D&#34;</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p><code>::before</code> and <code>::after</code> create a box inside the element, before and after its content, and do nothing whatsoever without a <code>content</code> property — <code>content: &quot;&quot;</code> is the usual value when the box exists only to be styled. Neither works on a replaced element such as <code>&lt;img&gt;</code>, <code>&lt;input&gt;</code> or <code>&lt;br&gt;</code>, because those have no content box to insert into; wrap the element in a container if you need generated content around it.</p>
+<p>You will still see <code>:before</code> and <code>:after</code> written with one colon. That is the original CSS2 syntax, kept alive for compatibility, and the four original pseudo-elements accept either form. Write the double colon anyway, because nothing added since supports the short version.</p>
+<p>The distinction has one more practical consequence: a pseudo-element can only appear at the very end of a selector, which is why it can never sit inside <code>:has()</code> or be followed by a combinator.</p>
+<h2 id="three-patterns-worth-stealing">Three patterns worth stealing<a hidden class="anchor" aria-hidden="true" href="#three-patterns-worth-stealing">#</a></h2>
+<p><code>* + *</code> — the &ldquo;lobotomised owl&rdquo; — matches every element that follows another element, which is to say every child except the first. It sets spacing <em>between</em> siblings without leaving a stray margin at the top of the container:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">stack</span> <span class="o">&gt;</span> <span class="o">*</span> <span class="o">+</span> <span class="o">*</span> <span class="p">{</span> <span class="n">margin-block-start</span><span class="p">:</span> <span class="mf">1.5</span><span class="kt">rem</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p>Scoping it with <code>&gt;</code> as above is the version to use. The bare <code>* + *</code> applies to every element in the document and is a very blunt instrument.</p>
+<p>The <strong>checkbox hack</strong> combines <code>:checked</code> with a sibling combinator to build custom controls with no script at all. A <code>&lt;label&gt;</code> whose <code>for</code> matches an input&rsquo;s <code>id</code> toggles that input when clicked, so you can hide the real checkbox and style the label in its place:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">&#34;checkbox&#34;</span><span class="o">]</span>          <span class="p">{</span> <span class="k">position</span><span class="p">:</span> <span class="kc">absolute</span><span class="p">;</span> <span class="k">opacity</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">&#34;checkbox&#34;</span><span class="o">]</span> <span class="o">+</span> <span class="nt">label</span>  <span class="p">{</span> <span class="k">background</span><span class="p">:</span> <span class="mh">#333</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">&#34;checkbox&#34;</span><span class="o">]</span><span class="p">:</span><span class="nd">checked</span> <span class="o">+</span> <span class="nt">label</span> <span class="p">{</span> <span class="k">background</span><span class="p">:</span> <span class="kc">orange</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p>Keep the input in the document and merely invisible. <code>display: none</code> removes it from the accessibility tree and from keyboard focus, which breaks the control for anyone not using a mouse; <code>opacity: 0</code> with <code>position: absolute</code> keeps it focusable. Add a <code>:focus-visible</code> rule on the label to restore the focus ring.</p>
+<p>Finally, <code>attr()</code> pulls an attribute&rsquo;s value into generated content:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">@</span><span class="k">media</span> <span class="nt">print</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">^=</span><span class="s2">&#34;http&#34;</span><span class="o">]</span><span class="p">::</span><span class="nd">after</span> <span class="p">{</span> <span class="k">content</span><span class="p">:</span> <span class="s2">&#34; (&#34;</span> <span class="nb">attr</span><span class="p">(</span><span class="n">href</span><span class="p">)</span> <span class="s2">&#34;)&#34;</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>A printed page loses its link targets; this puts them back. <code>attr()</code> inside <code>content</code> has been reliable since 2015. Using it in other properties is a newer, still experimental extension, so treat <code>content</code> as the case you can depend on.</p>
+<h2 id="where-to-go-next">Where to go next<a hidden class="anchor" aria-hidden="true" href="#where-to-go-next">#</a></h2>
+<p>The specification behind all of this is <a href="https://www.w3.org/TR/selectors-4/">Selectors Level 4</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors">MDN&rsquo;s selector reference</a> is the practical version of the same material, with a browser support table on every page. When a selector silently does nothing, browser devtools beat reasoning about it: paste the selector into the element inspector&rsquo;s search box and see how many nodes light up.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.pakithecat.eu/tags/cheatsheet/">Cheatsheet</a></li>
+      <li><a href="https://blog.pakithecat.eu/tags/css/">Css</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://blog.pakithecat.eu/posts/2026/windows-command-line-cheatsheet/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Windows Command Line Cheatsheet: Files, Folders and Networking</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share CSS Selectors Cheatsheet on x"
+            href="https://x.com/intent/tweet/?text=CSS%20Selectors%20Cheatsheet&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fcss-selectors-cheatsheet%2f&amp;hashtags=cheatsheet%2ccss">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share CSS Selectors Cheatsheet on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fcss-selectors-cheatsheet%2f&amp;title=CSS%20Selectors%20Cheatsheet&amp;summary=CSS%20Selectors%20Cheatsheet&amp;source=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fcss-selectors-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share CSS Selectors Cheatsheet on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fcss-selectors-cheatsheet%2f&title=CSS%20Selectors%20Cheatsheet">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share CSS Selectors Cheatsheet on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fcss-selectors-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share CSS Selectors Cheatsheet on whatsapp"
+            href="https://api.whatsapp.com/send?text=CSS%20Selectors%20Cheatsheet%20-%20https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fcss-selectors-cheatsheet%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share CSS Selectors Cheatsheet on telegram"
+            href="https://telegram.me/share/url?text=CSS%20Selectors%20Cheatsheet&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fcss-selectors-cheatsheet%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share CSS Selectors Cheatsheet on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=CSS%20Selectors%20Cheatsheet&u=https%3a%2f%2fblog.pakithecat.eu%2fposts%2f2026%2fcss-selectors-cheatsheet%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>© <a href="https://github.com/concosminx">concosminx</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
