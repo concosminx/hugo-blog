@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ro" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Backup săptămânal criptat în Dropbox cu restic și rclone pe Ubuntu 24.04 | Ce am făcut toată săptămâna</title>
+<meta name="keywords" content="linux, ubuntu, backup">
+<meta name="description" content="Configurează backup-uri săptămânale criptate și deduplicate de pe Ubuntu 24.04 în Dropbox, folosind restic, rclone și un systemd user timer — inclusiv cum restaurezi datele când ai nevoie de ele.">
+<meta name="author" content="Me">
+<link rel="canonical" href="https://blog.pakithecat.eu/ro/posts/2026/restic-dropbox-backup-ubuntu/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.5b00859891919f07af6a53834e3f9f8f331db42cc5f024277803b41a6758e47a.css" integrity="sha256-WwCFmJGRnwevalODTj&#43;fjzMdtCzF8CQneAO0GmdY5Ho=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.pakithecat.eu/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://blog.pakithecat.eu/icons/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://blog.pakithecat.eu/icons/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://blog.pakithecat.eu/icons/apple-touch-icon.png">
+<link rel="mask-icon" href="https://blog.pakithecat.eu/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://blog.pakithecat.eu/posts/2026/restic-dropbox-backup-ubuntu/">
+<link rel="alternate" hreflang="ro" href="https://blog.pakithecat.eu/ro/posts/2026/restic-dropbox-backup-ubuntu/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script type="module">
+    const blocks = [...document.querySelectorAll('pre.mermaid')];
+    if (blocks.length) {
+        const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs');
+
+        
+        blocks.forEach((el) => { el.dataset.mermaidSrc = el.textContent; });
+
+        const currentTheme = () => document.body.classList.contains('dark') ? 'dark' : 'default';
+
+        const render = () => {
+            blocks.forEach((el) => {
+                el.removeAttribute('data-processed');
+                el.textContent = el.dataset.mermaidSrc;
+            });
+            mermaid.initialize({ startOnLoad: false, theme: currentTheme() });
+            return mermaid.run({ nodes: blocks });
+        };
+
+        await render();
+
+        
+        let lastTheme = currentTheme();
+        new MutationObserver(() => {
+            const theme = currentTheme();
+            if (theme === lastTheme) return;
+            lastTheme = theme;
+            render();
+        }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    }
+</script>
+<meta property="og:url" content="https://blog.pakithecat.eu/ro/posts/2026/restic-dropbox-backup-ubuntu/">
+  <meta property="og:site_name" content="Ce am făcut toată săptămâna">
+  <meta property="og:title" content="Backup săptămânal criptat în Dropbox cu restic și rclone pe Ubuntu 24.04">
+  <meta property="og:description" content="Configurează backup-uri săptămânale criptate și deduplicate de pe Ubuntu 24.04 în Dropbox, folosind restic, rclone și un systemd user timer — inclusiv cum restaurezi datele când ai nevoie de ele.">
+  <meta property="og:locale" content="ro">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-10-05T18:00:00+03:00">
+    <meta property="article:modified_time" content="2026-10-05T18:00:00+03:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Backup săptămânal criptat în Dropbox cu restic și rclone pe Ubuntu 24.04">
+<meta name="twitter:description" content="Configurează backup-uri săptămânale criptate și deduplicate de pe Ubuntu 24.04 în Dropbox, folosind restic, rclone și un systemd user timer — inclusiv cum restaurezi datele când ai nevoie de ele.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.pakithecat.eu/ro/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Backup săptămânal criptat în Dropbox cu restic și rclone pe Ubuntu 24.04",
+      "item": "https://blog.pakithecat.eu/ro/posts/2026/restic-dropbox-backup-ubuntu/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Backup săptămânal criptat în Dropbox cu restic și rclone pe Ubuntu 24.04",
+  "name": "Backup săptămânal criptat în Dropbox cu restic și rclone pe Ubuntu 24.04",
+  "description": "Configurează backup-uri săptămânale criptate și deduplicate de pe Ubuntu 24.04 în Dropbox, folosind restic, rclone și un systemd user timer — inclusiv cum restaurezi datele când ai nevoie de ele.",
+  "keywords": [
+    "linux", "ubuntu", "backup"
+  ],
+  "articleBody": "Un backup din care nu ai restaurat niciodată este doar un zvon. Aceasta este configurația pe care o rulez pe un server de casă: restic se ocupă de criptare și deduplicare, rclone îi oferă o cale către Dropbox, iar un systemd user timer rulează totul în fiecare duminică seara. Tot ce pleacă de pe mașină este criptat local, așa că Dropbox stochează doar text cifrat.\nA doua jumătate a articolului este despre cum scoți datele înapoi, partea pe care majoritatea ghidurilor o tratează superficial.\nCe face această configurație Odată pornită, în fiecare duminică la 20:00 serverul se trezește, urcă ce s-a schimbat de săptămâna trecută, taie snapshot-urile vechi conform unei politici de retenție și se culcă din nou. Dacă mașina era oprită la ora respectivă, backup-ul rulează la următoarea pornire în loc să fie sărit.\nCâteva lucruri de știut înainte să începi:\nBackup-urile sunt criptate cu o parolă creată de tine. Dropbox nu le poate citi — și nici tu, dacă pierzi parola. Datele sunt deduplicate, așa că a doua rulare săptămânală urcă doar blocurile modificate, nu tot de la început. Repository-ul stă în Dropbox, dar este accesat exclusiv prin rclone. Nu îl pune într-un folder sincronizat de clientul desktop Dropbox — două procese care scriu în același repository este exact modul în care repository-urile se corup. Instalează restic și rclone Ambele unelte există în arhiva Ubuntu, dar pe 24.04 sunt suficient de învechite ca să conteze:\nsudo apt install restic restic version Ubuntu 24.04 vine cu restic 0.16.4, în timp ce upstream a trecut demult de 0.19. Diferența nu este cosmetică — comanda restore mult îmbunătățită, inclusiv modurile --dry-run și suprascrierea pe loc, a apărut în restic 0.17.0. Dacă vrei opțiunile de restaurare descrise mai jos, instalează binarul din release-ul curent:\nsudo apt install bzip2 RESTIC_VER=$(curl -s https://api.github.com/repos/restic/restic/releases/latest | grep -oP '\"tag_name\": \"v\\K[^\"]+') wget \"https://github.com/restic/restic/releases/latest/download/restic_${RESTIC_VER}_linux_amd64.bz2\" -O restic.bz2 bunzip2 restic.bz2 \u0026\u0026 chmod +x restic \u0026\u0026 sudo mv restic /usr/local/bin/ restic version Astfel binarul ajunge în /usr/local/bin, care are prioritate față de /usr/bin în PATH-ul implicit, deci câștigă în fața copiei instalate din apt. Îl ții la zi cu sudo restic self-update.\nrclone are aceeași problemă, așa că ia-l din scriptul oficial de instalare, nu din apt:\nsudo -v ; curl https://rclone.org/install.sh | sudo bash rclone version Scriptul verifică ce este deja instalat și sare peste descărcare dacă ești la zi, ceea ce îl face sigur de rulat din nou mai târziu.\nConectează rclone la Dropbox Remote-ul se creează interactiv:\nrclone config Parcurge pașii astfel:\nn pentru un remote nou și numește-l dropbox — numele contează, pentru că devine parte din calea repository-ului. Tipul de storage: dropbox. client_id și client_secret: lasă-le ambele goale pentru a folosi credențialele interne ale rclone. Poți înregistra propria aplicație în Dropbox App Console și să îi dai cheia și secretul; rclone documentează exact permisiunile necesare în documentația backend-ului Dropbox. Acceptă restul valorilor implicite, răspunde da la auto config și finalizează autentificarea în browser-ul care se deschide. Pe un server headless nu există browser care să se deschidă. Rulează rclone authorize \"dropbox\" pe o mașină care are unul, apoi lipește token-ul rezultat în prompt-ul de configurare al serverului — procedura completă este în documentația de remote setup.\nVerifică faptul că remote-ul funcționează înainte să continui:\nrclone lsd dropbox: Comanda listează directoarele de la rădăcina Dropbox-ului. Dacă dă eroare, rezolvă aici — nimic din ce urmează nu va funcționa până când această comandă nu merge.\nCreează parola și inițializează repository-ul ⚠️ Dacă pierzi această parolă, toate backup-urile devin definitiv ilizibile. Nu există niciun mecanism de recuperare, prin design. Pune o copie într-un password manager înainte să rulezi orice altceva.\nmkdir -p ~/.config/restic echo 'a-long-random-password' \u003e ~/.config/restic/password chmod 600 ~/.config/restic/password Folosește ceva lung și aleatoriu — openssl rand -base64 32 este o sursă rezonabilă. chmod 600 face fișierul citibil doar de utilizatorul tău.\nrestic preia locația repository-ului și parola din două variabile de mediu, ceea ce te scutește să le repeți la fiecare comandă:\nexport RESTIC_REPOSITORY=\"rclone:dropbox:restic-backups-homeserver\" export RESTIC_PASSWORD_FILE=\"$HOME/.config/restic/password\" restic init Șirul repository-ului se citește ca rclone::, deci comanda creează un folder numit restic-backups-homeserver la rădăcina Dropbox-ului. Numește-l după mașină dacă ai de gând să faci backup pentru mai multe — fiecare host își vrea propriul repository, dacă nu ai un motiv anume să îl partajezi.\nrestic init scrie structura repository-ului și un fișier config. Este o operație unică; rulată peste un repository existent, este refuzată, nu distructivă.\nCa să funcționeze comenzile restic simple în shell-ul tău interactiv, adaugă cele două linii export în ~/.bashrc și rulează source ~/.bashrc.\nScrie scriptul de backup Job-ul programat este un simplu script de shell, ceea ce îl face testabil manual:\nmkdir -p ~/.local/bin cat \u003e ~/.local/bin/restic-backup.sh \u003c\u003c 'EOF' #!/bin/bash set -euo pipefail export RESTIC_REPOSITORY=\"rclone:dropbox:restic-backups-homeserver\" export RESTIC_PASSWORD_FILE=\"$HOME/.config/restic/password\" echo \"=== Backup started: $(date) ===\" restic backup \\ \"$HOME/Documents\" \\ \"$HOME/Pictures\" \\ \"$HOME/Projects\" \\ --exclude-caches \\ --exclude \"$HOME/.cache\" \\ --exclude \"node_modules\" \\ --exclude \"*.tmp\" restic forget \\ --keep-weekly 8 \\ --keep-monthly 12 \\ --keep-yearly 2 \\ --prune echo \"=== Backup finished: $(date) ===\" EOF chmod +x ~/.local/bin/restic-backup.sh Punerea delimitatorului heredoc între ghilimele simple, 'EOF', este intenționată: împiedică shell-ul să expandeze $HOME și $(date) în momentul scrierii fișierului, așa că acestea sunt evaluate când rulează scriptul, nu înghețate la valorile de azi.\nset -euo pipefail face scriptul să se oprească la prima eroare. Ordinea contează — dacă restic backup eșuează, nu vrei ca restic forget --prune să ruleze după el și să șteargă snapshot-uri vechi pentru a face loc unui backup care nu a ajuns niciodată.\nDouă comenzi fac treaba. restic backup parcurge căile listate și urcă blocurile noi sau modificate; --exclude-caches respectă convenția CACHEDIR.TAG, iar restul opțiunilor --exclude sar peste gunoiul obișnuit. Apoi restic forget aplică politica de retenție — opt snapshot-uri săptămânale, douăsprezece lunare și două anuale — iar --prune este cel care eliberează efectiv spațiul din Dropbox. Fără --prune, forget șterge doar etichetele snapshot-urilor, iar datele rămân pe loc.\nModifică lista de căi ca să se potrivească mașinii tale. O cale care nu există face toată rularea să eșueze:\nnano ~/.local/bin/restic-backup.sh Apoi rulează-l o dată manual, înainte să implici systemd:\n~/.local/bin/restic-backup.sh Prima rulare urcă tot și va dura. Rulările următoare sunt incrementale.\nProgramează-l cu un systemd user timer Două fișiere unit: un service care spune ce să ruleze și un timer care spune când.\nmkdir -p ~/.config/systemd/user cat \u003e ~/.config/systemd/user/restic-backup.service \u003c\u003c 'EOF' [Unit] Description=Restic backup to Dropbox Wants=network-online.target After=network-online.target [Service] Type=oneshot ExecStart=%h/.local/bin/restic-backup.sh Nice=10 IOSchedulingClass=idle EOF cat \u003e ~/.config/systemd/user/restic-backup.timer \u003c\u003c 'EOF' [Unit] Description=Weekly restic backup (Sunday 20:00) [Timer] OnCalendar=Sun *-*-* 20:00 Europe/Bucharest Persistent=true RandomizedDelaySec=10min [Install] WantedBy=timers.target EOF În service, Type=oneshot îi spune systemd că procesul rulează până la capăt și iese, în loc să rămână rezident. Wants= și After=network-online.target îl țin pe loc până când rețeaua este efectiv funcțională. Nice=10 și IOSchedulingClass=idle îl trimit la coada de prioritate pentru CPU și disc, așa că un backup nu face niciodată mașina să pară lentă. %h se expandează la directorul home.\nTimer-ul nu are nevoie de o linie Unit=, pentru că un timer activează implicit service-ul cu același nume. Partea interesantă este fusul orar de la final:\nOnCalendar=Sun *-*-* 20:00 Europe/Bucharest Adăugarea unui nume de fus orar IANA fixează programul la ora locală din România, indiferent de cum este configurat ceasul serverului, și urmărește corect trecerea la ora de vară. Ubuntu 24.04 vine cu systemd 255, confortabil peste versiunea v250 care a introdus sufixele de fus orar — pe ceva mai vechi, renunță la fusul orar și setează în schimb ceasul sistemului.\nPersistent=true ține minte ultima rulare, așa că o ocazie ratată se declanșează la următoarea pornire, în loc să fie pierdută. RandomizedDelaySec=10min împrăștie ora de start pe un interval de zece minute, ceea ce este o formă de politețe față de API-ul Dropbox dacă rulezi asta pe mai multe mașini.\nÎnainte să activezi orice, pune systemd să verifice expresia și să îți spună când se declanșează următoarea dată:\nsystemd-analyze calendar \"Sun *-*-* 20:00 Europe/Bucharest\" Apoi încarcă și activează:\nsystemctl --user daemon-reload systemctl --user enable --now restic-backup.timer sudo loginctl enable-linger $USER systemctl --user list-timers restic-backup.timer daemon-reload recitește fișierele unit — rulează-l după fiecare modificare, altfel systemd continuă să folosească versiunea veche. enable --now activează timer-ul permanent, astfel încât supraviețuiește reboot-urilor, și îl pornește imediat.\nloginctl enable-linger este pasul pe care lumea îl ratează și este obligatoriu pe un server. Fără el, instanța systemd a utilizatorului tău este oprită când se închide ultima sesiune, deci timer-ul moare în momentul în care închizi SSH-ul. Verifică că a prins:\nloginctl show-user $USER | grep Linger Ar trebui să afișeze Linger=yes.\nComenzi de zi cu zi Comandă Ce face systemctl --user start restic-backup Rulează un backup chiar acum systemctl --user list-timers Arată următoarea și ultima rulare journalctl --user -u restic-backup -e Citește log-urile (-f pentru urmărire live, q pentru ieșire) restic snapshots Listează toate snapshot-urile din repository restic stats Arată dimensiunea repository-ului și economia din deduplicare restic check Verifică integritatea repository-ului Comenzile restic au nevoie de RESTIC_REPOSITORY și RESTIC_PASSWORD_FILE în mediu. Dacă nu le-ai adăugat în ~/.bashrc, transmite-le la fiecare comandă:\nrestic -r rclone:dropbox:restic-backups-homeserver \\ --password-file ~/.config/restic/password snapshots Restaurarea Aceasta este jumătatea care merită repetată. Fă-o o dată, în mod deliberat, cât timp nu arde nimic.\nGăsește ce vrei Orice restaurare pornește de la un ID de snapshot. Listează-le:\nrestic snapshots Primești un ID, o dată, host-ul și căile acoperite de fiecare snapshot. Cuvântul latest funcționează oriunde este acceptat un ID, și de obicei este exact ce vrei.\nCa să vezi ce este într-un snapshot înainte să descarci ceva:\nrestic ls latest restic ls latest /home/me/Documents Iar ca să localizezi un fișier când nu mai ții minte unde stătea sau care snapshot îl mai are:\nrestic find \"quarterly-report.ods\" restic find caută în toate snapshot-urile și îți spune care dintre ele conțin potrivirea — cea mai rapidă cale de a răspunde la „când am avut ultima copie bună a acestui fișier?”.\nRestaurează tot restic restore latest --target ~/restore --target este directorul în care se scrie arborele; căile originale sunt recreate dedesubt. Restaurează întotdeauna într-un director nou și gol, nu peste datele live, până ești sigur de ce primești.\nCa să restaurezi un snapshot anume în loc de cel mai nou, dă-i ID-ul:\nrestic restore 79766175 --target ~/restore Restaurează un singur fișier sau folder --include restrânge ce se scrie:\nrestic restore latest --target ~/restore --include /home/me/Documents/taxes Poți de asemenea ancora snapshot-ul la un subfolder, ceea ce păstrează rezultatul mai plat în loc să recreeze toată calea sub target:\nrestic restore latest:/home/me/Documents --target ~/restore --include /taxes --exclude funcționează la fel, dar invers, iar --iinclude / --iexclude sunt variantele care ignoră diferența între majuscule și minuscule.\nAtenție că --path și --host fac altceva decât sugerează numele: ele selectează care snapshot este restaurat, nu care fișiere ies din el. Sunt utile când un repository conține mai multe mașini:\nrestic restore latest --host homeserver --target ~/restore Vezi în avans ce s-ar întâmpla Pe restic 0.17.0 și mai nou, poți vedea ce ar face o restaurare fără să scrii nimic:\nrestic restore latest --target ~/restore --dry-run --verbose=2 Merită folosit înainte de orice restaurare pe loc, pentru că rularea de probă raportează care fișiere ar rămâne neatinse și care ar fi suprascrise. Dacă ai instalat pachetul 0.16.4 din Ubuntu, această opțiune nu există — este motivul principal pentru care să iei binarul upstream.\nScoate un fișier fără o restaurare completă Pentru un singur fișier, dump îl scrie direct la stdout:\nrestic dump latest /home/me/Documents/notes.md \u003e notes.md Funcționează și pentru directoare, ca flux de arhivă:\nrestic dump latest /home/me/Documents \u003e documents.tar restic dump -a zip latest /home/me/Documents \u003e documents.zip Este adesea cea mai rapidă cale când vrei doar să te uiți la o versiune mai veche a ceva.\nNavighează repository-ul ca un sistem de fișiere mkdir ~/restic-mount restic mount ~/restic-mount Fiecare snapshot apare ca un arbore de directoare prin care poți naviga, pe care îl poți compara cu diff față de copia live sau din care poți copia fișiere individuale cu cp. Este read-only și are nevoie de FUSE, pe care Ubuntu îl are implicit. Ctrl+C demontează.\nVerifică periodic Verificările de integritate și o restaurare de probă își au locul în calendar, aproximativ lunar:\nrestic check restic check --read-data-subset=5% restic restore latest --target /tmp/restore-test --include /home/me/Documents restic check simplu validează structura și metadatele repository-ului. --read-data-subset=5% merge mai departe și descarcă și calculează efectiv hash-ul unui eșantion din date, ceea ce prinde corupția silențioasă din blocurile stocate. Verificarea completă cu --read-data înseamnă redescărcarea întregului repository, așa că un eșantion lunar este compromisul rezonabil.\nDepanare Fatal: unable to open config file: does not exist\nCalea repository-ului din script nu corespunde cu ce este în Dropbox, sau restic init nu a fost rulat niciodată. Verifică ambele:\nrclone lsd dropbox: rclone ls dropbox:restic-backups-homeserver --max-depth 1 A doua comandă ar trebui să listeze un fișier config. Dacă directorul lipsește complet, rulează restic init.\ntoo_many_requests — limitare de rată de la Dropbox\nLimitează rata de cereri a rclone. Orice opțiune rclone poate fi setată printr-o variabilă de mediu, cea mai curată metodă din scriptul de backup:\nexport RCLONE_TPSLIMIT=10 Alternativ, suprascrie argumentele pe care restic le transmite către rclone:\nrestic -o rclone.args=\"serve restic --stdio --tpslimit 10\" snapshots Ține minte că asta înlocuiește lista implicită de argumente — serve restic --stdio --b2-hard-delete — în loc să adauge la ea, deci păstrează serve restic --stdio pe poziție. RCLONE_BWLIMIT funcționează la fel, dacă ai nevoie să limitezi lățimea de bandă în loc de rata de cereri.\ndidn't find section in config file sau alte erori de autentificare rclone\nNumele remote-ului din șirul repository-ului nu corespunde unui remote configurat:\nrclone listremotes Ar trebui să afișeze dropbox:. Reține că un systemd user service citește ~/.config/rclone/rclone.conf ca utilizatorul tău, deci un remote configurat cu sudo nu va fi vizibil pentru timer.\nTimer-ul nu a rulat niciodată\nVerifică starea lui și dacă linger este activ:\nsystemctl --user list-timers loginctl show-user $USER | grep Linger journalctl --user -u restic-backup -e Un timer care afișează n/a la următoarea rulare are de obicei o problemă de activare sau de linger, nu o expresie de calendar greșită — confirmă expresia separat cu systemd-analyze calendar.\nDocumentație oficială Documentația restic și în special capitolul despre restaurare Pregătirea unui repository restic nou, care acoperă backend-ul rclone și opțiunile lui Backend-ul Dropbox din rclone și instalarea rclone man systemd.timer și man systemd.time pentru sintaxa completă de calendar ",
+  "wordCount" : "2366",
+  "inLanguage": "ro",
+  "datePublished": "2026-10-05T18:00:00+03:00",
+  "dateModified": "2026-10-05T18:00:00+03:00",
+  "author":{
+    "@type": "Person",
+    "name": "Me"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.pakithecat.eu/ro/posts/2026/restic-dropbox-backup-ubuntu/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ce am făcut toată săptămâna",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.pakithecat.eu/icons/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.pakithecat.eu/ro/" accesskey="h" title="Ce am făcut toată săptămâna (Alt + H)">Ce am făcut toată săptămâna</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://blog.pakithecat.eu/" title="🇬🇧"
+                            aria-label=":uk:">🇬🇧</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.pakithecat.eu/ro/archives/" title="Arhive">
+                    <span>Arhive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/ro/taguri" title="Taguri">
+                    <span>Taguri</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.pakithecat.eu/ro/categorii" title="Categorii">
+                    <span>Categorii</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/concosminx/hugo-blog" title="Repo">
+                    <span>Repo</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://blog.pakithecat.eu/ro/">Acasă</a>&nbsp;»&nbsp;<a href="https://blog.pakithecat.eu/ro/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Backup săptămânal criptat în Dropbox cu restic și rclone pe Ubuntu 24.04
+    </h1>
+    <div class="post-description">
+      Configurează backup-uri săptămânale criptate și deduplicate de pe Ubuntu 24.04 în Dropbox, folosind restic, rclone și un systemd user timer — inclusiv cum restaurezi datele când ai nevoie de ele.
+    </div>
+    <div class="post-meta"><span title='2026-10-05 18:00:00 +0300 +0300'>octombrie 5, 2026</span>&nbsp;·&nbsp;12 minute&nbsp;·&nbsp;2366 cuvinte&nbsp;·&nbsp;Me&nbsp;|&nbsp;Traduceri:
+<ul class="i18n_list">
+    <li>
+        <a href="https://blog.pakithecat.eu/posts/2026/restic-dropbox-backup-ubuntu/">🇬🇧</a>
+    </li>
+</ul>&nbsp;|&nbsp;<a href="https://github.com/concosminx/hugo-blog/tree/main/content/posts/2026/restic-dropbox-backup-ubuntu/index.ro.md" rel="noopener noreferrer" target="_blank">Sugereaza schimbari</a>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Sumar</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#ce-face-aceast%c4%83-configura%c8%9bie" aria-label="Ce face această configurație">Ce face această configurație</a></li>
+                <li>
+                    <a href="#instaleaz%c4%83-restic-%c8%99i-rclone" aria-label="Instalează restic și rclone">Instalează restic și rclone</a></li>
+                <li>
+                    <a href="#conecteaz%c4%83-rclone-la-dropbox" aria-label="Conectează rclone la Dropbox">Conectează rclone la Dropbox</a></li>
+                <li>
+                    <a href="#creeaz%c4%83-parola-%c8%99i-ini%c8%9bializeaz%c4%83-repository-ul" aria-label="Creează parola și inițializează repository-ul">Creează parola și inițializează repository-ul</a></li>
+                <li>
+                    <a href="#scrie-scriptul-de-backup" aria-label="Scrie scriptul de backup">Scrie scriptul de backup</a></li>
+                <li>
+                    <a href="#programeaz%c4%83-l-cu-un-systemd-user-timer" aria-label="Programează-l cu un systemd user timer">Programează-l cu un systemd user timer</a></li>
+                <li>
+                    <a href="#comenzi-de-zi-cu-zi" aria-label="Comenzi de zi cu zi">Comenzi de zi cu zi</a></li>
+                <li>
+                    <a href="#restaurarea" aria-label="Restaurarea">Restaurarea</a><ul>
+                        
+                <li>
+                    <a href="#g%c4%83se%c8%99te-ce-vrei" aria-label="Găsește ce vrei">Găsește ce vrei</a></li>
+                <li>
+                    <a href="#restaureaz%c4%83-tot" aria-label="Restaurează tot">Restaurează tot</a></li>
+                <li>
+                    <a href="#restaureaz%c4%83-un-singur-fi%c8%99ier-sau-folder" aria-label="Restaurează un singur fișier sau folder">Restaurează un singur fișier sau folder</a></li>
+                <li>
+                    <a href="#vezi-%c3%aen-avans-ce-s-ar-%c3%aent%c3%a2mpla" aria-label="Vezi în avans ce s-ar întâmpla">Vezi în avans ce s-ar întâmpla</a></li>
+                <li>
+                    <a href="#scoate-un-fi%c8%99ier-f%c4%83r%c4%83-o-restaurare-complet%c4%83" aria-label="Scoate un fișier fără o restaurare completă">Scoate un fișier fără o restaurare completă</a></li>
+                <li>
+                    <a href="#navigheaz%c4%83-repository-ul-ca-un-sistem-de-fi%c8%99iere" aria-label="Navighează repository-ul ca un sistem de fișiere">Navighează repository-ul ca un sistem de fișiere</a></li>
+                <li>
+                    <a href="#verific%c4%83-periodic" aria-label="Verifică periodic">Verifică periodic</a></li></ul>
+                </li>
+                <li>
+                    <a href="#depanare" aria-label="Depanare">Depanare</a></li>
+                <li>
+                    <a href="#documenta%c8%9bie-oficial%c4%83" aria-label="Documentație oficială">Documentație oficială</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Un backup din care nu ai restaurat niciodată este doar un zvon. Aceasta este configurația pe care o rulez pe un server de casă: <strong>restic</strong> se ocupă de criptare și deduplicare, <strong>rclone</strong> îi oferă o cale către Dropbox, iar un <strong>systemd user timer</strong> rulează totul în fiecare duminică seara. Tot ce pleacă de pe mașină este criptat local, așa că Dropbox stochează doar text cifrat.</p>
+<p>A doua jumătate a articolului este despre cum scoți datele înapoi, partea pe care majoritatea ghidurilor o tratează superficial.</p>
+<h2 id="ce-face-această-configurație">Ce face această configurație<a hidden class="anchor" aria-hidden="true" href="#ce-face-această-configurație">#</a></h2>
+<p>Odată pornită, în fiecare duminică la 20:00 serverul se trezește, urcă ce s-a schimbat de săptămâna trecută, taie snapshot-urile vechi conform unei politici de retenție și se culcă din nou. Dacă mașina era oprită la ora respectivă, backup-ul rulează la următoarea pornire în loc să fie sărit.</p>
+<p>Câteva lucruri de știut înainte să începi:</p>
+<ul>
+<li>Backup-urile sunt <strong>criptate cu o parolă creată de tine</strong>. Dropbox nu le poate citi — și nici tu, dacă pierzi parola.</li>
+<li>Datele sunt <strong>deduplicate</strong>, așa că a doua rulare săptămânală urcă doar blocurile modificate, nu tot de la început.</li>
+<li>Repository-ul stă în Dropbox, dar este accesat exclusiv prin rclone. <strong>Nu îl pune într-un folder sincronizat de clientul desktop Dropbox</strong> — două procese care scriu în același repository este exact modul în care repository-urile se corup.</li>
+</ul>
+<h2 id="instalează-restic-și-rclone">Instalează restic și rclone<a hidden class="anchor" aria-hidden="true" href="#instalează-restic-și-rclone">#</a></h2>
+<p>Ambele unelte există în arhiva Ubuntu, dar pe 24.04 sunt suficient de învechite ca să conteze:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install restic
+</span></span><span class="line"><span class="cl">restic version
+</span></span></code></pre></div><p>Ubuntu 24.04 vine cu <strong>restic 0.16.4</strong>, în timp ce upstream a trecut demult de 0.19. Diferența nu este cosmetică — comanda <code>restore</code> mult îmbunătățită, inclusiv modurile <code>--dry-run</code> și suprascrierea pe loc, a apărut în <strong>restic 0.17.0</strong>. Dacă vrei opțiunile de restaurare descrise mai jos, instalează binarul din release-ul curent:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install bzip2
+</span></span><span class="line"><span class="cl"><span class="nv">RESTIC_VER</span><span class="o">=</span><span class="k">$(</span>curl -s https://api.github.com/repos/restic/restic/releases/latest <span class="p">|</span> grep -oP <span class="s1">&#39;&#34;tag_name&#34;: &#34;v\K[^&#34;]+&#39;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">wget <span class="s2">&#34;https://github.com/restic/restic/releases/latest/download/restic_</span><span class="si">${</span><span class="nv">RESTIC_VER</span><span class="si">}</span><span class="s2">_linux_amd64.bz2&#34;</span> -O restic.bz2
+</span></span><span class="line"><span class="cl">bunzip2 restic.bz2 <span class="o">&amp;&amp;</span> chmod +x restic <span class="o">&amp;&amp;</span> sudo mv restic /usr/local/bin/
+</span></span><span class="line"><span class="cl">restic version
+</span></span></code></pre></div><p>Astfel binarul ajunge în <code>/usr/local/bin</code>, care are prioritate față de <code>/usr/bin</code> în <code>PATH</code>-ul implicit, deci câștigă în fața copiei instalate din apt. Îl ții la zi cu <code>sudo restic self-update</code>.</p>
+<p>rclone are aceeași problemă, așa că ia-l din scriptul oficial de instalare, nu din apt:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo -v <span class="p">;</span> curl https://rclone.org/install.sh <span class="p">|</span> sudo bash
+</span></span><span class="line"><span class="cl">rclone version
+</span></span></code></pre></div><p>Scriptul verifică ce este deja instalat și sare peste descărcare dacă ești la zi, ceea ce îl face sigur de rulat din nou mai târziu.</p>
+<h2 id="conectează-rclone-la-dropbox">Conectează rclone la Dropbox<a hidden class="anchor" aria-hidden="true" href="#conectează-rclone-la-dropbox">#</a></h2>
+<p>Remote-ul se creează interactiv:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rclone config
+</span></span></code></pre></div><p>Parcurge pașii astfel:</p>
+<ol>
+<li><code>n</code> pentru un remote nou și numește-l <strong><code>dropbox</code></strong> — numele contează, pentru că devine parte din calea repository-ului.</li>
+<li>Tipul de storage: <code>dropbox</code>.</li>
+<li><code>client_id</code> și <code>client_secret</code>: lasă-le ambele goale pentru a folosi credențialele interne ale rclone. Poți înregistra propria aplicație în <a href="https://www.dropbox.com/developers/apps">Dropbox App Console</a> și să îi dai cheia și secretul; rclone documentează exact permisiunile necesare în <a href="https://rclone.org/dropbox/">documentația backend-ului Dropbox</a>.</li>
+<li>Acceptă restul valorilor implicite, răspunde da la auto config și finalizează autentificarea în browser-ul care se deschide.</li>
+</ol>
+<p>Pe un <strong>server headless</strong> nu există browser care să se deschidă. Rulează <code>rclone authorize &quot;dropbox&quot;</code> pe o mașină care are unul, apoi lipește token-ul rezultat în prompt-ul de configurare al serverului — procedura completă este în <a href="https://rclone.org/remote_setup/">documentația de remote setup</a>.</p>
+<p>Verifică faptul că remote-ul funcționează înainte să continui:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rclone lsd dropbox:
+</span></span></code></pre></div><p>Comanda listează directoarele de la rădăcina Dropbox-ului. Dacă dă eroare, rezolvă aici — nimic din ce urmează nu va funcționa până când această comandă nu merge.</p>
+<h2 id="creează-parola-și-inițializează-repository-ul">Creează parola și inițializează repository-ul<a hidden class="anchor" aria-hidden="true" href="#creează-parola-și-inițializează-repository-ul">#</a></h2>
+<blockquote>
+<p>⚠️ <strong>Dacă pierzi această parolă, toate backup-urile devin definitiv ilizibile.</strong> Nu există niciun mecanism de recuperare, prin design. Pune o copie într-un password manager înainte să rulezi orice altceva.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -p ~/.config/restic
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;a-long-random-password&#39;</span> &gt; ~/.config/restic/password
+</span></span><span class="line"><span class="cl">chmod <span class="m">600</span> ~/.config/restic/password
+</span></span></code></pre></div><p>Folosește ceva lung și aleatoriu — <code>openssl rand -base64 32</code> este o sursă rezonabilă. <code>chmod 600</code> face fișierul citibil doar de utilizatorul tău.</p>
+<p>restic preia locația repository-ului și parola din două variabile de mediu, ceea ce te scutește să le repeți la fiecare comandă:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">RESTIC_REPOSITORY</span><span class="o">=</span><span class="s2">&#34;rclone:dropbox:restic-backups-homeserver&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">RESTIC_PASSWORD_FILE</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/.config/restic/password&#34;</span>
+</span></span><span class="line"><span class="cl">restic init
+</span></span></code></pre></div><p>Șirul repository-ului se citește ca <code>rclone:&lt;remote&gt;:&lt;cale&gt;</code>, deci comanda creează un folder numit <code>restic-backups-homeserver</code> la rădăcina Dropbox-ului. Numește-l după mașină dacă ai de gând să faci backup pentru mai multe — fiecare host își vrea propriul repository, dacă nu ai un motiv anume să îl partajezi.</p>
+<p><code>restic init</code> scrie structura repository-ului și un fișier <code>config</code>. Este o operație unică; rulată peste un repository existent, este refuzată, nu distructivă.</p>
+<p>Ca să funcționeze comenzile <code>restic</code> simple în shell-ul tău interactiv, adaugă cele două linii <code>export</code> în <code>~/.bashrc</code> și rulează <code>source ~/.bashrc</code>.</p>
+<h2 id="scrie-scriptul-de-backup">Scrie scriptul de backup<a hidden class="anchor" aria-hidden="true" href="#scrie-scriptul-de-backup">#</a></h2>
+<p>Job-ul programat este un simplu script de shell, ceea ce îl face testabil manual:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -p ~/.local/bin
+</span></span><span class="line"><span class="cl">cat &gt; ~/.local/bin/restic-backup.sh <span class="s">&lt;&lt; &#39;EOF&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="s">set -euo pipefail
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">export RESTIC_REPOSITORY=&#34;rclone:dropbox:restic-backups-homeserver&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">export RESTIC_PASSWORD_FILE=&#34;$HOME/.config/restic/password&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">echo &#34;=== Backup started: $(date) ===&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">restic backup \
+</span></span></span><span class="line"><span class="cl"><span class="s">  &#34;$HOME/Documents&#34; \
+</span></span></span><span class="line"><span class="cl"><span class="s">  &#34;$HOME/Pictures&#34; \
+</span></span></span><span class="line"><span class="cl"><span class="s">  &#34;$HOME/Projects&#34; \
+</span></span></span><span class="line"><span class="cl"><span class="s">  --exclude-caches \
+</span></span></span><span class="line"><span class="cl"><span class="s">  --exclude &#34;$HOME/.cache&#34; \
+</span></span></span><span class="line"><span class="cl"><span class="s">  --exclude &#34;node_modules&#34; \
+</span></span></span><span class="line"><span class="cl"><span class="s">  --exclude &#34;*.tmp&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">restic forget \
+</span></span></span><span class="line"><span class="cl"><span class="s">  --keep-weekly 8 \
+</span></span></span><span class="line"><span class="cl"><span class="s">  --keep-monthly 12 \
+</span></span></span><span class="line"><span class="cl"><span class="s">  --keep-yearly 2 \
+</span></span></span><span class="line"><span class="cl"><span class="s">  --prune
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">echo &#34;=== Backup finished: $(date) ===&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span><span class="line"><span class="cl">chmod +x ~/.local/bin/restic-backup.sh
+</span></span></code></pre></div><p>Punerea delimitatorului heredoc între ghilimele simple, <code>'EOF'</code>, este intenționată: împiedică shell-ul să expandeze <code>$HOME</code> și <code>$(date)</code> în momentul scrierii fișierului, așa că acestea sunt evaluate când rulează scriptul, nu înghețate la valorile de azi.</p>
+<p><code>set -euo pipefail</code> face scriptul să se oprească la prima eroare. Ordinea contează — dacă <code>restic backup</code> eșuează, nu vrei ca <code>restic forget --prune</code> să ruleze după el și să șteargă snapshot-uri vechi pentru a face loc unui backup care nu a ajuns niciodată.</p>
+<p>Două comenzi fac treaba. <code>restic backup</code> parcurge căile listate și urcă blocurile noi sau modificate; <code>--exclude-caches</code> respectă convenția <code>CACHEDIR.TAG</code>, iar restul opțiunilor <code>--exclude</code> sar peste gunoiul obișnuit. Apoi <code>restic forget</code> aplică politica de retenție — opt snapshot-uri săptămânale, douăsprezece lunare și două anuale — iar <code>--prune</code> este cel care eliberează efectiv spațiul din Dropbox. Fără <code>--prune</code>, <code>forget</code> șterge doar etichetele snapshot-urilor, iar datele rămân pe loc.</p>
+<p><strong>Modifică lista de căi ca să se potrivească mașinii tale.</strong> O cale care nu există face toată rularea să eșueze:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nano ~/.local/bin/restic-backup.sh
+</span></span></code></pre></div><p>Apoi rulează-l o dată manual, înainte să implici systemd:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">~/.local/bin/restic-backup.sh
+</span></span></code></pre></div><p>Prima rulare urcă tot și va dura. Rulările următoare sunt incrementale.</p>
+<h2 id="programează-l-cu-un-systemd-user-timer">Programează-l cu un systemd user timer<a hidden class="anchor" aria-hidden="true" href="#programează-l-cu-un-systemd-user-timer">#</a></h2>
+<p>Două fișiere unit: un service care spune ce să ruleze și un timer care spune când.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -p ~/.config/systemd/user
+</span></span><span class="line"><span class="cl">cat &gt; ~/.config/systemd/user/restic-backup.service <span class="s">&lt;&lt; &#39;EOF&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s">[Unit]
+</span></span></span><span class="line"><span class="cl"><span class="s">Description=Restic backup to Dropbox
+</span></span></span><span class="line"><span class="cl"><span class="s">Wants=network-online.target
+</span></span></span><span class="line"><span class="cl"><span class="s">After=network-online.target
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">[Service]
+</span></span></span><span class="line"><span class="cl"><span class="s">Type=oneshot
+</span></span></span><span class="line"><span class="cl"><span class="s">ExecStart=%h/.local/bin/restic-backup.sh
+</span></span></span><span class="line"><span class="cl"><span class="s">Nice=10
+</span></span></span><span class="line"><span class="cl"><span class="s">IOSchedulingClass=idle
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">cat &gt; ~/.config/systemd/user/restic-backup.timer <span class="s">&lt;&lt; &#39;EOF&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s">[Unit]
+</span></span></span><span class="line"><span class="cl"><span class="s">Description=Weekly restic backup (Sunday 20:00)
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">[Timer]
+</span></span></span><span class="line"><span class="cl"><span class="s">OnCalendar=Sun *-*-* 20:00 Europe/Bucharest
+</span></span></span><span class="line"><span class="cl"><span class="s">Persistent=true
+</span></span></span><span class="line"><span class="cl"><span class="s">RandomizedDelaySec=10min
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">[Install]
+</span></span></span><span class="line"><span class="cl"><span class="s">WantedBy=timers.target
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span></code></pre></div><p>În service, <code>Type=oneshot</code> îi spune systemd că procesul rulează până la capăt și iese, în loc să rămână rezident. <code>Wants=</code> și <code>After=network-online.target</code> îl țin pe loc până când rețeaua este efectiv funcțională. <code>Nice=10</code> și <code>IOSchedulingClass=idle</code> îl trimit la coada de prioritate pentru CPU și disc, așa că un backup nu face niciodată mașina să pară lentă. <code>%h</code> se expandează la directorul home.</p>
+<p>Timer-ul nu are nevoie de o linie <code>Unit=</code>, pentru că un timer activează implicit service-ul cu același nume. Partea interesantă este fusul orar de la final:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="na">OnCalendar</span><span class="o">=</span><span class="s">Sun *-*-* 20:00 Europe/Bucharest</span>
+</span></span></code></pre></div><p>Adăugarea unui nume de fus orar <a href="https://www.iana.org/time-zones">IANA</a> fixează programul la ora locală din România, indiferent de cum este configurat ceasul serverului, și urmărește corect trecerea la ora de vară. Ubuntu 24.04 vine cu systemd 255, confortabil peste versiunea v250 care a introdus sufixele de fus orar — pe ceva mai vechi, renunță la fusul orar și setează în schimb ceasul sistemului.</p>
+<p><code>Persistent=true</code> ține minte ultima rulare, așa că o ocazie ratată se declanșează la următoarea pornire, în loc să fie pierdută. <code>RandomizedDelaySec=10min</code> împrăștie ora de start pe un interval de zece minute, ceea ce este o formă de politețe față de API-ul Dropbox dacă rulezi asta pe mai multe mașini.</p>
+<p>Înainte să activezi orice, pune systemd să verifice expresia și să îți spună când se declanșează următoarea dată:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemd-analyze calendar <span class="s2">&#34;Sun *-*-* 20:00 Europe/Bucharest&#34;</span>
+</span></span></code></pre></div><p>Apoi încarcă și activează:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl --user daemon-reload
+</span></span><span class="line"><span class="cl">systemctl --user <span class="nb">enable</span> --now restic-backup.timer
+</span></span><span class="line"><span class="cl">sudo loginctl enable-linger <span class="nv">$USER</span>
+</span></span><span class="line"><span class="cl">systemctl --user list-timers restic-backup.timer
+</span></span></code></pre></div><p><code>daemon-reload</code> recitește fișierele unit — rulează-l după fiecare modificare, altfel systemd continuă să folosească versiunea veche. <code>enable --now</code> activează timer-ul permanent, astfel încât supraviețuiește reboot-urilor, și îl pornește imediat.</p>
+<p><code>loginctl enable-linger</code> este pasul pe care lumea îl ratează și este <strong>obligatoriu pe un server</strong>. Fără el, instanța systemd a utilizatorului tău este oprită când se închide ultima sesiune, deci timer-ul moare în momentul în care închizi SSH-ul. Verifică că a prins:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">loginctl show-user <span class="nv">$USER</span> <span class="p">|</span> grep Linger
+</span></span></code></pre></div><p>Ar trebui să afișeze <code>Linger=yes</code>.</p>
+<h2 id="comenzi-de-zi-cu-zi">Comenzi de zi cu zi<a hidden class="anchor" aria-hidden="true" href="#comenzi-de-zi-cu-zi">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Comandă</th>
+          <th>Ce face</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>systemctl --user start restic-backup</code></td>
+          <td>Rulează un backup chiar acum</td>
+      </tr>
+      <tr>
+          <td><code>systemctl --user list-timers</code></td>
+          <td>Arată următoarea și ultima rulare</td>
+      </tr>
+      <tr>
+          <td><code>journalctl --user -u restic-backup -e</code></td>
+          <td>Citește log-urile (<code>-f</code> pentru urmărire live, <code>q</code> pentru ieșire)</td>
+      </tr>
+      <tr>
+          <td><code>restic snapshots</code></td>
+          <td>Listează toate snapshot-urile din repository</td>
+      </tr>
+      <tr>
+          <td><code>restic stats</code></td>
+          <td>Arată dimensiunea repository-ului și economia din deduplicare</td>
+      </tr>
+      <tr>
+          <td><code>restic check</code></td>
+          <td>Verifică integritatea repository-ului</td>
+      </tr>
+  </tbody>
+</table>
+<p>Comenzile <code>restic</code> au nevoie de <code>RESTIC_REPOSITORY</code> și <code>RESTIC_PASSWORD_FILE</code> în mediu. Dacă nu le-ai adăugat în <code>~/.bashrc</code>, transmite-le la fiecare comandă:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic -r rclone:dropbox:restic-backups-homeserver <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --password-file ~/.config/restic/password snapshots
+</span></span></code></pre></div><h2 id="restaurarea">Restaurarea<a hidden class="anchor" aria-hidden="true" href="#restaurarea">#</a></h2>
+<p>Aceasta este jumătatea care merită repetată. Fă-o o dată, în mod deliberat, cât timp nu arde nimic.</p>
+<h3 id="găsește-ce-vrei">Găsește ce vrei<a hidden class="anchor" aria-hidden="true" href="#găsește-ce-vrei">#</a></h3>
+<p>Orice restaurare pornește de la un ID de snapshot. Listează-le:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic snapshots
+</span></span></code></pre></div><p>Primești un ID, o dată, host-ul și căile acoperite de fiecare snapshot. Cuvântul <code>latest</code> funcționează oriunde este acceptat un ID, și de obicei este exact ce vrei.</p>
+<p>Ca să vezi ce este într-un snapshot înainte să descarci ceva:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic ls latest
+</span></span><span class="line"><span class="cl">restic ls latest /home/me/Documents
+</span></span></code></pre></div><p>Iar ca să localizezi un fișier când nu mai ții minte unde stătea sau care snapshot îl mai are:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic find <span class="s2">&#34;quarterly-report.ods&#34;</span>
+</span></span></code></pre></div><p><code>restic find</code> caută în toate snapshot-urile și îți spune care dintre ele conțin potrivirea — cea mai rapidă cale de a răspunde la „când am avut ultima copie bună a acestui fișier?”.</p>
+<h3 id="restaurează-tot">Restaurează tot<a hidden class="anchor" aria-hidden="true" href="#restaurează-tot">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic restore latest --target ~/restore
+</span></span></code></pre></div><p><code>--target</code> este directorul în care se scrie arborele; căile originale sunt recreate dedesubt. <strong>Restaurează întotdeauna într-un director nou și gol</strong>, nu peste datele live, până ești sigur de ce primești.</p>
+<p>Ca să restaurezi un snapshot anume în loc de cel mai nou, dă-i ID-ul:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic restore <span class="m">79766175</span> --target ~/restore
+</span></span></code></pre></div><h3 id="restaurează-un-singur-fișier-sau-folder">Restaurează un singur fișier sau folder<a hidden class="anchor" aria-hidden="true" href="#restaurează-un-singur-fișier-sau-folder">#</a></h3>
+<p><code>--include</code> restrânge ce se scrie:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic restore latest --target ~/restore --include /home/me/Documents/taxes
+</span></span></code></pre></div><p>Poți de asemenea ancora snapshot-ul la un subfolder, ceea ce păstrează rezultatul mai plat în loc să recreeze toată calea sub target:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic restore latest:/home/me/Documents --target ~/restore --include /taxes
+</span></span></code></pre></div><p><code>--exclude</code> funcționează la fel, dar invers, iar <code>--iinclude</code> / <code>--iexclude</code> sunt variantele care ignoră diferența între majuscule și minuscule.</p>
+<p>Atenție că <code>--path</code> și <code>--host</code> fac altceva decât sugerează numele: ele <strong>selectează care snapshot</strong> este restaurat, nu care fișiere ies din el. Sunt utile când un repository conține mai multe mașini:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic restore latest --host homeserver --target ~/restore
+</span></span></code></pre></div><h3 id="vezi-în-avans-ce-s-ar-întâmpla">Vezi în avans ce s-ar întâmpla<a hidden class="anchor" aria-hidden="true" href="#vezi-în-avans-ce-s-ar-întâmpla">#</a></h3>
+<p>Pe restic 0.17.0 și mai nou, poți vedea ce ar face o restaurare fără să scrii nimic:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic restore latest --target ~/restore --dry-run --verbose<span class="o">=</span><span class="m">2</span>
+</span></span></code></pre></div><p>Merită folosit înainte de orice restaurare pe loc, pentru că rularea de probă raportează care fișiere ar rămâne neatinse și care ar fi suprascrise. Dacă ai instalat pachetul 0.16.4 din Ubuntu, această opțiune nu există — este motivul principal pentru care să iei binarul upstream.</p>
+<h3 id="scoate-un-fișier-fără-o-restaurare-completă">Scoate un fișier fără o restaurare completă<a hidden class="anchor" aria-hidden="true" href="#scoate-un-fișier-fără-o-restaurare-completă">#</a></h3>
+<p>Pentru un singur fișier, <code>dump</code> îl scrie direct la stdout:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic dump latest /home/me/Documents/notes.md &gt; notes.md
+</span></span></code></pre></div><p>Funcționează și pentru directoare, ca flux de arhivă:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic dump latest /home/me/Documents &gt; documents.tar
+</span></span><span class="line"><span class="cl">restic dump -a zip latest /home/me/Documents &gt; documents.zip
+</span></span></code></pre></div><p>Este adesea cea mai rapidă cale când vrei doar să te uiți la o versiune mai veche a ceva.</p>
+<h3 id="navighează-repository-ul-ca-un-sistem-de-fișiere">Navighează repository-ul ca un sistem de fișiere<a hidden class="anchor" aria-hidden="true" href="#navighează-repository-ul-ca-un-sistem-de-fișiere">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir ~/restic-mount
+</span></span><span class="line"><span class="cl">restic mount ~/restic-mount
+</span></span></code></pre></div><p>Fiecare snapshot apare ca un arbore de directoare prin care poți naviga, pe care îl poți compara cu <code>diff</code> față de copia live sau din care poți copia fișiere individuale cu <code>cp</code>. Este read-only și are nevoie de FUSE, pe care Ubuntu îl are implicit. <code>Ctrl+C</code> demontează.</p>
+<h3 id="verifică-periodic">Verifică periodic<a hidden class="anchor" aria-hidden="true" href="#verifică-periodic">#</a></h3>
+<p>Verificările de integritate și o restaurare de probă își au locul în calendar, aproximativ lunar:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic check
+</span></span><span class="line"><span class="cl">restic check --read-data-subset<span class="o">=</span>5%
+</span></span><span class="line"><span class="cl">restic restore latest --target /tmp/restore-test --include /home/me/Documents
+</span></span></code></pre></div><p><code>restic check</code> simplu validează structura și metadatele repository-ului. <code>--read-data-subset=5%</code> merge mai departe și descarcă și calculează efectiv hash-ul unui eșantion din date, ceea ce prinde corupția silențioasă din blocurile stocate. Verificarea completă cu <code>--read-data</code> înseamnă redescărcarea întregului repository, așa că un eșantion lunar este compromisul rezonabil.</p>
+<h2 id="depanare">Depanare<a hidden class="anchor" aria-hidden="true" href="#depanare">#</a></h2>
+<p><strong><code>Fatal: unable to open config file: &lt;config/&gt; does not exist</code></strong></p>
+<p>Calea repository-ului din script nu corespunde cu ce este în Dropbox, sau <code>restic init</code> nu a fost rulat niciodată. Verifică ambele:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rclone lsd dropbox:
+</span></span><span class="line"><span class="cl">rclone ls dropbox:restic-backups-homeserver --max-depth <span class="m">1</span>
+</span></span></code></pre></div><p>A doua comandă ar trebui să listeze un fișier <code>config</code>. Dacă directorul lipsește complet, rulează <code>restic init</code>.</p>
+<p><strong><code>too_many_requests</code> — limitare de rată de la Dropbox</strong></p>
+<p>Limitează rata de cereri a rclone. Orice opțiune rclone poate fi setată printr-o variabilă de mediu, cea mai curată metodă din scriptul de backup:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">RCLONE_TPSLIMIT</span><span class="o">=</span><span class="m">10</span>
+</span></span></code></pre></div><p>Alternativ, suprascrie argumentele pe care restic le transmite către rclone:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic -o rclone.args<span class="o">=</span><span class="s2">&#34;serve restic --stdio --tpslimit 10&#34;</span> snapshots
+</span></span></code></pre></div><p>Ține minte că asta înlocuiește lista implicită de argumente — <code>serve restic --stdio --b2-hard-delete</code> — în loc să adauge la ea, deci păstrează <code>serve restic --stdio</code> pe poziție. <code>RCLONE_BWLIMIT</code> funcționează la fel, dacă ai nevoie să limitezi lățimea de bandă în loc de rata de cereri.</p>
+<p><strong><code>didn't find section in config file</code> sau alte erori de autentificare rclone</strong></p>
+<p>Numele remote-ului din șirul repository-ului nu corespunde unui remote configurat:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rclone listremotes
+</span></span></code></pre></div><p>Ar trebui să afișeze <code>dropbox:</code>. Reține că un systemd user service citește <code>~/.config/rclone/rclone.conf</code> ca utilizatorul tău, deci un remote configurat cu <code>sudo</code> nu va fi vizibil pentru timer.</p>
+<p><strong>Timer-ul nu a rulat niciodată</strong></p>
+<p>Verifică starea lui și dacă linger este activ:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl --user list-timers
+</span></span><span class="line"><span class="cl">loginctl show-user <span class="nv">$USER</span> <span class="p">|</span> grep Linger
+</span></span><span class="line"><span class="cl">journalctl --user -u restic-backup -e
+</span></span></code></pre></div><p>Un timer care afișează <code>n/a</code> la următoarea rulare are de obicei o problemă de activare sau de linger, nu o expresie de calendar greșită — confirmă expresia separat cu <code>systemd-analyze calendar</code>.</p>
+<h2 id="documentație-oficială">Documentație oficială<a hidden class="anchor" aria-hidden="true" href="#documentație-oficială">#</a></h2>
+<ul>
+<li><a href="https://restic.readthedocs.io/">Documentația restic</a> și în special <a href="https://restic.readthedocs.io/en/stable/050_restore.html">capitolul despre restaurare</a></li>
+<li><a href="https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html">Pregătirea unui repository restic nou</a>, care acoperă backend-ul rclone și opțiunile lui</li>
+<li><a href="https://rclone.org/dropbox/">Backend-ul Dropbox din rclone</a> și <a href="https://rclone.org/install/">instalarea rclone</a></li>
+<li><code>man systemd.timer</code> și <code>man systemd.time</code> pentru sintaxa completă de calendar</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://blog.pakithecat.eu/ro/posts/2026/css-selectors-cheatsheet/">
+    <span class="title">Înainte »</span>
+    <br>
+    <span>Cheatsheet pentru Selectorii CSS</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Backup săptămânal criptat în Dropbox cu restic și rclone pe Ubuntu 24.04 on x"
+            href="https://x.com/intent/tweet/?text=Backup%20s%c4%83pt%c4%83m%c3%a2nal%20criptat%20%c3%aen%20Dropbox%20cu%20restic%20%c8%99i%20rclone%20pe%20Ubuntu%2024.04&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2frestic-dropbox-backup-ubuntu%2f&amp;hashtags=linux%2cubuntu%2cbackup">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Backup săptămânal criptat în Dropbox cu restic și rclone pe Ubuntu 24.04 on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2frestic-dropbox-backup-ubuntu%2f&amp;title=Backup%20s%c4%83pt%c4%83m%c3%a2nal%20criptat%20%c3%aen%20Dropbox%20cu%20restic%20%c8%99i%20rclone%20pe%20Ubuntu%2024.04&amp;summary=Backup%20s%c4%83pt%c4%83m%c3%a2nal%20criptat%20%c3%aen%20Dropbox%20cu%20restic%20%c8%99i%20rclone%20pe%20Ubuntu%2024.04&amp;source=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2frestic-dropbox-backup-ubuntu%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Backup săptămânal criptat în Dropbox cu restic și rclone pe Ubuntu 24.04 on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2frestic-dropbox-backup-ubuntu%2f&title=Backup%20s%c4%83pt%c4%83m%c3%a2nal%20criptat%20%c3%aen%20Dropbox%20cu%20restic%20%c8%99i%20rclone%20pe%20Ubuntu%2024.04">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Backup săptămânal criptat în Dropbox cu restic și rclone pe Ubuntu 24.04 on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2frestic-dropbox-backup-ubuntu%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Backup săptămânal criptat în Dropbox cu restic și rclone pe Ubuntu 24.04 on whatsapp"
+            href="https://api.whatsapp.com/send?text=Backup%20s%c4%83pt%c4%83m%c3%a2nal%20criptat%20%c3%aen%20Dropbox%20cu%20restic%20%c8%99i%20rclone%20pe%20Ubuntu%2024.04%20-%20https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2frestic-dropbox-backup-ubuntu%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Backup săptămânal criptat în Dropbox cu restic și rclone pe Ubuntu 24.04 on telegram"
+            href="https://telegram.me/share/url?text=Backup%20s%c4%83pt%c4%83m%c3%a2nal%20criptat%20%c3%aen%20Dropbox%20cu%20restic%20%c8%99i%20rclone%20pe%20Ubuntu%2024.04&amp;url=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2frestic-dropbox-backup-ubuntu%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Backup săptămânal criptat în Dropbox cu restic și rclone pe Ubuntu 24.04 on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Backup%20s%c4%83pt%c4%83m%c3%a2nal%20criptat%20%c3%aen%20Dropbox%20cu%20restic%20%c8%99i%20rclone%20pe%20Ubuntu%2024.04&u=https%3a%2f%2fblog.pakithecat.eu%2fro%2fposts%2f2026%2frestic-dropbox-backup-ubuntu%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>© <a href="https://github.com/concosminx">concosminx</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copiază';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copiat!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copiază';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -7,8 +7,15 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>ro</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Fri, 04 Sep 2026 17:00:00 +0300</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 18:00:00 +0300</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/ro/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Backup săptămânal criptat în Dropbox cu restic și rclone pe Ubuntu 24.04</title>
+      <link>https://blog.pakithecat.eu/ro/posts/2026/restic-dropbox-backup-ubuntu/</link>
+      <pubDate>Mon, 05 Oct 2026 18:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/ro/posts/2026/restic-dropbox-backup-ubuntu/</guid>
+      <description>Configurează backup-uri săptămânale criptate și deduplicate de pe Ubuntu 24.04 în Dropbox, folosind restic, rclone și un systemd user timer — inclusiv cum restaurezi datele când ai nevoie de ele.</description>
+    </item>
     <item>
       <title>Cheatsheet pentru Selectorii CSS</title>
       <link>https://blog.pakithecat.eu/ro/posts/2026/css-selectors-cheatsheet/</link>

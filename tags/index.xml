@@ -7,8 +7,29 @@
     <generator>Hugo -- 0.140.1</generator>
     <language>en</language>
     <copyright>concosminx</copyright>
-    <lastBuildDate>Fri, 04 Sep 2026 17:00:00 +0300</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 18:00:00 +0300</lastBuildDate>
     <atom:link href="https://blog.pakithecat.eu/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Backup</title>
+      <link>https://blog.pakithecat.eu/tags/backup/</link>
+      <pubDate>Mon, 05 Oct 2026 18:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/backup/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://blog.pakithecat.eu/tags/linux/</link>
+      <pubDate>Mon, 05 Oct 2026 18:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ubuntu</title>
+      <link>https://blog.pakithecat.eu/tags/ubuntu/</link>
+      <pubDate>Mon, 05 Oct 2026 18:00:00 +0300</pubDate>
+      <guid>https://blog.pakithecat.eu/tags/ubuntu/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Cheatsheet</title>
       <link>https://blog.pakithecat.eu/tags/cheatsheet/</link>
@@ -84,20 +105,6 @@
       <link>https://blog.pakithecat.eu/tags/mermaid/</link>
       <pubDate>Sat, 29 Aug 2026 09:00:00 +0300</pubDate>
       <guid>https://blog.pakithecat.eu/tags/mermaid/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Linux</title>
-      <link>https://blog.pakithecat.eu/tags/linux/</link>
-      <pubDate>Sat, 25 Apr 2026 10:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/linux/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ubuntu</title>
-      <link>https://blog.pakithecat.eu/tags/ubuntu/</link>
-      <pubDate>Sat, 25 Apr 2026 10:00:00 +0200</pubDate>
-      <guid>https://blog.pakithecat.eu/tags/ubuntu/</guid>
       <description></description>
     </item>
     <item>
